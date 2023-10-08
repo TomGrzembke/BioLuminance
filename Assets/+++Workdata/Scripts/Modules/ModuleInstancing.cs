@@ -4,7 +4,7 @@ using UnityEngine;
 public class ModuleInstancing : MonoBehaviour
 {
     #region serialized fields
-    GameObject[] possibleModules;
+    [SerializeField] GameObject[] possibleModules;
     #endregion
 
     #region private fields
@@ -13,7 +13,7 @@ public class ModuleInstancing : MonoBehaviour
 
     void Start()
     {
-        Instantiate(GetRandomModule());
+        Instantiate(GetRandomModule(), transform);
     }
 
     GameObject GetRandomModule()
