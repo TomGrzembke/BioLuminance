@@ -13,7 +13,7 @@ public class ModuleInstancing : MonoBehaviour
 
     void Start()
     {
-        Instantiate(GetRandomModule(), transform);
+        Instantiate(GetRandomModule(), transform.position, Quaternion.identity);
     }
 
     GameObject GetRandomModule()
