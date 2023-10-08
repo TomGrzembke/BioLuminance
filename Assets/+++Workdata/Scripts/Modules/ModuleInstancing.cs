@@ -1,6 +1,6 @@
 using UnityEngine;
 
-/// <summary> Handles an array of given possible Modules to instance itself as one</summary>
+/// <summary> Handles an array of given possible Modules to instance itself as one </summary>
 public class ModuleInstancing : MonoBehaviour
 {
     #region serialized fields
@@ -13,6 +13,11 @@ public class ModuleInstancing : MonoBehaviour
 
     void Start()
     {
-        
+        Instantiate(GetRandomModule());
+    }
+
+    GameObject GetRandomModule()
+    {
+        return possibleModules[Random.Range(0, possibleModules.Length)];
     }
 }
