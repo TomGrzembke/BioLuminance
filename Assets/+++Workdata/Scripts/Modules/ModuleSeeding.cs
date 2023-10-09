@@ -1,5 +1,6 @@
 using UnityEngine;
 
+/// <summary> Saves the current game Seed and initializes the level if it isnt 0 </summary>
 public class ModuleSeeding : MonoBehaviour
 {
     #region serialized fields
@@ -19,7 +20,6 @@ public class ModuleSeeding : MonoBehaviour
             SetRandomSeed(currentSeed);
     } 
 
-    //Generate Random seed for the system
     public void GenerateRandomSeed()
     {
         int tempSeed = (int)System.DateTime.Now.Ticks;
