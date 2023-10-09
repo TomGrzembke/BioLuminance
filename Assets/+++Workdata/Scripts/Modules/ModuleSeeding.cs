@@ -5,7 +5,7 @@ public class ModuleSeeding : MonoBehaviour
 {
     #region serialized fields
     [Tooltip("Randomizes the level at start when 0, loads level with given seed when not 0")]
-    [SerializeField] int currentSeed;
+    [SerializeField] int seed;
 
     #endregion
 
@@ -15,23 +15,21 @@ public class ModuleSeeding : MonoBehaviour
 
     void Awake()
     {
-        if (currentSeed == 0)
+        if (seed == 0)
             GenerateRandomSeed();
         else
-            SetRandomSeed(currentSeed);
+            SetRandomSeed(seed);
     }
 
-    public void GenerateRandomSeed()
+    void GenerateRandomSeed()
     {
-        currentSeed = (int)System.DateTime.Now.Ticks;
-
-        Random.InitState(currentSeed);
+        seed = (int)System.DateTime.Now.Ticks;
+        Random.InitState(seed);
     }
 
-    public void SetRandomSeed(int seed)
+    void SetRandomSeed(int newSeed)
     {
-        currentSeed = seed;
-
-        Random.InitState(currentSeed);
+        seed = newSeed;
+        Random.InitState(seed);
     }
 }
