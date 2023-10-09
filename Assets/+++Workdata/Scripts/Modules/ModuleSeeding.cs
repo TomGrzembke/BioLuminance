@@ -4,7 +4,7 @@ using UnityEngine;
 public class ModuleSeeding : MonoBehaviour
 {
     #region serialized fields
-    [SerializeField] string currentSeed;
+    [SerializeField] int currentSeed;
 
     #endregion
 
@@ -14,36 +14,23 @@ public class ModuleSeeding : MonoBehaviour
 
     void Awake()
     {
-        if (currentSeed == "")
+        if (currentSeed == 0)
             GenerateRandomSeed();
         else
             SetRandomSeed(currentSeed);
-    } 
+    }
 
     public void GenerateRandomSeed()
     {
-        int tempSeed = (int)System.DateTime.Now.Ticks;
-        currentSeed = tempSeed.ToString();
+        currentSeed = (int)System.DateTime.Now.Ticks;
 
-        Random.InitState(tempSeed);
-    }
-
-    public void SetRandomSeed(string seed = "")
-    {
-        currentSeed = seed;
-        int tempSeed = 0;
-
-        tempSeed = int.Parse(seed);
-
-        Random.InitState(tempSeed);
+        Random.InitState(currentSeed);
     }
 
     public void SetRandomSeed(int seed)
     {
-        currentSeed = seed.ToString();
-        int tempSeed = 0;
+        currentSeed = seed;
 
-        Random.InitState(tempSeed);
+        Random.InitState(currentSeed);
     }
-
 }
