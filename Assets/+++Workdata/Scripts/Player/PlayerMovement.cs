@@ -63,18 +63,12 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         moveDir = move.ReadValue<Vector2>();
-        //gameObject.transform.localScale = new Vector3(-1, 1, 1);
 
         if (moveDir.x > 0) // Moving right
-        {
             gameObject.transform.localScale = new Vector3(1, 1, 1);
-        }
+
         else if (moveDir.x < 0) // Moving left
-        {
             gameObject.transform.localScale = new Vector3(-1, 1, 1);
-        }
-
-
     }
 
     void FixedUpdate()
@@ -88,6 +82,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (moveDir == Vector2.zero) //no Input
             currentVelocity = Vector2.Lerp(currentVelocity, Vector2.zero, deceleration * Time.fixedDeltaTime);
+
         else
             currentVelocity = Vector2.Lerp(currentVelocity, targetVelocity, deceleration * Time.fixedDeltaTime);
 
