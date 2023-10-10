@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 
 public class TentacleBehavior : MonoBehaviour
@@ -9,7 +11,8 @@ public class TentacleBehavior : MonoBehaviour
     [SerializeField] Transform targetDir;
     [SerializeField] float targetDist;
     [SerializeField] float smoothSpeed;
-    [SerializeField] float trailSpeed = 350;
+    [SerializeField] WiggleMode wiggleMode;
+    [ConditionalField("WiggleState", WiggleMode.wiggle)][SerializeField] float trailSpeed = 350;
     [SerializeField] float wiggleSpeed = 10;
     [SerializeField] float wiggleMagnitude = 20;
     [SerializeField] Transform wiggleDir;
@@ -17,6 +20,20 @@ public class TentacleBehavior : MonoBehaviour
 
     #region private fields
     Vector3[] segmentV;
+    #endregion
+
+    #region enums/OnValidate
+    enum WiggleMode
+    {
+        dontWiggle,
+        wiggle
+    }
+
+    void OnValidate()
+    {
+        if (wiggleMode == WiggleMode.wiggle)
+            
+    }
     #endregion
 
     void Start()
