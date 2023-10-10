@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -73,7 +71,6 @@ public class PlayerMovement : MonoBehaviour
         {
             gameObject.transform.localScale = new Vector3(-1, 1, 1);
         }
-
 
     }
 
