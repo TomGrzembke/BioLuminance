@@ -10,6 +10,9 @@ public class TentacleBehavior : MonoBehaviour
     [SerializeField] float targetDist;
     [SerializeField] float smoothSpeed;
     [SerializeField] float trailSpeed = 350;
+    [SerializeField] float wiggleSpeed = 10;
+    [SerializeField] float wiggleMagnitude = 20;
+    [SerializeField] Transform wiggleDir;
     #endregion
 
     #region private fields
@@ -25,9 +28,12 @@ public class TentacleBehavior : MonoBehaviour
 
     void Update()
     {
+        if (wiggleDir != null)
+            wiggleDir.localRotation = Quaternion.Euler(0, 0, Mathf.Sin(Time.time * wiggleSpeed) * wiggleMagnitude);
+
         segmentPoses[0] = targetDir.position;
 
-        for (int i = 1; i < segmentPoses.Length ; i++)
+        for (int i = 1; i < segmentPoses.Length; i++)
         {
             segmentPoses[i] = Vector3.SmoothDamp(segmentPoses[i], segmentPoses[i - 1] + targetDir.right * targetDist, ref segmentV[i], smoothSpeed + i / trailSpeed);
         }
