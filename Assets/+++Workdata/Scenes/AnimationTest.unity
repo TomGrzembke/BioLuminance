@@ -775,8 +775,8 @@ MonoBehaviour:
   targetDir: {fileID: 1595107608}
   pointFollowMode: 1
   length: 20
-  vertexDistance: 0.1
-  smoothSpeed: 0.02
+  vertexDistance: 1
+  smoothSpeed: 2
   trailSpeed: 1000
   wiggleMode: 0
   wiggleSpeed: 10
@@ -2079,8 +2079,8 @@ LineRenderer:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.76345843
-        value: 0.23076928
+        time: 1
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -2146,8 +2146,8 @@ MonoBehaviour:
   targetDir: {fileID: 422209631}
   pointFollowMode: 0
   length: 20
-  vertexDistance: 0.1
-  smoothSpeed: 0.02
+  vertexDistance: 1
+  smoothSpeed: 2
   trailSpeed: 350
   wiggleMode: 0
   wiggleSpeed: 350

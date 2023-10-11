@@ -8,7 +8,7 @@ public class TentacleBehavior : MonoBehaviour
     [SerializeField] PointFollowMode pointFollowMode;
 
     [SerializeField] int length;
-    [Tooltip("Distance between created Points, will feel smoother when smaller and more stagnant whem higher")]
+    [Tooltip("Distance between created Points, will feel smoother when smaller and more stagnant when higher")]
     [SerializeField] float vertexDistance;
     [Tooltip("Determines the delay of how fast the points will follow the following point")]
     [SerializeField] float smoothSpeed;
@@ -74,18 +74,39 @@ public class TentacleBehavior : MonoBehaviour
         {
             for (int i = 1; i < segmentPoses.Length; i++)
             {
-                segmentPoses[i] = Vector3.SmoothDamp(segmentPoses[i], segmentPoses[i - 1] + targetDir.right * vertexDistance, ref segmentV[i], smoothSpeed + i / trailSpeed);
+                segmentPoses[i] = Vector3.SmoothDamp(segmentPoses[i], GetLastSegmentPose(i) + targetDir.right * GetVertexDistance(), ref segmentV[i], GetSmoothSpeed() + i / trailSpeed);
             }
         }
         else if (pointFollowMode == PointFollowMode.stack)
         {
             for (int i = 1; i < segmentPoses.Length; i++)
             {
-                targetPos = segmentPoses[i - 1] + (segmentPoses[i] - segmentPoses[i - 1]).normalized * vertexDistance;
-                segmentPoses[i] = Vector3.SmoothDamp(segmentPoses[i], targetPos, ref segmentV[i], smoothSpeed / 200);
+                targetPos = segmentPoses[i - 1] + (segmentPoses[i] - segmentPoses[i - 1]).normalized * GetVertexDistance();
+                segmentPoses[i] = Vector3.SmoothDamp(segmentPoses[i], targetPos, ref segmentV[i], GetSmoothSpeed());
             }
-        }
+        } 
         lineRend.SetPositions(segmentPoses);
+    }
+
+    Vector3 GetLastSegmentPose(int i)
+    {
+        return segmentPoses[i - 1];
+    }
+
+    float GetSmoothSpeed()
+    {
+        float tempSmothspeed = smoothSpeed / 100;
+        if (pointFollowMode == PointFollowMode.overlap)
+            return tempSmothspeed;
+        else if (pointFollowMode == PointFollowMode.stack)
+            return tempSmothspeed / 200;
+
+        return tempSmothspeed;
+    }
+
+    float GetVertexDistance()
+    {
+        return (vertexDistance / 10);
     }
 
     void AttachLogic()
