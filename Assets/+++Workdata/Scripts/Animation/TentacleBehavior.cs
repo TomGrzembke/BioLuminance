@@ -44,9 +44,19 @@ public class TentacleBehavior : MonoBehaviour
 
     void Start()
     {
-        lineRend.positionCount = length;
-        segmentPoses = new Vector3[length];
-        segmentV = new Vector3[length];
+        if (pointFollowMode == PointFollowMode.overlap)
+        {
+            lineRend.positionCount = length;
+            segmentPoses = new Vector3[length];
+            segmentV = new Vector3[length];
+        }
+        else if (pointFollowMode == PointFollowMode.stack)
+        {
+            int multipliedLength = length * 5;
+            lineRend.positionCount = multipliedLength;
+            segmentPoses = new Vector3[multipliedLength];
+            segmentV = new Vector3[multipliedLength];
+        }
     }
 
     void Update()
@@ -72,7 +82,7 @@ public class TentacleBehavior : MonoBehaviour
             for (int i = 1; i < segmentPoses.Length; i++)
             {
                 targetPos = segmentPoses[i - 1] + (segmentPoses[i] - segmentPoses[i - 1]).normalized * vertexDistance;
-                segmentPoses[i] = Vector3.SmoothDamp(segmentPoses[i], targetPos, ref segmentV[i], smoothSpeed);
+                segmentPoses[i] = Vector3.SmoothDamp(segmentPoses[i], targetPos, ref segmentV[i], smoothSpeed / 200);
             }
         }
         lineRend.SetPositions(segmentPoses);
