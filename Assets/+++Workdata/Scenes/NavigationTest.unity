@@ -756,10 +756,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  deceleration: 5
-  rb: {fileID: 0}
-  spriteRenderer: {fileID: 0}
+  deceleration: 3
   isSprinting: 0
+  sprintSpeed: 2
+  isDashing: 0
+  dashPower: 20
+  dashingTime: 0.1
+  dashingCooldown: 1
+  rb: {fileID: 0}
+  moveDir: {x: 0, y: 0}
+  currentVelocity: {x: 0, y: 0}
 --- !u!50 &655692378
 Rigidbody2D:
   serializedVersion: 4

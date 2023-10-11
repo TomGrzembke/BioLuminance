@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] float deceleration = 10f;
+    [Space(10)]
     [SerializeField] bool isSprinting;
     [SerializeField, Tooltip("Multiplies Move Speed by Sprint Speed")] float sprintSpeed = 2f;
     [Space(10)]
@@ -17,7 +18,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Tooltip("Distance to Dash")] float dashPower = 20f;
     [SerializeField] float dashingTime = 0.2f;
     [SerializeField] float dashingCooldown = 1f;
-    
+    [Space(10)]
     [SerializeField] Rigidbody2D rb;
 
     #endregion
@@ -25,8 +26,8 @@ public class PlayerController : MonoBehaviour
     #region private fields
 
     PlayerInputActions playerControls;
-    public Vector2 moveDir = Vector2.zero;
-    public Vector2 currentVelocity = Vector2.zero;
+    Vector2 moveDir = Vector2.zero;
+    Vector2 currentVelocity = Vector2.zero;
     InputAction move;
 
     bool canDash = true;
