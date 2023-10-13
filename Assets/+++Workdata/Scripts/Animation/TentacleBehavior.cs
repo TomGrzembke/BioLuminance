@@ -4,15 +4,22 @@ using UnityEngine;
 public class TentacleBehavior : MonoBehaviour
 {
     #region serialized fields
+    [Foldout("TailCustomization", true)]
+    [SerializeField] Transform tailEnd;
+    [Foldout("TailCustomization", false)]
+    [SerializeField] Transform[] bodyParts;
+
     [SerializeField] Transform targetDir;
     [SerializeField] PointFollowMode pointFollowMode;
 
+    [Tooltip("Will be multiplied times 5 when switching to Point follow mode: stack")]
     [SerializeField] int length;
     [Tooltip("Distance between created Points, will feel smoother when smaller and more stagnant when higher")]
     [SerializeField] float vertexDistance;
     [Tooltip("Determines the delay of how fast the points will follow the following point")]
     [SerializeField] float smoothSpeed;
     [ConditionalField(nameof(pointFollowMode), false, PointFollowMode.overlap), SerializeField] float trailSpeed = 350;
+    [ConditionalField(nameof(pointFollowMode), false, PointFollowMode.stack), SerializeField] bool fouldOutOnStart = true;
 
     [SerializeField] WiggleMode wiggleMode;
     [ConditionalField(nameof(wiggleMode), false, WiggleMode.wiggle), SerializeField] float wiggleSpeed = 10;
@@ -56,16 +63,27 @@ public class TentacleBehavior : MonoBehaviour
             lineRend.positionCount = multipliedLength;
             segmentPoses = new Vector3[multipliedLength];
             segmentV = new Vector3[multipliedLength];
+
+            if (fouldOutOnStart)
+                ResetPos();
         }
     }
 
-    void Update()
+    void FixedUpdate()
     {
         WiggleLogic();
 
         AttachLogic();
 
         PointFollowUpLogic();
+
+        TailEnd();
+    }
+
+    void TailEnd()
+    {
+        if (tailEnd != null)
+            tailEnd.position = segmentPoses[segmentPoses.Length - 1];
     }
 
     void PointFollowUpLogic()
@@ -81,10 +99,13 @@ public class TentacleBehavior : MonoBehaviour
         {
             for (int i = 1; i < segmentPoses.Length; i++)
             {
-                targetPos = segmentPoses[i - 1] + (segmentPoses[i] - segmentPoses[i - 1]).normalized * GetVertexDistance();
+                targetPos = GetLastSegmentPose(i) + (segmentPoses[i] - GetLastSegmentPose(i)).normalized * GetVertexDistance();
                 segmentPoses[i] = Vector3.SmoothDamp(segmentPoses[i], targetPos, ref segmentV[i], GetSmoothSpeed());
+                
+                if (bodyParts.Length != 0 && bodyParts.Length >= i)
+                    bodyParts[i - 1].position = segmentPoses[i];
             }
-        } 
+        }
         lineRend.SetPositions(segmentPoses);
     }
 
@@ -118,5 +139,15 @@ public class TentacleBehavior : MonoBehaviour
     {
         if (wiggleDir != null && wiggleMode == WiggleMode.wiggle)
             wiggleDir.localRotation = Quaternion.Euler(0, 0, Mathf.Sin(Time.time * wiggleSpeed) * wiggleMagnitude);
+    }
+
+    void ResetPos()
+    {
+        segmentPoses[0] = targetDir.position;
+        for (int i = 1; i < length; i++)
+        {
+            segmentPoses[i] = GetLastSegmentPose(i) + targetDir.right * vertexDistance;
+        }
+        lineRend.SetPositions(segmentPoses);
     }
 }

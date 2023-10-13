@@ -411,12 +411,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd1e94032de09e408a6aba9b30e7086, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tailEnd: {fileID: 0}
+  bodyParts: []
   targetDir: {fileID: 633202680}
   pointFollowMode: 1
   length: 100
   vertexDistance: 0.2
   smoothSpeed: 0.01
   trailSpeed: 350
+  fouldOutOnStart: 0
   wiggleMode: 0
   wiggleSpeed: 10
   wiggleMagnitude: 20
@@ -772,12 +775,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd1e94032de09e408a6aba9b30e7086, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tailEnd: {fileID: 0}
+  bodyParts:
+  - {fileID: 1135860065}
   targetDir: {fileID: 1595107608}
   pointFollowMode: 1
   length: 20
   vertexDistance: 1
   smoothSpeed: 2
   trailSpeed: 1000
+  fouldOutOnStart: 1
   wiggleMode: 0
   wiggleSpeed: 10
   wiggleMagnitude: 20
@@ -1154,12 +1161,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd1e94032de09e408a6aba9b30e7086, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tailEnd: {fileID: 0}
+  bodyParts: []
   targetDir: {fileID: 1561214199}
   pointFollowMode: 0
   length: 20
   vertexDistance: 0
   smoothSpeed: 0.02
   trailSpeed: 350
+  fouldOutOnStart: 0
   wiggleMode: 0
   wiggleSpeed: 350
   wiggleMagnitude: 350
@@ -1481,12 +1491,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd1e94032de09e408a6aba9b30e7086, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tailEnd: {fileID: 0}
+  bodyParts: []
   targetDir: {fileID: 545241176}
   pointFollowMode: 0
   length: 18
   vertexDistance: 0
   smoothSpeed: 0.02
   trailSpeed: 350
+  fouldOutOnStart: 0
   wiggleMode: 0
   wiggleSpeed: 350
   wiggleMagnitude: 350
@@ -1789,12 +1802,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd1e94032de09e408a6aba9b30e7086, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tailEnd: {fileID: 0}
+  bodyParts: []
   targetDir: {fileID: 780895913}
   pointFollowMode: 1
   length: 100
   vertexDistance: 0.01
   smoothSpeed: 0.01
   trailSpeed: 350
+  fouldOutOnStart: 0
   wiggleMode: 0
   wiggleSpeed: 10
   wiggleMagnitude: 20
@@ -1892,6 +1908,7 @@ Transform:
   - {fileID: 1419083408}
   - {fileID: 376020137}
   - {fileID: 68059191}
+  - {fileID: 1135860065}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1077565945
@@ -1938,6 +1955,37 @@ Transform:
   m_Children:
   - {fileID: 780895913}
   m_Father: {fileID: 885440698}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1135860064
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1135860065}
+  m_Layer: 0
+  m_Name: Empty
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1135860065
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1135860064}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.8624303, y: 0.12537682, z: 0.011261984}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1077565944}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1286887088
 GameObject:
@@ -2143,12 +2191,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd1e94032de09e408a6aba9b30e7086, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tailEnd: {fileID: 0}
+  bodyParts: []
   targetDir: {fileID: 422209631}
   pointFollowMode: 0
   length: 20
-  vertexDistance: 1
+  vertexDistance: 0
   smoothSpeed: 2
   trailSpeed: 350
+  fouldOutOnStart: 1
   wiggleMode: 0
   wiggleSpeed: 350
   wiggleMagnitude: 350
@@ -2303,12 +2354,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd1e94032de09e408a6aba9b30e7086, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tailEnd: {fileID: 0}
+  bodyParts: []
   targetDir: {fileID: 780743044}
   pointFollowMode: 0
   length: 10
   vertexDistance: 0
   smoothSpeed: 0.01
   trailSpeed: 350
+  fouldOutOnStart: 0
   wiggleMode: 0
   wiggleSpeed: 10
   wiggleMagnitude: 20
