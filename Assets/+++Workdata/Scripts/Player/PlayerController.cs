@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using MyBox;
@@ -15,12 +14,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Tooltip("Multiplies Move Speed by Sprint Speed")] float sprintSpeed = 2f;
     [Space(10)]
     [SerializeField] bool isDashing;
+    [SerializeField, Tooltip("If true, the Player can Dash through collider")] bool colliderDash;
     [SerializeField, Tooltip("Distance to Dash")] float dashPower = 20f;
     [SerializeField] float dashingTime = 0.2f;
     [SerializeField] float dashingCooldown = 1f;
-    [Space(10)]
-    [SerializeField] Rigidbody2D rb;
-
+    
     #endregion
 
     #region private fields
@@ -29,6 +27,8 @@ public class PlayerController : MonoBehaviour
     Vector2 moveDir = Vector2.zero;
     Vector2 currentVelocity = Vector2.zero;
     InputAction move;
+    Collider2D col;
+    Rigidbody2D rb;
 
     bool canDash = true;
     #endregion
@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour
     {
         playerControls = new PlayerInputActions();
         rb = GetComponent<Rigidbody2D>();
+        col = GetComponent<Collider2D>();
     }
 
     void OnEnable()
@@ -84,9 +85,11 @@ public class PlayerController : MonoBehaviour
     private IEnumerator Dash()
     {
         if (!canDash || isDashing) yield break;
+        if (colliderDash) col.enabled = false;
 
         canDash = false;
         isDashing = true;
+
 
         Vector2 dashDirection = moveDir;
 
@@ -101,6 +104,7 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(dashingCooldown);
 
         canDash = true;
+        col.enabled = true;
     }
 
     private void Flip()
