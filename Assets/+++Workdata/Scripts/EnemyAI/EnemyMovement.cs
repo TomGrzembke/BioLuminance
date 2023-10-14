@@ -8,7 +8,6 @@ public class EnemyMovement : MonoBehaviour
     #region serialized fields
 
     [SerializeField] Transform target;
-    [SerializeField] bool shouldChase;
 
     #endregion
 
@@ -25,25 +24,8 @@ public class EnemyMovement : MonoBehaviour
         agent.updateUpAxis = false;
     }
 
-    private void Update()
-    {
-        /*
-        if (shouldChase)
-            Chase();
-        else
-            Roam();
-        */
-    }
-
-    public void Chase()
-    {
-        agent.SetDestination(target.position);
-        print("Chase");
-    }
-
-    public void Roam(Vector3 targetPosition)
+    public void MoveTo(Vector3 targetPosition)
     {
         agent.SetDestination(targetPosition);
-        print("Roaming");
     }
 }

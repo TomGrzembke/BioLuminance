@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     #region private fields
 
     PlayerInputActions playerControls;
+    [HideInInspector] public Vector3 playerPosition;
     Vector2 moveDir = Vector2.zero;
     Vector2 currentVelocity = Vector2.zero;
     InputAction move;
@@ -59,6 +60,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        playerPosition = transform.position;
         if (isDashing) return;
         moveDir = move.ReadValue<Vector2>();
     }

@@ -543,7 +543,7 @@ Transform:
   m_GameObject: {fileID: 348140793}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.3852187, y: -0.88789475, z: -10}
+  m_LocalPosition: {x: 15.79, y: -0.88789475, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -642,7 +642,7 @@ GameObject:
   - component: {fileID: 655692377}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -656,7 +656,7 @@ Transform:
   m_GameObject: {fileID: 655692373}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.3852187, y: -0.88789475, z: 0}
+  m_LocalPosition: {x: 15.79, y: -0.88789475, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -782,6 +782,7 @@ MonoBehaviour:
   dashPower: 40
   dashingTime: 0.1
   dashingCooldown: 0.1
+  playerPosition: {x: 0, y: 0, z: 0}
 --- !u!50 &655692378
 Rigidbody2D:
   serializedVersion: 4
@@ -1233,7 +1234,7 @@ GameObject:
   m_Component:
   - component: {fileID: 944246476}
   m_Layer: 0
-  m_Name: Idle
+  m_Name: Idle_State
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1264,7 +1265,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1094774198}
   m_Layer: 0
-  m_Name: Stalk
+  m_Name: Stalk_State
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1295,7 +1296,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1308935950}
   m_Layer: 0
-  m_Name: Gather
+  m_Name: Gather_State
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1326,7 +1327,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1352439675}
   m_Layer: 0
-  m_Name: Roam
+  m_Name: Roam_State
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1812,7 +1813,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.13207549, g: 0.13207549, b: 0.13207549, a: 1}
+  m_Color: {r: 0.13333334, g: 0.13333334, b: 0.13333334, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1854,6 +1855,8 @@ MonoBehaviour:
   roamPosition: {x: 0, y: 0}
   minRoamRange: 5
   maxRoamRange: 5
+  targetDetectionRange: 6
+  state: 0
 --- !u!195 &1855951954
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1889,7 +1892,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  shouldChase: 0
 --- !u!1 &1881924834
 GameObject:
   m_ObjectHideFlags: 0
@@ -1984,7 +1986,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1963613133}
   m_Layer: 0
-  m_Name: Attack
+  m_Name: Attack_State
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2015,7 +2017,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2124640563}
   m_Layer: 0
-  m_Name: States
+  m_Name: States (ignore for now)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
