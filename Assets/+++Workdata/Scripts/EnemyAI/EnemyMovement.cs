@@ -7,7 +7,10 @@ public class EnemyMovement : MonoBehaviour
 {
     #region serialized fields
 
-    [SerializeField] Transform target;
+    EnemyManager enemyManager;
+    public float enemySpeed;
+    public float enemyAcceleration;
+    public float enemyStoppingDistance;
 
     #endregion
 
@@ -17,8 +20,18 @@ public class EnemyMovement : MonoBehaviour
 
     #endregion
 
+    private void Update()
+    {
+        agent.speed = enemySpeed;
+        agent.acceleration = enemyAcceleration;
+        agent.stoppingDistance = enemyStoppingDistance;
+
+        transform.LookAt(agent.transform.position);
+    }
+
     void Start()
     {
+        enemyManager = GetComponent<EnemyManager>();
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
@@ -27,5 +40,17 @@ public class EnemyMovement : MonoBehaviour
     public void MoveTo(Vector3 targetPosition)
     {
         agent.SetDestination(targetPosition);
+        Rotate();
+    }
+
+    void Rotate()
+    {
+        var vel = agent.velocity;
+        vel.z = 0;
+
+        if (vel != Vector3.zero)
+        {
+            transform.rotation = Quaternion.LookRotation(Vector3.forward, vel);
+        }
     }
 }

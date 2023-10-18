@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
 {
     #region serialized fields
 
+    public float playerHP;
+    [Space(10)]
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] float deceleration = 10f;
     [Space(10)]
@@ -30,6 +32,7 @@ public class PlayerController : MonoBehaviour
     InputAction move;
     Collider2D col;
     Rigidbody2D rb;
+    float damage = 5;
 
     bool canDash = true;
     #endregion
@@ -60,6 +63,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (playerHP <= 0) playerHP = 0;
         playerPosition = transform.position;
         if (isDashing) return;
         moveDir = move.ReadValue<Vector2>();
@@ -116,5 +120,13 @@ public class PlayerController : MonoBehaviour
 
         else if (moveDir.x < 0) // Moving left
             gameObject.transform.localScale = new Vector3(-1, 1, 1);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Damage"))
+        {
+            playerHP -= damage;
+        }
     }
 }
