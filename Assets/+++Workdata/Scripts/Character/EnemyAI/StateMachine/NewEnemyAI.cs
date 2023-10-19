@@ -76,19 +76,69 @@ public class NewEnemyAI : MonoBehaviour
 
     public void HandleMoveToTarget()
     {
-        agent.SetDestination(currentTarget.transform.position);
+        //IGNORE THIS FOR NOW
+        Vector3 targetDirection = currentTarget.transform.position - transform.position;
+        distanceFromTarget = Vector3.Distance(currentTarget.transform.position, transform.position);
+        float viewableAngle = Vector3.Angle(targetDirection, transform.position);
+        //IGNORE THIS FOR NOW
+
+        if (enemyManager.isPerformingAction)
+        {
+            agent.isStopped = true;
+        }
+        else
+        {
+            if (distanceFromTarget > enemyStoppingDistance)
+            {
+                agent.isStopped = false;
+            }
+            //This is called when the target is close
+            else if (distanceFromTarget <= enemyStoppingDistance)
+            {
+                agent.isStopped = true;
+                print("Attack");
+            }
+        }
 
         HandleRotateTowardsTarget();
     }
 
     private void HandleRotateTowardsTarget()
     {
-        Vector3 velocity = agent.velocity;
-        velocity.z = 0;
-
-        if (velocity != Vector3.zero)
+        //Rotate manually
+        if (enemyManager.isPerformingAction)
         {
-            transform.rotation = Quaternion.LookRotation(Vector3.forward, velocity);
+            Vector3 direction = currentTarget.transform.position - transform.position;
+            direction.z = 0;
+            direction.Normalize();
+
+            if (direction == Vector3.zero)
+            {
+                direction = transform.up;
+            }
+
+            Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, direction);
+
+            float step = enemyAcceleration * Time.deltaTime;
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, step);
+        }
+        
+        //Rotate with Navmesh
+        else
+        {
+            Vector3 velocity = agent.velocity;
+            velocity.z = 0;
+            velocity.Normalize();
+
+            agent.SetDestination(currentTarget.transform.position);
+
+            if (velocity != Vector3.zero)
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, velocity);
+
+                float step = enemyAcceleration * Time.deltaTime;
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, step);
+            }
         }
     }
 }
