@@ -33,7 +33,7 @@ public class EnemyManager : MonoBehaviour
 
     Vector3 startingPosition;
     EnemyMovement enemyMovement;
-    EnemyAnimationController enemyAnim;
+    EnemyAnimationManager enemyAnim;
     PlayerController playerController;
     SpriteRenderer spriteRenderer;
 
@@ -58,7 +58,7 @@ public class EnemyManager : MonoBehaviour
 
         enemyMovement = GetComponent<EnemyMovement>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        enemyAnim = GetComponent<EnemyAnimationController>();
+        enemyAnim = GetComponent<EnemyAnimationManager>();
 
         GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
         if (playerObject != null)

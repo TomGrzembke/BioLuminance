@@ -6,7 +6,7 @@ public class NewEnemyManager : MonoBehaviour
 {
     #region serialized fields
 
-    [SerializeField] bool isPerformingAction;
+    public bool isPerformingAction;
 
     [Header("AI Settings")]
     public float detectionRadius = 20f;
@@ -33,6 +33,11 @@ public class NewEnemyManager : MonoBehaviour
 
     private void Update()
     {
+        
+    }
+
+    void FixedUpdate()
+    {
         HandleCurrentAction();
     }
 
@@ -41,6 +46,10 @@ public class NewEnemyManager : MonoBehaviour
         if (enemyAI.currentTarget == null)
         {
             enemyAI.HandleDetection();
+        }
+        else
+        {
+            enemyAI.HandleMoveToTarget();
         }
     }
 

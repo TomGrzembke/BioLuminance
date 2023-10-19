@@ -1401,13 +1401,14 @@ GameObject:
   - component: {fileID: 946661488}
   - component: {fileID: 946661487}
   - component: {fileID: 946661486}
-  - component: {fileID: 946661485}
   - component: {fileID: 946661484}
   - component: {fileID: 946661492}
   - component: {fileID: 946661491}
   - component: {fileID: 946661490}
+  - component: {fileID: 946661493}
+  - component: {fileID: 946661494}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: New Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1434,28 +1435,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!195 &946661485
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 946661483}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 5
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 0
-  m_AutoRepath: 1
-  m_Height: 1
-  m_BaseOffset: 0.5
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!50 &946661486
 Rigidbody2D:
   serializedVersion: 4
@@ -1628,6 +1607,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   currentTarget: {fileID: 0}
+  distanceFromTarget: 1
+  enemySpeed: 3.5
+  enemyAcceleration: 5
+  enemyStoppingDistance: 1
 --- !u!114 &946661492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1644,6 +1627,41 @@ MonoBehaviour:
   detectionRadius: 5
   maxDetectionAngle: 50
   minDetectionAngle: -50
+--- !u!114 &946661493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 946661483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da673880ebc11964eb9bb52dca9087a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blade: {fileID: 1177273932}
+--- !u!195 &946661494
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 946661483}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: 0.5
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &1177273932
 GameObject:
   m_ObjectHideFlags: 0
@@ -2283,7 +2301,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &1855951950
 BoxCollider2D:
   m_ObjectHideFlags: 0

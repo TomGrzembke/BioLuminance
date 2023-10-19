@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAnimationController : MonoBehaviour
+public class EnemyAnimationManager : MonoBehaviour
 {
     #region serialized fields
 

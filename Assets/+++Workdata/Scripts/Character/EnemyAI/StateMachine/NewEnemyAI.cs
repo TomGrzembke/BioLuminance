@@ -9,24 +9,44 @@ public class NewEnemyAI : MonoBehaviour
 
     [SerializeField] LayerMask detectionLayer;
     public CharacterStats currentTarget;
+    [Space(10)]
+    public float distanceFromTarget;
+    [Tooltip("Controls the speed of the agent.")]
+    public float enemySpeed = 3.5f;
+    [Tooltip("Controls the rotation speed of the agent. The smaller the number, the slower it turns.")]
+    public float enemyAcceleration = 5f;
+    [Tooltip("Stops before Navmesh Obstacles or agents. The higher the number, the further away it stops.")]
+    public float enemyStoppingDistance = 1f;
 
     #endregion
 
     #region private fields
 
     NewEnemyManager enemyManager;
+    NewEnemyAnimationManager enemyAnim;
     NavMeshAgent agent;
+    Rigidbody2D rb;
 
     #endregion
 
-    private void Awake()
+    void Update()
+    {
+        agent.speed = enemySpeed;
+        agent.acceleration = enemyAcceleration;
+        agent.stoppingDistance = enemyStoppingDistance;
+    }
+
+    void Awake()
     {
         #region GetComponent
 
         enemyManager = GetComponent<NewEnemyManager>();
         agent = GetComponent<NavMeshAgent>();
+        enemyAnim = GetComponent<NewEnemyAnimationManager>();
+        rb = GetComponent<Rigidbody2D>();
 
         #endregion
+
         agent.updateRotation = false;
         agent.updateUpAxis = false;
     }
@@ -51,6 +71,24 @@ public class NewEnemyAI : MonoBehaviour
                     currentTarget = characterStats;
                 }
             }
+        }
+    }
+
+    public void HandleMoveToTarget()
+    {
+        agent.SetDestination(currentTarget.transform.position);
+
+        HandleRotateTowardsTarget();
+    }
+
+    private void HandleRotateTowardsTarget()
+    {
+        Vector3 velocity = agent.velocity;
+        velocity.z = 0;
+
+        if (velocity != Vector3.zero)
+        {
+            transform.rotation = Quaternion.LookRotation(Vector3.forward, velocity);
         }
     }
 }
