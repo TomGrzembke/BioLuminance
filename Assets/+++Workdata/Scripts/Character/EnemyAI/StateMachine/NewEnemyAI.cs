@@ -76,15 +76,17 @@ public class NewEnemyAI : MonoBehaviour
 
     public void HandleMoveToTarget()
     {
-        //IGNORE THIS FOR NOW
+        if (enemyManager.isPerformingAction)
+            return;
+
         Vector3 targetDirection = currentTarget.transform.position - transform.position;
         distanceFromTarget = Vector3.Distance(currentTarget.transform.position, transform.position);
         float viewableAngle = Vector3.Angle(targetDirection, transform.position);
-        //IGNORE THIS FOR NOW
 
         if (enemyManager.isPerformingAction)
         {
             agent.isStopped = true;
+            print("performs action");
         }
         else
         {
@@ -106,7 +108,7 @@ public class NewEnemyAI : MonoBehaviour
     private void HandleRotateTowardsTarget()
     {
         //Rotate manually
-        if (enemyManager.isPerformingAction)
+        if (enemyManager.isPerformingAction || distanceFromTarget <= enemyStoppingDistance)
         {
             Vector3 direction = currentTarget.transform.position - transform.position;
             direction.z = 0;
@@ -130,7 +132,13 @@ public class NewEnemyAI : MonoBehaviour
             velocity.z = 0;
             velocity.Normalize();
 
-            agent.SetDestination(currentTarget.transform.position);
+            //Updates the Path every 0.2 seconds
+            if (Time.deltaTime >= enemyManager.pathUpdateDeadline)
+            {
+                print("Updating Path");
+                enemyManager.pathUpdateDeadline = Time.deltaTime + enemyManager.pathUpdateDelay;
+                agent.SetDestination(currentTarget.transform.position);
+            }
 
             if (velocity != Vector3.zero)
             {
