@@ -4,6 +4,7 @@ public class FollowMouse : MonoBehaviour
 {
     #region serialized fields
     [SerializeField] float rotationSpeed = 25;
+    [SerializeField] bool rotatePlayer = true;
 
     #endregion
 
@@ -17,15 +18,18 @@ public class FollowMouse : MonoBehaviour
 
     void Awake()
     {
-        mainCam = Camera.main;    
+        mainCam = Camera.main;
     }
 
     void Update()
     {
         dir = mainCam.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         angle = Mathf.Atan2(dir.x, dir.y) * Mathf.Rad2Deg;
-        rotation = Quaternion.AngleAxis(-angle - 90, Vector3.forward);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
+        if (rotatePlayer)
+        {
+            rotation = Quaternion.AngleAxis(-angle - 90, Vector3.forward);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
+        }
 
         Vector2 cursorPos = mainCam.ScreenToWorldPoint(Input.mousePosition);
         transform.position = Vector2.MoveTowards(transform.position, cursorPos, movespeed * Time.deltaTime);
