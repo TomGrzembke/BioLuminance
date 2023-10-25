@@ -11,8 +11,14 @@ public class AttackState : State
     #region private fields
 
     #endregion
-    public override State Tick(NewEnemyAI enemyAI, NewEnemyManager enemyManager, NewEnemyAnimationManager enemyAnimationManager)
+    public override State Tick(NewEnemyManager enemyManager, NewEnemyAI enemyAI, NewEnemyAnimationManager enemyAnimationManager, EnemyStats enemyStats)
     {
+        //Select one attack
+        //if the selected is not able to be able to be used because of bad angle or distance, select a new attack
+        //if the attack is viable, stop our movement and attack our target
+        //set out recovery timer to the attacks recovery time
+        //return the attack stance state
+
         return this;
     }
 }

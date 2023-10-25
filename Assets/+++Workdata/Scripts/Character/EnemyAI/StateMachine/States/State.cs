@@ -12,6 +12,6 @@ public abstract class State : MonoBehaviour
 
     #endregion
 
-    public abstract State Tick(NewEnemyAI enemyAI, NewEnemyManager enemyManager, NewEnemyAnimationManager enemyAnimationManager);
+    public abstract State Tick(NewEnemyManager enemyManager, NewEnemyAI enemyAI, NewEnemyAnimationManager enemyAnimationManager, EnemyStats enemyStats);
 
 }

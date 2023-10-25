@@ -1,95 +1,103 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class NewEnemyManager : MonoBehaviour
 {
     #region serialized fields
 
     public bool isPerformingAction;
+    public State currentState;
+    public CharacterStats currentTarget;
 
-    public EnemyAttackAction[] enemyAttacks;
-    public EnemyAttackAction currentAttack;
+    [Space(5)]
+    public float enemyInterestCountdown;
 
     [Header("AI Settings")]
-    public float detectionRadius = 20f;
+    public float detectionRadius;
     //Field of View
     public float maxDetectionAngle = 50f;
     public float minDetectionAngle = -50f;
+    public float angle;
 
-    public float currentRecoveryTime = 0f;
     [Space(10)]
-    public float pathUpdateDelay = 0.2f;
-    public float pathUpdateDeadline;
+    public float distanceFromTarget;
+    [Tooltip("Controls the speed of the agent.")]
+    public float enemySpeed = 3.5f;
+    [Tooltip("Controls the rotation speed of the agent. The smaller the number, the slower it turns.")]
+    public float enemyAcceleration = 5f;
+    [Tooltip("Stops before Navmesh Obstacles or agents. The higher the number, the further away it stops.")]
+    public float enemyStoppingDistance = 1f;
 
     #endregion
 
     #region private fields
 
     NewEnemyAI enemyAI;
+    NewEnemyAnimationManager enemyAnimationManager;
+    EnemyStats enemyStats;
+
+    [HideInInspector] public NavMeshAgent agent;
+    [HideInInspector] public Rigidbody2D rb;
+
+    RoamState roamState;
+    ChaseState chaseState;
 
     #endregion
 
-    private void Awake()
+    void Awake()
     {
         #region GetComponent
 
         enemyAI = GetComponent<NewEnemyAI>();
+        enemyAnimationManager = GetComponent<NewEnemyAnimationManager>();
+        enemyStats = GetComponent<EnemyStats>();
+
+        agent = GetComponent<NavMeshAgent>();
+        rb = GetComponent<Rigidbody2D>();
+
+        roamState = GetComponent<RoamState>();
+        chaseState = GetComponent<ChaseState>();
 
         #endregion
+
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
     }
 
-    private void Update()
+    void Update()
     {
-        pathUpdateDeadline -= Time.deltaTime;
-        if (pathUpdateDeadline <= 0) pathUpdateDeadline = 0;
-
-        HandleRecoveryTime();
+        agent.speed = enemySpeed;
+        agent.acceleration = enemyAcceleration;
+        agent.stoppingDistance = enemyStoppingDistance;
     }
 
     void FixedUpdate()
     {
-        HandleCurrentAction();
+        HandleStateMachine();
     }
 
-    private void HandleCurrentAction()
+    void HandleStateMachine()
     {
-        if (enemyAI.currentTarget != null)
+        if (currentState != null)
         {
-            enemyAI.distanceFromTarget = Vector3.Distance(enemyAI.currentTarget.transform.position, transform.position);
-        }
-        
-        if (enemyAI.currentTarget == null)
-        {
-            enemyAI.HandleDetection();
-        }
-        else if (enemyAI.distanceFromTarget > enemyAI.enemyStoppingDistance)
-        {
-            enemyAI.HandleMoveToTarget();
-        }
-        else if (enemyAI.distanceFromTarget <= enemyAI.enemyStoppingDistance)
-        {
-            AttackTarget();
-        }
-    }
+            State nextState = currentState.Tick(this, enemyAI, enemyAnimationManager, enemyStats);
 
-    private void HandleRecoveryTime()
-    {
-        if (currentRecoveryTime > 0)
-        {
-            currentRecoveryTime -= Time.deltaTime;
-        }
-
-        if (isPerformingAction)
-        {
-            if (currentRecoveryTime <= 0)
+            if (nextState != null)
             {
-                isPerformingAction = false;
+                SwitchToNextState(nextState);
             }
         }
     }
 
-    void AttackTarget()
+    void SwitchToNextState(State state)
+    {
+        currentState = state;
+    }
+
+    #region Attack (currently not using)
+    /*void AttackTarget()
     {
         if (isPerformingAction)
             return;
@@ -155,6 +163,8 @@ public class NewEnemyManager : MonoBehaviour
             }
         }
     }
+    */
+    #endregion
 
     private void OnDrawGizmosSelected()
     {
