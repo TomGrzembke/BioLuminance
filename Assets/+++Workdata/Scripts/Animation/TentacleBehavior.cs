@@ -4,9 +4,11 @@ using UnityEngine;
 public class TentacleBehavior : MonoBehaviour
 {
     #region serialized fields
-    [SerializeField] bool test;
     [Foldout("TailCustomization", true)]
     [SerializeField] Transform tailEnd;
+    [SerializeField] bool staticParts;
+    [SerializeField] float staticPartsAmount;
+
     [Foldout("TailCustomization", false)]
     [SerializeField] Transform[] bodyParts;
 
@@ -74,6 +76,8 @@ public class TentacleBehavior : MonoBehaviour
     {
         WiggleLogic();
 
+        AttachedPart();
+
         AttachLogic();
 
         PointFollowUpLogic();
@@ -133,16 +137,17 @@ public class TentacleBehavior : MonoBehaviour
 
     void AttachLogic()
     {
-        if (!test)
-        {
-            segmentPoses[0] = targetDir.position;
-            return;
-        }
+        if (!staticParts) return;
 
-        for (int i = 0; i < length; i++)
+        for (int i = 1; i < staticPartsAmount; i++)
         {
-            segmentPoses[i] = targetDir.position;
+            segmentPoses[i] = targetDir.position + new Vector3(0, -1, 0);
         }
+    }
+
+    private void AttachedPart()
+    {
+        segmentPoses[0] = targetDir.position;
     }
 
     void WiggleLogic()

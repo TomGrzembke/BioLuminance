@@ -148,7 +148,7 @@ Transform:
   m_GameObject: {fileID: 256520260}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.7950211, w: 0.60658175}
-  m_LocalPosition: {x: 0.61, y: 1, z: 0}
+  m_LocalPosition: {x: 0.708, y: 1.357, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -578,6 +578,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tailEnd: {fileID: 0}
+  staticParts: 1
+  staticPartsAmount: 100
   bodyParts: []
   targetDir: {fileID: 256520261}
   pointFollowMode: 1
