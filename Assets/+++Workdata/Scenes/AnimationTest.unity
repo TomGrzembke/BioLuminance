@@ -526,7 +526,7 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0, g: 1, b: 0.24647641, a: 1}
+      key0: {r: 0.89019614, g: 0.58431375, b: 0.61960787, a: 1}
       key1: {r: 1, g: 1, b: 1, a: 0}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
@@ -580,12 +580,12 @@ MonoBehaviour:
   tailEnd: {fileID: 0}
   bodyParts: []
   targetDir: {fileID: 256520261}
-  pointFollowMode: 0
+  pointFollowMode: 1
   length: 100
-  vertexDistance: 0
+  vertexDistance: 0.1
   smoothSpeed: 0.01
   trailSpeed: 350
-  fouldOutOnStart: 0
+  fouldOutOnStart: 1
   wiggleMode: 0
   wiggleSpeed: 10
   wiggleMagnitude: 20
@@ -674,6 +674,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 10.522
       objectReference: {fileID: 0}
+    - target: {fileID: -7143818262520823776, guid: 9b5e301282e18af40a46eaa20aa51936, type: 3}
+      propertyPath: m_Color.a
+      value: 0.9137255
+      objectReference: {fileID: 0}
     - target: {fileID: 5934530503277124301, guid: 9b5e301282e18af40a46eaa20aa51936, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -713,6 +717,22 @@ PrefabInstance:
     - target: {fileID: 6110172769313041571, guid: 9b5e301282e18af40a46eaa20aa51936, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7222661070148608283, guid: 9b5e301282e18af40a46eaa20aa51936, type: 3}
+      propertyPath: m_Color.a
+      value: 0.83137256
+      objectReference: {fileID: 0}
+    - target: {fileID: 7603481503184478318, guid: 9b5e301282e18af40a46eaa20aa51936, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.97348
+      objectReference: {fileID: 0}
+    - target: {fileID: 7603481503184478318, guid: 9b5e301282e18af40a46eaa20aa51936, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.97348
+      objectReference: {fileID: 0}
+    - target: {fileID: 7603481503184478318, guid: 9b5e301282e18af40a46eaa20aa51936, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.97348
       objectReference: {fileID: 0}
     - target: {fileID: 7603481503184478318, guid: 9b5e301282e18af40a46eaa20aa51936, type: 3}
       propertyPath: m_LocalPosition.x
