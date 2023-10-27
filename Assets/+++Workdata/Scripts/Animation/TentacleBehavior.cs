@@ -61,7 +61,7 @@ public class TentacleBehavior : MonoBehaviour
 
     void StartSettings()
     {
-        multipliedLength = length * 5;
+        multipliedLength = length * 10;
         if (pointFollowMode == PointFollowMode.overlap)
         {
             lineRend.positionCount = length;
