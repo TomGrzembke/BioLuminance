@@ -11,8 +11,8 @@ public class TentacleBehavior : MonoBehaviour
 
     [Foldout("TailCustomization", false)]
 
-    [SerializeField] Transform target;
-    [SerializeField] Transform targetDir;
+    [SerializeField] Transform grabPos;
+    [SerializeField] Transform attachPos;
     [SerializeField] PointFollowMode pointFollowMode;
 
     [Tooltip("Will be multiplied times 5 when switching to Point follow mode: stack")]
@@ -130,7 +130,7 @@ public class TentacleBehavior : MonoBehaviour
         {
             for (int i = 1; i < calc_length; i++)
             {
-                segmentPoses[i] = Vector3.SmoothDamp(segmentPoses[i], GetLastSegmentPose(i) + targetDir.right * calc_vertexDistance, ref segmentV[i], calc_smoothSpeed + i / trailSpeed);
+                segmentPoses[i] = Vector3.SmoothDamp(segmentPoses[i], GetLastSegmentPose(i) + attachPos.right * calc_vertexDistance, ref segmentV[i], calc_smoothSpeed + i / trailSpeed);
                 MoveBodyParts(i);
             }
         }
@@ -139,7 +139,10 @@ public class TentacleBehavior : MonoBehaviour
             for (int i = 1; i < calc_length; i++)
             {
                 targetPos = GetLastSegmentPose(i) + (segmentPoses[i] - GetLastSegmentPose(i)).normalized * calc_vertexDistance;
-                segmentPoses[i] = Vector3.SmoothDamp(segmentPoses[i], targetPos, ref segmentV[i], calc_smoothSpeed);
+                if (grabPos == null)
+                    segmentPoses[i] = Vector3.SmoothDamp(segmentPoses[i], targetPos, ref segmentV[i], calc_smoothSpeed);
+                else
+                    segmentPoses[i] = Vector3.SmoothDamp(segmentPoses[i], targetPos + (grabPos.position - GetLastSegmentPose(i)).normalized / 100, ref segmentV[i], calc_smoothSpeed);
 
                 MoveBodyParts(i);
             }
@@ -171,7 +174,7 @@ public class TentacleBehavior : MonoBehaviour
 
     private void AttachedPart()
     {
-        segmentPoses[0] = targetDir.position;
+        segmentPoses[0] = attachPos.position;
     }
 
     void WiggleLogic()
@@ -185,7 +188,7 @@ public class TentacleBehavior : MonoBehaviour
         AttachedPart();
         for (int i = 1; i < calc_length; i++)
         {
-            segmentPoses[i] = GetLastSegmentPose(i) + targetDir.right;
+            segmentPoses[i] = GetLastSegmentPose(i) + attachPos.right;
         }
         lineRend.SetPositions(segmentPoses);
     }
