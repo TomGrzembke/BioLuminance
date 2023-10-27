@@ -11,6 +11,7 @@ public class TentacleBehavior : MonoBehaviour
 
     [Foldout("TailCustomization", false)]
 
+    [SerializeField] Transform target;
     [SerializeField] Transform targetDir;
     [SerializeField] PointFollowMode pointFollowMode;
 
@@ -102,7 +103,7 @@ public class TentacleBehavior : MonoBehaviour
             segmentV = new Vector3[calc_length];
 
             if (fouldOutOnStart)
-                ResetPos();
+                FoldoutOnStart();
         }
     }
 
@@ -179,7 +180,7 @@ public class TentacleBehavior : MonoBehaviour
             wiggleDir.localRotation = Quaternion.Euler(0, 0, Mathf.Sin(Time.time * wiggleSpeed) * wiggleMagnitude);
     }
 
-    void ResetPos()
+    void FoldoutOnStart()
     {
         AttachedPart();
         for (int i = 1; i < calc_length; i++)
