@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using MyBox;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -15,12 +14,13 @@ public class SceneLoader : MonoBehaviour
     {
         Startup,
         Manager,
-        Mainmenu
+        Mainmenu,
+        IngameUI,
+        Gameplay
     }
 
-    [Scene] string defaultScenes;
-
     static SceneLoader _instance;
+
     public static SceneLoader Instance
     {
         get
@@ -42,11 +42,6 @@ public class SceneLoader : MonoBehaviour
 
 
     public Coroutine LoadSceneViaIndex(int index, Action onLoadingFinished = null)
-    {
-        return StartCoroutine(LoadSceneViaIndexCo(index, onLoadingFinished));
-    }
-
-    public Coroutine LoadSceneViaIndex(string index, Action onLoadingFinished = null)
     {
         return StartCoroutine(LoadSceneViaIndexCo(index, onLoadingFinished));
     }

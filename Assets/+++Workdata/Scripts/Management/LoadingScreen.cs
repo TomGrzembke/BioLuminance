@@ -18,7 +18,11 @@ public class LoadingScreen : MonoBehaviour
     public static void Hide(object instigator)
     {
         loadingInstigator.Remove(instigator);
-        if (ScreenManager.Instance != null && loadingInstigator.Count == 0)
+
+        if (ScreenManager.Instance != null)
+            return;
+
+        if (loadingInstigator.Count == 0)
             ScreenManager.Instance.LoadingScreen.Hide();
     }
 
