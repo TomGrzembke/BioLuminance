@@ -12,7 +12,6 @@ public class TentacleBehavior : MonoBehaviour
     [SerializeField] Transform[] bodyParts;
 
     [Foldout("TailCustomization", false)]
-    [SerializeField] int bodyPartDistance = 10;
 
     [SerializeField] Transform targetDir;
     [SerializeField] PointFollowMode pointFollowMode;
@@ -40,6 +39,7 @@ public class TentacleBehavior : MonoBehaviour
     int calc_bodyPartDistance;
 
 
+    int bodyPartDistance = 1;
     LineRenderer lineRend;
     Vector3[] segmentPoses;
     Vector3[] segmentV;
@@ -158,12 +158,12 @@ public class TentacleBehavior : MonoBehaviour
     {
         if (bodyParts.Length == 0)
             return;
-        if (bodyParts.Length <= i)
+        if (bodyParts.Length < i)
             return;
         if (!(calc_length > i + calc_bodyPartDistance))
             return;
 
-        bodyParts[i - 1].position = segmentPoses[i + calc_bodyPartDistance];
+        bodyParts[i - 1].position = segmentPoses[i * calc_bodyPartDistance];
     }
 
     Vector3 GetLastSegmentPose(int i)
@@ -179,6 +179,7 @@ public class TentacleBehavior : MonoBehaviour
     void AttachLogic()
     {
         if (!staticParts) return;
+        if (staticPartsAmount > segmentPoses.Length) return;
 
         for (int i = 1; i < staticPartsAmount; i++)
         {
