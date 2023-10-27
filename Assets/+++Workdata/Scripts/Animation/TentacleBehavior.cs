@@ -31,8 +31,10 @@ public class TentacleBehavior : MonoBehaviour
     #endregion
 
     #region private fields
+    /// <summary> USed for STack length</summary>
+    int multipliedLength;
     LineRenderer lineRend;
-    Vector3[] segmentPoses;
+    [SerializeField] Vector3[] segmentPoses;
     Vector3[] segmentV;
     Vector3 targetPos;
     #endregion
@@ -54,6 +56,12 @@ public class TentacleBehavior : MonoBehaviour
 
     void Start()
     {
+        StartSettings();
+    }
+
+    void StartSettings()
+    {
+        multipliedLength = length * 5;
         if (pointFollowMode == PointFollowMode.overlap)
         {
             lineRend.positionCount = length;
@@ -62,7 +70,6 @@ public class TentacleBehavior : MonoBehaviour
         }
         else if (pointFollowMode == PointFollowMode.stack)
         {
-            int multipliedLength = length * 5;
             lineRend.positionCount = multipliedLength;
             segmentPoses = new Vector3[multipliedLength];
             segmentV = new Vector3[multipliedLength];
@@ -119,6 +126,11 @@ public class TentacleBehavior : MonoBehaviour
         return segmentPoses[i - 1];
     }
 
+    Vector3 GetNextSegmentPose(int i)
+    {
+        return segmentPoses[i + 1];
+    }
+
     float GetSmoothSpeed()
     {
         float tempSmothspeed = smoothSpeed / 100;
@@ -158,10 +170,10 @@ public class TentacleBehavior : MonoBehaviour
 
     void ResetPos()
     {
-        segmentPoses[0] = targetDir.position;
-        for (int i = 1; i < length; i++)
+        AttachedPart();
+        for (int i = 1; i < multipliedLength; i++)
         {
-            segmentPoses[i] = GetLastSegmentPose(i) + targetDir.right * vertexDistance;
+            segmentPoses[i] = GetLastSegmentPose(i) + targetDir.right;
         }
         lineRend.SetPositions(segmentPoses);
     }
