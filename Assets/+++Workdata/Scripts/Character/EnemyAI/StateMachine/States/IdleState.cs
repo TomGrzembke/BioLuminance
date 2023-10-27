@@ -14,9 +14,32 @@ public class IdleState : State
     #region private fields
 
     #endregion
+    
     public override State Tick(NewEnemyManager enemyManager, NewEnemyAI enemyAI, NewEnemyAnimationManager enemyAnimationManager, EnemyStats enemyStats)
     {
-        #region Handle enemy detection
+        HandleDetection(enemyManager);
+
+        #region Handle switch state
+
+        if (enemyManager.currentTarget != null)
+        {
+            return chaseState;
+        }
+        else
+        {
+            return this;
+        }
+
+        #endregion
+
+        //Look for a potential target
+        //Switch to chase state if target is found
+        //if not return this state
+    }
+    
+    private void HandleDetection(NewEnemyManager enemyManager)
+    {
+        enemyManager.distanceFromTarget = 0;
 
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, enemyManager.detectionRadius, detectionLayer);
 
@@ -37,24 +60,5 @@ public class IdleState : State
                 }
             }
         }
-
-        #endregion
-
-        #region Handle switch state
-
-        if (enemyManager.currentTarget != null)
-        {
-            return chaseState;
-        }
-        else
-        {
-            return this;
-        }
-
-        #endregion
-
-        //Look for a potential target
-        //Switch to chase state if target is found
-        //if not return this state
     }
 }

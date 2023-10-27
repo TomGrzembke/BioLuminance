@@ -24,6 +24,35 @@ public class RoamState : State
 
     public override State Tick(NewEnemyManager enemyManager, NewEnemyAI enemyAI, NewEnemyAnimationManager enemyAnimationManager, EnemyStats enemyStats)
     {
+        HandleDetection(enemyManager);
+        HandleRoaming(enemyManager);
+        HandleRotate(enemyManager);
+
+        //Look for a potential target
+        //Switch to chase state if target is found
+
+        if (enemyManager.currentTarget != null)
+        {
+            return chaseState;
+        }
+        else
+        {
+            return this;
+        }
+    }
+
+    void Start()
+    {
+        startingPosition = transform.position;
+        roamPosition = startingPosition;
+    }
+    
+    Vector3 GetRandomRoamingPosition()
+    {
+        return startingPosition + new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized * Random.Range(minRoamRange, maxRoamRange);
+    }
+    private void HandleDetection(NewEnemyManager enemyManager)
+    {
         enemyManager.distanceFromTarget = 0;
 
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, enemyManager.detectionRadius, detectionLayer);
@@ -45,34 +74,7 @@ public class RoamState : State
                 }
             }
         }
-
-        HandleRoaming(enemyManager);
-        HandleRotateTowardsTarget(enemyManager);
-
-        //Look for a potential target
-        //Switch to chase state if target is found
-
-        if (enemyManager.currentTarget != null)
-        {
-            return chaseState;
-        }
-        else
-        {
-            return this;
-        }
     }
-
-    void Start()
-    {
-        startingPosition = transform.position;
-        roamPosition = startingPosition;
-    }
-
-    Vector3 GetRandomRoamingPosition()
-    {
-        return startingPosition + new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized * Random.Range(minRoamRange, maxRoamRange);
-    }
-
     private void HandleRoaming(NewEnemyManager enemyManager)
     {
         enemyManager.agent.SetDestination(roamPosition);
@@ -85,8 +87,7 @@ public class RoamState : State
             roamPosition = GetRandomRoamingPosition();
         }
     }
-
-    private void HandleRotateTowardsTarget(NewEnemyManager enemyManager)
+    private void HandleRotate(NewEnemyManager enemyManager)
     {
         Vector3 velocity = enemyManager.agent.velocity;
         velocity.z = 0;

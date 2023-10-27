@@ -19,38 +19,8 @@ public class ChaseState : State
 
     public override State Tick(NewEnemyManager enemyManager, NewEnemyAI enemyAI, NewEnemyAnimationManager enemyAnimationManager, EnemyStats enemyStats)
     {
-        #region Handle enemy movement
-
-        if (enemyManager.isPerformingAction)
-            return this;
-
-        Vector3 targetDirection = enemyManager.currentTarget.transform.position - transform.position;
-        enemyManager.distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, enemyManager.transform.position);
-        float viewableAngle = Vector3.Angle(targetDirection, transform.position);
-        enemyManager.enemyStoppingDistance = 1.5f;
-
-        if (enemyManager.isPerformingAction)
-        {
-            enemyManager.agent.isStopped = true;
-            print("performs action");
-        }
-        else
-        {
-            if (enemyManager.distanceFromTarget > enemyManager.enemyStoppingDistance)
-            {
-                enemyManager.agent.isStopped = false;
-            }
-            //This is called when the target is close
-            else if (enemyManager.distanceFromTarget <= enemyManager.enemyStoppingDistance)
-            {
-                enemyManager.agent.isStopped = true;
-                print("Attack");
-            }
-        }
-
-        HandleRotateTowardsTarget(enemyManager);
-
-        #endregion
+        HandleMovement(enemyManager);
+        HandleRotate(enemyManager);
 
         #region Handle switch state
 
@@ -75,7 +45,36 @@ public class ChaseState : State
         //if target is out of range, return this state and continue to chase target
     }
 
-    private void HandleRotateTowardsTarget(NewEnemyManager enemyManager)
+    private void HandleMovement(NewEnemyManager enemyManager)
+    {
+        if (enemyManager.isPerformingAction)
+            return;
+
+        Vector3 targetDirection = enemyManager.currentTarget.transform.position - transform.position;
+        enemyManager.distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, enemyManager.transform.position);
+        float viewableAngle = Vector3.Angle(targetDirection, transform.position);
+        enemyManager.enemyStoppingDistance = 1.5f;
+
+        if (enemyManager.isPerformingAction)
+        {
+            enemyManager.agent.isStopped = true;
+            print("performs action");
+        }
+        else
+        {
+            if (enemyManager.distanceFromTarget > enemyManager.enemyStoppingDistance)
+            {
+                enemyManager.agent.isStopped = false;
+            }
+            //This is called when the target is close
+            else if (enemyManager.distanceFromTarget <= enemyManager.enemyStoppingDistance)
+            {
+                enemyManager.agent.isStopped = true;
+                print("Attack");
+            }
+        }
+    }
+    private void HandleRotate(NewEnemyManager enemyManager)
     {
         //Rotate manually
         if (enemyManager.isPerformingAction || enemyManager.distanceFromTarget <= enemyManager.enemyStoppingDistance)
