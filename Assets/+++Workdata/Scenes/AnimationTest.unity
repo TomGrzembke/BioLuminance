@@ -578,16 +578,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tailEnd: {fileID: 0}
-  staticParts: 1
+  staticParts: 0
   staticPartsAmount: 100
   bodyParts: []
   targetDir: {fileID: 256520261}
   pointFollowMode: 1
   length: 100
-  vertexDistance: 0.1
+  vertexDistance: 0.2
   smoothSpeed: 0.01
   trailSpeed: 350
-  fouldOutOnStart: 1
+  fouldOutOnStart: 0
   wiggleMode: 0
   wiggleSpeed: 10
   wiggleMagnitude: 20
