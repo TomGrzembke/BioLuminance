@@ -7,8 +7,6 @@ public class TentacleBehavior : MonoBehaviour
     #region serialized fields
     [Foldout("TailCustomization", true)]
     [SerializeField] Transform tailEnd;
-    [SerializeField] bool staticParts;
-    [SerializeField] float staticPartsAmount;
     [SerializeField] Transform[] bodyParts;
 
     [Foldout("TailCustomization", false)]
@@ -114,8 +112,6 @@ public class TentacleBehavior : MonoBehaviour
 
         AttachedPart();
 
-        AttachLogic();
-
         PointFollowUpLogic();
 
         TailEnd();
@@ -170,17 +166,6 @@ public class TentacleBehavior : MonoBehaviour
     Vector3 GetNextSegmentPose(int i)
     {
         return segmentPoses[i + 1];
-    }
-
-    void AttachLogic()
-    {
-        if (!staticParts) return;
-        if (staticPartsAmount > segmentPoses.Length) return;
-
-        for (int i = 1; i < staticPartsAmount; i++)
-        {
-            segmentPoses[i] = targetDir.position + new Vector3(0, -1, 0);
-        }
     }
 
     private void AttachedPart()
