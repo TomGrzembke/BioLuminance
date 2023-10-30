@@ -741,7 +741,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4807265646646234847, guid: a698b2f7fce0e484282fe978b73add70, type: 3}
       propertyPath: length
-      value: 500
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 4807265646646234847, guid: a698b2f7fce0e484282fe978b73add70, type: 3}
+      propertyPath: vertexDistance
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4807265646646234847, guid: a698b2f7fce0e484282fe978b73add70, type: 3}
+      propertyPath: pointFollowMode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5662620463079863019, guid: a698b2f7fce0e484282fe978b73add70, type: 3}
       propertyPath: rotatePlayer
