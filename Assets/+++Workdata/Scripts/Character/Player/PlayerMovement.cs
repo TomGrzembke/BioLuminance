@@ -1,64 +1,37 @@
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(NavMeshAgent), typeof(Animator))]
 public class PlayerMovement : MonoBehaviour
 {
-    #region Variables
-    [SerializeField] float speed;
-    /// <summary>
-    /// Saves the defaultSpeed of the player
-    /// </summary>
-    [SerializeField] float defaultSpeed;
-    /// <summary>
-    /// The amount of speed that will be added when the player sprints
-    /// </summary>
-    [SerializeField] float sprintSpeed;
-    /// <summary>
-    /// The storage for the movement x and ys for the wasd movement
-    /// </summary>
-    float movementX, movementY;
-    /// <summary>
-    /// The current lookPosition in 1s and 0s which is determined when the player stops moving
-    /// </summary>
-    Vector2 currentIdlePoint;
-    /// <summary>
-    /// A storage slot for the input actions
-    /// </summary>
-    PlayerInputActions inputActions;
-    /// <summary>
-    /// Determines the percantage of slows through bushes
-    /// </summary>
-    [SerializeField] float slowPercentage;
-    /// <summary>
-    /// Keeps track wether the player is sprinting or not
-    /// </summary>
-    [SerializeField] bool isSprinting;
-    /// <summary>
-    /// Keeps track if the player is slowed
-    /// </summary>
-    [SerializeField] bool isSlowed;
-    /// <summary>
-    /// The playerMovement Controlstate
-    /// </summary>
-    [SerializeField] ControlState controlState;
-
     public enum ControlState
     {
         playerControl,
         gameControl
     }
+
+    #region serialized fields
+    [SerializeField] float speed;
+    [SerializeField] float defaultSpeed;
+    [SerializeField] float sprintSpeed;
+    [SerializeField] float slowPercentage;
+    [SerializeField] bool isSprinting;
+    [SerializeField] bool isSlowed;
+    [SerializeField] ControlState controlState;
+    [SerializeField] Transform currentWASDMovepoint;
+    [SerializeField] Transform[] movePoints;
+
     #endregion
 
-    #region Access
-    /// <summary> A storage for the current wasd movepoint which the agent pathes to, 0: TopLeft, 1: Up, 2: TopRight, 3: Left, 4: Right, 5: BotLeft, 6: Down, 7:
-    /// </summary>
-    [SerializeField] Transform currentWASDMovepoint;
-    /// <summary>
-    /// The array of the movepoints which are used for wasd movement
-    /// </summary>
-    [SerializeField] Transform[] movePoints;
+    #region private fields
+    float movementX, movementY;
+    Vector2 currentIdlePoint;
+    PlayerInputActions inputActions;
     NavMeshAgent agent;
     Animator anim;
+
+    #endregion
 
     void Awake()
     {
@@ -74,27 +47,20 @@ public class PlayerMovement : MonoBehaviour
         agent.updateRotation = false;
         agent.updateUpAxis = false;
         agent.speed = defaultSpeed;
-        currentWASDMovepoint = gameObject.transform;
+        currentWASDMovepoint = transform;
     }
-    #endregion
 
-    /// <summary>
-    /// This ensures that the animation of the player will stop when it stops moving 
-    /// </summary>
     void FixedUpdate()
     {
         if (agent.remainingDistance < 0.2f)
         {
-            anim.SetBool("isMoving", false);
+            //anim.SetBool("isMoving", false);
         }
 
         if (controlState == ControlState.playerControl)
             SetAgentPosition();
     }
-    /// <summary>
-    /// The method that handels the wasd movement of the player and the correct animations
-    /// </summary>
-    /// <param name="direction">The vector2 that is provided by the inputactions</param>
+
     void Movement(Vector2 direction)
     {
         if (controlState != ControlState.playerControl) return;
@@ -105,15 +71,12 @@ public class PlayerMovement : MonoBehaviour
         if (!CalculateCurrentWasdPoint())
             return; //Returns if movementX and Y is 0
 
-        anim.SetBool("isMoving", true);
-        anim.SetFloat("moveDirX", movementX);
-        anim.SetFloat("moveDirY", movementY);
+        //anim.SetBool("isMoving", true);
+        //anim.SetFloat("moveDirX", movementX);
+        //anim.SetFloat("moveDirY", movementY);
         currentIdlePoint = new Vector2(movementX, movementY);
     }
 
-    /// <summary>
-    /// Normalizes the current valu of movement x and y
-    /// </summary>
     float NormalizeValue(float value)
     {
         var passValue = value switch
@@ -125,7 +88,6 @@ public class PlayerMovement : MonoBehaviour
         return passValue;
     }
 
-
     /// <returns> The return determines if movement or Idle would be played in the movement </returns>
     bool CalculateCurrentWasdPoint()
     {
@@ -134,7 +96,7 @@ public class PlayerMovement : MonoBehaviour
         switch (movementVector)
         {
             case Vector2 v when v.Equals(new(0, 0)):
-                currentWASDMovepoint = gameObject.transform;
+                currentWASDMovepoint = transform;
                 anim.SetBool("isMoving", false);
                 return false;
             case Vector2 v when v.Equals(new(1, 1)):
@@ -168,9 +130,6 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-    /// <summary>
-    /// Applies the slow (If active) and calculates it according to sprint and walking
-    /// </summary>
     public void CheckForSlow()
     {
         if (!isSlowed)
@@ -183,12 +142,8 @@ public class PlayerMovement : MonoBehaviour
         }
 
         SetMoveSpeed(speed * slowPercentage);
-        SetKeianAgentSpeed(speed);
     }
 
-    /// <summary>
-    /// Forces the Player to move to the right
-    /// </summary>
     public void MoveToRight()
     {
         controlState = ControlState.gameControl;
@@ -199,9 +154,6 @@ public class PlayerMovement : MonoBehaviour
         anim.SetFloat("moveDirX", 1);
     }
 
-    /// <summary>
-    /// This gets called when the player should automatically move to the cliff
-    /// </summary>
     public void MoveToCliff(Vector3 position)
     {
         agent.SetDestination(position);
@@ -209,9 +161,6 @@ public class PlayerMovement : MonoBehaviour
         anim.SetFloat("moveDirY", 1);
     }
 
-    /// <summary>
-    /// This gets executed when the player presses shift 
-    /// </summary>
     void Sprint()
     {
         if (!isSprinting)
@@ -228,12 +177,8 @@ public class PlayerMovement : MonoBehaviour
             isSprinting = false;
             CheckForSlow();
         }
-        SetKeianAgentSpeed(speed);
     }
 
-    /// <summary>
-    /// Changes some player configurations for cut scenes
-    /// </summary>
     public void UpdateForCutscene()
     {
         currentWASDMovepoint = transform;
@@ -248,13 +193,9 @@ public class PlayerMovement : MonoBehaviour
         movementX = 0;
         movementY = 0;
         CalculateCurrentWasdPoint();
-        currentWASDMovepoint = gameObject.transform;
     }
+
     #region Getters
-    /// <summary>
-    /// The Getter for the current Idle point
-    /// </summary>
-    /// <returns>returns the currentIdlePoint vector2 </returns>
     public Vector2 GetCurrentIdlePoint()
     {
         return currentIdlePoint;
@@ -264,43 +205,24 @@ public class PlayerMovement : MonoBehaviour
     {
         return speed;
     }
-
     #endregion
 
     #region Setters
-
-    /// <summary>
-    /// This sets the agents destination with the context of the movement input
-    /// </summary>
     public void SetAgentPosition()
     {
         agent.SetDestination(currentWASDMovepoint.position);
     }
-    /// <summary>
-    /// Sets the Speed for the companion
-    /// </summary>
-    /// <param name="value"></param>
-    void SetKeianAgentSpeed(float value)
-    {
 
-    }
-    /// <summary>
-    /// Assigns the given context to the corresponding float and agent component
-    /// </summary>
-    /// <param name="speed"></param>
     public void SetMoveSpeed(float newSpeed)
     {
         speed = newSpeed;
         agent.speed = speed;
     }
-    /// <summary>
-    /// Sets the isSlowed bool to the new value
-    /// </summary>
+
     public void SetIsSlowed(bool value)
     {
         isSlowed = value;
         CheckForSlow();
-        SetKeianAgentSpeed(speed);
     }
 
     public void SetControlState(ControlState newControlState)
@@ -317,22 +239,15 @@ public class PlayerMovement : MonoBehaviour
     #endregion
 
     #region OnEnable/Disable
-    /// <summary>
-    /// Gets called when this script is enabled
-    /// </summary>
     public void OnEnable()
     {
         inputActions.Enable();
     }
 
-    /// <summary>
-    /// Gets called when this script is disabled
-    /// </summary>
     public void OnDisable()
     {
         inputActions.Disable();
     }
-
     #endregion
 }
 
