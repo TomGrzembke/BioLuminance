@@ -486,6 +486,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: '[Creature] JellyFish'
       objectReference: {fileID: 0}
+    - target: {fileID: 2556797988019359288, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
+      propertyPath: grabPos
+      value: 
+      objectReference: {fileID: 1859722481}
     - target: {fileID: 4589218793629938644, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -530,10 +534,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7270641368243846166, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
+      propertyPath: grabPos
+      value: 
+      objectReference: {fileID: 1390056239}
     - target: {fileID: 8491114510153316245, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
       propertyPath: length
-      value: 30
+      value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 8491114510153316245, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
+      propertyPath: grabPos
+      value: 
+      objectReference: {fileID: 1859722481}
     - target: {fileID: 8491114510153316245, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
       propertyPath: attachPos
       value: 

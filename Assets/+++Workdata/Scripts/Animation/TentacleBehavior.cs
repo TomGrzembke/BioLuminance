@@ -90,18 +90,12 @@ public class TentacleBehavior : MonoBehaviour
 
     void StartSettings()
     {
-        if (pointFollowMode == PointFollowMode.overlap)
-        {
-            lineRend.positionCount = calc_length;
-            segmentPoses = new Vector3[calc_length];
-            segmentV = new Vector3[calc_length];
-        }
-        else if (pointFollowMode == PointFollowMode.stack)
-        {
-            lineRend.positionCount = calc_length;
-            segmentPoses = new Vector3[calc_length];
-            segmentV = new Vector3[calc_length];
+        segmentV = new Vector3[calc_length];
+        lineRend.positionCount = calc_length;
+        segmentPoses = new Vector3[calc_length];
 
+        if (pointFollowMode == PointFollowMode.stack)
+        {
             if (fouldOutOnStart)
                 FoldoutOnStart();
         }
@@ -130,7 +124,11 @@ public class TentacleBehavior : MonoBehaviour
         {
             for (int i = 1; i < calc_length; i++)
             {
-                segmentPoses[i] = Vector3.SmoothDamp(segmentPoses[i], GetLastSegmentPose(i) + attachPos.right * calc_vertexDistance, ref segmentV[i], calc_smoothSpeed + i / trailSpeed);
+                if (grabPos == null)
+                    segmentPoses[i] = Vector3.SmoothDamp(segmentPoses[i], GetLastSegmentPose(i) + attachPos.right * calc_vertexDistance, ref segmentV[i], calc_smoothSpeed + i / trailSpeed);
+                else
+                    segmentPoses[i] = Vector3.SmoothDamp(segmentPoses[i], (GetLastSegmentPose(i) + attachPos.right * calc_vertexDistance) + (grabPos.position - GetLastSegmentPose(i)).normalized / 100, ref segmentV[i], calc_smoothSpeed + i / trailSpeed);
+
                 MoveBodyParts(i);
             }
         }
@@ -147,6 +145,7 @@ public class TentacleBehavior : MonoBehaviour
                 MoveBodyParts(i);
             }
         }
+
         lineRend.SetPositions(segmentPoses);
     }
 
@@ -156,7 +155,7 @@ public class TentacleBehavior : MonoBehaviour
             return;
         if (bodyParts.Length < i)
             return;
-        if (!(calc_length > i + calc_bodyPartDistance))
+        if (calc_length < i + calc_bodyPartDistance)
             return;
 
         bodyParts[i - 1].position = segmentPoses[i * calc_bodyPartDistance];
