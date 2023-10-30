@@ -124,10 +124,7 @@ public class TentacleBehavior : MonoBehaviour
         {
             for (int i = 1; i < calc_length; i++)
             {
-                if (grabPos == null)
-                    segmentPoses[i] = Vector3.SmoothDamp(segmentPoses[i], GetLastSegmentPose(i) + attachPos.right * calc_vertexDistance, ref segmentV[i], calc_smoothSpeed + i / trailSpeed);
-                else
-                    segmentPoses[i] = Vector3.SmoothDamp(segmentPoses[i], (GetLastSegmentPose(i) + attachPos.right * calc_vertexDistance) + (grabPos.position - GetLastSegmentPose(i)).normalized / 100, ref segmentV[i], calc_smoothSpeed + i / trailSpeed);
+                segmentPoses[i] = Vector3.SmoothDamp(segmentPoses[i], (GetLastSegmentPose(i) + attachPos.right * calc_vertexDistance) + GetCalcGrabPos(i), ref segmentV[i], calc_smoothSpeed + i / trailSpeed);
 
                 MoveBodyParts(i);
             }
@@ -137,16 +134,28 @@ public class TentacleBehavior : MonoBehaviour
             for (int i = 1; i < calc_length; i++)
             {
                 targetPos = GetLastSegmentPose(i) + (segmentPoses[i] - GetLastSegmentPose(i)).normalized * calc_vertexDistance;
-                if (grabPos == null)
-                    segmentPoses[i] = Vector3.SmoothDamp(segmentPoses[i], targetPos, ref segmentV[i], calc_smoothSpeed);
-                else
-                    segmentPoses[i] = Vector3.SmoothDamp(segmentPoses[i], targetPos + (grabPos.position - GetLastSegmentPose(i)).normalized / 100, ref segmentV[i], calc_smoothSpeed);
+
+                segmentPoses[i] = Vector3.SmoothDamp(segmentPoses[i], targetPos + GetCalcGrabPos(i), ref segmentV[i], calc_smoothSpeed);
 
                 MoveBodyParts(i);
             }
         }
 
         lineRend.SetPositions(segmentPoses);
+    }
+
+    Vector3 GetCalcGrabPos(int i)
+    {
+        if (grabPos == null)
+            return Vector3.zero;
+
+        if (pointFollowMode == PointFollowMode.stack)
+            return (grabPos.position - GetLastSegmentPose(i)).normalized / 100;
+        else if (pointFollowMode == PointFollowMode.overlap)
+            return (grabPos.position - GetLastSegmentPose(i)).normalized / 10;
+
+        else
+            return Vector3.zero;
     }
 
     void MoveBodyParts(int i)
