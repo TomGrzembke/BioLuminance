@@ -13,7 +13,6 @@ public class PlayerMovement : MonoBehaviour
     #region serialized fields
     [SerializeField] float defaultSpeed;
     [SerializeField] float sprintSpeed;
-    [SerializeField] float slowPercentage;
     [SerializeField] ControlState controlState;
     #endregion
 
