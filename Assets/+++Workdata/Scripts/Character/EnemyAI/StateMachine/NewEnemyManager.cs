@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -15,11 +17,12 @@ public class NewEnemyManager : MonoBehaviour
     public float enemyInterestCountdown;
 
     [Header("AI Settings")]
+    [SerializeField] bool canSeePlayer = false;
+    [SerializeField] LayerMask detectionLayer;
+    [SerializeField] LayerMask obstacleLayer;
     public float detectionRadius;
     //Field of View
-    public float maxDetectionAngle = 50f;
-    public float minDetectionAngle = -50f;
-    public float angle;
+    [SerializeField, Range(0, 360)] float angle = 50f;
 
     [Space(10)]
     public float distanceFromTarget;
@@ -40,10 +43,7 @@ public class NewEnemyManager : MonoBehaviour
 
     [HideInInspector] public NavMeshAgent agent;
     [HideInInspector] public Rigidbody2D rb;
-
-    RoamState roamState;
-    ChaseState chaseState;
-
+    
     #endregion
 
     void Awake()
@@ -56,9 +56,6 @@ public class NewEnemyManager : MonoBehaviour
 
         agent = GetComponent<NavMeshAgent>();
         rb = GetComponent<Rigidbody2D>();
-
-        roamState = GetComponent<RoamState>();
-        chaseState = GetComponent<ChaseState>();
 
         #endregion
 
@@ -90,85 +87,89 @@ public class NewEnemyManager : MonoBehaviour
             }
         }
     }
-
+    
     void SwitchToNextState(State state)
     {
         currentState = state;
     }
 
-    #region Attack (currently not using)
-    /*void AttackTarget()
+    public void HandleDetection()
     {
-        if (isPerformingAction)
-            return;
+        distanceFromTarget = 0;
 
-        if (currentAttack == null)
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, detectionRadius, detectionLayer);
+
+        for (int i = 0; i < colliders.Length; i++)
         {
-            GetNewAttack();
-        }
-        else
-        {
-            isPerformingAction = true;
-            currentRecoveryTime = currentAttack.recoveryTime;
-            print("Attacked");
-            currentAttack = null;
-        }
-    }
+            CharacterStats characterStats = colliders[i].transform.GetComponent<CharacterStats>();
 
-    void GetNewAttack()
-    {
-        Vector3 targetDirection = enemyAI.currentTarget.transform.position - transform.position;
-        float viewableAngle = Vector3.Angle(targetDirection, transform.forward);
-        enemyAI.distanceFromTarget = Vector3.Distance(enemyAI.currentTarget.transform.position, transform.position);
-
-        int maxScore = 0;
-
-        for (int i = 0; i < enemyAttacks.Length; i++)
-        {
-            EnemyAttackAction enemyAttackAction = enemyAttacks[i];
-
-            if (enemyAI.distanceFromTarget <= enemyAttackAction.maxDistanceNeededToAttack && enemyAI.distanceFromTarget >= enemyAttackAction.minDistanceNeededToAttack)
+            if (characterStats != null)
             {
-                if (viewableAngle <= enemyAttackAction.maxAttackAngle && viewableAngle >= enemyAttackAction.minAttackAngle)
+                //It looks for a target on a certain layer, and if that target has the characterStats script, it's added to it's target list
+
+                Vector2 targetDirection = characterStats.transform.position - transform.position;
+
+                if (Vector2.Angle(transform.up, targetDirection) < angle / 2)
                 {
-                    maxScore += enemyAttackAction.attackScore;
+                    currentTarget = characterStats;
                 }
             }
         }
+    }
+    
+    public void NewHandleDetection(NewEnemyManager enemyManager)
+    {
+        enemyManager.distanceFromTarget = 0;
 
-        int randomValue = Random.Range(0, maxScore);
-        int tempScore = 0;
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, enemyManager.detectionRadius, detectionLayer);
 
-        for (int i = 0; i < enemyAttacks.Length; i++)
+        for (int i = 0; i < colliders.Length; i++)
         {
-            EnemyAttackAction enemyAttackAction = enemyAttacks[i];
-
-            if (enemyAI.distanceFromTarget <= enemyAttackAction.maxDistanceNeededToAttack
-                && enemyAI.distanceFromTarget >= enemyAttackAction.minDistanceNeededToAttack)
+            CharacterStats characterStats = colliders[i].transform.GetComponent<CharacterStats>();
+            Vector2 targetDirection = characterStats.transform.position - transform.position;
+            
+            if (characterStats != null)
             {
-                if (viewableAngle <= enemyAttackAction.maxAttackAngle && viewableAngle >= enemyAttackAction.minAttackAngle)
+                if (Vector2.Angle(transform.position, targetDirection) < angle / 2)
                 {
-                    if (currentAttack != null)
+                    if (!Physics.Raycast(transform.position, targetDirection, enemyManager.distanceFromTarget, obstacleLayer))
                     {
-                        return;
-
-                        tempScore += enemyAttackAction.attackScore;
-
-                        if (tempScore > randomValue)
-                        {
-                            currentAttack = enemyAttackAction;
-                        }
+                        canSeePlayer = true;
+                        enemyManager.currentTarget = characterStats;
+                    }
+                    else
+                    {
+                        canSeePlayer = false;
+                        enemyManager.currentTarget = null;
                     }
                 }
+                else if (canSeePlayer)
+                {
+                    canSeePlayer = false;
+                    enemyManager.currentTarget = null;
+                }
             }
         }
     }
-    */
-    #endregion
-
+    
     private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.red; //replace red with whatever color you prefer
-        Gizmos.DrawWireSphere(transform.position, detectionRadius);
+        Gizmos.color = Color.red;
+        Handles.DrawWireArc(transform.position, Vector3.forward, Vector3.up, 360, detectionRadius);
+        
+        Vector3 viewAngle01 = DirectionFromAngle(transform.eulerAngles.y, -angle / 2);
+        Vector3 viewAngle02 = DirectionFromAngle(transform.eulerAngles.y, angle / 2);
+        
+        Gizmos.color = Color.cyan;
+        Gizmos.matrix = transform.localToWorldMatrix;
+        Gizmos.DrawLine(Vector3.zero, viewAngle01 * detectionRadius);
+        Gizmos.DrawLine(Vector3.zero, viewAngle02 * detectionRadius);
+    }
+
+    private Vector3 DirectionFromAngle(float eulerY, float angleInDegrees)
+    {
+        angleInDegrees += eulerY;
+
+        return new Vector2(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
     }
 }

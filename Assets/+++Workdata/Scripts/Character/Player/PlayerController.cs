@@ -1,7 +1,9 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Unity.AI;
 using MyBox;
+using UnityEngine.AI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -32,6 +34,7 @@ public class PlayerController : MonoBehaviour
     InputAction move;
     Collider2D col;
     Rigidbody2D rb;
+    NavMeshAgent playerAgent;
     float damage = 5;
 
     bool canDash = true;
@@ -42,6 +45,7 @@ public class PlayerController : MonoBehaviour
         playerControls = new PlayerInputActions();
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
+        playerAgent = GetComponent<NavMeshAgent>();
     }
 
     void OnEnable()
@@ -77,7 +81,7 @@ public class PlayerController : MonoBehaviour
 
     private void Movement()
     {
-        Vector2 targetVelocity = new Vector2(moveDir.x, moveDir.y).normalized * moveSpeed * (isSprinting ? sprintSpeed : 1);
+        Vector2 targetVelocity = new Vector2(moveDir.x, moveDir.y).normalized * (moveSpeed * (isSprinting ? sprintSpeed : 1));
         
         currentVelocity = Vector2.Lerp(currentVelocity, targetVelocity, deceleration * Time.fixedDeltaTime);
 

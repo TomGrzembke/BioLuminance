@@ -165,6 +165,7 @@ GameObject:
   m_Component:
   - component: {fileID: 17291130}
   - component: {fileID: 17291131}
+  - component: {fileID: 17291132}
   m_Layer: 0
   m_Name: Roam State
   m_TagString: Untagged
@@ -199,14 +200,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fe50b0595703854cba355c439e5c301, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionLayer:
-    serializedVersion: 2
-    m_Bits: 512
   roamPosition: {x: 0, y: 0}
   startingPosition: {x: 0, y: 0, z: 0}
   minRoamRange: 5
   maxRoamRange: 5
   chaseState: {fileID: 2039439006}
+--- !u!114 &17291132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 17291129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2998b72f3c9384e4594b01a4907bfda4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPerformingAction: 0
+  currentState: {fileID: 0}
+  currentTarget: {fileID: 0}
+  enemyInterestCountdown: 0
+  canSeePlayer: 0
+  detectionLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  detectionRadius: 0
+  angle: 50
+  distanceFromTarget: 0
+  enemySpeed: 3.5
+  enemyAcceleration: 5
+  enemyStoppingDistance: 1
+  agent: {fileID: 0}
+  rb: {fileID: 0}
 --- !u!1 &122143629
 GameObject:
   m_ObjectHideFlags: 0
@@ -219,7 +248,7 @@ GameObject:
   - component: {fileID: 122143632}
   - component: {fileID: 122143633}
   - component: {fileID: 122143634}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Obstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1543,9 +1572,9 @@ GameObject:
   - component: {fileID: 946661487}
   - component: {fileID: 946661486}
   - component: {fileID: 946661484}
+  - component: {fileID: 946661490}
   - component: {fileID: 946661492}
   - component: {fileID: 946661491}
-  - component: {fileID: 946661490}
   - component: {fileID: 946661493}
   - component: {fileID: 946661494}
   m_Layer: 0
@@ -1761,10 +1790,15 @@ MonoBehaviour:
   currentState: {fileID: 1719762800}
   currentTarget: {fileID: 0}
   enemyInterestCountdown: 0
+  canSeePlayer: 0
+  detectionLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 256
   detectionRadius: 5
-  maxDetectionAngle: 50
-  minDetectionAngle: -50
-  angle: 0
+  angle: 83
   distanceFromTarget: 1
   enemySpeed: 3.5
   enemyAcceleration: 5
@@ -2217,7 +2251,7 @@ GameObject:
   - component: {fileID: 1595523411}
   - component: {fileID: 1595523412}
   - component: {fileID: 1595523413}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Obstacle_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
