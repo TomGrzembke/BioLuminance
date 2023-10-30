@@ -15,7 +15,7 @@ public class IdleState : State
 
     #endregion
     
-    public override State Tick(NewEnemyManager enemyManager, NewEnemyAI enemyAI, NewEnemyAnimationManager enemyAnimationManager, EnemyStats enemyStats)
+    public override State Tick(NewEnemyManager enemyManager, NewEnemyAnimationManager enemyAnimationManager, EnemyStats enemyStats)
     {
         enemyManager.HandleDetection();
 

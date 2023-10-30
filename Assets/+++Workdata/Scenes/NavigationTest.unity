@@ -263,13 +263,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 122143629}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.38, y: -0.9533, z: -0.20376737}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7071069, w: 0.7071067}
+  m_LocalPosition: {x: 5.1, y: 5.26, z: -0.20376737}
   m_LocalScale: {x: 1, y: 2.8467, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 693385293}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!212 &122143632
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1574,7 +1574,6 @@ GameObject:
   - component: {fileID: 946661484}
   - component: {fileID: 946661490}
   - component: {fileID: 946661492}
-  - component: {fileID: 946661491}
   - component: {fileID: 946661493}
   - component: {fileID: 946661494}
   m_Layer: 0
@@ -1762,18 +1761,6 @@ MonoBehaviour:
   health: 0
   maxHealth: 0
   currentHealth: 0
---- !u!114 &946661491
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 946661483}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5059d72f2b599f944b02ef71050ab840, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &946661492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1797,8 +1784,8 @@ MonoBehaviour:
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 256
-  detectionRadius: 5
-  angle: 83
+  detectionRadius: 10
+  angle: 75
   distanceFromTarget: 1
   enemySpeed: 3.5
   enemyAcceleration: 5

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Serialization;
 
 public class NewEnemyManager : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class NewEnemyManager : MonoBehaviour
     public float enemyInterestCountdown;
 
     [Header("AI Settings")]
-    [SerializeField] bool canSeePlayer = false;
+    public bool canSeePlayer = false;
     [SerializeField] LayerMask detectionLayer;
     [SerializeField] LayerMask obstacleLayer;
     public float detectionRadius;
@@ -36,8 +37,7 @@ public class NewEnemyManager : MonoBehaviour
     #endregion
 
     #region private fields
-
-    NewEnemyAI enemyAI;
+    
     NewEnemyAnimationManager enemyAnimationManager;
     EnemyStats enemyStats;
 
@@ -49,8 +49,7 @@ public class NewEnemyManager : MonoBehaviour
     void Awake()
     {
         #region GetComponent
-
-        enemyAI = GetComponent<NewEnemyAI>();
+        
         enemyAnimationManager = GetComponent<NewEnemyAnimationManager>();
         enemyStats = GetComponent<EnemyStats>();
 
@@ -79,7 +78,7 @@ public class NewEnemyManager : MonoBehaviour
     {
         if (currentState != null)
         {
-            State nextState = currentState.Tick(this, enemyAI, enemyAnimationManager, enemyStats);
+            State nextState = currentState.Tick(this, enemyAnimationManager, enemyStats);
 
             if (nextState != null)
             {
@@ -95,7 +94,7 @@ public class NewEnemyManager : MonoBehaviour
 
     public void HandleDetection()
     {
-        distanceFromTarget = 0;
+        //distanceFromTarget = 0;
 
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, detectionRadius, detectionLayer);
 
@@ -107,63 +106,39 @@ public class NewEnemyManager : MonoBehaviour
             {
                 //It looks for a target on a certain layer, and if that target has the characterStats script, it's added to it's target list
 
-                Vector2 targetDirection = characterStats.transform.position - transform.position;
+                Vector2 targetDirection = (characterStats.transform.position - transform.position).normalized;
 
                 if (Vector2.Angle(transform.up, targetDirection) < angle / 2)
                 {
-                    currentTarget = characterStats;
-                }
-            }
-        }
-    }
-    
-    public void NewHandleDetection(NewEnemyManager enemyManager)
-    {
-        enemyManager.distanceFromTarget = 0;
-
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, enemyManager.detectionRadius, detectionLayer);
-
-        for (int i = 0; i < colliders.Length; i++)
-        {
-            CharacterStats characterStats = colliders[i].transform.GetComponent<CharacterStats>();
-            Vector2 targetDirection = characterStats.transform.position - transform.position;
-            
-            if (characterStats != null)
-            {
-                if (Vector2.Angle(transform.position, targetDirection) < angle / 2)
-                {
-                    if (!Physics.Raycast(transform.position, targetDirection, enemyManager.distanceFromTarget, obstacleLayer))
+                    if (!Physics2D.Raycast(transform.position, targetDirection, distanceFromTarget, obstacleLayer))
                     {
                         canSeePlayer = true;
-                        enemyManager.currentTarget = characterStats;
+                        currentTarget = characterStats;
                     }
                     else
                     {
                         canSeePlayer = false;
-                        enemyManager.currentTarget = null;
+                        currentTarget = null;
                     }
                 }
                 else if (canSeePlayer)
-                {
                     canSeePlayer = false;
-                    enemyManager.currentTarget = null;
-                }
             }
         }
     }
     
     private void OnDrawGizmosSelected()
     {
+        Handles.color = Color.green;
+        Handles.DrawWireArc(transform.position, Vector3.forward, Vector3.up, 360, detectionRadius); //This visualizes the detection radius
+        
+        Vector3 viewAngle01 = DirectionFromAngle(transform.eulerAngles.y, -angle / 2); //This seperates the Angle into two different values
+        Vector3 viewAngle02 = DirectionFromAngle(transform.eulerAngles.y, angle / 2); //This seperates the Angle into two different values
+        
         Gizmos.color = Color.red;
-        Handles.DrawWireArc(transform.position, Vector3.forward, Vector3.up, 360, detectionRadius);
-        
-        Vector3 viewAngle01 = DirectionFromAngle(transform.eulerAngles.y, -angle / 2);
-        Vector3 viewAngle02 = DirectionFromAngle(transform.eulerAngles.y, angle / 2);
-        
-        Gizmos.color = Color.cyan;
         Gizmos.matrix = transform.localToWorldMatrix;
-        Gizmos.DrawLine(Vector3.zero, viewAngle01 * detectionRadius);
-        Gizmos.DrawLine(Vector3.zero, viewAngle02 * detectionRadius);
+        Gizmos.DrawLine(Vector3.zero, viewAngle01 * detectionRadius); //This visualizes the FOV 
+        Gizmos.DrawLine(Vector3.zero, viewAngle02 * detectionRadius); //This visualizes the FOV 
     }
 
     private Vector3 DirectionFromAngle(float eulerY, float angleInDegrees)

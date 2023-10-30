@@ -17,7 +17,7 @@ public class ChaseState : State
 
     #endregion
 
-    public override State Tick(NewEnemyManager enemyManager, NewEnemyAI enemyAI, NewEnemyAnimationManager enemyAnimationManager, EnemyStats enemyStats)
+    public override State Tick(NewEnemyManager enemyManager, NewEnemyAnimationManager enemyAnimationManager, EnemyStats enemyStats)
     {
         HandleMovement(enemyManager);
         HandleRotate(enemyManager);
@@ -31,6 +31,7 @@ public class ChaseState : State
         else if(enemyManager.distanceFromTarget >= chaseRange)
         {
             enemyManager.currentTarget = null;
+            enemyManager.canSeePlayer = false;
             return roamState;
         }
         else
