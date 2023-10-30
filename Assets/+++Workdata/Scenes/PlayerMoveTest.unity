@@ -1225,7 +1225,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1239250974739085181, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
       propertyPath: m_Name
-      value: '[Creature] JellyFish'
+      value: '[Player] JellyFish'
       objectReference: {fileID: 0}
     - target: {fileID: 1239250974739085181, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
       propertyPath: m_IsActive
@@ -1327,9 +1327,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 156d565f8b5f4894cb019d2c7e839f18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
-  defaultSpeed: 6
-  sprintSpeed: 8
+  speed: 20
+  defaultSpeed: 20
+  sprintSpeed: 25
   slowPercentage: 0.5
   multiplier: 1
   isSprinting: 0
@@ -1347,7 +1347,7 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 1.31
   m_Speed: 20
-  m_Acceleration: 20
+  m_Acceleration: 100
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0

@@ -11,18 +11,16 @@ public class PlayerMovement : MonoBehaviour
     }
 
     #region serialized fields
-    [SerializeField] float speed;
     [SerializeField] float defaultSpeed;
     [SerializeField] float sprintSpeed;
     [SerializeField] float slowPercentage;
-    [SerializeField] float multiplier;
-    [SerializeField] bool isSprinting;
-    [SerializeField] bool isSlowed;
     [SerializeField] ControlState controlState;
     #endregion
 
     #region private fields
-    [SerializeField] Vector2 movement;
+    bool isSprinting;
+    float speed;
+    Vector2 movement;
     PlayerInputActions inputActions;
     NavMeshAgent agent;
     #endregion
@@ -42,52 +40,20 @@ public class PlayerMovement : MonoBehaviour
         agent.speed = defaultSpeed;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (controlState == ControlState.playerControl)
             SetAgentPosition();
     }
 
-    void OnDrawGizmosSelected()
-    {
-    }
-
     void Movement(Vector2 direction)
     {
-        if (controlState != ControlState.playerControl) return;
-
-        movement = new(direction.x, direction.y);
+        movement = direction.normalized;
     }
 
     public void SetAgentPosition()
     {
-        if (movement != Vector2.zero)
-            agent.SetDestination(transform.position + new Vector3(movement.x + 0.0001f, movement.y, 0) * multiplier);
-    }
-
-    float NormalizeValue(float value)
-    {
-        var passValue = value switch
-        {
-            float n when n > 0 && n != 0 => 1,
-            float n when n < 0 && n != 0 => -1,
-            _ => 0
-        };
-        return passValue;
-    }
-
-    public void CheckForSlow()
-    {
-        if (!isSlowed)
-        {
-            if (!isSprinting)
-                SetMoveSpeed(defaultSpeed);
-            else
-                SetMoveSpeed(sprintSpeed);
-            return;
-        }
-
-        SetMoveSpeed(speed * slowPercentage);
+        agent.SetDestination(transform.position + new Vector3(movement.x + 0.0001f, movement.y, 0));
     }
 
     void Sprint()
@@ -97,15 +63,16 @@ public class PlayerMovement : MonoBehaviour
             speed = sprintSpeed;
             agent.speed = speed;
             isSprinting = true;
-            CheckForSlow();
         }
         else if (isSprinting)
         {
             speed = defaultSpeed;
             agent.speed = speed;
             isSprinting = false;
-            CheckForSlow();
         }
+    }
+    void OnDrawGizmosSelected()
+    {
     }
 
     #region Getters
@@ -116,19 +83,11 @@ public class PlayerMovement : MonoBehaviour
     #endregion
 
     #region Setters
-
     public void SetMoveSpeed(float newSpeed)
     {
         speed = newSpeed;
         agent.speed = speed;
     }
-
-    public void SetIsSlowed(bool value)
-    {
-        isSlowed = value;
-        CheckForSlow();
-    }
-
     public void SetControlState(ControlState newControlState)
     {
         controlState = newControlState;
