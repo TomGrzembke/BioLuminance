@@ -1,8 +1,21 @@
 using MyBox;
 using UnityEngine;
 
+[RequireComponent(typeof(LineRenderer))]
 public class TentacleBehavior : MonoBehaviour
 {
+    #region enums
+    enum PointFollowMode
+    {
+        overlap,
+        stack
+    }
+    enum WiggleMode
+    {
+        dontWiggle,
+        wiggle
+    }
+    #endregion
 
     #region serialized fields
     [Foldout("TailCustomization", true)]
@@ -12,6 +25,10 @@ public class TentacleBehavior : MonoBehaviour
     [Foldout("TailCustomization", false)]
 
     [SerializeField] Transform grabPos;
+
+    [SerializeField, ConditionalField(true, nameof(GetIsInPlaymode))] bool fouldOutOnStart = true;
+    bool GetIsInPlaymode() => !Application.isPlaying;
+
     [SerializeField] Transform attachPos;
     [SerializeField] PointFollowMode pointFollowMode;
 
@@ -22,7 +39,6 @@ public class TentacleBehavior : MonoBehaviour
     [Tooltip("Determines the delay of how fast the points will follow the following point")]
     [SerializeField] float smoothSpeed;
     [ConditionalField(nameof(pointFollowMode), false, PointFollowMode.overlap), SerializeField] float trailSpeed = 350;
-    [ConditionalField(nameof(pointFollowMode), false, PointFollowMode.stack), SerializeField] bool fouldOutOnStart = true;
 
     [SerializeField] WiggleMode wiggleMode;
     [ConditionalField(nameof(wiggleMode), false, WiggleMode.wiggle), SerializeField] float wiggleSpeed = 10;
@@ -42,21 +58,7 @@ public class TentacleBehavior : MonoBehaviour
     Vector3[] segmentV;
     Vector3 targetPos;
     #endregion
-
-    #region enums
-    enum PointFollowMode
-    {
-        overlap,
-        stack
-    }
-    enum WiggleMode
-    {
-        dontWiggle,
-        wiggle
-    }
-
     void Awake() => lineRend = GetComponent<LineRenderer>();
-    #endregion
 
     void Start()
     {
@@ -94,14 +96,11 @@ public class TentacleBehavior : MonoBehaviour
         lineRend.positionCount = calc_length;
         segmentPoses = new Vector3[calc_length];
 
-        if (pointFollowMode == PointFollowMode.stack)
-        {
-            if (fouldOutOnStart)
-                FoldoutOnStart();
-        }
+        if (fouldOutOnStart)
+            FoldoutOnStart();
     }
 
-    void FixedUpdate()
+    void Update()
     {
         WiggleLogic();
 
@@ -114,8 +113,10 @@ public class TentacleBehavior : MonoBehaviour
 
     void TailEnd()
     {
-        if (tailEnd != null)
-            tailEnd.position = segmentPoses[segmentPoses.Length - 1];
+        if (tailEnd == null)
+            return;
+
+        tailEnd.position = segmentPoses[segmentPoses.Length - 1];
     }
 
     void PointFollowUpLogic()
