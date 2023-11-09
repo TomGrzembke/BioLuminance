@@ -17,12 +17,39 @@ public class ChaseState : State
 
     #endregion
 
-    public override State Tick(NewEnemyManager enemyManager, NewEnemyAI enemyAI, NewEnemyAnimationManager enemyAnimationManager, EnemyStats enemyStats)
+    public override State Tick(NewEnemyManager enemyManager, NewEnemyAnimationManager enemyAnimationManager, EnemyStats enemyStats)
     {
-        #region Handle enemy movement
+        HandleMovement(enemyManager);
+        HandleRotate(enemyManager);
 
-        if (enemyManager.isPerformingAction)
+        #region Handle switch state
+
+        if (enemyManager.distanceFromTarget <= enemyManager.enemyStoppingDistance)
+        {
+            return attackStanceState;
+        }
+        else if(enemyManager.distanceFromTarget >= chaseRange)
+        {
+            enemyManager.currentTarget = null;
+            enemyManager.canSeePlayer = false;
+            return roamState;
+        }
+        else
+        {
             return this;
+        }
+
+        #endregion
+
+        //Chase the target
+        //If within attack range, switch to attack stance state
+        //if target is out of range, return this state and continue to chase target
+    }
+
+    private void HandleMovement(NewEnemyManager enemyManager)
+    {
+        if (enemyManager.isPerformingAction)
+            return;
 
         Vector3 targetDirection = enemyManager.currentTarget.transform.position - transform.position;
         enemyManager.distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, enemyManager.transform.position);
@@ -47,35 +74,8 @@ public class ChaseState : State
                 print("Attack");
             }
         }
-
-        HandleRotateTowardsTarget(enemyManager);
-
-        #endregion
-
-        #region Handle switch state
-
-        if (enemyManager.distanceFromTarget <= enemyManager.enemyStoppingDistance)
-        {
-            return attackStanceState;
-        }
-        else if(enemyManager.distanceFromTarget >= chaseRange)
-        {
-            enemyManager.currentTarget = null;
-            return roamState;
-        }
-        else
-        {
-            return this;
-        }
-
-        #endregion
-
-        //Chase the target
-        //If within attack range, switch to attack stance state
-        //if target is out of range, return this state and continue to chase target
     }
-
-    private void HandleRotateTowardsTarget(NewEnemyManager enemyManager)
+    private void HandleRotate(NewEnemyManager enemyManager)
     {
         //Rotate manually
         if (enemyManager.isPerformingAction || enemyManager.distanceFromTarget <= enemyManager.enemyStoppingDistance)

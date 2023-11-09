@@ -13,28 +13,12 @@ public class AttackStanceState : State
     #region private fields
 
     #endregion
-    public override State Tick(NewEnemyManager enemyManager, NewEnemyAI enemyAI, NewEnemyAnimationManager enemyAnimationManager, EnemyStats enemyStats)
+    public override State Tick(NewEnemyManager enemyManager, NewEnemyAnimationManager enemyAnimationManager, EnemyStats enemyStats)
     {
         enemyManager.distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, enemyManager.transform.position);
         enemyManager.enemyStoppingDistance = 3f;
-
-        //Rotate manually
-        if (enemyManager.isPerformingAction || enemyManager.distanceFromTarget <= enemyManager.enemyStoppingDistance)
-        {
-            Vector3 direction = enemyManager.currentTarget.transform.position - transform.position;
-            direction.z = 0;
-            direction.Normalize();
-
-            if (direction == Vector3.zero)
-            {
-                direction = transform.up;
-            }
-
-            Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, direction);
-
-            float step = enemyManager.enemyAcceleration * Time.deltaTime;
-            enemyManager.transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, step);
-        }
+        
+        HandleRotate(enemyManager);
 
         #region Handle switch state
 
@@ -54,5 +38,26 @@ public class AttackStanceState : State
         //if we are in a cooldown after attacking, return this state and continue circling player
         //if the player runs out of range return chase state
         return this;
+    }
+
+    private void HandleRotate(NewEnemyManager enemyManager)
+    {
+        //rotate manually
+        if (enemyManager.isPerformingAction || enemyManager.distanceFromTarget <= enemyManager.enemyStoppingDistance)
+        {
+            Vector3 direction = enemyManager.currentTarget.transform.position - transform.position;
+            direction.z = 0;
+            direction.Normalize();
+
+            if (direction == Vector3.zero)
+            {
+                direction = transform.up;
+            }
+
+            Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, direction);
+
+            float step = enemyManager.enemyAcceleration * Time.deltaTime;
+            enemyManager.transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, step);
+        }
     }
 }
