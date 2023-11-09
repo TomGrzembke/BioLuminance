@@ -14,7 +14,7 @@ public class SceneLoader : MonoBehaviour
     {
         Startup,
         Manager,
-        Mainmenu,
+        MainMenu,
         IngameUI,
         Gameplay
     }
@@ -57,6 +57,10 @@ public class SceneLoader : MonoBehaviour
 
         yield return SceneManager.LoadSceneAsync(index, LoadSceneMode.Additive);
         onLoadingFinished?.Invoke();
+    }
+    public Coroutine UnloadSceneViaIndex(int index, Action onLoadingFinished = null)
+    {
+        return StartCoroutine(UnloadSceneViaIndexCo(index, onLoadingFinished));
     }
 
     IEnumerator UnloadSceneViaIndexCo(int index, Action onLoadingFinished = null)

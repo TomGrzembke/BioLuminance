@@ -7,7 +7,7 @@ public class StartupManager : MonoBehaviour
     {
         //LoadingScreen.Show(this);
         yield return SceneLoader.LoadScene(SceneLoader.DefaultScenes.Manager);
-        yield return SceneLoader.LoadScene(SceneLoader.DefaultScenes.Mainmenu);
+        yield return SceneLoader.LoadScene(SceneLoader.DefaultScenes.MainMenu);
         //LoadingScreen.Hide(this);
     } 
 }
