@@ -126,6 +126,11 @@ public class NewEnemyManager : MonoBehaviour
             }
         }
     }
+
+    public void GetHealth(float health)
+    {
+        
+    }
     
     private void OnDrawGizmosSelected()
     {

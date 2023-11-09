@@ -6,7 +6,10 @@ public class AttackStanceState : State
 {
     #region serialized fields
 
+    public float attackDamage;
+    [Space(5)]
     public ChaseState chaseState;
+    public RoamState roamState;
 
     #endregion
 
@@ -17,6 +20,9 @@ public class AttackStanceState : State
     {
         enemyManager.distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, enemyManager.transform.position);
         enemyManager.enemyStoppingDistance = 3f;
+        
+        //enemyManager.currentTarget.GetComponent<Health>().CurrentHealth -= 5;
+        enemyManager.currentTarget.GetHealth().AddHealth(-attackDamage);
         
         HandleRotate(enemyManager);
 

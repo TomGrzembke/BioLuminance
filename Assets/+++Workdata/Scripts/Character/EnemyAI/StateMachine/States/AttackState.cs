@@ -18,7 +18,7 @@ public class AttackState : State
         //if the attack is viable, stop our movement and attack our target
         //set out recovery timer to the attacks recovery time
         //return the attack stance state
-
+        
         return this;
     }
 }
