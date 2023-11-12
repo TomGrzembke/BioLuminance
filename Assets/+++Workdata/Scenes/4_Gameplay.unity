@@ -2130,6 +2130,10 @@ PrefabInstance:
       propertyPath: grabPos
       value: 
       objectReference: {fileID: 1579827893}
+    - target: {fileID: 7270641368243846166, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
+      propertyPath: pointFollowMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8491114510153316245, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
       propertyPath: length
       value: 50
@@ -2143,12 +2147,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1899974337}
     - target: {fileID: 8491114510153316245, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
+      propertyPath: vertexDistance
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 8491114510153316245, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
       propertyPath: fouldOutOnStart
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8491114510153316245, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
       propertyPath: pointFollowMode
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5962209493792318520, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}

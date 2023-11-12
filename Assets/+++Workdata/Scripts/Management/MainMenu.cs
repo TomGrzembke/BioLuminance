@@ -7,6 +7,10 @@ public class MainMenu : MonoBehaviour
     {
         GameStateManager.StartGame();
     }
+    public void OptionsWindow()
+    {
+       
+    }
 
     public void QuitGame()
     {
