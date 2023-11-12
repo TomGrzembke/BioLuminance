@@ -15,7 +15,6 @@ public class SceneLoader : MonoBehaviour
         Startup,
         Manager,
         MainMenu,
-        IngameUI,
         Gameplay
     }
 

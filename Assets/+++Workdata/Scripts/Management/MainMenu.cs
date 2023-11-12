@@ -9,7 +9,7 @@ public class MainMenu : MonoBehaviour
     }
     public void OptionsWindow()
     {
-       
+       GameStateManager.OptionsWindow();
     }
 
     public void QuitGame()
