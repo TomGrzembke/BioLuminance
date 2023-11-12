@@ -21,6 +21,7 @@ public class TentacleBehavior : MonoBehaviour
     [Foldout("TailCustomization", true)]
     [SerializeField] Transform tailEnd;
     [SerializeField] Transform[] bodyParts;
+    [SerializeField] int grabSpeed = 60;
 
     [Foldout("TailCustomization", false)]
 
@@ -151,7 +152,7 @@ public class TentacleBehavior : MonoBehaviour
             return Vector3.zero;
 
         if (pointFollowMode == PointFollowMode.stack)
-            return (grabPos.position - GetLastSegmentPose(i)).normalized / 100;
+            return (grabPos.position - GetLastSegmentPose(i)).normalized / grabSpeed;
         else if (pointFollowMode == PointFollowMode.overlap)
             return (grabPos.position - GetLastSegmentPose(i)).normalized / 10;
 
