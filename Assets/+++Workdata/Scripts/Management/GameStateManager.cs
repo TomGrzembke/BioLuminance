@@ -7,14 +7,14 @@ public class GameStateManager : MonoBehaviour
 {
     static GameStateManager Instance;
 
-    [Scene, SerializeField] string startScene = "4_Start";
+    [Scene, SerializeField] string startScene;
     [SerializeField] GameObject optionsWindow;
 
     void Awake() => Instance = this;
 
     public static void StartGame()
     {
-        Instance.StartCoroutine(Instance.LoadScenesCoroutine((int)SceneLoader.DefaultScenes.MainMenu, Instance.GetSceneID(Instance.startScene)));
+        Instance.StartCoroutine(Instance.LoadScenesCoroutine((int)Scenes.MainMenu, Instance.GetSceneID(Instance.startScene)));
     }
 
     public static void OptionsWindow(bool status = true)
@@ -24,9 +24,10 @@ public class GameStateManager : MonoBehaviour
 
     public static void GoToMainMenu()
     {
-        Instance.StartCoroutine(Instance.LoadScenesCoroutine(SceneManager.GetActiveScene().buildIndex, (int)SceneLoader.DefaultScenes.MainMenu));
+        Instance.StartCoroutine(Instance.LoadScenesCoroutine(SceneManager.GetActiveScene().buildIndex, (int)Scenes.MainMenu));
     }
 
+    /// <summary> Depends on the naming (0_Scene), since its gets the first char and ints it</summary>
     int GetSceneID(string scene)
     {
         return (char)scene[0] - '0';

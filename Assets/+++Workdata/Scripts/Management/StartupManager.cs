@@ -1,18 +1,19 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class StartupManager : MonoBehaviour
 {
-
     IEnumerator Start()
     {
         //LoadingScreen.Show(this);
+        yield return SceneLoader.LoadScene(Scenes.Manager);
 
-        yield return SceneLoader.LoadScene(SceneLoader.DefaultScenes.Manager);
-        
-                yield return SceneLoader.LoadScene(SceneLoader.DefaultScenes.MainMenu);
+        if (!SceneManager.GetSceneByBuildIndex((int)Scenes.Gameplay).IsValid())
+            yield return SceneLoader.LoadScene(Scenes.MainMenu);
+        else
+            yield return SceneLoader.UnloadScene(Scenes.MainMenu);
+
         //LoadingScreen.Hide(this);
     }
 

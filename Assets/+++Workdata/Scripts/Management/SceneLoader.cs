@@ -7,10 +7,7 @@ using UnityEngine.SceneManagement;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 #endif
-
-public class SceneLoader : MonoBehaviour
-{
-    public enum DefaultScenes
+    public enum Scenes
     {
         Startup,
         Manager,
@@ -18,6 +15,8 @@ public class SceneLoader : MonoBehaviour
         Gameplay
     }
 
+public class SceneLoader : MonoBehaviour
+{
     static SceneLoader _instance;
 
     public static SceneLoader Instance
@@ -34,7 +33,7 @@ public class SceneLoader : MonoBehaviour
         }
     }
 
-    public Coroutine LoadSceneViaIndex(DefaultScenes scene, Action onLoadingFinished = null)
+    public Coroutine LoadSceneViaIndex(Scenes scene, Action onLoadingFinished = null)
     {
         return LoadSceneViaIndex((int)scene, onLoadingFinished);
     }
@@ -75,16 +74,21 @@ public class SceneLoader : MonoBehaviour
         onLoadingFinished?.Invoke();
     }
 
-    public static Coroutine LoadScene(DefaultScenes scenes, Action onLoadingFinished = null)
+    public static Coroutine LoadScene(Scenes scenes, Action onLoadingFinished = null)
     {
         return Instance.LoadSceneViaIndex(scenes, onLoadingFinished);
+    }
+
+    public static Coroutine UnloadScene(Scenes scenes, Action onLoadingFinished = null)
+    {
+        return Instance.UnloadSceneViaIndex((int)scenes, onLoadingFinished);
     }
 
 #if UNITY_EDITOR
     [MenuItem("ThisGame/Load Startup Scene")]
     static void LoadStartupScene()
     {
-        var scene = EditorBuildSettings.scenes[(int)DefaultScenes.Startup];
+        var scene = EditorBuildSettings.scenes[(int)Scenes.Startup];
         EditorSceneManager.OpenScene(scene.path, OpenSceneMode.Additive);
     }
 #endif
