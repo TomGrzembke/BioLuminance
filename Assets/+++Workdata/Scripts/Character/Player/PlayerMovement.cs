@@ -17,7 +17,6 @@ public class PlayerMovement : MonoBehaviour
     #endregion
 
     #region private fields
-    bool isSprinting;
     float speed;
     Vector2 movement;
     PlayerInputActions inputActions;
@@ -30,8 +29,8 @@ public class PlayerMovement : MonoBehaviour
 
         inputActions.Player.Move.performed += ctx => Movement(ctx.ReadValue<Vector2>());
         inputActions.Player.Move.canceled += ctx => Movement(ctx.ReadValue<Vector2>());
-        inputActions.Player.Sprint.performed += ctx => Sprint();
-        inputActions.Player.Sprint.canceled += ctx => Sprint();
+        inputActions.Player.Sprint.performed += ctx => Sprint(true);
+        inputActions.Player.Sprint.canceled += ctx => Sprint(false);
 
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
@@ -52,22 +51,25 @@ public class PlayerMovement : MonoBehaviour
 
     public void SetAgentPosition()
     {
-        agent.SetDestination(transform.position + new Vector3(movement.x + 0.0001f, movement.y, 0));
+        SetAgentPosition(transform.position + new Vector3(movement.x + 0.0001f, movement.y, 0));
+    } 
+
+    public void SetAgentPosition(Vector3 targetPos)
+    {
+        agent.SetDestination(targetPos);
     }
 
-    void Sprint()
+    void Sprint(bool condition)
     {
-        if (!isSprinting)
+        if (condition)
         {
             speed = sprintSpeed;
             agent.speed = speed;
-            isSprinting = true;
         }
-        else if (isSprinting)
+        else if (!condition)
         {
             speed = defaultSpeed;
             agent.speed = speed;
-            isSprinting = false;
         }
     }
     void OnDrawGizmosSelected()
