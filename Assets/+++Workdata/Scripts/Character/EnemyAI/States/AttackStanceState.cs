@@ -16,7 +16,7 @@ public class AttackStanceState : State
     #region private fields
 
     #endregion
-    public override State SwitchState(StateManager enemyManager, AnimationManager enemyAnimationManager)
+    public override State SwitchState()
     {
         //enemyManager.distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, enemyManager.transform.position);
         //enemyManager.enemyStoppingDistance = 3f;

@@ -11,7 +11,7 @@ public class AttackState : State
     #region private fields
 
     #endregion
-    public override State SwitchState(StateManager enemyManager, AnimationManager enemyAnimationManager)
+    public override State SwitchState()
     {
         //Select one attack
         //if the selected is not able to be able to be used because of bad angle or distance, select a new attack

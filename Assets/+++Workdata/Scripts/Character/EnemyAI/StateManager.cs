@@ -1,9 +1,11 @@
+using System;
 using UnityEngine;
 
 public class StateManager : MonoBehaviour
 {
     #region serialized fields
     [SerializeField] State currentState;
+    [SerializeField] State lastState;
     #endregion
 
     #region private fields
@@ -14,19 +16,33 @@ public class StateManager : MonoBehaviour
 
     void FixedUpdate()
     {
+        if(currentState != null)
+            currentState.FixedUpdateState();
+    }
+
+    void Update()
+    {
         HandleStateMachine();
+        if(currentState != null)
+            currentState.UpdateState();
+    }
+
+    void Awake()
+    {
+        
     }
 
     void HandleStateMachine()
     {
         if (currentState == null) return;
-
-        State nextState = currentState.SwitchState(this, animationManager);
-        SwitchToNextState(nextState);
-    }
-
-    void SwitchToNextState(State state)
-    {
-        currentState = state;
+        
+        State newState = currentState.SwitchState();
+        if (currentState != newState)
+        {
+            lastState = currentState;
+            lastState.ExitState();
+            currentState = newState;
+            currentState.EnterState();
+        }
     }
 }

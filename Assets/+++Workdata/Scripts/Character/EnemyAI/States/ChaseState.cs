@@ -17,7 +17,7 @@ public class ChaseState : State
 
     #endregion
 
-    public override State SwitchState(StateManager enemyManager, AnimationManager enemyAnimationManager)
+    public override State SwitchState()
     {
     //    HandleMovement(enemyManager);
     //    HandleRotate(enemyManager);

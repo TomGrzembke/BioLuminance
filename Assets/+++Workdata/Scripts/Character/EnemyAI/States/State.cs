@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class State : MonoBehaviour
 {
-    public abstract State SwitchState(StateManager enemyManager, AnimationManager enemyAnimationManager);
+    public abstract State SwitchState();
     
     /// <summary>
     /// The time since the state was entered.
