@@ -11,7 +11,7 @@ public class AttackState : State
     #region private fields
 
     #endregion
-    public override State Tick(StateManager enemyManager, AnimationManager enemyAnimationManager)
+    public override State SwitchState()
     {
         //Select one attack
         //if the selected is not able to be able to be used because of bad angle or distance, select a new attack
@@ -20,5 +20,25 @@ public class AttackState : State
         //return the attack stance state
         
         return this;
+    }
+
+    protected override void EnterInternal()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    protected override void UpdateInternal()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    protected override void FixedUpdateInternal()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    protected override void ExitInternal()
+    {
+        throw new System.NotImplementedException();
     }
 }

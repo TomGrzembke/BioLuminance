@@ -199,11 +199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fe50b0595703854cba355c439e5c301, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roamPosition: {x: 0, y: 0}
-  startingPosition: {x: 0, y: 0, z: 0}
-  minRoamRange: 5
-  maxRoamRange: 5
-  chaseState: {fileID: 2039439006}
+  d: {fileID: 256054634}
 --- !u!1 &122143629
 GameObject:
   m_ObjectHideFlags: 0
@@ -536,6 +532,50 @@ MonoBehaviour:
   m_BoundingShape2D: {fileID: 736668163}
   m_ConfineScreenEdges: 1
   m_Damping: 0
+--- !u!1 &256054633
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 256054635}
+  - component: {fileID: 256054634}
+  m_Layer: 0
+  m_Name: Test State
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &256054634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256054633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e901debac693434da6c90654a87cbf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &256054635
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256054633}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1524973302}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &257173699
 GameObject:
   m_ObjectHideFlags: 0
@@ -1053,7 +1093,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maximumHealth: 1000
-  _currentHealth: 10
+  _currentHealth: 1000
 --- !u!1 &656157696
 GameObject:
   m_ObjectHideFlags: 0
@@ -1647,9 +1687,7 @@ GameObject:
   - component: {fileID: 946661487}
   - component: {fileID: 946661495}
   - component: {fileID: 946661484}
-  - component: {fileID: 946661490}
   - component: {fileID: 946661492}
-  - component: {fileID: 946661493}
   - component: {fileID: 946661494}
   m_Layer: 0
   m_Name: New Enemy
@@ -1795,25 +1833,6 @@ Transform:
   - {fileID: 1983137307}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &946661490
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 946661483}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6255571585439f046ab665d7f5acc322, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 0
-  maxHealth: 0
-  currentHealth: 0
-  hasMultipleDamagePoints: 1
-  enemyLimbStats:
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!114 &946661492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1826,38 +1845,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2998b72f3c9384e4594b01a4907bfda4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPerformingAction: 0
-  currentState: {fileID: 1719762800}
-  currentTarget: {fileID: 0}
-  enemyInterestCountdown: 0
-  canSeePlayer: 0
-  detectionLayer:
-    serializedVersion: 2
-    m_Bits: 512
-  obstacleLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  detectionRadius: 10
-  angle: 75
-  distanceFromTarget: 1
-  enemySpeed: 3.5
-  enemyAcceleration: 5
-  enemyStoppingDistance: 1.5
-  agent: {fileID: 0}
-  rb: {fileID: 0}
---- !u!114 &946661493
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 946661483}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da673880ebc11964eb9bb52dca9087a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blade: {fileID: 1177273932}
+  currentState: {fileID: 17291131}
+  lastState: {fileID: 0}
 --- !u!195 &946661494
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2264,6 +2253,7 @@ Transform:
   - {fileID: 2039439005}
   - {fileID: 308137777}
   - {fileID: 841660799}
+  - {fileID: 256054635}
   m_Father: {fileID: 946661489}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1567404416
@@ -2870,9 +2860,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0219ab1e2a614854189dcc5c4463b94d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyManager: {fileID: 0}
   enemySpeed: 3.5
   enemyAcceleration: 5
   enemyStoppingDistance: 1
+  agent: {fileID: 0}
 --- !u!114 &1855951956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2895,6 +2887,11 @@ MonoBehaviour:
   attackRange: 3
   placeholder2: 0
   placeholder3: 0
+  startingPosition: {x: 0, y: 0, z: 0}
+  enemyMovement: {fileID: 0}
+  enemyAnim: {fileID: 0}
+  playerController: {fileID: 0}
+  spriteRenderer: {fileID: 0}
 --- !u!95 &1855951957
 Animator:
   serializedVersion: 5
@@ -2929,6 +2926,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blade: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!114 &1855951959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2944,6 +2942,7 @@ MonoBehaviour:
   health: 0
   maxHealth: 0
   currentHealth: 0
+  h: {fileID: 0}
   hasMultipleDamagePoints: 0
   enemyLimbStats: []
 --- !u!1 &1881924834

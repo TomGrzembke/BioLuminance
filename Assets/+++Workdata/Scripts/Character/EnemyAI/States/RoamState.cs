@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class RoamState : State
 {
+    public TestState d;
     //#region serialized fields
 
     //[Space(5)]
@@ -18,7 +19,7 @@ public class RoamState : State
 
     //#endregion
 
-    public override State Tick(StateManager enemyManager, AnimationManager enemyAnimationManager)
+    public override State SwitchState()
     {
         //HandleDetection();
         //HandleRoaming(enemyManager);
@@ -35,7 +36,26 @@ public class RoamState : State
         //{
         //    return this;
         //}
+        return d;
         return this;
+    }
+
+    protected override void EnterInternal()
+    {
+        
+    }
+
+    protected override void UpdateInternal()
+    {
+    }
+
+    protected override void FixedUpdateInternal()
+    {
+    }
+
+    protected override void ExitInternal()
+    {
+        print("sdgunds");
     }
 
     //void Start()
