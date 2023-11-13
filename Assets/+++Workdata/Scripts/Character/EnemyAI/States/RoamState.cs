@@ -18,7 +18,7 @@ public class RoamState : State
 
     //#endregion
 
-    public override State Tick(StateManager enemyManager, AnimationManager enemyAnimationManager)
+    public override State SwitchState(StateManager enemyManager, AnimationManager enemyAnimationManager)
     {
         //HandleDetection();
         //HandleRoaming(enemyManager);
@@ -36,6 +36,26 @@ public class RoamState : State
         //    return this;
         //}
         return this;
+    }
+
+    protected override void EnterInternal()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    protected override void UpdateInternal()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    protected override void FixedUpdateInternal()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    protected override void ExitInternal()
+    {
+        throw new System.NotImplementedException();
     }
 
     //void Start()

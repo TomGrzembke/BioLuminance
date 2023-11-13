@@ -16,7 +16,7 @@ public class AttackStanceState : State
     #region private fields
 
     #endregion
-    public override State Tick(StateManager enemyManager, AnimationManager enemyAnimationManager)
+    public override State SwitchState(StateManager enemyManager, AnimationManager enemyAnimationManager)
     {
         //enemyManager.distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, enemyManager.transform.position);
         //enemyManager.enemyStoppingDistance = 3f;
@@ -44,6 +44,26 @@ public class AttackStanceState : State
         ////if we are in a cooldown after attacking, return this state and continue circling player
         ////if the player runs out of range return chase state
         return this;
+    }
+
+    protected override void EnterInternal()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    protected override void UpdateInternal()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    protected override void FixedUpdateInternal()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    protected override void ExitInternal()
+    {
+        throw new System.NotImplementedException();
     }
 
     //private void HandleRotate(StateManager enemyManager)

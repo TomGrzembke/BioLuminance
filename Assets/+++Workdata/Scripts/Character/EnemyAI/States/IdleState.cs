@@ -15,7 +15,7 @@ public class IdleState : State
 
     #endregion
     
-    public override State Tick(StateManager enemyManager, AnimationManager enemyAnimationManager)
+    public override State SwitchState(StateManager enemyManager, AnimationManager enemyAnimationManager)
     {
         //enemyManager.HandleDetection();
 
@@ -35,5 +35,25 @@ public class IdleState : State
         //Look for a potential target
         //Switch to chase state if target is found
         //if not return this state
+    }
+
+    protected override void EnterInternal()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    protected override void UpdateInternal()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    protected override void FixedUpdateInternal()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    protected override void ExitInternal()
+    {
+        throw new System.NotImplementedException();
     }
 }

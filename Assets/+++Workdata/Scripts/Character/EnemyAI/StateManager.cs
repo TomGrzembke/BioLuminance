@@ -21,7 +21,7 @@ public class StateManager : MonoBehaviour
     {
         if (currentState == null) return;
 
-        State nextState = currentState.Tick(this, animationManager);
+        State nextState = currentState.SwitchState(this, animationManager);
         SwitchToNextState(nextState);
     }
 
