@@ -11,7 +11,7 @@ public class AttackState : State
     #region private fields
 
     #endregion
-    public override State Tick(NewEnemyManager enemyManager, NewEnemyAnimationManager enemyAnimationManager, EnemyStats enemyStats)
+    public override State Tick(StateManager enemyManager, AnimationManager enemyAnimationManager)
     {
         //Select one attack
         //if the selected is not able to be able to be used because of bad angle or distance, select a new attack

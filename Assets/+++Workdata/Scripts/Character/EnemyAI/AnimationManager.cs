@@ -2,16 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAction : ScriptableObject
+public class AnimationManager : MonoBehaviour
 {
     #region serialized fields
-
-    public string action;
 
     #endregion
 
     #region private fields
-    
+
+    Animator anim;
+
     #endregion
 
+    void Awake()
+    {
+        anim = GetComponent<Animator>();
+    }
 }

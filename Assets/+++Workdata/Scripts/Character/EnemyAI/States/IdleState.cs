@@ -15,21 +15,21 @@ public class IdleState : State
 
     #endregion
     
-    public override State Tick(NewEnemyManager enemyManager, NewEnemyAnimationManager enemyAnimationManager, EnemyStats enemyStats)
+    public override State Tick(StateManager enemyManager, AnimationManager enemyAnimationManager)
     {
-        enemyManager.HandleDetection();
+        //enemyManager.HandleDetection();
 
         #region Handle switch state
 
-        if (enemyManager.currentTarget != null)
-        {
-            return chaseState;
-        }
-        else
-        {
-            return this;
-        }
-
+        //if (enemyManager.currentTarget != null)
+        //{
+        //    return chaseState;
+        //}
+        //else
+        //{
+        //    return this;
+        //}
+        return this;
         #endregion
 
         //Look for a potential target
