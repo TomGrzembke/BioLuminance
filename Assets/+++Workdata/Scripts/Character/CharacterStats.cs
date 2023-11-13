@@ -16,13 +16,13 @@ public class CharacterStats : MonoBehaviour
 
     #region private fields
 
-    private Health h;
+    private Stun h;
     
     #endregion
 
-    private void Awake() => h = GetComponent<Health>();
+    private void Awake() => h = GetComponent<Stun>();
 
-    public Health GetHealth()
+    public Stun GetHealth()
     {
         return h;
     }

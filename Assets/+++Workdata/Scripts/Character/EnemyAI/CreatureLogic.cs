@@ -25,8 +25,6 @@ public abstract class CreatureLogic : MonoBehaviour
     //animation reference
 
     [Header("Health Settings")]
-
-    [SerializeField] bool hasMultipleDamagePoints;
     [SerializeField] EnemyLimbStats[] enemyLimbStats;
 
     #endregion
@@ -42,6 +40,14 @@ public abstract class CreatureLogic : MonoBehaviour
         agent.updateRotation = false;
         agent.updateUpAxis = false;
     }
+     void OnValidate()
+    {
+        agent = GetComponent<NavMeshAgent>();
+        agent.speed = enemySpeed;
+        agent.acceleration = enemyAcceleration;
+        agent.stoppingDistance = enemyStoppingDistance;
+    }
+
     private void OnDrawGizmosSelected()
     {
         Handles.color = Color.green;
@@ -62,10 +68,10 @@ public abstract class CreatureLogic : MonoBehaviour
         return new Vector2(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
     }
 
-    [ButtonMethod(ButtonMethodDrawOrder.AfterInspector, nameof(hasMultipleDamagePoints))]
-    string CollectLimbs()
+    [ButtonMethod()]
+    public int CollectLimbs()
     {
-        enemyLimbStats = FindObjectsOfType<EnemyLimbStats>();
-        return enemyLimbStats.Length + "";
+        enemyLimbStats = GetComponentsInChildren<EnemyLimbStats>();
+        return enemyLimbStats.Length;
     }
 }

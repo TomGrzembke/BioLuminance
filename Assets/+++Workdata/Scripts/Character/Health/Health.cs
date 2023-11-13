@@ -1,16 +1,12 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-public class Health : CreatureLogic
+public class Health : MonoBehaviour
 {
-    public event System.Action<float> OnHealthChanged;
+    public event Action<float> OnHealthChanged;
 
-    public event System.Action<float> OnMaximumHealthChanged;
-
-    [SerializeField] private float _maximumHealth;
-    [SerializeField] private float _currentHealth = 10;
+    [SerializeField] float _maximumHealth = 10;
+    [SerializeField] float _currentHealth = 10;
 
     public float CurrentHealth
     {
@@ -18,13 +14,7 @@ public class Health : CreatureLogic
         set => SetCurrentHealth(value);
     }
 
-    public float MaximumHealth
-    {
-        get => _maximumHealth;
-        set => SetMaximumHealth(value);
-    }
-
-    private void Awake()
+    void OnValidate()
     {
         SetCurrentHealth(_maximumHealth);
     }
@@ -33,28 +23,18 @@ public class Health : CreatureLogic
     {
         SetCurrentHealth(_currentHealth + additionalHealth);
     }
-    
+
     public void SetCurrentHealth(float newHealth)
     {
         if (newHealth > _maximumHealth)
             newHealth = _maximumHealth;
-        
+
         var oldHealth = _currentHealth;
         _currentHealth = newHealth;
-        
-        if (OnHealthChanged != null)
-            OnHealthChanged(_currentHealth);
+
+        OnHealthChanged?.Invoke(_currentHealth);
     }
 
-    public void SetMaximumHealth(float newMaximum)
-    {
-        _maximumHealth = newMaximum;
-        if (OnMaximumHealthChanged != null)
-            OnMaximumHealthChanged(newMaximum);
-        
-        if (_currentHealth > newMaximum)
-            SetCurrentHealth(newMaximum);
-    }
 
     public void RegisterForOnHealthChanged(Action<float> callback, bool getInstantCallback = false)
     {
@@ -63,10 +43,29 @@ public class Health : CreatureLogic
             callback(_currentHealth);
     }
 
+    #region MaxHealth
+    public event Action<float> OnMaximumHealthChanged;
+
+
+    public float MaximumHealth
+    {
+        get => _maximumHealth;
+        set => SetMaximumHealth(value);
+    }
+
+    public void SetMaximumHealth(float newMaximum)
+    {
+        _maximumHealth = newMaximum;
+        OnMaximumHealthChanged?.Invoke(newMaximum);
+
+        if (_currentHealth > newMaximum)
+            SetCurrentHealth(newMaximum);
+    }
     public void RegisterForOnMaximumHealthChanged(Action<float> callback, bool getInstantCallback = false)
     {
         OnMaximumHealthChanged += callback;
         if (getInstantCallback)
             callback(_maximumHealth);
     }
+    #endregion
 }

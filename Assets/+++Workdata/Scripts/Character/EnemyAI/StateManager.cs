@@ -19,15 +19,10 @@ public class StateManager : MonoBehaviour
 
     void HandleStateMachine()
     {
-        if (currentState != null)
-        {
-            State nextState = currentState.Tick(this, animationManager);
+        if (currentState == null) return;
 
-            if (nextState != null)
-            {
-                SwitchToNextState(nextState);
-            }
-        }
+        State nextState = currentState.Tick(this, animationManager);
+        SwitchToNextState(nextState);
     }
 
     void SwitchToNextState(State state)
