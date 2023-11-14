@@ -16,6 +16,7 @@ public class Stun : MonoBehaviour
 
     public event Action<float> OnStunValueChanged;
     public event Action<float> OnStunValueChangedAlpha;
+    public event Action<bool> OnStun;
 
     [SerializeField] float maximumStun = 10;
     [SerializeField] float currentStun;
@@ -28,23 +29,23 @@ public class Stun : MonoBehaviour
     public float CurrentStun
     {
         get => currentStun;
-        set => SetCurrentStun(value);
+        set => StunLogic(value);
     }
 
     public void AddStun(float additionalHealth)
     {
-        SetCurrentStun(currentStun + additionalHealth);
+        StunLogic(currentStun + additionalHealth);
     }
 
     public void AddStunPercentage(float percent)
     {
-        SetCurrentStun(currentStun + maximumStun * percent / 100);
+        StunLogic(currentStun + maximumStun * percent / 100);
     }
 
     [ButtonMethod]
     public void AddStun20Percentage()
     {
-        SetCurrentStun(currentStun + maximumStun * 20 / 100);
+        StunLogic(currentStun + maximumStun * 20 / 100);
     }
 
 
@@ -57,7 +58,7 @@ public class Stun : MonoBehaviour
             if (i != 0)
                 stunState = StunState.stunDescending;
 
-            SetCurrentStun(currentStun - 1, false);
+            StunLogic(currentStun - 1, false);
             yield return new WaitForSeconds(falloffTick);
         }
         stunState = StunState.unstunned;
@@ -69,28 +70,24 @@ public class Stun : MonoBehaviour
             StopCoroutine(stunFallofCo);
 
         stunState = StunState.stunned;
+        OnStun?.Invoke(true);
 
         for (int i = 0; i < 5; i++)
         {
             yield return new WaitForSeconds(stunTime / 5);
-            currentStun -= maximumStun / 5;
+
+            SetStun(currentStun - maximumStun / 5);
         }
 
         stunState = StunState.unstunned;
+        OnStun?.Invoke(false);
     }
 
-    public void SetCurrentStun(float newStun, bool positiveValue = true)
+    public void StunLogic(float newStun, bool positiveValue = true)
     {
         if (stunState == StunState.stunned) return;
-        OnStunValueChanged?.Invoke(currentStun);
-        OnStunValueChangedAlpha?.Invoke(currentStun / maximumStun);
 
-        if (newStun >= maximumStun)
-            newStun = maximumStun;
-        else if (newStun <= 0)
-            newStun = 0;
-
-        currentStun = newStun;
+        SetStun(newStun);
 
         if (currentStun == maximumStun)
         {
@@ -106,6 +103,20 @@ public class Stun : MonoBehaviour
         }
     }
 
+    private float SetStun(float newStun)
+    {
+        if (newStun >= maximumStun)
+            newStun = maximumStun;
+        else if (newStun <= 0)
+            newStun = 0;
+
+        currentStun = newStun;
+
+        OnStunValueChanged?.Invoke(currentStun);
+        OnStunValueChangedAlpha?.Invoke(currentStun / maximumStun);
+        return newStun;
+    }
+
     public void RegisterOnStunChanged(Action<float> callback, bool getInstantCallback = false)
     {
         OnStunValueChanged += callback;
@@ -118,5 +129,10 @@ public class Stun : MonoBehaviour
         OnStunValueChangedAlpha += callback;
         if (getInstantCallback)
             callback(currentStun / maximumStun);
+    }
+
+    public void RegisterOnStun(Action<bool> callback)
+    {
+        OnStun += callback;
     }
 }

@@ -407,6 +407,7 @@ GameObject:
   m_Component:
   - component: {fileID: 433279513}
   - component: {fileID: 433279515}
+  - component: {fileID: 433279516}
   - component: {fileID: 433279514}
   m_Layer: 0
   m_Name: StunBar_BG
@@ -430,10 +431,10 @@ RectTransform:
   - {fileID: 1232598049}
   m_Father: {fileID: 1940353437}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.3235, y: 0.767}
-  m_SizeDelta: {x: 2.8822, y: 0.1409}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: -0.3235, y: 5.137}
+  m_SizeDelta: {x: 2.8822, y: 0.1408999}
   m_Pivot: {x: 0.25, y: 0.5}
 --- !u!114 &433279514
 MonoBehaviour:
@@ -473,6 +474,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 433279512}
   m_CullTransparentMesh: 1
+--- !u!114 &433279516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 433279512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30bb8da41b3547840b75d0f63aa8252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bar: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -704,6 +718,7 @@ GameObject:
   m_Component:
   - component: {fileID: 563850873}
   - component: {fileID: 563850875}
+  - component: {fileID: 563850876}
   - component: {fileID: 563850874}
   m_Layer: 0
   m_Name: Healthbar_BG
@@ -727,10 +742,10 @@ RectTransform:
   - {fileID: 1463332954}
   m_Father: {fileID: 1940353437}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.3235, y: 1.112}
-  m_SizeDelta: {x: 2.8822, y: 0.3826}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: -0.3235, y: 5.482}
+  m_SizeDelta: {x: 2.8822, y: 0.38260007}
   m_Pivot: {x: 0.25, y: 0.5}
 --- !u!114 &563850874
 MonoBehaviour:
@@ -770,6 +785,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 563850872}
   m_CullTransparentMesh: 1
+--- !u!114 &563850876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 563850872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30bb8da41b3547840b75d0f63aa8252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bar: {fileID: 0}
 --- !u!1 &570587200
 GameObject:
   m_ObjectHideFlags: 0
@@ -1318,7 +1346,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fe50b0595703854cba355c439e5c301, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  d: {fileID: 0}
+  TimeInState: 0
+  FixedTimeInState: 0
+  roamPosition: {x: 0, y: 0}
+  startingPosition: {x: 0, y: 0, z: 0}
+  minRoamRange: 5
+  maxRoamRange: 5
+  chaseState: {fileID: 0}
 --- !u!1 &823824321
 GameObject:
   m_ObjectHideFlags: 0
@@ -1558,6 +1592,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bar: {fileID: 1232598050}
   stun: {fileID: 685287931}
+  stunCol: {r: 0.54718304, g: 0, b: 1, a: 1}
+  defaultCol: {r: 0.9960785, g: 0.9960785, b: 0.9960785, a: 1}
 --- !u!1 &1247525855
 GameObject:
   m_ObjectHideFlags: 0
@@ -1593,7 +1629,6 @@ Transform:
   - {fileID: 2046166979}
   - {fileID: 570587201}
   - {fileID: 685287930}
-  - {fileID: 1940353437}
   m_Father: {fileID: 2071839732}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!195 &1247525857
@@ -1630,7 +1665,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfad8942c39eb5c49abb27e9d4443844, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentTargets: []
+  currentTarget: {fileID: 0}
   canSeePlayer: 0
   detectionLayer:
     serializedVersion: 2
@@ -1639,12 +1674,13 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   detectionRadius: 10
-  fovAngle: 50
+  angle: 50
   distanceFromTarget: 1
   enemySpeed: 3.5
   enemyAcceleration: 5
   enemyStoppingDistance: 1
   enemyLimbStats: []
+  agent: {fileID: 1247525857}
   stateManager: {fileID: 2046166980}
 --- !u!1 &1316112751
 GameObject:
@@ -1770,6 +1806,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa3e069d9ae7fc04caf6fe7d57107024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TimeInState: 0
+  FixedTimeInState: 0
+  attackDamage: 0
+  chaseState: {fileID: 0}
+  roamState: {fileID: 0}
 --- !u!1 &1425512081
 GameObject:
   m_ObjectHideFlags: 0
@@ -2434,8 +2475,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0712df3ef83006a498b4ddacc686b979, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TimeInState: 0
+  FixedTimeInState: 0
   chaseRange: 0
-  attackStanceState: {fileID: 0}
+  attackState: {fileID: 0}
   roamState: {fileID: 0}
 --- !u!1 &1859722480
 GameObject:
@@ -2562,6 +2605,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1940353437}
+  - component: {fileID: 1940353441}
   - component: {fileID: 1940353440}
   - component: {fileID: 1940353439}
   - component: {fileID: 1940353438}
@@ -2586,7 +2630,7 @@ RectTransform:
   m_Children:
   - {fileID: 563850873}
   - {fileID: 433279513}
-  m_Father: {fileID: 1247525856}
+  m_Father: {fileID: 2071839732}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2656,6 +2700,19 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 10
   m_TargetDisplay: 0
+--- !u!114 &1940353441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1940353436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17fa71f192e54d3499db2e3606bb4a0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attachObject: {fileID: 1247525856}
 --- !u!1 &1983902270
 GameObject:
   m_ObjectHideFlags: 0
@@ -2913,7 +2970,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2046166978}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2998b72f3c9384e4594b01a4907bfda4, type: 3}
   m_Name: 
@@ -2951,6 +3008,7 @@ Transform:
   m_Children:
   - {fileID: 1247525856}
   - {fileID: 133984628}
+  - {fileID: 1940353437}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &7608655987527139202

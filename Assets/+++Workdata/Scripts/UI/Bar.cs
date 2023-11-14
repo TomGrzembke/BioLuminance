@@ -12,5 +12,4 @@ public class Bar : MonoBehaviour
     {
         bar = GetComponent<Image>();
     }
-
 }
