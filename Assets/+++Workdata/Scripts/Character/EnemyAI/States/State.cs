@@ -44,6 +44,8 @@ public abstract class State : MonoBehaviour
 
     public void ExitState()
     {
+        TimeInState = 0;
+        FixedTimeInState = 0;
         ExitInternal();
     }
 

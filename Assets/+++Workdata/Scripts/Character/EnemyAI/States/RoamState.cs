@@ -4,7 +4,7 @@ using Random = UnityEngine.Random;
 
 public class RoamState : State
 {
-    [Header(nameof(gameObject))]
+    [Header(nameof(State))]
     #region serialized fields
 
     [Space(5)]

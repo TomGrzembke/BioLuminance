@@ -167,6 +167,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fe50b0595703854cba355c439e5c301, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TimeInState: 0
+  FixedTimeInState: 0
   roamPosition: {x: 0, y: 0}
   startingPosition: {x: 0, y: 0, z: 0}
   minRoamRange: 5
@@ -533,6 +535,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e901debac693434da6c90654a87cbf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TimeInState: 0
+  FixedTimeInState: 0
 --- !u!4 &256054635
 Transform:
   m_ObjectHideFlags: 0
@@ -1030,8 +1034,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a2979f7b29a04e43b01fe76b32da132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maximumHealth: 1000
-  _currentHealth: 1000
+  maximumHealth: 10
+  currentHealth: 10
 --- !u!1 &656157696
 GameObject:
   m_ObjectHideFlags: 0
@@ -1281,6 +1285,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa3e069d9ae7fc04caf6fe7d57107024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TimeInState: 0
+  FixedTimeInState: 0
   attackDamage: 0.1
   chaseState: {fileID: 2039439006}
   roamState: {fileID: 17291131}
@@ -1872,6 +1878,56 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
+--- !u!1 &1082107903
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1082107904}
+  - component: {fileID: 1082107905}
+  m_Layer: 0
+  m_Name: Agressive Chase State
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1082107904
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1082107903}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1524973302}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1082107905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1082107903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 810e60622f023b44e9a9935213b6ab82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TimeInState: 0
+  FixedTimeInState: 0
+  chaseRange: 10
+  attackState: {fileID: 841660800}
+  roamState: {fileID: 17291131}
+  visor: {fileID: 257173701}
 --- !u!1 &1177273932
 GameObject:
   m_ObjectHideFlags: 0
@@ -2137,6 +2193,7 @@ Transform:
   - {fileID: 1719762799}
   - {fileID: 17291130}
   - {fileID: 2039439005}
+  - {fileID: 1082107904}
   - {fileID: 841660799}
   - {fileID: 256054635}
   m_Father: {fileID: 946661489}
@@ -2400,6 +2457,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dadc4146247ef4f48bc1cfce0ad7e90b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TimeInState: 0
+  FixedTimeInState: 0
   chaseState: {fileID: 2039439006}
   detectionLayer:
     serializedVersion: 2
@@ -2644,9 +2703,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0712df3ef83006a498b4ddacc686b979, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TimeInState: 0
+  FixedTimeInState: 0
   chaseRange: 10
   attackState: {fileID: 841660800}
   roamState: {fileID: 17291131}
+  agressiveChaseState: {fileID: 1082107905}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
