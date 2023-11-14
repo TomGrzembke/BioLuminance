@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -7,23 +6,21 @@ public class RoamState : State
     [Header(nameof(State))]
     #region serialized fields
 
-    [Space(5)]
-    public Vector2 roamPosition;
-    public Vector3 startingPosition;
     [SerializeField] float minRoamRange = 5f;
     [SerializeField] float maxRoamRange = 5f;
-    [Space(5)]
     [SerializeField] ChaseState chaseState;
+    [SerializeField]  float reachedPositionDistance = 1;
 
     #endregion
 
     #region private fields
-
-    private CreatureLogic creatureLogic;
-    
+    Vector2 roamPosition;
+    Vector3 startingPosition;
+    CreatureLogic creatureLogic;
+    float oldStoppingDistance;
     #endregion
 
-    private void Awake() => creatureLogic = GetComponentInParent<CreatureLogic>();
+    void Awake() => creatureLogic = GetComponentInParent<CreatureLogic>();
 
     public override State SwitchState()
     {
@@ -35,11 +32,12 @@ public class RoamState : State
         {
             return this;
         }
-        return this;
     }
 
     protected override void EnterInternal()
     {
+        oldStoppingDistance = creatureLogic.EnemyStoppingDistance;
+        creatureLogic.RefreshAgentVars(creatureLogic.EnemySpeed, creatureLogic.EnemyAcceleration, 0);
     }
 
     protected override void UpdateInternal()
@@ -55,6 +53,7 @@ public class RoamState : State
 
     protected override void ExitInternal()
     {
+        creatureLogic.RefreshAgentVars(creatureLogic.EnemySpeed, creatureLogic.EnemyAcceleration, oldStoppingDistance);
     }
 
     void Start()
@@ -71,10 +70,7 @@ public class RoamState : State
     private void HandleRoaming()
     {
         creatureLogic.agent.SetDestination(roamPosition);
-        creatureLogic.enemyStoppingDistance = 0f;
-        
-        float reachedPositionDistance = 1f;
-        
+
         if (Vector3.Distance(transform.position, roamPosition) < reachedPositionDistance)
         {
             roamPosition = GetRandomRoamingPosition();
@@ -85,12 +81,12 @@ public class RoamState : State
         Vector3 velocity = creatureLogic.agent.velocity;
         velocity.z = 0;
         velocity.Normalize();
-        
+
         if (velocity != Vector3.zero)
         {
             Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, velocity);
-        
-            float step = creatureLogic.enemyAcceleration * Time.deltaTime;
+
+            float step = creatureLogic.EnemyAcceleration * Time.deltaTime;
             creatureLogic.transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, step);
         }
     }
@@ -98,23 +94,23 @@ public class RoamState : State
     public void HandleDetection()
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, creatureLogic.detectionRadius, creatureLogic.detectionLayer);
-        
+
         for (int i = 0; i < colliders.Length; i++)
         {
-            CreatureLogic creatureLogicc = colliders[i].transform.GetComponent<CreatureLogic>();
-        
-            if (creatureLogicc != null)
+            CreatureLogic _creatureLogic = colliders[i].transform.GetComponent<CreatureLogic>();
+
+            if (_creatureLogic != null)
             {
                 //It looks for a target on a certain layer, and if that target has the characterStats script, it's added to it's target list
-        
-                Vector2 targetDirection = (creatureLogicc.transform.position - transform.position).normalized;
-        
+
+                Vector2 targetDirection = (_creatureLogic.transform.position - transform.position).normalized;
+
                 if (Vector2.Angle(transform.up, targetDirection) < creatureLogic.angle / 2)
                 {
-                    if (!Physics2D.Raycast(transform.position, targetDirection, creatureLogic.distanceFromTarget, creatureLogic.obstacleLayer))
+                    if (!Physics2D.Raycast(transform.position, targetDirection, creatureLogic.DistanceFromTarget, this.creatureLogic.obstacleLayer))
                     {
                         creatureLogic.canSeePlayer = true;
-                        creatureLogic.currentTarget = creatureLogicc;
+                        creatureLogic.currentTarget = _creatureLogic;
                     }
                     else
                     {

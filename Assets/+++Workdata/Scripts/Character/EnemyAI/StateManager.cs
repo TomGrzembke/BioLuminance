@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class StateManager : MonoBehaviour
@@ -9,29 +8,25 @@ public class StateManager : MonoBehaviour
     #endregion
 
     #region private fields
-
-    AnimationManager animationManager;
-    CreatureLogic creatureLogic;
-
     #endregion
 
     void FixedUpdate()
     {
-        if(currentState != null)
+        if (currentState != null)
             currentState.FixedUpdateState();
     }
 
     void Update()
     {
         HandleStateMachine();
-        if(currentState != null)
+        if (currentState != null)
             currentState.UpdateState();
     }
 
     void HandleStateMachine()
     {
         if (currentState == null) return;
-        
+
         State newState = currentState.SwitchState();
         if (currentState != newState)
         {

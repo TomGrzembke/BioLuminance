@@ -1,10 +1,8 @@
 using MyBox;
 using System;
-using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Serialization;
 
 public abstract class CreatureLogic : MonoBehaviour
 {
@@ -18,10 +16,15 @@ public abstract class CreatureLogic : MonoBehaviour
     public float detectionRadius;
     [Range(0, 360)] public float angle = 50f;
 
-    public float distanceFromTarget;
-    public float enemySpeed = 3.5f;
-    public float enemyAcceleration = 5f;
-    public float enemyStoppingDistance = 1f;
+    [SerializeField] float distanceFromTarget;
+    public float DistanceFromTarget => distanceFromTarget;
+
+    public float EnemySpeed => enemySpeed;
+    [SerializeField] float enemySpeed = 3.5f;
+    public float EnemyAcceleration => enemyAcceleration;
+    [SerializeField] float enemyAcceleration = 5f;
+    public float EnemyStoppingDistance => enemyStoppingDistance;
+    [SerializeField] float enemyStoppingDistance = 1f;
 
     //animation reference
 
@@ -33,22 +36,40 @@ public abstract class CreatureLogic : MonoBehaviour
     #region private fields
     static event Action<CreatureLogic> OnEnemyDied;
 
-    [HideInInspector]public NavMeshAgent agent;
+    [HideInInspector] public NavMeshAgent agent;
     #endregion
+    public void SetDistanceFromTarget(float newDistance)
+    {
+        distanceFromTarget = newDistance;
+    }
+
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
     }
-     void Update()
+    void OnValidate()
+    {
+        RefreshAgentVars();
+    }
+
+    public void RefreshAgentVars()
     {
         agent.speed = enemySpeed;
         agent.acceleration = enemyAcceleration;
         agent.stoppingDistance = enemyStoppingDistance;
     }
 
-    private void OnDrawGizmosSelected()
+    public void RefreshAgentVars(float newSpeed = 3, float newAcceleration = 5, float newStoppingDistance = 0)
+    {
+        enemySpeed = newSpeed;
+        enemyAcceleration = newAcceleration;
+        enemyStoppingDistance = newStoppingDistance;
+        RefreshAgentVars();
+    }
+
+    void OnDrawGizmosSelected()
     {
         Handles.color = Color.green;
         Handles.DrawWireArc(transform.position, Vector3.forward, Vector3.up, 360, detectionRadius); //This visualizes the detection radius

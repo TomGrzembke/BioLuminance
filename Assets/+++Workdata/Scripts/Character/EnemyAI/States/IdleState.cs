@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class IdleState : State
@@ -14,7 +12,7 @@ public class IdleState : State
     #region private fields
 
     #endregion
-    
+
     public override State SwitchState()
     {
         //enemyManager.HandleDetection();
@@ -39,21 +37,17 @@ public class IdleState : State
 
     protected override void EnterInternal()
     {
-        throw new System.NotImplementedException();
     }
 
     protected override void UpdateInternal()
     {
-        throw new System.NotImplementedException();
     }
 
     protected override void FixedUpdateInternal()
     {
-        throw new System.NotImplementedException();
     }
 
     protected override void ExitInternal()
     {
-        throw new System.NotImplementedException();
     }
 }

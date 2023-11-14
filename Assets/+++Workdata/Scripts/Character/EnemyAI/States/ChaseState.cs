@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ChaseState : State
@@ -9,6 +6,7 @@ public class ChaseState : State
     #region serialized fields
 
     [SerializeField] float chaseRange;
+    [SerializeField] float attackRange = 2;
 
     [SerializeField] AttackState attackState;
     [SerializeField] RoamState roamState;
@@ -19,45 +17,39 @@ public class ChaseState : State
     #region private fields
 
     CreatureLogic creatureLogic;
-    
+
     #endregion
 
     private void Awake() => creatureLogic = GetComponentInParent<CreatureLogic>();
 
     public override State SwitchState()
     {
-        #region Handle switch state
-
         if (TimeInState >= 5f)
         {
             return agressiveChaseState;
         }
-        if (creatureLogic.distanceFromTarget <= creatureLogic.enemyStoppingDistance)
+        if (creatureLogic.DistanceFromTarget <= creatureLogic.EnemyStoppingDistance)
         {
             return attackState;
         }
-        else if(creatureLogic.distanceFromTarget >= chaseRange)
+        else if (creatureLogic.DistanceFromTarget >= chaseRange)
         {
-            //creatureLogic.currentTarget = null;
+            creatureLogic.currentTarget = null;
             creatureLogic.canSeePlayer = false;
             return roamState;
         }
-        else
-        {
-            return this;
-        }
+
         return this;
-        #endregion
     }
 
     protected override void EnterInternal()
     {
-        creatureLogic.enemyAcceleration = 15f;
+        creatureLogic.RefreshAgentVars(creatureLogic.EnemySpeed, 15, attackRange);
     }
 
     protected override void UpdateInternal()
     {
-        HandleMovement(); 
+        HandleMovement();
         HandleRotate();
     }
 
@@ -67,20 +59,20 @@ public class ChaseState : State
 
     protected override void ExitInternal()
     {
-        creatureLogic.enemyAcceleration = 5f;
+         creatureLogic.RefreshAgentVars(creatureLogic.EnemySpeed, 5, creatureLogic.EnemyStoppingDistance);
+
     }
-    
+
     private void HandleMovement()
     {
-        Vector3 targetDirection = creatureLogic.currentTarget.transform.position - transform.position;
-        creatureLogic.distanceFromTarget = Vector3.Distance(creatureLogic.currentTarget.transform.position, creatureLogic.transform.position);
-        
-        if (creatureLogic.distanceFromTarget > creatureLogic.enemyStoppingDistance)
+        creatureLogic.SetDistanceFromTarget(Vector3.Distance(creatureLogic.currentTarget.transform.position, creatureLogic.transform.position));
+
+        if (creatureLogic.DistanceFromTarget > creatureLogic.EnemyStoppingDistance)
         {
             creatureLogic.agent.isStopped = false;
         }
         //This is called when the target is close
-        else if (creatureLogic.distanceFromTarget <= creatureLogic.enemyStoppingDistance)
+        else if (creatureLogic.DistanceFromTarget <= creatureLogic.EnemyStoppingDistance)
         {
             creatureLogic.agent.isStopped = true;
             print("Attack");
@@ -89,7 +81,7 @@ public class ChaseState : State
     private void HandleRotate()
     {
         //Rotate manually
-        if (creatureLogic.distanceFromTarget <= creatureLogic.enemyStoppingDistance)
+        if (creatureLogic.DistanceFromTarget <= creatureLogic.EnemyStoppingDistance)
         {
             Vector3 direction = creatureLogic.currentTarget.transform.position - transform.position;
             direction.z = 0;
@@ -102,7 +94,7 @@ public class ChaseState : State
 
             Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, direction);
 
-            float step = creatureLogic.enemyAcceleration * Time.deltaTime;
+            float step = creatureLogic.EnemyAcceleration * Time.deltaTime;
             creatureLogic.transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, step);
         }
 
@@ -119,7 +111,7 @@ public class ChaseState : State
             {
                 Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, velocity);
 
-                float step = creatureLogic.enemyAcceleration * Time.deltaTime;
+                float step = creatureLogic.EnemyAcceleration * Time.deltaTime;
                 creatureLogic.transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, step);
             }
         }
