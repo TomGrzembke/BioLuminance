@@ -13,14 +13,6 @@ public class AttackState : State
 
     #endregion
 
-    #region private fields
-
-    CreatureLogic creatureLogic;
-
-    #endregion
-
-    void Awake() => creatureLogic = GetComponentInParent<CreatureLogic>();
-
     public override State SwitchState()
     {
         if (creatureLogic.DistanceFromTarget > attackDistance)
