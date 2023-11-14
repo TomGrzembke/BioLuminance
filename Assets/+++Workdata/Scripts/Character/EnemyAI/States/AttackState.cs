@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AttackState : State
 {
+    [Header(nameof(State))]
      #region serialized fields
 
     public float attackDamage;

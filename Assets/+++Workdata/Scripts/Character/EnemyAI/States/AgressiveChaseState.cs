@@ -1,9 +1,8 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChaseState : State
+public class AgressiveChaseState : State
 {
     [Header(nameof(State))]
     #region serialized fields
@@ -12,7 +11,7 @@ public class ChaseState : State
 
     [SerializeField] AttackState attackState;
     [SerializeField] RoamState roamState;
-    [SerializeField] AgressiveChaseState agressiveChaseState;
+    [SerializeField] SpriteRenderer visor;
 
     #endregion
 
@@ -25,12 +24,11 @@ public class ChaseState : State
     private void Awake() => creatureLogic = GetComponentInParent<CreatureLogic>();
 
     public override State SwitchState()
-    {
+    { 
         #region Handle switch state
-
         if (TimeInState >= 5f)
         {
-            return agressiveChaseState;
+            return roamState;
         }
         if (creatureLogic.distanceFromTarget <= creatureLogic.enemyStoppingDistance)
         {
@@ -46,13 +44,14 @@ public class ChaseState : State
         {
             return this;
         }
-        return this;
         #endregion
     }
 
     protected override void EnterInternal()
     {
-        creatureLogic.enemyAcceleration = 15f;
+        visor.color = new Color32(255, 0, 0, 255);
+        creatureLogic.enemySpeed = 11f;
+        creatureLogic.enemyAcceleration = 30f;
     }
 
     protected override void UpdateInternal()
@@ -67,6 +66,8 @@ public class ChaseState : State
 
     protected override void ExitInternal()
     {
+        visor.color = new Color32(180, 180, 180, 255);
+        creatureLogic.enemySpeed = 3.5f;
         creatureLogic.enemyAcceleration = 5f;
     }
     
@@ -76,6 +77,7 @@ public class ChaseState : State
         creatureLogic.distanceFromTarget = Vector3.Distance(creatureLogic.currentTarget.transform.position, creatureLogic.transform.position);
         float viewableAngle = Vector3.Angle(targetDirection, transform.position);
         creatureLogic.enemyStoppingDistance = 1.5f;
+        creatureLogic.enemySpeed = 10f;
         
         if (creatureLogic.distanceFromTarget > creatureLogic.enemyStoppingDistance)
         {

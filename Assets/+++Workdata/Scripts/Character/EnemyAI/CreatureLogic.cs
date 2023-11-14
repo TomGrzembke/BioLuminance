@@ -41,9 +41,8 @@ public abstract class CreatureLogic : MonoBehaviour
         agent.updateRotation = false;
         agent.updateUpAxis = false;
     }
-     void OnValidate()
+     void Update()
     {
-        agent = GetComponent<NavMeshAgent>();
         agent.speed = enemySpeed;
         agent.acceleration = enemyAcceleration;
         agent.stoppingDistance = enemyStoppingDistance;
