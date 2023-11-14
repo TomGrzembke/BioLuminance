@@ -29,7 +29,7 @@ public class Health : MonoBehaviour
     {
         if (newHealth > maximumHealth)
             newHealth = maximumHealth;
-        else if (newHealth < currentHealth)
+        else if (currentHealth + newHealth < 0)
             newHealth = 0;
 
         var oldHealth = currentHealth;

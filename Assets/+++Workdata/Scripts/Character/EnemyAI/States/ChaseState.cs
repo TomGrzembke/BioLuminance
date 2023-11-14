@@ -7,6 +7,7 @@ public class ChaseState : State
 
     [SerializeField] float chaseRange;
     [SerializeField] float attackRange = 2;
+    [SerializeField] protected float chaseSpeed = 2;
 
     [SerializeField] AttackState attackState;
     [SerializeField] RoamState roamState;
@@ -44,7 +45,7 @@ public class ChaseState : State
 
     protected override void EnterInternal()
     {
-        creatureLogic.RefreshAgentVars(creatureLogic.EnemySpeed, 15, attackRange);
+        creatureLogic.RefreshAgentVars(creatureLogic.EnemySpeed, chaseSpeed, attackRange);
     }
 
     protected override void UpdateInternal()

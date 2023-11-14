@@ -1925,7 +1925,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1022936343491123460, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
       propertyPath: attackDistance
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3157321582516056299, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
       propertyPath: m_Name
@@ -1985,7 +1985,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5839027869137408290, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
       propertyPath: attackRange
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8745269356287393332, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2175,8 +2175,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a2979f7b29a04e43b01fe76b32da132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maximumHealth: 10000
-  currentHealth: 10000
+  maximumHealth: 1000
+  currentHealth: 1000
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
