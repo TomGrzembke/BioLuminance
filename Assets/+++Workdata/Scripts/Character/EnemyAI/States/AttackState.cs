@@ -49,7 +49,6 @@ public class AttackState : State
         creatureLogic.distanceFromTarget = Vector3.Distance(creatureLogic.currentTarget.transform.position, creatureLogic.transform.position);
         creatureLogic.enemyStoppingDistance = 3f;
         
-        //creatureLogic.currentTarget.GetComponent<Health>().CurrentHealth -= 5;
         creatureLogic.currentTarget.GetComponent<Health>().AddHealth(-attackDamage);
         
         HandleRotate();

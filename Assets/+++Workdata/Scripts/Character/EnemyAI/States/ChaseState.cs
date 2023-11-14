@@ -74,8 +74,6 @@ public class ChaseState : State
     {
         Vector3 targetDirection = creatureLogic.currentTarget.transform.position - transform.position;
         creatureLogic.distanceFromTarget = Vector3.Distance(creatureLogic.currentTarget.transform.position, creatureLogic.transform.position);
-        float viewableAngle = Vector3.Angle(targetDirection, transform.position);
-        creatureLogic.enemyStoppingDistance = 1.5f;
         
         if (creatureLogic.distanceFromTarget > creatureLogic.enemyStoppingDistance)
         {

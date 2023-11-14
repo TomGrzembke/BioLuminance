@@ -11,7 +11,6 @@ public class AgressiveChaseState : State
 
     [SerializeField] AttackState attackState;
     [SerializeField] RoamState roamState;
-    [SerializeField] SpriteRenderer visor;
 
     #endregion
 
@@ -49,7 +48,6 @@ public class AgressiveChaseState : State
 
     protected override void EnterInternal()
     {
-        visor.color = new Color32(255, 0, 0, 255);
         creatureLogic.enemySpeed = 11f;
         creatureLogic.enemyAcceleration = 30f;
     }
@@ -66,7 +64,6 @@ public class AgressiveChaseState : State
 
     protected override void ExitInternal()
     {
-        visor.color = new Color32(180, 180, 180, 255);
         creatureLogic.enemySpeed = 3.5f;
         creatureLogic.enemyAcceleration = 5f;
     }
