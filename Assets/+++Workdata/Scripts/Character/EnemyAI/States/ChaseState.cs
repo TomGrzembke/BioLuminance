@@ -5,23 +5,23 @@ public class ChaseState : State
     [Header(nameof(State))]
     #region serialized fields
 
-    [SerializeField] float chaseRange;
-    [SerializeField] float attackRange = 2;
+    [SerializeField] protected float chaseRange;
+    [SerializeField] protected float attackRange = 2;
     [SerializeField] protected float chaseSpeed = 2;
 
-    [SerializeField] AttackState attackState;
-    [SerializeField] RoamState roamState;
+    [SerializeField] protected AttackState attackState;
+    [SerializeField] protected RoamState roamState;
     [SerializeField] AgressiveChaseState agressiveChaseState;
 
     #endregion
 
     #region private fields
 
-    CreatureLogic creatureLogic;
+    protected CreatureLogic creatureLogic;
 
     #endregion
 
-    private void Awake() => creatureLogic = GetComponentInParent<CreatureLogic>();
+    void Awake() => creatureLogic = GetComponentInParent<CreatureLogic>();
 
     public override State SwitchState()
     {
@@ -29,14 +29,14 @@ public class ChaseState : State
         {
             return agressiveChaseState;
         }
-        if (creatureLogic.DistanceFromTarget <= creatureLogic.EnemyStoppingDistance)
+        if (creatureLogic.DistanceFromTarget <= attackRange)
         {
             return attackState;
         }
         else if (creatureLogic.DistanceFromTarget >= chaseRange)
         {
             creatureLogic.currentTarget = null;
-            creatureLogic.canSeePlayer = false;
+            creatureLogic.SetCanSeePlayer(false);
             return roamState;
         }
 
@@ -61,7 +61,6 @@ public class ChaseState : State
     protected override void ExitInternal()
     {
          creatureLogic.RefreshAgentVars(creatureLogic.EnemySpeed, 5, creatureLogic.EnemyStoppingDistance);
-
     }
 
     private void HandleMovement()

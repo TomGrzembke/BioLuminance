@@ -671,6 +671,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &615160313 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8424046093258678544, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
+  m_PrefabInstance: {fileID: 5685878510402938606}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &615160315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615160313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e88af8f8d4ec6974bbb11b3705521555, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TimeInState: 0
+  FixedTimeInState: 0
+  stateManager: {fileID: 1298900415}
+  stun: {fileID: 1848902600}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -1095,6 +1116,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8fe50b0595703854cba355c439e5c301, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1298900415 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2442591737056489558, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
+  m_PrefabInstance: {fileID: 5685878510402938606}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2998b72f3c9384e4594b01a4907bfda4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1316112751
@@ -1687,6 +1719,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0712df3ef83006a498b4ddacc686b979, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1848902600 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5074394669025594737, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
+  m_PrefabInstance: {fileID: 5685878510402938606}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b729b08c2a8f9b4eab0d76a6274c100, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1859722480
 GameObject:
   m_ObjectHideFlags: 0
@@ -1925,15 +1968,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1022936343491123460, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
       propertyPath: attackDistance
-      value: 3
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 3157321582516056299, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
       propertyPath: m_Name
       value: '[Creature] Tuna'
       objectReference: {fileID: 0}
     - target: {fileID: 3289857228537091916, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
+      propertyPath: angle
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 3289857228537091916, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
+      propertyPath: detectionRadius
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3289857228537091916, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
       propertyPath: distanceFromTarget
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3289857228537091916, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
+      propertyPath: ObstacleLayer.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 3289857228537091916, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
+      propertyPath: DetectionLayer.m_Bits
+      value: 512
       objectReference: {fileID: 0}
     - target: {fileID: 3289857228537091916, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
       propertyPath: enemyStoppingDistance
@@ -1987,6 +2046,10 @@ PrefabInstance:
       propertyPath: attackRange
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 8424046093258678544, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
+      propertyPath: m_Name
+      value: StunState
+      objectReference: {fileID: 0}
     - target: {fileID: 8745269356287393332, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2007,7 +2070,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7307126900260189495, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 552198708}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8424046093258678544, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 615160315}
   m_SourcePrefab: {fileID: 100100000, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
 --- !u!1001 &7608655987527139202
 PrefabInstance:
@@ -2081,6 +2147,10 @@ PrefabInstance:
       propertyPath: m_BoundingShape2D
       value: 
       objectReference: {fileID: 1425512084}
+    - target: {fileID: 7845883195136958720, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
+      propertyPath: m_Acceleration
+      value: 120
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2112,6 +2182,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aafcad5830822b046b83751afe94b886, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stateManager: {fileID: 0}
+  stun: {fileID: 0}
   currentTarget: {fileID: 0}
   canSeePlayer: 0
   detectionLayer:
@@ -2127,7 +2199,12 @@ MonoBehaviour:
   enemyAcceleration: 120
   enemyStoppingDistance: 0
   enemyLimbStats: []
-  agent: {fileID: 0}
+  agent: {fileID: 7608655987527139207}
+--- !u!195 &7608655987527139207 stripped
+NavMeshAgent:
+  m_CorrespondingSourceObject: {fileID: 7845883195136958720, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
+  m_PrefabInstance: {fileID: 7608655987527139202}
+  m_PrefabAsset: {fileID: 0}
 --- !u!58 &7608655987527139209
 CircleCollider2D:
   m_ObjectHideFlags: 0

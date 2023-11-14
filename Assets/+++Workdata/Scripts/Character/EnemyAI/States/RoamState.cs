@@ -93,7 +93,7 @@ public class RoamState : State
 
     public void HandleDetection()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, creatureLogic.detectionRadius, creatureLogic.detectionLayer);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, creatureLogic.DetectionRadius, creatureLogic.DetectionLayer);
 
         for (int i = 0; i < colliders.Length; i++)
         {
@@ -105,21 +105,21 @@ public class RoamState : State
 
                 Vector2 targetDirection = (_creatureLogic.transform.position - transform.position).normalized;
 
-                if (Vector2.Angle(transform.up, targetDirection) < creatureLogic.angle / 2)
+                if (Vector2.Angle(transform.up, targetDirection) < creatureLogic.Angle / 2)
                 {
-                    if (!Physics2D.Raycast(transform.position, targetDirection, creatureLogic.DistanceFromTarget, this.creatureLogic.obstacleLayer))
+                    if (!Physics2D.Raycast(transform.position, targetDirection, creatureLogic.DistanceFromTarget, this.creatureLogic.ObstacleLayer))
                     {
-                        creatureLogic.canSeePlayer = true;
+                        creatureLogic.SetCanSeePlayer(true);
                         creatureLogic.currentTarget = _creatureLogic;
                     }
                     else
                     {
-                        creatureLogic.canSeePlayer = false;
+                        creatureLogic.SetCanSeePlayer(false);
                         creatureLogic.currentTarget = null;
                     }
                 }
-                else if (creatureLogic.canSeePlayer)
-                    creatureLogic.canSeePlayer = false;
+                else if (creatureLogic.CanSeePlayer)
+                    creatureLogic.SetCanSeePlayer(false);
             }
         }
     }

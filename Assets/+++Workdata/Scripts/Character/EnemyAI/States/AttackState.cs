@@ -23,7 +23,7 @@ public class AttackState : State
 
     public override State SwitchState()
     {
-        if (creatureLogic.DistanceFromTarget > creatureLogic.EnemyStoppingDistance)
+        if (creatureLogic.DistanceFromTarget > attackDistance)
         {
             return chaseState;
         }

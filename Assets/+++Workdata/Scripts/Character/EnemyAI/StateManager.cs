@@ -4,6 +4,7 @@ public class StateManager : MonoBehaviour
 {
     #region serialized fields
     [SerializeField] State currentState;
+    public State LastState => lastState;
     [SerializeField] State lastState;
     #endregion
 
@@ -35,5 +36,11 @@ public class StateManager : MonoBehaviour
             currentState = newState;
             currentState.EnterState();
         }
+    }
+
+    public void SetState(State _state)
+    {
+        lastState = currentState;
+        currentState = _state;
     }
 }

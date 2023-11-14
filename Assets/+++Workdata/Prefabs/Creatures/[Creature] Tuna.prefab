@@ -822,8 +822,11 @@ MonoBehaviour:
   TimeInState: 0
   FixedTimeInState: 0
   chaseRange: 10
+  attackRange: 2
+  chaseSpeed: 2
   attackState: {fileID: 1022936343491123460}
   roamState: {fileID: 1015608502891901096}
+  agressiveChaseState: {fileID: 0}
 --- !u!1 &7446373072917147322
 GameObject:
   m_ObjectHideFlags: 0
@@ -1206,6 +1209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfad8942c39eb5c49abb27e9d4443844, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stateManager: {fileID: 2442591737056489558}
   currentTarget: {fileID: 0}
   canSeePlayer: 0
   detectionLayer:
@@ -1222,7 +1226,6 @@ MonoBehaviour:
   enemyStoppingDistance: 1
   enemyLimbStats: []
   agent: {fileID: 5218931249399040763}
-  stateManager: {fileID: 2442591737056489558}
 --- !u!195 &5218931249399040763
 NavMeshAgent:
   m_ObjectHideFlags: 0
