@@ -4,23 +4,24 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Serialization;
 
 public abstract class CreatureLogic : MonoBehaviour
 {
     #region serialized fields
-    [SerializeField] List<CreatureLogic> currentTargets;
+    public CreatureLogic currentTarget;
 
     [Header("AI Settings")]
-    [SerializeField] bool canSeePlayer = false;
-    [SerializeField] LayerMask detectionLayer;
-    [SerializeField] LayerMask obstacleLayer;
-    [SerializeField] float detectionRadius;
-    [SerializeField, Range(0, 360)] float fovAngle = 50f;
+    public bool canSeePlayer = false;
+    public LayerMask detectionLayer;
+    public LayerMask obstacleLayer;
+    public float detectionRadius;
+    [Range(0, 360)] public float angle = 50f;
 
-    [SerializeField] float distanceFromTarget;
-    [SerializeField] float enemySpeed = 3.5f;
-    [SerializeField] float enemyAcceleration = 5f;
-    [SerializeField] float enemyStoppingDistance = 1f;
+    public float distanceFromTarget;
+    public float enemySpeed = 3.5f;
+    public float enemyAcceleration = 5f;
+    public float enemyStoppingDistance = 1f;
 
     //animation reference
 
@@ -32,7 +33,7 @@ public abstract class CreatureLogic : MonoBehaviour
     #region private fields
     static event Action<CreatureLogic> OnEnemyDied;
 
-    NavMeshAgent agent;
+    [HideInInspector]public NavMeshAgent agent;
     #endregion
     void Awake()
     {
@@ -53,8 +54,8 @@ public abstract class CreatureLogic : MonoBehaviour
         Handles.color = Color.green;
         Handles.DrawWireArc(transform.position, Vector3.forward, Vector3.up, 360, detectionRadius); //This visualizes the detection radius
 
-        Vector3 viewAngle01 = DirectionFromAngle(transform.eulerAngles.y, -fovAngle / 2); //This seperates the Angle into two different values
-        Vector3 viewAngle02 = DirectionFromAngle(transform.eulerAngles.y, fovAngle / 2); //This seperates the Angle into two different values
+        Vector3 viewAngle01 = DirectionFromAngle(transform.eulerAngles.y, -angle / 2); //This seperates the Angle into two different values
+        Vector3 viewAngle02 = DirectionFromAngle(transform.eulerAngles.y, angle / 2); //This seperates the Angle into two different values
 
         Gizmos.color = Color.red;
         Gizmos.matrix = transform.localToWorldMatrix;

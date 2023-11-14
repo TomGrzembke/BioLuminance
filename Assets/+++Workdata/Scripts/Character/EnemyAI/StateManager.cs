@@ -11,6 +11,7 @@ public class StateManager : MonoBehaviour
     #region private fields
 
     AnimationManager animationManager;
+    CreatureLogic creatureLogic;
 
     #endregion
 
@@ -25,11 +26,6 @@ public class StateManager : MonoBehaviour
         HandleStateMachine();
         if(currentState != null)
             currentState.UpdateState();
-    }
-
-    void Awake()
-    {
-        
     }
 
     void HandleStateMachine()

@@ -9,12 +9,12 @@ public abstract class State : MonoBehaviour
     /// <summary>
     /// The time since the state was entered.
     /// </summary>
-    protected float TimeInState;
+    public float TimeInState;
     
     /// <summary>
     /// The fixed time since the state was entered, for any physics tests.
     /// </summary>
-    protected float FixedTimeInState;
+    public float FixedTimeInState;
     
     public void EnterState()
     {
