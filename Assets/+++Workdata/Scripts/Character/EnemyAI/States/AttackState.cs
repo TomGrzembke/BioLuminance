@@ -29,9 +29,9 @@ public class AttackState : State
 
     protected override void UpdateInternal()
     {
-        creatureLogic.SetDistanceFromTarget(Vector3.Distance(creatureLogic.currentTarget.transform.position, creatureLogic.transform.position));
+        creatureLogic.SetDistanceFromTarget(Vector3.Distance(creatureLogic.targetHealthScript.transform.position, creatureLogic.transform.position));
 
-        creatureLogic.currentTarget.GetComponent<Health>().AddHealth(-attackDamage);
+        creatureLogic.targetHealthScript.GetComponent<Health>().AddHealth(-attackDamage);
 
         HandleRotate();
     }
@@ -48,7 +48,7 @@ public class AttackState : State
     {
         if (creatureLogic.DistanceFromTarget <= creatureLogic.EnemyStoppingDistance)
         {
-            Vector3 direction = creatureLogic.currentTarget.transform.position - transform.position;
+            Vector3 direction = creatureLogic.targetHealthScript.transform.position - transform.position;
             direction.z = 0;
             direction.Normalize();
 

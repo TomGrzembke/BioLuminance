@@ -18,7 +18,7 @@ public class RoamState : State
 
     public override State SwitchState()
     {
-        if (creatureLogic.currentTarget != null)
+        if (creatureLogic.targetHealthScript != null)
         {
             return chaseState;
         }
@@ -91,25 +91,25 @@ public class RoamState : State
 
         for (int i = 0; i < colliders.Length; i++)
         {
-            CreatureLogic _creatureLogic = colliders[i].transform.GetComponent<CreatureLogic>();
+            Health _healthTarget = colliders[i].transform.GetComponent<Health>();
 
-            if (_creatureLogic != null)
+            if (_healthTarget != null)
             {
                 //It looks for a target on a certain layer, and if that target has the characterStats script, it's added to it's target list
 
-                Vector2 targetDirection = (_creatureLogic.transform.position - transform.position).normalized;
+                Vector2 targetDirection = (_healthTarget.transform.position - transform.position).normalized;
 
                 if (Vector2.Angle(transform.up, targetDirection) < creatureLogic.Angle / 2)
                 {
                     if (!Physics2D.Raycast(transform.position, targetDirection, creatureLogic.DistanceFromTarget, this.creatureLogic.ObstacleLayer))
                     {
                         creatureLogic.SetCanSeePlayer(true);
-                        creatureLogic.currentTarget = _creatureLogic;
+                        creatureLogic.targetHealthScript = _healthTarget;
                     }
                     else
                     {
                         creatureLogic.SetCanSeePlayer(false);
-                        creatureLogic.currentTarget = null;
+                        creatureLogic.targetHealthScript = null;
                     }
                 }
                 else if (creatureLogic.CanSeePlayer)

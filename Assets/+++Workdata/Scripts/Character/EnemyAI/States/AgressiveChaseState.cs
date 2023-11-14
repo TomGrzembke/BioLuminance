@@ -13,7 +13,7 @@ public class AgressiveChaseState : ChaseState
         }
         else if (creatureLogic.DistanceFromTarget >= chaseRange)
         {
-            creatureLogic.currentTarget = null;
+            creatureLogic.targetHealthScript = null;
             creatureLogic.SetCanSeePlayer(false);
             return roamState;
         }

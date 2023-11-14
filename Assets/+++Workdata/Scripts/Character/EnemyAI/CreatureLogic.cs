@@ -9,7 +9,7 @@ public abstract class CreatureLogic : MonoBehaviour
     #region serialized fields
     [Header("AI Settings")]
     [SerializeField] protected StateManager stateManager;
-    public CreatureLogic currentTarget;
+    public Health targetHealthScript;
 
     public bool CanSeePlayer => canSeePlayer;
     [SerializeField] bool canSeePlayer = false;
