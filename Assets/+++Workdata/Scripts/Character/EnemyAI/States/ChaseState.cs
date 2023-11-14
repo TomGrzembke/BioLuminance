@@ -29,7 +29,7 @@ public class ChaseState : State
         }
         else if (creatureLogic.DistanceFromTarget >= chaseRange)
         {
-            creatureLogic.targetHealthScript = null;
+            creatureLogic.SetTargetHealthScript(null);
             creatureLogic.SetCanSeePlayer(false);
             return roamState;
         }
@@ -39,7 +39,7 @@ public class ChaseState : State
 
     protected override void EnterInternal()
     {
-        creatureLogic.RefreshAgentVars(creatureLogic.EnemySpeed, chaseSpeed, attackRange);
+        creatureLogic.RefreshAgentVars(creatureLogic.AgentSpeed, chaseSpeed, attackRange);
     }
 
     protected override void UpdateInternal()
@@ -54,19 +54,19 @@ public class ChaseState : State
 
     protected override void ExitInternal()
     {
-         creatureLogic.RefreshAgentVars(creatureLogic.EnemySpeed, 5, creatureLogic.EnemyStoppingDistance);
+        creatureLogic.RefreshAgentVars(creatureLogic.AgentSpeed, 5, creatureLogic.AgentStoppingDistance);
     }
 
     private void HandleMovement()
     {
-        creatureLogic.SetDistanceFromTarget(Vector3.Distance(creatureLogic.targetHealthScript.transform.position, creatureLogic.transform.position));
+        creatureLogic.SetDistanceFromTarget(Vector3.Distance(creatureLogic.TargetHealthScript.transform.position, creatureLogic.transform.position));
 
-        if (creatureLogic.DistanceFromTarget > creatureLogic.EnemyStoppingDistance)
+        if (creatureLogic.DistanceFromTarget > creatureLogic.AgentStoppingDistance)
         {
             creatureLogic.agent.isStopped = false;
         }
         //This is called when the target is close
-        else if (creatureLogic.DistanceFromTarget <= creatureLogic.EnemyStoppingDistance)
+        else if (creatureLogic.DistanceFromTarget <= creatureLogic.AgentStoppingDistance)
         {
             creatureLogic.agent.isStopped = true;
             print("Attack");
@@ -75,9 +75,9 @@ public class ChaseState : State
     private void HandleRotate()
     {
         //Rotate manually
-        if (creatureLogic.DistanceFromTarget <= creatureLogic.EnemyStoppingDistance)
+        if (creatureLogic.DistanceFromTarget <= creatureLogic.AgentStoppingDistance)
         {
-            Vector3 direction = creatureLogic.targetHealthScript.transform.position - transform.position;
+            Vector3 direction = creatureLogic.TargetHealthScript.transform.position - transform.position;
             direction.z = 0;
             direction.Normalize();
 
@@ -88,7 +88,7 @@ public class ChaseState : State
 
             Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, direction);
 
-            float step = creatureLogic.EnemyAcceleration * Time.deltaTime;
+            float step = creatureLogic.AgentAcceleration * Time.deltaTime;
             creatureLogic.transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, step);
         }
 
@@ -99,13 +99,13 @@ public class ChaseState : State
             velocity.z = 0;
             velocity.Normalize();
 
-            creatureLogic.agent.SetDestination(creatureLogic.targetHealthScript.transform.position);
+            creatureLogic.agent.SetDestination(creatureLogic.TargetHealthScript.transform.position);
 
             if (velocity != Vector3.zero)
             {
                 Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, velocity);
 
-                float step = creatureLogic.EnemyAcceleration * Time.deltaTime;
+                float step = creatureLogic.AgentAcceleration * Time.deltaTime;
                 creatureLogic.transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, step);
             }
         }

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class RoamState : State
@@ -8,6 +9,7 @@ public class RoamState : State
     [SerializeField] float maxRoamRange = 5f;
     [SerializeField] ChaseState chaseState;
     [SerializeField] float reachedPositionDistance = 1;
+    [SerializeField] List<Health> healthTargets = new();
     #endregion
 
     #region private fields
@@ -18,7 +20,7 @@ public class RoamState : State
 
     public override State SwitchState()
     {
-        if (creatureLogic.targetHealthScript != null)
+        if (creatureLogic.TargetHealthScript != null)
         {
             return chaseState;
         }
@@ -30,8 +32,8 @@ public class RoamState : State
 
     protected override void EnterInternal()
     {
-        oldStoppingDistance = creatureLogic.EnemyStoppingDistance;
-        creatureLogic.RefreshAgentVars(creatureLogic.EnemySpeed, creatureLogic.EnemyAcceleration, 0);
+        oldStoppingDistance = creatureLogic.AgentStoppingDistance;
+        creatureLogic.RefreshAgentVars(creatureLogic.AgentSpeed, creatureLogic.AgentAcceleration, 0);
     }
 
     protected override void UpdateInternal()
@@ -47,7 +49,7 @@ public class RoamState : State
 
     protected override void ExitInternal()
     {
-        creatureLogic.RefreshAgentVars(creatureLogic.EnemySpeed, creatureLogic.EnemyAcceleration, oldStoppingDistance);
+        creatureLogic.RefreshAgentVars(creatureLogic.AgentSpeed, creatureLogic.AgentAcceleration, oldStoppingDistance);
     }
 
     void Start()
@@ -80,7 +82,7 @@ public class RoamState : State
         {
             Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, velocity);
 
-            float step = creatureLogic.EnemyAcceleration * Time.deltaTime;
+            float step = creatureLogic.AgentAcceleration * Time.deltaTime;
             creatureLogic.transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, step);
         }
     }
@@ -88,33 +90,40 @@ public class RoamState : State
     public void HandleDetection()
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, creatureLogic.DetectionRadius, creatureLogic.DetectionLayer);
+        if (colliders.Length == 0)
+        {
+            healthTargets.Clear();
+            return;
+        }
 
         for (int i = 0; i < colliders.Length; i++)
         {
-            Health _healthTarget = colliders[i].transform.GetComponent<Health>();
+            print(colliders[i].name);
+            Health _healthTarget = colliders[i].GetComponentInChildren<Health>();
 
-            if (_healthTarget != null)
+            if (_healthTarget == null)
+                continue;
+
+            if (!healthTargets.Contains(_healthTarget))
+                healthTargets.Add(_healthTarget);
+
+            Vector2 targetDirection = (_healthTarget.transform.position - transform.position).normalized;
+
+            if (Vector2.Angle(transform.up, targetDirection) < creatureLogic.Angle / 2)
             {
-                //It looks for a target on a certain layer, and if that target has the characterStats script, it's added to it's target list
-
-                Vector2 targetDirection = (_healthTarget.transform.position - transform.position).normalized;
-
-                if (Vector2.Angle(transform.up, targetDirection) < creatureLogic.Angle / 2)
+                if (!Physics2D.Raycast(transform.position, targetDirection, creatureLogic.DistanceFromTarget, creatureLogic.ObstacleLayer))
                 {
-                    if (!Physics2D.Raycast(transform.position, targetDirection, creatureLogic.DistanceFromTarget, this.creatureLogic.ObstacleLayer))
-                    {
-                        creatureLogic.SetCanSeePlayer(true);
-                        creatureLogic.targetHealthScript = _healthTarget;
-                    }
-                    else
-                    {
-                        creatureLogic.SetCanSeePlayer(false);
-                        creatureLogic.targetHealthScript = null;
-                    }
+                    creatureLogic.SetCanSeePlayer(true);
+                    creatureLogic.SetTargetHealthScript(_healthTarget);
                 }
-                else if (creatureLogic.CanSeePlayer)
+                else
+                {
                     creatureLogic.SetCanSeePlayer(false);
+                    creatureLogic.SetTargetHealthScript(null);
+                }
             }
+            else if (creatureLogic.CanSeePlayer)
+                creatureLogic.SetCanSeePlayer(false);
         }
     }
 }

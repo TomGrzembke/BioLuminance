@@ -24,14 +24,14 @@ public class AttackState : State
 
     protected override void EnterInternal()
     {
-        creatureLogic.RefreshAgentVars(creatureLogic.EnemySpeed, creatureLogic.EnemyAcceleration, attackDistance);
+        creatureLogic.RefreshAgentVars(creatureLogic.AgentSpeed, creatureLogic.AgentAcceleration, attackDistance);
     }
 
     protected override void UpdateInternal()
     {
-        creatureLogic.SetDistanceFromTarget(Vector3.Distance(creatureLogic.targetHealthScript.transform.position, creatureLogic.transform.position));
+        creatureLogic.SetDistanceFromTarget(Vector3.Distance(creatureLogic.TargetHealthScript.transform.position, creatureLogic.transform.position));
 
-        creatureLogic.targetHealthScript.GetComponent<Health>().AddHealth(-attackDamage);
+        creatureLogic.TargetHealthScript.GetComponent<Health>().AddHealth(-attackDamage);
 
         HandleRotate();
     }
@@ -46,9 +46,9 @@ public class AttackState : State
 
     private void HandleRotate()
     {
-        if (creatureLogic.DistanceFromTarget <= creatureLogic.EnemyStoppingDistance)
+        if (creatureLogic.DistanceFromTarget <= creatureLogic.AgentStoppingDistance)
         {
-            Vector3 direction = creatureLogic.targetHealthScript.transform.position - transform.position;
+            Vector3 direction = creatureLogic.TargetHealthScript.transform.position - transform.position;
             direction.z = 0;
             direction.Normalize();
 
@@ -59,7 +59,7 @@ public class AttackState : State
 
             Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, direction);
 
-            float step = creatureLogic.EnemyAcceleration * Time.deltaTime;
+            float step = creatureLogic.AgentAcceleration * Time.deltaTime;
             creatureLogic.transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, step);
         }
     }

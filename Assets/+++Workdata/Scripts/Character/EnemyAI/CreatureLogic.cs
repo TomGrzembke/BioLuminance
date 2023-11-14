@@ -9,7 +9,9 @@ public abstract class CreatureLogic : MonoBehaviour
     #region serialized fields
     [Header("AI Settings")]
     [SerializeField] protected StateManager stateManager;
-    public Health targetHealthScript;
+    [SerializeField] Health targetHealthScript;
+    public Health TargetHealthScript => targetHealthScript;
+    public Health thisHealthScript;
 
     public bool CanSeePlayer => canSeePlayer;
     [SerializeField] bool canSeePlayer = false;
@@ -29,23 +31,20 @@ public abstract class CreatureLogic : MonoBehaviour
     [SerializeField] float distanceFromTarget;
     public float DistanceFromTarget => distanceFromTarget;
 
-    public float EnemySpeed => enemySpeed;
-    [SerializeField] float enemySpeed = 3.5f;
+    public float AgentSpeed => agentSpeed;
+    [SerializeField] float agentSpeed = 3.5f;
 
-    public float EnemyAcceleration => enemyAcceleration;
-    [SerializeField] float enemyAcceleration = 5f;
+    public float AgentAcceleration => agentAcceleration;
+    [SerializeField] float agentAcceleration = 5f;
 
-    public float EnemyStoppingDistance => enemyStoppingDistance;
-    [SerializeField] float enemyStoppingDistance = 1f;
-
-    //animation reference
+    public float AgentStoppingDistance => agentStoppingDistance;
+    [SerializeField] float agentStoppingDistance = 1f;
 
     [Header("Health Settings")]
     [SerializeField] EnemyLimbStats[] enemyLimbStats;
     #endregion
 
     #region private fields
-    static event Action<CreatureLogic> OnEnemyDied;
     protected StunState stunState;
     protected Stun stun;
     [HideInInspector] public NavMeshAgent agent;
@@ -76,16 +75,16 @@ public abstract class CreatureLogic : MonoBehaviour
 
     public void RefreshAgentVars()
     {
-        agent.speed = enemySpeed;
-        agent.acceleration = enemyAcceleration;
-        agent.stoppingDistance = enemyStoppingDistance;
+        agent.speed = agentSpeed;
+        agent.acceleration = agentAcceleration;
+        agent.stoppingDistance = agentStoppingDistance;
     }
 
     public void RefreshAgentVars(float newSpeed = 3, float newAcceleration = 5, float newStoppingDistance = 0)
     {
-        enemySpeed = newSpeed;
-        enemyAcceleration = newAcceleration;
-        enemyStoppingDistance = newStoppingDistance;
+        agentSpeed = newSpeed;
+        agentAcceleration = newAcceleration;
+        agentStoppingDistance = newStoppingDistance;
         RefreshAgentVars();
     }
 
@@ -137,6 +136,12 @@ public abstract class CreatureLogic : MonoBehaviour
     public void SetCanSeePlayer(bool condition)
     {
         canSeePlayer = condition;
+    }
+
+    public void SetTargetHealthScript(Health newTarget)
+    {
+        if(newTarget != thisHealthScript)
+            targetHealthScript = newTarget;
     }
     #endregion
 }

@@ -5,6 +5,7 @@ public class Health : MonoBehaviour
 {
     public event Action<float> OnHealthChanged;
     public event Action<float> OnHealthChangedAlpha;
+    public event Action<CreatureLogic> OnCreatureDied;
 
     [SerializeField] float maximumHealth = 10;
     [SerializeField] float currentHealth = 10;
