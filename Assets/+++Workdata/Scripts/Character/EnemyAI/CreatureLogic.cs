@@ -9,9 +9,8 @@ public abstract class CreatureLogic : MonoBehaviour
     #region serialized fields
     [Header("AI Settings")]
     [SerializeField] protected StateManager stateManager;
-    [SerializeField] Health targetHealthScript;
     public Health TargetHealthScript => targetHealthScript;
-    public Health thisHealthScript;
+    [SerializeField] Health targetHealthScript;
 
     public bool CanSeePlayer => canSeePlayer;
     [SerializeField] bool canSeePlayer = false;
@@ -48,10 +47,12 @@ public abstract class CreatureLogic : MonoBehaviour
     protected StunState stunState;
     protected Stun stun;
     [HideInInspector] public NavMeshAgent agent;
+    Health thisHealthScript;
     #endregion
 
     void Awake()
     {
+        thisHealthScript = GetComponentInChildren<Health>();
         stunState = GetComponentInChildren<StunState>();
         stun = GetComponentInChildren<Stun>();
         agent = GetComponent<NavMeshAgent>();
