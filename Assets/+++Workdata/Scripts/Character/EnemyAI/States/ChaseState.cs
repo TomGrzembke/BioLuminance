@@ -12,16 +12,10 @@ public class ChaseState : State
     [SerializeField] protected AttackState attackState;
     [SerializeField] protected RoamState roamState;
     [SerializeField] AgressiveChaseState agressiveChaseState;
-
     #endregion
 
     #region private fields
-
-    protected CreatureLogic creatureLogic;
-
     #endregion
-
-    void Awake() => creatureLogic = GetComponentInParent<CreatureLogic>();
 
     public override State SwitchState()
     {

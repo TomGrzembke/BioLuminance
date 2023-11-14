@@ -1,26 +1,20 @@
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class RoamState : State
 {
-    [Header(nameof(State))]
     #region serialized fields
-
+    [Header(nameof(State))]
     [SerializeField] float minRoamRange = 5f;
     [SerializeField] float maxRoamRange = 5f;
     [SerializeField] ChaseState chaseState;
-    [SerializeField]  float reachedPositionDistance = 1;
-
+    [SerializeField] float reachedPositionDistance = 1;
     #endregion
 
     #region private fields
     Vector2 roamPosition;
     Vector3 startingPosition;
-    CreatureLogic creatureLogic;
     float oldStoppingDistance;
     #endregion
-
-    void Awake() => creatureLogic = GetComponentInParent<CreatureLogic>();
 
     public override State SwitchState()
     {

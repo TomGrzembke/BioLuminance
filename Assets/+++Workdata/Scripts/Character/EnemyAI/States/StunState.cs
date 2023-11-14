@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class StunState : State
 {
     #region serialized fields
@@ -17,7 +15,7 @@ public class StunState : State
 
     protected override void EnterInternal()
     {
-        
+
     }
 
     protected override void ExitInternal()
