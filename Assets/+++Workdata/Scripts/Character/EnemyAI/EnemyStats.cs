@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStats : CreatureLogic
+public class EnemyStats : CreatureLogic
 {
     #region serialized fields
     
