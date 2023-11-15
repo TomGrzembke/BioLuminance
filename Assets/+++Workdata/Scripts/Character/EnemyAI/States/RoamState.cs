@@ -100,7 +100,7 @@ public class RoamState : State
         {
             Health _healthTarget = colliders[i].GetComponentInChildren<Health>();
 
-            if (_healthTarget == null)
+            if (!_healthTarget)
                 continue;
 
             if (!healthTargets.Contains(_healthTarget))
@@ -121,7 +121,7 @@ public class RoamState : State
                     creatureLogic.SetTargetHealthScript(null);
                 }
             }
-            else if (creatureLogic.CanSeePlayer)
+            else if (creatureLogic.CanSeeTarget)
                 creatureLogic.SetCanSeePlayer(false);
         }
     }

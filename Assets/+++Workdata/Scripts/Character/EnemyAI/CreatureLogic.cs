@@ -12,8 +12,8 @@ public abstract class CreatureLogic : MonoBehaviour
     public Health TargetHealthScript => targetHealthScript;
     [SerializeField] Health targetHealthScript;
 
-    public bool CanSeePlayer => canSeePlayer;
-    [SerializeField] bool canSeePlayer = false;
+    public bool CanSeeTarget => canSeeTarget;
+    [SerializeField] bool canSeeTarget = false;
 
     public LayerMask DetectionLayer => detectionLayer;
     [SerializeField] LayerMask detectionLayer;
@@ -136,7 +136,7 @@ public abstract class CreatureLogic : MonoBehaviour
 
     public void SetCanSeePlayer(bool condition)
     {
-        canSeePlayer = condition;
+        canSeeTarget = condition;
     }
 
     public void SetTargetHealthScript(Health newTarget)
