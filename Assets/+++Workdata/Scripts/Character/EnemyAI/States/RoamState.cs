@@ -98,7 +98,6 @@ public class RoamState : State
 
         for (int i = 0; i < colliders.Length; i++)
         {
-            print(colliders[i].name);
             Health _healthTarget = colliders[i].GetComponentInChildren<Health>();
 
             if (_healthTarget == null)
