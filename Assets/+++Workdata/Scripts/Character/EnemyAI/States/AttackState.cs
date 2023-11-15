@@ -7,33 +7,40 @@ public class AttackState : State
 
     public float attackDamage = 0.01f;
     [Space(5)]
-    public ChaseState chaseState;
-    public RoamState roamState;
+    [SerializeField] ChaseState chaseState;
+    [SerializeField] RoamState roamState;
+    [SerializeField] AttackStanceState attackStanceState;
     [SerializeField] float attackDistance = 2;
+    [SerializeField] float maxTimeInState = 1.5f;
 
     #endregion
 
     public override State SwitchState()
     {
         if (creatureLogic.DistanceFromTarget > attackDistance)
-        {
             return chaseState;
-        }
+        else if (TimeInState > maxTimeInState)
+            return attackStanceState;
+
         return this;
     }
 
     protected override void EnterInternal()
     {
         creatureLogic.RefreshAgentVars(creatureLogic.AgentSpeed, creatureLogic.AgentAcceleration, attackDistance);
+        creatureLogic.TargetHealthScript.AddHealth(-attackDamage);
     }
 
     protected override void UpdateInternal()
     {
         creatureLogic.SetDistanceFromTarget(Vector3.Distance(creatureLogic.TargetHealthScript.transform.position, creatureLogic.transform.position));
 
-        creatureLogic.TargetHealthScript.GetComponent<Health>().AddHealth(-attackDamage);
-
         HandleRotate();
+    }
+
+    private void HandleRoaming()
+    {
+        creatureLogic.agent.SetDestination(transform.position - Vector3.left * 5);
     }
 
     protected override void FixedUpdateInternal()

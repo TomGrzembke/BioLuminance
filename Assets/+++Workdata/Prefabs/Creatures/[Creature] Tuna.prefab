@@ -49,7 +49,9 @@ MonoBehaviour:
   attackDamage: 0.01
   chaseState: {fileID: 5839027869137408290}
   roamState: {fileID: 1015608502891901096}
+  attackStanceState: {fileID: 1850263503238949771}
   attackDistance: 3.5
+  maxTimeInState: 5
 --- !u!1 &701545142850078953
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,6 +144,56 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &1069838187264255570
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8219892314355309388}
+  - component: {fileID: 1850263503238949771}
+  m_Layer: 0
+  m_Name: AttackStance
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8219892314355309388
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1069838187264255570}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6635765345639443685}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1850263503238949771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1069838187264255570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0285bd7e29adb52438d3263aef0c33f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TimeInState: 0
+  FixedTimeInState: 0
+  chaseState: {fileID: 5839027869137408290}
+  roamState: {fileID: 1015608502891901096}
+  stanceTime: 5
+  acceleration: 7
 --- !u!1 &1762515509951902019
 GameObject:
   m_ObjectHideFlags: 0
@@ -626,6 +678,7 @@ Transform:
   - {fileID: 5262341182039944397}
   - {fileID: 7984789459914473332}
   - {fileID: 1239626430975220014}
+  - {fileID: 8219892314355309388}
   - {fileID: 4849406910496821067}
   - {fileID: 1082978764447204271}
   - {fileID: 5125752987788624351}

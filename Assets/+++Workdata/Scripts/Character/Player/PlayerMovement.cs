@@ -52,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
     public void SetAgentPosition()
     {
         SetAgentPosition(transform.position + new Vector3(movement.x + 0.0001f, movement.y, 0));
-    } 
+    }
 
     public void SetAgentPosition(Vector3 targetPos)
     {

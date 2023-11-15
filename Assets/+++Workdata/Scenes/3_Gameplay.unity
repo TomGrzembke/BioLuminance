@@ -1032,33 +1032,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 542715956597704409, guid: 6a6f8c6f7c4aed041b4f2d6675939495, type: 3}
-      propertyPath: grabPos
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1637308243896438106, guid: 6a6f8c6f7c4aed041b4f2d6675939495, type: 3}
-      propertyPath: grabPos
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3157321582516056299, guid: 6a6f8c6f7c4aed041b4f2d6675939495, type: 3}
       propertyPath: m_Name
       value: '[Creature] JellyFish'
       objectReference: {fileID: 0}
-    - target: {fileID: 3289857228537091916, guid: 6a6f8c6f7c4aed041b4f2d6675939495, type: 3}
-      propertyPath: detectionLayer.m_Bits
-      value: 1024
-      objectReference: {fileID: 0}
-    - target: {fileID: 4617613201269175543, guid: 6a6f8c6f7c4aed041b4f2d6675939495, type: 3}
-      propertyPath: grabPos
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5443997901060708342, guid: 6a6f8c6f7c4aed041b4f2d6675939495, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.540165
+      value: -3.34
       objectReference: {fileID: 0}
     - target: {fileID: 5443997901060708342, guid: 6a6f8c6f7c4aed041b4f2d6675939495, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.386014
+      value: 8.64
       objectReference: {fileID: 0}
     - target: {fileID: 5443997901060708342, guid: 6a6f8c6f7c4aed041b4f2d6675939495, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2052,6 +2036,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1022936343491123460, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
+      propertyPath: maxTimeInState
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3157321582516056299, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
       propertyPath: m_Name
       value: '[Creature] Tuna'

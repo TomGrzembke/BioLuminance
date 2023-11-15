@@ -60,17 +60,6 @@ public class ChaseState : State
     private void HandleMovement()
     {
         creatureLogic.SetDistanceFromTarget(Vector3.Distance(creatureLogic.TargetHealthScript.transform.position, creatureLogic.transform.position));
-
-        if (creatureLogic.DistanceFromTarget > creatureLogic.AgentStoppingDistance)
-        {
-            creatureLogic.agent.isStopped = false;
-        }
-        //This is called when the target is close
-        else if (creatureLogic.DistanceFromTarget <= creatureLogic.AgentStoppingDistance)
-        {
-            creatureLogic.agent.isStopped = true;
-            print("Attack");
-        }
     }
     private void HandleRotate()
     {
