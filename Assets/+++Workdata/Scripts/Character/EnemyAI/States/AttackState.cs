@@ -38,11 +38,6 @@ public class AttackState : State
         HandleRotate();
     }
 
-    private void HandleRoaming()
-    {
-        creatureLogic.agent.SetDestination(transform.position - Vector3.left * 5);
-    }
-
     protected override void FixedUpdateInternal()
     {
     }

@@ -40,8 +40,17 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        HandleRotation();
         if (controlState == ControlState.playerControl)
             SetAgentPosition();
+    }
+
+    private void HandleRotation()
+    {
+        if (agent.velocity == Vector3.zero) return;
+        Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, agent.velocity.normalized);
+        float step = 5 * Time.deltaTime;
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, step);
     }
 
     void Movement(Vector2 direction)

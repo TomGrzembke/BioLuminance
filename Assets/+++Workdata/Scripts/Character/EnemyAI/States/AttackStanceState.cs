@@ -1,3 +1,4 @@
+using NavMeshPlus.Extensions;
 using UnityEngine;
 
 public class AttackStanceState : State
@@ -29,11 +30,18 @@ public class AttackStanceState : State
 
     protected override void UpdateInternal()
     {
-        creatureLogic.agent.SetDestination(transform.position * Random.Range(-1,1));
+        if (creatureLogic.agent.hasPath) return;
+
+        int pathHorizontal = Random.Range(-1, 2);
+        int pathVertical = Random.Range(-1, 2);
+        Vector3 pathAddVec3 = new(pathVertical, pathHorizontal);
+
+        creatureLogic.agent.SetDestination(creatureLogic.TargetHealthScript.transform.position + pathAddVec3 * 10);
     }
 
     protected override void FixedUpdateInternal()
     {
+        creatureLogic.HandleRotate();
     }
 
     protected override void ExitInternal()

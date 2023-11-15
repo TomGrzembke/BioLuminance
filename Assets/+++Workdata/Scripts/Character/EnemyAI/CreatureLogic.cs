@@ -89,6 +89,21 @@ public abstract class CreatureLogic : MonoBehaviour
         RefreshAgentVars();
     }
 
+    public void HandleRotate()
+    {
+        Vector3 velocity = agent.velocity;
+        velocity.z = 0;
+        velocity.Normalize();
+
+        if (velocity != Vector3.zero)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, velocity);
+
+            float step = AgentAcceleration * Time.deltaTime;
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, step);
+        }
+    }
+
     void OnDrawGizmosSelected()
     {
         Handles.color = Color.green;
@@ -141,7 +156,7 @@ public abstract class CreatureLogic : MonoBehaviour
 
     public void SetTargetHealthScript(Health newTarget)
     {
-        if(newTarget != thisHealthScript)
+        if (newTarget != thisHealthScript)
             targetHealthScript = newTarget;
     }
     #endregion

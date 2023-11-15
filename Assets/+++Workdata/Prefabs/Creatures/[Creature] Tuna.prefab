@@ -46,12 +46,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TimeInState: 0
   FixedTimeInState: 0
-  attackDamage: 0.01
+  attackDamage: 0.1
   chaseState: {fileID: 5839027869137408290}
   roamState: {fileID: 1015608502891901096}
   attackStanceState: {fileID: 1850263503238949771}
   attackDistance: 3.5
-  maxTimeInState: 5
+  maxTimeInState: 0.3
 --- !u!1 &701545142850078953
 GameObject:
   m_ObjectHideFlags: 0
@@ -192,7 +192,7 @@ MonoBehaviour:
   FixedTimeInState: 0
   chaseState: {fileID: 5839027869137408290}
   roamState: {fileID: 1015608502891901096}
-  stanceTime: 5
+  stanceTime: 4
   acceleration: 7
 --- !u!1 &1762515509951902019
 GameObject:
@@ -742,8 +742,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a2979f7b29a04e43b01fe76b32da132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maximumHealth: 10
-  currentHealth: 10
+  maximumHealth: 40
+  currentHealth: 40
 --- !u!1 &6861142586313414311
 GameObject:
   m_ObjectHideFlags: 0
@@ -1108,7 +1108,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1082978764447204271}
   - component: {fileID: 7259974933193452982}
-  - component: {fileID: 2686135858296301114}
   m_Layer: 0
   m_Name: StunState
   m_TagString: Untagged
@@ -1132,20 +1131,6 @@ Transform:
   m_Father: {fileID: 6635765345639443685}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7259974933193452982
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8424046093258678544}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e88af8f8d4ec6974bbb11b3705521555, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TimeInState: 0
-  FixedTimeInState: 0
---- !u!114 &2686135858296301114
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
