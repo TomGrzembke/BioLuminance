@@ -20,9 +20,6 @@ public class RoamState : State
 
     public override State SwitchStateInternal()
     {
-        if (uniqueState)
-            return uniqueState.SwitchStateInternal();
-
         if (creatureLogic.TargetHealthScript != null)
             return chaseState;
 
@@ -32,6 +29,7 @@ public class RoamState : State
 
     protected override void EnterInternal()
     {
+        print("0");
         oldStoppingDistance = creatureLogic.AgentStoppingDistance;
         creatureLogic.RefreshAgentVars(creatureLogic.AgentSpeed, creatureLogic.AgentAcceleration, 0);
     }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TestState : State
 {
+    [SerializeField] string a;
     public override State SwitchStateInternal()
     {
         return this;
@@ -11,7 +12,7 @@ public class TestState : State
 
     protected override void EnterInternal()
     {
-        Debug.Log("Enter");
+        Debug.Log(a);
     }
 
     protected override void UpdateInternal()

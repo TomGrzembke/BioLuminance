@@ -11,6 +11,12 @@ public class StateManager : MonoBehaviour
     #region private fields
     #endregion
 
+    void Start()
+    {
+        if (currentState)
+            currentState.EnterState();
+    }
+
     void FixedUpdate()
     {
         if (currentState != null)
@@ -26,16 +32,17 @@ public class StateManager : MonoBehaviour
 
     void HandleStateMachine()
     {
-        if (currentState == null) return;
+        if (!currentState) return;
 
-        State newState = currentState.SwitchStateInternal();
-        if (currentState != newState)
-        {
-            lastState = currentState;
-            lastState.ExitState();
-            currentState = newState;
-            currentState.EnterState();
-        }
+        State newState = currentState.SwitchState();
+
+        if (currentState == newState) return;
+        if (!newState) return;
+
+        lastState = currentState;
+        lastState.ExitState();
+        currentState = newState;
+        currentState.EnterState();
     }
 
     public void SetState(State _state)
