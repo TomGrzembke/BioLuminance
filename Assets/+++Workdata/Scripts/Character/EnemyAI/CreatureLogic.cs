@@ -7,28 +7,27 @@ using UnityEngine.AI;
 public abstract class CreatureLogic : MonoBehaviour
 {
     #region serialized fields
-    [Header("AI Settings")]
-    [SerializeField] protected StateManager stateManager;
     public Health TargetHealthScript => targetHealthScript;
+    [Header("AI Targeting")]
     [SerializeField] Health targetHealthScript;
+
+    public LayerMask TargetLayer => targetLayer;
+    [SerializeField] LayerMask targetLayer;
 
     public bool CanSeeTarget => canSeeTarget;
     [SerializeField] bool canSeeTarget = false;
+     
+    [SerializeField] float distanceFromTarget;
+    public float DistanceFromTarget => distanceFromTarget;
 
-    public LayerMask DetectionLayer => detectionLayer;
-    [SerializeField] LayerMask detectionLayer;
+    [Header("AI Settings")]
 
-    public LayerMask ObstacleLayer => obstacleLayer;
-    [SerializeField] LayerMask obstacleLayer;
-
-    public float DetectionRadius => detectionRadius;
     [SerializeField] float detectionRadius;
+    public float DetectionRadius => detectionRadius;
 
     public float Angle => angle;
     [Range(0, 360)][SerializeField] float angle = 50f;
 
-    [SerializeField] float distanceFromTarget;
-    public float DistanceFromTarget => distanceFromTarget;
 
     public float AgentSpeed => agentSpeed;
     [SerializeField] float agentSpeed = 3.5f;
@@ -38,6 +37,10 @@ public abstract class CreatureLogic : MonoBehaviour
 
     public float AgentStoppingDistance => agentStoppingDistance;
     [SerializeField] float agentStoppingDistance = 1f;
+
+    [SerializeField] protected StateManager stateManager;
+    public LayerMask ObstacleLayer => obstacleLayer;
+    [SerializeField] LayerMask obstacleLayer;
 
     [Header("Health Settings")]
     [SerializeField] EnemyLimbStats[] enemyLimbStats;

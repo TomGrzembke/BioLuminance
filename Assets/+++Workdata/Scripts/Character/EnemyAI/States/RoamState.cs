@@ -89,7 +89,7 @@ public class RoamState : State
 
     public void HandleDetection()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, creatureLogic.DetectionRadius, creatureLogic.DetectionLayer);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, creatureLogic.DetectionRadius, creatureLogic.TargetLayer);
         if (colliders.Length == 0)
         {
             healthTargets.Clear();
