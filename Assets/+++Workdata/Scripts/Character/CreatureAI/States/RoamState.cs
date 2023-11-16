@@ -22,14 +22,12 @@ public class RoamState : State
     {
         if (creatureLogic.TargetHealthScript != null)
             return chaseState;
-
         else
             return this;
     }
 
     protected override void EnterInternal()
     {
-        print("0");
         oldStoppingDistance = creatureLogic.AgentStoppingDistance;
         creatureLogic.RefreshAgentVars(creatureLogic.AgentSpeed, creatureLogic.AgentAcceleration, 0);
     }
@@ -70,20 +68,6 @@ public class RoamState : State
             roamPosition = GetRandomRoamingPosition();
         }
     }
-    private void HandleRotate()
-    {
-        Vector3 velocity = creatureLogic.agent.velocity;
-        velocity.z = 0;
-        velocity.Normalize();
-
-        if (velocity != Vector3.zero)
-        {
-            Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, velocity);
-
-            float step = creatureLogic.AgentAcceleration * Time.deltaTime;
-            creatureLogic.transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, step);
-        }
-    }
 
     public void HandleDetection()
     {
@@ -104,23 +88,28 @@ public class RoamState : State
             if (!healthTargets.Contains(_healthTarget))
                 healthTargets.Add(_healthTarget);
 
-            Vector2 targetDirection = (_healthTarget.transform.position - transform.position).normalized;
-
-            if (Vector2.Angle(transform.up, targetDirection) < creatureLogic.Angle / 2)
-            {
-                if (!Physics2D.Raycast(transform.position, targetDirection, creatureLogic.DistanceFromTarget, creatureLogic.ObstacleLayer))
-                {
-                    creatureLogic.SetCanSeePlayer(true);
-                    creatureLogic.SetTargetHealthScript(_healthTarget);
-                }
-                else
-                {
-                    creatureLogic.SetCanSeePlayer(false);
-                    creatureLogic.SetTargetHealthScript(null);
-                }
-            }
-            else if (creatureLogic.CanSeeTarget)
-                creatureLogic.SetCanSeePlayer(false);
+            LookLogic(_healthTarget);
         }
+    }
+
+    void LookLogic(Health _healthTarget)
+    {
+        Vector2 targetDirection = (_healthTarget.transform.position - transform.position).normalized;
+
+        if (Vector2.Angle(transform.up, targetDirection) < creatureLogic.Angle / 2)
+        {
+            if (!Physics2D.Raycast(transform.position, targetDirection, creatureLogic.DistanceFromTarget, creatureLogic.ObstacleLayer))
+            {
+                creatureLogic.SetCanSeePlayer(true);
+                creatureLogic.SetTargetHealthScript(_healthTarget);
+            }
+            else
+            {
+                creatureLogic.SetCanSeePlayer(false);
+                creatureLogic.SetTargetHealthScript(null);
+            }
+        }
+        else if (creatureLogic.CanSeeTarget)
+            creatureLogic.SetCanSeePlayer(false);
     }
 }

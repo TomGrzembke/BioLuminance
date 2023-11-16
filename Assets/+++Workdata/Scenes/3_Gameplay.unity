@@ -1865,75 +1865,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &2024743164 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2113073477146958954, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
-  m_PrefabInstance: {fileID: 5685878510402938606}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2024743167
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2024743164}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e901debac693434da6c90654a87cbf2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  uniqueState: {fileID: 2024743168}
-  TimeInState: 0
-  FixedTimeInState: 0
-  a: a
---- !u!114 &2024743168
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2024743164}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e901debac693434da6c90654a87cbf2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  uniqueState: {fileID: 2024743169}
-  TimeInState: 0
-  FixedTimeInState: 0
-  a: b
---- !u!114 &2024743169
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2024743164}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e901debac693434da6c90654a87cbf2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  uniqueState: {fileID: 2024743170}
-  TimeInState: 0
-  FixedTimeInState: 0
-  a: c
---- !u!114 &2024743170
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2024743164}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e901debac693434da6c90654a87cbf2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  uniqueState: {fileID: 0}
-  TimeInState: 0
-  FixedTimeInState: 0
-  a: d
 --- !u!1001 &5685878510402938606
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1945,7 +1876,7 @@ PrefabInstance:
     - target: {fileID: 1015608502891901096, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
       propertyPath: uniqueState
       value: 
-      objectReference: {fileID: 2024743167}
+      objectReference: {fileID: 0}
     - target: {fileID: 3157321582516056299, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
       propertyPath: m_Name
       value: '[Creature] Tuna'
@@ -1997,19 +1928,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2113073477146958954, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2024743167}
-    - targetCorrespondingSourceObject: {fileID: 2113073477146958954, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2024743168}
-    - targetCorrespondingSourceObject: {fileID: 2113073477146958954, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2024743169}
-    - targetCorrespondingSourceObject: {fileID: 2113073477146958954, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2024743170}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
 --- !u!1001 &7608655987527139202
 PrefabInstance:
