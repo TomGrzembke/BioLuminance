@@ -8,7 +8,7 @@ public class StunState : State
 
     #endregion
 
-    public override State SwitchState()
+    public override State SwitchStateInternal()
     {
         return this;
     }

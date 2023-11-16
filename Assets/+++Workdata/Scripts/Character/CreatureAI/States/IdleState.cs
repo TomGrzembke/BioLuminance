@@ -13,7 +13,7 @@ public class IdleState : State
 
     #endregion
 
-    public override State SwitchState()
+    public override State SwitchStateInternal()
     {
         //enemyManager.HandleDetection();
 

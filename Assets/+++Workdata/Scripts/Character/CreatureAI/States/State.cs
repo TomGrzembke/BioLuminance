@@ -8,9 +8,14 @@ public abstract class State : MonoBehaviour
 
     #endregion
 
+    #region
+    [SerializeField] protected State uniqueState;
+    #endregion
+
     void Awake() => creatureLogic = GetComponentInParent<CreatureLogic>();
 
-    public abstract State SwitchState();
+
+    public abstract State SwitchStateInternal();
 
     /// <summary>
     /// The time since the state was entered.

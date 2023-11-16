@@ -28,7 +28,7 @@ public class StateManager : MonoBehaviour
     {
         if (currentState == null) return;
 
-        State newState = currentState.SwitchState();
+        State newState = currentState.SwitchStateInternal();
         if (currentState != newState)
         {
             lastState = currentState;

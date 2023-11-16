@@ -984,6 +984,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: '[Creature] JellyFish'
       objectReference: {fileID: 0}
+    - target: {fileID: 3157321582516056299, guid: 6a6f8c6f7c4aed041b4f2d6675939495, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3289857228537091916, guid: 6a6f8c6f7c4aed041b4f2d6675939495, type: 3}
       propertyPath: targetLayer.m_Bits
       value: 1024
@@ -1391,6 +1395,10 @@ PrefabInstance:
     - target: {fileID: 3157321582516056299, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
       propertyPath: m_Name
       value: '[Creature] Tuna_1'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3157321582516056299, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5443997901060708342, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1865,6 +1873,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1015608502891901096, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
+      propertyPath: uniqueState
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3157321582516056299, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
       propertyPath: m_Name
       value: '[Creature] Tuna'

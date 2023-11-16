@@ -17,7 +17,7 @@ public class ChaseState : State
     #region private fields
     #endregion
 
-    public override State SwitchState()
+    public override State SwitchStateInternal()
     {
         if (TimeInState >= 5f)
         {

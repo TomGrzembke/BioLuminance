@@ -7,9 +7,9 @@ public class RoamState : State
     [Header(nameof(State))]
     [SerializeField] float minRoamRange = 5f;
     [SerializeField] float maxRoamRange = 5f;
-    [SerializeField] ChaseState chaseState;
     [SerializeField] float reachedPositionDistance = 1;
     [SerializeField] List<Health> healthTargets = new();
+    [SerializeField] State chaseState;
     #endregion
 
     #region private fields
@@ -18,16 +18,16 @@ public class RoamState : State
     float oldStoppingDistance;
     #endregion
 
-    public override State SwitchState()
+    public override State SwitchStateInternal()
     {
+        if (uniqueState)
+            return uniqueState.SwitchStateInternal();
+
         if (creatureLogic.TargetHealthScript != null)
-        {
             return chaseState;
-        }
+
         else
-        {
             return this;
-        }
     }
 
     protected override void EnterInternal()

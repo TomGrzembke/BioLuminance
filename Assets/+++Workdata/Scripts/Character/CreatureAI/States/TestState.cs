@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TestState : State
 {
-    public override State SwitchState()
+    public override State SwitchStateInternal()
     {
         return this;
     }

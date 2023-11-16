@@ -1,6 +1,6 @@
 public class AgressiveChaseState : ChaseState
 {
-    public override State SwitchState()
+    public override State SwitchStateInternal()
     {
         if (TimeInState >= 5f)
         {

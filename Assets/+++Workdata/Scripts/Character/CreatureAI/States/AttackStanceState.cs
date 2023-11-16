@@ -15,7 +15,7 @@ public class AttackStanceState : State
     #region private fields
 
     #endregion
-    public override State SwitchState()
+    public override State SwitchStateInternal()
     {
         if (TimeInState > stanceTime)
             return chaseState;

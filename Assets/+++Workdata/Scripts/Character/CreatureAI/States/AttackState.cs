@@ -15,7 +15,7 @@ public class AttackState : State
 
     #endregion
 
-    public override State SwitchState()
+    public override State SwitchStateInternal()
     {
         if (creatureLogic.DistanceFromTarget > attackDistance)
             return chaseState;
