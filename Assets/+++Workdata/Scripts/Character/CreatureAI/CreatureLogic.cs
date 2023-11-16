@@ -1,4 +1,3 @@
-using MyBox;
 using System;
 using UnityEditor;
 using UnityEngine;
@@ -16,7 +15,7 @@ public abstract class CreatureLogic : MonoBehaviour
 
     public bool CanSeeTarget => canSeeTarget;
     [SerializeField] bool canSeeTarget = false;
-     
+
     [SerializeField] float distanceFromTarget;
     public float DistanceFromTarget => distanceFromTarget;
 
@@ -27,7 +26,6 @@ public abstract class CreatureLogic : MonoBehaviour
 
     public float Angle => angle;
     [Range(0, 360)][SerializeField] float angle = 50f;
-
 
     public float AgentSpeed => agentSpeed;
     [SerializeField] float agentSpeed = 3.5f;
@@ -42,8 +40,8 @@ public abstract class CreatureLogic : MonoBehaviour
     public LayerMask ObstacleLayer => obstacleLayer;
     [SerializeField] LayerMask obstacleLayer;
 
-    [Header("Health Settings")]
-    [SerializeField] EnemyLimbStats[] enemyLimbStats;
+    [Header("Health")]
+    [SerializeField] LimbManager limbManager;
     #endregion
 
     #region private fields
@@ -125,13 +123,6 @@ public abstract class CreatureLogic : MonoBehaviour
         angleInDegrees += eulerY;
 
         return new Vector2(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
-    }
-
-    [ButtonMethod()]
-    public int CollectLimbs()
-    {
-        enemyLimbStats = GetComponentsInChildren<EnemyLimbStats>();
-        return enemyLimbStats.Length;
     }
 
     void OnStun(bool condition)

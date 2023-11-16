@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyLimbStats : MonoBehaviour
+public class LimbStats : MonoBehaviour
 {
     #region serialized fields
 

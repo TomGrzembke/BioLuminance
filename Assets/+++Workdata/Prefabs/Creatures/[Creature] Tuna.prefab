@@ -1194,22 +1194,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfad8942c39eb5c49abb27e9d4443844, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stateManager: {fileID: 2442591737056489558}
   targetHealthScript: {fileID: 0}
-  canSeeTarget: 0
   targetLayer:
     serializedVersion: 2
     m_Bits: 512
-  obstacleLayer:
-    serializedVersion: 2
-    m_Bits: 256
+  canSeeTarget: 0
+  distanceFromTarget: 0
   detectionRadius: 20
   angle: 80
-  distanceFromTarget: 0
   agentSpeed: 3.5
   agentAcceleration: 5
   agentStoppingDistance: 1
-  enemyLimbStats: []
+  stateManager: {fileID: 2442591737056489558}
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  limbManager: {fileID: 0}
   agent: {fileID: 5218931249399040763}
 --- !u!195 &5218931249399040763
 NavMeshAgent:
