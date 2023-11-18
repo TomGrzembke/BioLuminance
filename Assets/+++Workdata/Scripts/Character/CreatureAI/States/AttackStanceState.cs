@@ -1,3 +1,4 @@
+using MyBox;
 using UnityEngine;
 
 public class AttackStanceState : State
@@ -9,11 +10,15 @@ public class AttackStanceState : State
     [SerializeField] float stanceTime = 5;
     [SerializeField] float acceleration = 7;
 
+    [MinMaxRange(0, 10)]
+    [SerializeField] RangedFloat randomMoveLength = new(0,10);
+
     #endregion
 
     #region private fields
 
     #endregion
+
     public override State SwitchStateInternal()
     {
         if (TimeInState > stanceTime)
@@ -35,7 +40,8 @@ public class AttackStanceState : State
         int pathVertical = Random.Range(-1, 2);
         Vector3 pathAddVec3 = new(pathVertical, pathHorizontal);
 
-        creatureLogic.agent.SetDestination(creatureLogic.TargetHealthScript.transform.position + pathAddVec3 * 10);
+        float randomMultiplier = Random.Range(randomMoveLength.Min, randomMoveLength.Max);
+        creatureLogic.agent.SetDestination(creatureLogic.TargetHealthScript.transform.position + pathAddVec3 * randomMultiplier);
     }
 
     protected override void FixedUpdateInternal()

@@ -49,9 +49,9 @@ public abstract class State : MonoBehaviour
     {
         TimeInState = 0;
         FixedTimeInState = 0;
+        creatureLogic.ResetAgentVars();
         EnterInternal();
     }
-
 
     protected abstract void EnterInternal();
 

@@ -503,7 +503,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.000008450124, y: -0.017250061, z: -10}
+  m_LocalPosition: {x: 0.00001733298, y: -0.017250061, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1384,71 +1384,6 @@ MonoBehaviour:
   - {fileID: 5007524509860467351, guid: f13f1e630566bef48a8fed37435548c0, type: 3}
   - {fileID: 5007524509860467351, guid: e3ead7cc1b9537041bd3d07bd6d5c6d9, type: 3}
   - {fileID: 5007524509860467351, guid: ebbe59ac4bcc82642a335f045087f61b, type: 3}
---- !u!1001 &1491637386
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3157321582516056299, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
-      propertyPath: m_Name
-      value: '[Creature] Tuna_1'
-      objectReference: {fileID: 0}
-    - target: {fileID: 3157321582516056299, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5443997901060708342, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 7.74
-      objectReference: {fileID: 0}
-    - target: {fileID: 5443997901060708342, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 11.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5443997901060708342, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5443997901060708342, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5443997901060708342, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5443997901060708342, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5443997901060708342, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5443997901060708342, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5443997901060708342, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5443997901060708342, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8910744880728304415, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 519420031}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
 --- !u!1 &1500829847
 GameObject:
   m_ObjectHideFlags: 0
@@ -1873,9 +1808,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1015608502891901096, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
+      propertyPath: uniqueState
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1850263503238949771, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
+      propertyPath: randomMoveLength.Max
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1850263503238949771, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
+      propertyPath: randomMoveLength.Min
+      value: 6.2829523
+      objectReference: {fileID: 0}
     - target: {fileID: 3157321582516056299, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
       propertyPath: m_Name
       value: '[Creature] Tuna'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3289857228537091916, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
+      propertyPath: targetLayer.m_Bits
+      value: 1536
       objectReference: {fileID: 0}
     - target: {fileID: 5443997901060708342, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2271,4 +2222,3 @@ SceneRoots:
   - {fileID: 7608655987527139202}
   - {fileID: 937133058}
   - {fileID: 5685878510402938606}
-  - {fileID: 1491637386}

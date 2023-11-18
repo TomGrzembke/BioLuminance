@@ -5,7 +5,7 @@ public class AttackState : State
     #region serialized fields
     [Header(nameof(AttackState))]
 
-    public float attackDamage = 0.01f;
+    [SerializeField] float attackDamage = 0.01f;
     [Space(5)]
     [SerializeField] ChaseState chaseState;
     [SerializeField] RoamState roamState;

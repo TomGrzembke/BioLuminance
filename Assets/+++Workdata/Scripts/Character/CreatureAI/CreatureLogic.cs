@@ -29,12 +29,15 @@ public abstract class CreatureLogic : MonoBehaviour
 
     public float AgentSpeed => agentSpeed;
     [SerializeField] float agentSpeed = 3.5f;
+    float defaultAgentSpeed = 3.5f;
 
     public float AgentAcceleration => agentAcceleration;
     [SerializeField] float agentAcceleration = 5f;
+    float defaultAgentAcceleration = 3.5f;
 
     public float AgentStoppingDistance => agentStoppingDistance;
     [SerializeField] float agentStoppingDistance = 1f;
+    float defaultAgentStoppingDistance = 3.5f;
 
     [SerializeField] protected StateManager stateManager;
     public LayerMask ObstacleLayer => obstacleLayer;
@@ -61,6 +64,12 @@ public abstract class CreatureLogic : MonoBehaviour
         agent.updateRotation = false;
         agent.updateUpAxis = false;
     }
+    void Start()
+    {
+        defaultAgentSpeed = agentSpeed;
+        defaultAgentAcceleration = agentAcceleration;
+        defaultAgentStoppingDistance = agentStoppingDistance;
+    }
     void OnValidate()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -81,7 +90,12 @@ public abstract class CreatureLogic : MonoBehaviour
         agent.acceleration = agentAcceleration;
         agent.stoppingDistance = agentStoppingDistance;
     }
-
+    public void ResetAgentVars()
+    {
+        agent.speed = defaultAgentSpeed;
+        agent.acceleration = defaultAgentAcceleration;
+        agent.stoppingDistance = defaultAgentStoppingDistance;
+    }
     public void RefreshAgentVars(float newSpeed = 3, float newAcceleration = 5, float newStoppingDistance = 0)
     {
         agentSpeed = newSpeed;
