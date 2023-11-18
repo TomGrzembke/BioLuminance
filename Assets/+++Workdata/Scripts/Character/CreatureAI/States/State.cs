@@ -17,7 +17,7 @@ public abstract class State : MonoBehaviour
     public State SwitchState()
     {
         if (!uniqueState)
-            return null;
+            return SwitchStateInternal();
 
         if (!uniqueState.uniqueState)
             return uniqueState.SwitchStateInternal();

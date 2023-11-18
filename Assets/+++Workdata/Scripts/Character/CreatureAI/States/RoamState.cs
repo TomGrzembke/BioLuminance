@@ -4,7 +4,7 @@ using UnityEngine;
 public class RoamState : State
 {
     #region serialized fields
-    [Header(nameof(State))]
+    [Header(nameof(RoamState))]
     [SerializeField] float minRoamRange = 5f;
     [SerializeField] float maxRoamRange = 5f;
     [SerializeField] float reachedPositionDistance = 1;
@@ -54,24 +54,25 @@ public class RoamState : State
         roamPosition = startingPosition;
     }
 
+
+    void HandleRoaming()
+    {
+        creatureLogic.agent.SetDestination(roamPosition);
+
+        if (Vector3.Distance(transform.position, roamPosition) < reachedPositionDistance)
+            roamPosition = GetRandomRoamingPosition();
+
+    }
+
     Vector3 GetRandomRoamingPosition()
     {
         return startingPosition + new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized * Random.Range(minRoamRange, maxRoamRange);
     }
 
-    private void HandleRoaming()
-    {
-        creatureLogic.agent.SetDestination(roamPosition);
-
-        if (Vector3.Distance(transform.position, roamPosition) < reachedPositionDistance)
-        {
-            roamPosition = GetRandomRoamingPosition();
-        }
-    }
-
     public void HandleDetection()
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, creatureLogic.DetectionRadius, creatureLogic.TargetLayer);
+
         if (colliders.Length == 0)
         {
             healthTargets.Clear();

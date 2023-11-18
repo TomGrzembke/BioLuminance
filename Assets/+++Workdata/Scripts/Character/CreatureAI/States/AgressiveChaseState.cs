@@ -1,5 +1,19 @@
+using UnityEngine;
+
 public class AgressiveChaseState : ChaseState
 {
+    #region serialized fields
+
+    [Header(nameof(AgressiveChaseState))]
+    [SerializeField] float agentSpeed = 10;
+    [SerializeField] float agentAcceleration = 30;
+    #endregion
+
+    #region private fields
+    float oldAgentSpeed;
+    float oldAgentAcceleration;
+    #endregion
+
     public override State SwitchStateInternal()
     {
         if (TimeInState >= 5f)
@@ -23,7 +37,14 @@ public class AgressiveChaseState : ChaseState
 
     protected override void EnterInternal()
     {
-        creatureLogic.RefreshAgentVars(11, 30);
+        oldAgentSpeed = creatureLogic.AgentSpeed;
+        oldAgentAcceleration = creatureLogic.AgentAcceleration;
+        creatureLogic.RefreshAgentVars(agentSpeed, agentAcceleration);
+    }
+
+    protected override void ExitInternal()
+    {
+        creatureLogic.RefreshAgentVars(oldAgentSpeed, oldAgentAcceleration);
     }
 
 }

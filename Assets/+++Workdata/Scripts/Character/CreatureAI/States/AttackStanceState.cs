@@ -1,10 +1,9 @@
-using NavMeshPlus.Extensions;
 using UnityEngine;
 
 public class AttackStanceState : State
 {
     #region serialized fields
-
+    [Header(nameof(AttackStanceState))]
     [SerializeField] State chaseState;
     [SerializeField] State roamState;
     [SerializeField] float stanceTime = 5;

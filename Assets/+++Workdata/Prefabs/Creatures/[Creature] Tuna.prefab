@@ -245,7 +245,9 @@ MonoBehaviour:
   FixedTimeInState: 0
   chaseRange: 10
   attackRange: 4
-  chaseSpeed: 2
+  acceleration: 5
+  oldAcceleration: 5
+  chaseSpeed: 3
   attackState: {fileID: 1022936343491123460}
   roamState: {fileID: 1015608502891901096}
   agressiveChaseState: {fileID: 3301028009289224524}
@@ -681,9 +683,9 @@ Transform:
   - {fileID: 4920478150630365393}
   - {fileID: 5262341182039944397}
   - {fileID: 7984789459914473332}
+  - {fileID: 4849406910496821067}
   - {fileID: 1239626430975220014}
   - {fileID: 8219892314355309388}
-  - {fileID: 4849406910496821067}
   - {fileID: 1082978764447204271}
   - {fileID: 5125752987788624351}
   m_Father: {fileID: 5418364295651411625}
@@ -797,10 +799,14 @@ MonoBehaviour:
   FixedTimeInState: 0
   chaseRange: 10
   attackRange: 2
+  acceleration: 5
+  oldAcceleration: 5
   chaseSpeed: 2
   attackState: {fileID: 1022936343491123460}
   roamState: {fileID: 1015608502891901096}
   agressiveChaseState: {fileID: 0}
+  agentSpeed: 10
+  agentAcceleration: 25
 --- !u!1 &7446373072917147322
 GameObject:
   m_ObjectHideFlags: 0
