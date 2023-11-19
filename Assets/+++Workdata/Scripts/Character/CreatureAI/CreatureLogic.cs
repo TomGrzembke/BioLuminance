@@ -20,24 +20,18 @@ public abstract class CreatureLogic : MonoBehaviour
     public float DistanceFromTarget => distanceFromTarget;
 
     [Header("AI Settings")]
+    [SerializeField] float defaultAgentSpeed = 3.5f;
+
+    [SerializeField] float defaultAgentAcceleration = 3.5f;
+
+    [SerializeField] float defaultAgentStoppingDistance = 3.5f;
 
     [SerializeField] float detectionRadius;
     public float DetectionRadius => detectionRadius;
 
-    public float Angle => angle;
-    [Range(0, 360)][SerializeField] float angle = 50f;
+    public float DetectionAngle => detectionAngle;
+    [Range(0, 360)][SerializeField] float detectionAngle = 50f;
 
-    public float AgentSpeed => agentSpeed;
-    [SerializeField] float agentSpeed = 3.5f;
-    float defaultAgentSpeed = 3.5f;
-
-    public float AgentAcceleration => agentAcceleration;
-    [SerializeField] float agentAcceleration = 5f;
-    float defaultAgentAcceleration = 3.5f;
-
-    public float AgentStoppingDistance => agentStoppingDistance;
-    [SerializeField] float agentStoppingDistance = 1f;
-    float defaultAgentStoppingDistance = 3.5f;
 
     [SerializeField] protected StateManager stateManager;
     public LayerMask ObstacleLayer => obstacleLayer;
@@ -64,16 +58,12 @@ public abstract class CreatureLogic : MonoBehaviour
         agent.updateRotation = false;
         agent.updateUpAxis = false;
     }
-    void Start()
-    {
-        defaultAgentSpeed = agentSpeed;
-        defaultAgentAcceleration = agentAcceleration;
-        defaultAgentStoppingDistance = agentStoppingDistance;
-    }
+
+    void Start() => ResetAgentVars();
     void OnValidate()
     {
         agent = GetComponent<NavMeshAgent>();
-        RefreshAgentVars();
+        ResetAgentVars();
     }
     void OnEnable()
     {
@@ -84,24 +74,32 @@ public abstract class CreatureLogic : MonoBehaviour
         stun.OnStun -= OnStun;
     }
 
-    public void RefreshAgentVars()
-    {
-        agent.speed = agentSpeed;
-        agent.acceleration = agentAcceleration;
-        agent.stoppingDistance = agentStoppingDistance;
-    }
     public void ResetAgentVars()
     {
         agent.speed = defaultAgentSpeed;
         agent.acceleration = defaultAgentAcceleration;
         agent.stoppingDistance = defaultAgentStoppingDistance;
     }
-    public void RefreshAgentVars(float newSpeed = 3, float newAcceleration = 5, float newStoppingDistance = 0)
+
+    public void SetAgentVars(float newSpeed = 3, float newAcceleration = 5, float newStoppingDistance = 0)
     {
-        agentSpeed = newSpeed;
-        agentAcceleration = newAcceleration;
-        agentStoppingDistance = newStoppingDistance;
-        RefreshAgentVars();
+        agent.speed = newSpeed;
+        agent.acceleration = newAcceleration;
+        agent.stoppingDistance = newStoppingDistance;
+    }
+    public void SetAgentVars(bool speedShouldBeSet, float newAcceleration = 5, float newStoppingDistance = 0)
+    {
+        agent.acceleration = newAcceleration;
+        agent.stoppingDistance = newStoppingDistance;
+    }
+    public void SetAgentVars(float newSpeed = 3, bool accelShouldBeSet = false, float newStoppingDistance = 0)
+    {
+        agent.speed = newSpeed;
+        agent.stoppingDistance = newStoppingDistance;
+    }
+    public void SetAgentVars(bool speedShouldBeSet, bool accelShouldBeSet, float newStoppingDistance = 0)
+    {
+        agent.stoppingDistance = newStoppingDistance;
     }
 
     public void HandleRotate()
@@ -114,7 +112,7 @@ public abstract class CreatureLogic : MonoBehaviour
         {
             Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, velocity);
 
-            float step = AgentAcceleration * Time.deltaTime;
+            float step = agent.acceleration * Time.deltaTime;
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, step);
         }
     }
@@ -124,8 +122,8 @@ public abstract class CreatureLogic : MonoBehaviour
         Handles.color = Color.green;
         Handles.DrawWireArc(transform.position, Vector3.forward, Vector3.up, 360, DetectionRadius); //This visualizes the detection radius
 
-        Vector3 viewAngle01 = DirectionFromAngle(transform.eulerAngles.y, -angle / 2); //This seperates the Angle into two different values
-        Vector3 viewAngle02 = DirectionFromAngle(transform.eulerAngles.y, angle / 2); //This seperates the Angle into two different values
+        Vector3 viewAngle01 = DirectionFromAngle(transform.eulerAngles.y, -detectionAngle / 2); //This seperates the Angle into two different values
+        Vector3 viewAngle02 = DirectionFromAngle(transform.eulerAngles.y, detectionAngle / 2); //This seperates the Angle into two different values
 
         Gizmos.color = Color.red;
         Gizmos.matrix = transform.localToWorldMatrix;

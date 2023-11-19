@@ -47,15 +47,14 @@ MonoBehaviour:
   uniqueState: {fileID: 0}
   stateAgentSpeed: 3.5
   stateAgentAcceleration: 5
-  stateAgentStoppingDistance: 1
+  stateAgentStoppingDistance: 2
+  useStateVars: 1
   TimeInState: 0
   FixedTimeInState: 0
   attackDamage: 0.1
   chaseState: {fileID: 5839027869137408290}
   roamState: {fileID: 1015608502891901096}
   attackStanceState: {fileID: 1850263503238949771}
-  attackDistance: 3.5
-  oldStoppingDistance: 0
   maxTimeInState: 0.3
 --- !u!1 &701545142850078953
 GameObject:
@@ -194,17 +193,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uniqueState: {fileID: 0}
-  stateAgentSpeed: 3.5
-  stateAgentAcceleration: 5
-  stateAgentStoppingDistance: 1
+  stateAgentSpeed: 5
+  stateAgentAcceleration: 9
+  stateAgentStoppingDistance: 0
+  useStateVars: 1
   TimeInState: 0
   FixedTimeInState: 0
   chaseState: {fileID: 5839027869137408290}
   roamState: {fileID: 1015608502891901096}
   stanceTime: 4
-  acceleration: 7
   randomMoveLength:
-    Min: 0
+    Min: 6.2829523
     Max: 10
 --- !u!1 &1762515509951902019
 GameObject:
@@ -251,16 +250,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uniqueState: {fileID: 0}
-  stateAgentSpeed: 3.5
-  stateAgentAcceleration: 5
-  stateAgentStoppingDistance: 1
+  stateAgentSpeed: 4.5
+  stateAgentAcceleration: 6
+  stateAgentStoppingDistance: 2
+  useStateVars: 1
   TimeInState: 0
   FixedTimeInState: 0
   chaseRange: 10
-  attackRange: 4
-  acceleration: 5
-  oldAcceleration: 5
-  chaseSpeed: 3
   attackState: {fileID: 1022936343491123460}
   roamState: {fileID: 1015608502891901096}
   agressiveChaseState: {fileID: 3301028009289224524}
@@ -310,8 +306,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uniqueState: {fileID: 0}
   stateAgentSpeed: 3.5
-  stateAgentAcceleration: 5
+  stateAgentAcceleration: 3
   stateAgentStoppingDistance: 1
+  useStateVars: 1
   TimeInState: 0
   FixedTimeInState: 0
   minRoamRange: 5
@@ -810,21 +807,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uniqueState: {fileID: 0}
-  stateAgentSpeed: 3.5
-  stateAgentAcceleration: 5
-  stateAgentStoppingDistance: 1
+  stateAgentSpeed: 10
+  stateAgentAcceleration: 9
+  stateAgentStoppingDistance: 0.5
+  useStateVars: 1
   TimeInState: 0
   FixedTimeInState: 0
   chaseRange: 10
-  attackRange: 2
-  acceleration: 5
-  oldAcceleration: 5
-  chaseSpeed: 2
   attackState: {fileID: 1022936343491123460}
   roamState: {fileID: 1015608502891901096}
   agressiveChaseState: {fileID: 0}
-  agentSpeed: 10
-  agentAcceleration: 25
 --- !u!1 &7446373072917147322
 GameObject:
   m_ObjectHideFlags: 0
@@ -1172,9 +1164,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uniqueState: {fileID: 0}
-  stateAgentSpeed: 3.5
-  stateAgentAcceleration: 5
-  stateAgentStoppingDistance: 1
+  stateAgentSpeed: 0
+  stateAgentAcceleration: 0
+  stateAgentStoppingDistance: 0
+  useStateVars: 1
   TimeInState: 0
   FixedTimeInState: 0
 --- !u!1 &8771526564780753755
@@ -1230,14 +1223,14 @@ MonoBehaviour:
   targetHealthScript: {fileID: 0}
   targetLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 1536
   canSeeTarget: 0
   distanceFromTarget: 0
+  defaultAgentSpeed: 3.5
+  defaultAgentAcceleration: 5
+  defaultAgentStoppingDistance: 1
   detectionRadius: 20
-  angle: 80
-  agentSpeed: 3.5
-  agentAcceleration: 5
-  agentStoppingDistance: 1
+  detectionAngle: 50
   stateManager: {fileID: 2442591737056489558}
   obstacleLayer:
     serializedVersion: 2

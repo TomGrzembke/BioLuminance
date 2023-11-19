@@ -15,11 +15,9 @@ public abstract class State : MonoBehaviour
 
     public float StateAgentStoppingDistance => stateAgentStoppingDistance;
     [SerializeField] protected float stateAgentStoppingDistance = 1f;
+    [SerializeField] bool useStateVars;
 
     #endregion
-
-
-
 
     void Awake() => creatureLogic = GetComponentInParent<CreatureLogic>();
 
@@ -59,6 +57,8 @@ public abstract class State : MonoBehaviour
     {
         TimeInState = 0;
         FixedTimeInState = 0;
+        if(useStateVars)
+            SetAgentVarsToStateVars();
         EnterInternal();
     }
 
@@ -89,4 +89,9 @@ public abstract class State : MonoBehaviour
     }
 
     protected abstract void ExitInternal();
+
+    public void SetAgentVarsToStateVars()
+    {
+        creatureLogic.SetAgentVars(stateAgentSpeed, stateAgentAcceleration, stateAgentStoppingDistance);
+    }
 }

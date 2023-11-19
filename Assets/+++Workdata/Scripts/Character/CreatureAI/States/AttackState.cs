@@ -10,14 +10,12 @@ public class AttackState : State
     [SerializeField] ChaseState chaseState;
     [SerializeField] RoamState roamState;
     [SerializeField] AttackStanceState attackStanceState;
-    [SerializeField] float attackDistance = 2;
-    [SerializeField] float oldStoppingDistance;
     [SerializeField] float maxTimeInState = 1.5f;
     #endregion
 
     public override State SwitchStateInternal()
     {
-        if (creatureLogic.DistanceFromTarget > attackDistance)
+        if (creatureLogic.DistanceFromTarget > stateAgentStoppingDistance)
             return chaseState;
         else if (TimeInState > maxTimeInState)
             return attackStanceState;
@@ -27,8 +25,6 @@ public class AttackState : State
 
     protected override void EnterInternal()
     {
-        oldStoppingDistance = creatureLogic.AgentStoppingDistance;
-        creatureLogic.RefreshAgentVars(creatureLogic.AgentSpeed, creatureLogic.AgentAcceleration, attackDistance);
         creatureLogic.TargetHealthScript.AddHealth(-attackDamage);
     }
 
@@ -45,6 +41,5 @@ public class AttackState : State
 
     protected override void ExitInternal()
     {
-        creatureLogic.RefreshAgentVars(creatureLogic.AgentSpeed, creatureLogic.AgentAcceleration, oldStoppingDistance);
     }
 }

@@ -8,7 +8,6 @@ public class AttackStanceState : State
     [SerializeField] State chaseState;
     [SerializeField] State roamState;
     [SerializeField] float stanceTime = 5;
-    [SerializeField] float acceleration = 7;
 
     [MinMaxRange(0, 10)]
     [SerializeField] RangedFloat randomMoveLength = new(0,10);
@@ -29,7 +28,6 @@ public class AttackStanceState : State
 
     protected override void EnterInternal()
     {
-        creatureLogic.RefreshAgentVars(creatureLogic.AgentSpeed, acceleration, 0);
     }
 
     protected override void UpdateInternal()

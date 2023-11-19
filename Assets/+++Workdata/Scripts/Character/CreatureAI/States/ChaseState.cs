@@ -6,11 +6,6 @@ public class ChaseState : State
     [Header(nameof(ChaseState))]
 
     [SerializeField] protected float chaseRange;
-    [SerializeField] protected float attackRange = 2;
-    [SerializeField] protected float acceleration = 5;
-    [SerializeField] protected float oldAcceleration = 5;
-    [SerializeField] protected float chaseSpeed = 2;
-
     [SerializeField] protected AttackState attackState;
     [SerializeField] protected RoamState roamState;
     [SerializeField] AgressiveChaseState agressiveChaseState;
@@ -24,7 +19,7 @@ public class ChaseState : State
         if (TimeInState >= 5f)
             return agressiveChaseState;
 
-        else if (creatureLogic.DistanceFromTarget <= attackRange)
+        else if (creatureLogic.DistanceFromTarget <= stateAgentStoppingDistance)
             return attackState;
 
         else if (creatureLogic.DistanceFromTarget >= chaseRange)
@@ -39,8 +34,6 @@ public class ChaseState : State
 
     protected override void EnterInternal()
     {
-        oldAcceleration = creatureLogic.AgentAcceleration;
-        creatureLogic.RefreshAgentVars(chaseSpeed, acceleration, attackRange);
     }
 
     protected override void UpdateInternal()
@@ -55,7 +48,6 @@ public class ChaseState : State
 
     protected override void ExitInternal()
     {
-        creatureLogic.RefreshAgentVars(creatureLogic.AgentSpeed, oldAcceleration, creatureLogic.AgentStoppingDistance);
     }
 
     void HandleMovement()

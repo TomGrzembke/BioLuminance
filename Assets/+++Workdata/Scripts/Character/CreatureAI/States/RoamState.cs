@@ -14,7 +14,6 @@ public class RoamState : State
     #region private fields
     Vector2 roamPosition;
     Vector3 startingPosition;
-    float oldStoppingDistance;
     #endregion
 
     public override State SwitchStateInternal()
@@ -27,8 +26,6 @@ public class RoamState : State
 
     protected override void EnterInternal()
     {
-        oldStoppingDistance = creatureLogic.AgentStoppingDistance;
-        creatureLogic.RefreshAgentVars(creatureLogic.AgentSpeed, creatureLogic.AgentAcceleration, 0);
     }
 
     protected override void UpdateInternal()
@@ -44,7 +41,6 @@ public class RoamState : State
 
     protected override void ExitInternal()
     {
-        creatureLogic.RefreshAgentVars(creatureLogic.AgentSpeed, creatureLogic.AgentAcceleration, oldStoppingDistance);
     }
 
     void Start()
@@ -96,7 +92,7 @@ public class RoamState : State
     {
         Vector2 targetDirection = (_healthTarget.transform.position - transform.position).normalized;
 
-        if (Vector2.Angle(transform.up, targetDirection) < creatureLogic.Angle / 2)
+        if (Vector2.Angle(transform.up, targetDirection) < creatureLogic.DetectionAngle / 2)
         {
             if (!Physics2D.Raycast(transform.position, targetDirection, creatureLogic.DistanceFromTarget, creatureLogic.ObstacleLayer))
             {
