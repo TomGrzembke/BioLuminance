@@ -45,6 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uniqueState: {fileID: 0}
+  stateAgentSpeed: 3.5
+  stateAgentAcceleration: 5
+  stateAgentStoppingDistance: 1
   TimeInState: 0
   FixedTimeInState: 0
   attackDamage: 0.1
@@ -191,6 +194,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uniqueState: {fileID: 0}
+  stateAgentSpeed: 3.5
+  stateAgentAcceleration: 5
+  stateAgentStoppingDistance: 1
   TimeInState: 0
   FixedTimeInState: 0
   chaseState: {fileID: 5839027869137408290}
@@ -245,6 +251,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uniqueState: {fileID: 0}
+  stateAgentSpeed: 3.5
+  stateAgentAcceleration: 5
+  stateAgentStoppingDistance: 1
   TimeInState: 0
   FixedTimeInState: 0
   chaseRange: 10
@@ -300,11 +309,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uniqueState: {fileID: 0}
+  stateAgentSpeed: 3.5
+  stateAgentAcceleration: 5
+  stateAgentStoppingDistance: 1
   TimeInState: 0
   FixedTimeInState: 0
   minRoamRange: 5
   maxRoamRange: 5
-  reachedPositionDistance: 1
   healthTargets: []
   chaseState: {fileID: 5839027869137408290}
 --- !u!1 &3157321582516056299
@@ -799,6 +810,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uniqueState: {fileID: 0}
+  stateAgentSpeed: 3.5
+  stateAgentAcceleration: 5
+  stateAgentStoppingDistance: 1
   TimeInState: 0
   FixedTimeInState: 0
   chaseRange: 10
@@ -1158,6 +1172,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uniqueState: {fileID: 0}
+  stateAgentSpeed: 3.5
+  stateAgentAcceleration: 5
+  stateAgentStoppingDistance: 1
   TimeInState: 0
   FixedTimeInState: 0
 --- !u!1 &8771526564780753755

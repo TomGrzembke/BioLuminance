@@ -3,14 +3,23 @@ using UnityEngine;
 public abstract class State : MonoBehaviour
 {
     #region private fields
+    [Header(nameof(State))]
+    [SerializeField] protected State uniqueState;
 
     protected CreatureLogic creatureLogic;
+    public float StateAgentSpeed => stateAgentSpeed;
+    [SerializeField] protected float stateAgentSpeed = 3.5f;
+
+    public float StateAgentAcceleration => stateAgentAcceleration;
+    [SerializeField] protected float stateAgentAcceleration = 5f;
+
+    public float StateAgentStoppingDistance => stateAgentStoppingDistance;
+    [SerializeField] protected float stateAgentStoppingDistance = 1f;
 
     #endregion
 
-    #region
-    [SerializeField] protected State uniqueState;
-    #endregion
+
+
 
     void Awake() => creatureLogic = GetComponentInParent<CreatureLogic>();
 
@@ -35,6 +44,7 @@ public abstract class State : MonoBehaviour
 
     public abstract State SwitchStateInternal();
 
+    [Header(nameof(Time))]
     /// <summary>
     /// The time since the state was entered.
     /// </summary>
@@ -49,7 +59,6 @@ public abstract class State : MonoBehaviour
     {
         TimeInState = 0;
         FixedTimeInState = 0;
-        creatureLogic.ResetAgentVars();
         EnterInternal();
     }
 
@@ -73,6 +82,7 @@ public abstract class State : MonoBehaviour
 
     public void ExitState()
     {
+        creatureLogic.ResetAgentVars();
         TimeInState = 0;
         FixedTimeInState = 0;
         ExitInternal();

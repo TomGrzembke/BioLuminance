@@ -7,7 +7,6 @@ public class RoamState : State
     [Header(nameof(RoamState))]
     [SerializeField] float minRoamRange = 5f;
     [SerializeField] float maxRoamRange = 5f;
-    [SerializeField] float reachedPositionDistance = 1;
     [SerializeField] List<Health> healthTargets = new();
     [SerializeField] State chaseState;
     #endregion
@@ -59,7 +58,7 @@ public class RoamState : State
     {
         creatureLogic.agent.SetDestination(roamPosition);
 
-        if (Vector3.Distance(transform.position, roamPosition) < reachedPositionDistance)
+        if (Vector3.Distance(transform.position, roamPosition) < stateAgentStoppingDistance)
             roamPosition = GetRandomRoamingPosition();
 
     }

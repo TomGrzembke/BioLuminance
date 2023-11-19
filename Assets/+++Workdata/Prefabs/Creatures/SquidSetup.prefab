@@ -114,14 +114,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tailEnd: {fileID: 0}
   bodyParts: []
+  grabSpeed: 60
   grabPos: {fileID: 0}
+  fouldOutOnStart: 1
   attachPos: {fileID: 4756183068748883934}
   pointFollowMode: 0
   length: 20
   vertexDistance: 0
   smoothSpeed: 2
   trailSpeed: 350
-  fouldOutOnStart: 1
   wiggleMode: 0
   wiggleSpeed: 350
   wiggleMagnitude: 350
@@ -394,14 +395,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tailEnd: {fileID: 0}
   bodyParts: []
+  grabSpeed: 60
   grabPos: {fileID: 0}
+  fouldOutOnStart: 1
   attachPos: {fileID: 346727465797426163}
   pointFollowMode: 1
   length: 20
   vertexDistance: 1
   smoothSpeed: 2
   trailSpeed: 1000
-  fouldOutOnStart: 1
   wiggleMode: 0
   wiggleSpeed: 10
   wiggleMagnitude: 20
@@ -612,14 +614,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tailEnd: {fileID: 0}
   bodyParts: []
+  grabSpeed: 60
   grabPos: {fileID: 0}
+  fouldOutOnStart: 0
   attachPos: {fileID: 3130638859674114437}
   pointFollowMode: 0
   length: 10
   vertexDistance: 0
   smoothSpeed: 0.01
   trailSpeed: 350
-  fouldOutOnStart: 0
   wiggleMode: 0
   wiggleSpeed: 10
   wiggleMagnitude: 20
@@ -891,14 +894,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tailEnd: {fileID: 0}
   bodyParts: []
+  grabSpeed: 60
   grabPos: {fileID: 0}
+  fouldOutOnStart: 0
   attachPos: {fileID: 4592327612347872836}
   pointFollowMode: 1
   length: 100
   vertexDistance: 0.01
   smoothSpeed: 0.01
   trailSpeed: 350
-  fouldOutOnStart: 0
   wiggleMode: 0
   wiggleSpeed: 10
   wiggleMagnitude: 20
@@ -1070,7 +1074,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6112110008855562169}
-  - component: {fileID: 5662620463079863019}
   m_Layer: 0
   m_Name: SquidSetup
   m_TagString: Untagged
@@ -1101,20 +1104,6 @@ Transform:
   - {fileID: 3623729448849210620}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5662620463079863019
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4551620100194671049}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b89e67a637096ff47b026c8d84afb0ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeed: 25
-  rotatePlayer: 1
 --- !u!1 &5319242277558414904
 GameObject:
   m_ObjectHideFlags: 0
@@ -1479,14 +1468,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tailEnd: {fileID: 0}
   bodyParts: []
+  grabSpeed: 60
   grabPos: {fileID: 0}
+  fouldOutOnStart: 0
   attachPos: {fileID: 3675751665404718292}
   pointFollowMode: 0
   length: 20
   vertexDistance: 0
   smoothSpeed: 0.02
   trailSpeed: 350
-  fouldOutOnStart: 0
   wiggleMode: 0
   wiggleSpeed: 350
   wiggleMagnitude: 350
@@ -1728,14 +1718,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tailEnd: {fileID: 0}
   bodyParts: []
+  grabSpeed: 60
   grabPos: {fileID: 0}
+  fouldOutOnStart: 0
   attachPos: {fileID: 8194815602192076895}
   pointFollowMode: 1
   length: 100
   vertexDistance: 0.2
   smoothSpeed: 0.01
   trailSpeed: 350
-  fouldOutOnStart: 0
   wiggleMode: 0
   wiggleSpeed: 10
   wiggleMagnitude: 20
@@ -2072,14 +2063,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tailEnd: {fileID: 0}
   bodyParts: []
+  grabSpeed: 60
   grabPos: {fileID: 0}
+  fouldOutOnStart: 0
   attachPos: {fileID: 6169192566010044890}
   pointFollowMode: 0
   length: 18
   vertexDistance: 0
   smoothSpeed: 0.02
   trailSpeed: 350
-  fouldOutOnStart: 0
   wiggleMode: 0
   wiggleSpeed: 350
   wiggleMagnitude: 350
