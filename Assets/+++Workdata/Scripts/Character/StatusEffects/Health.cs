@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using MyBox;
 
 public class Health : MonoBehaviour
 {
@@ -19,6 +20,12 @@ public class Health : MonoBehaviour
     void OnValidate()
     {
         SetCurrentHealth(maximumHealth);
+    }
+
+    [ButtonMethod()]
+    public void DamageTest()
+    {
+        AddHealth(-maximumHealth / 4);
     }
 
     public void AddHealth(float additionalHealth)
