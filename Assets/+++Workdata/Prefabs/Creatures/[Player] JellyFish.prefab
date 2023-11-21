@@ -57,7 +57,7 @@ Transform:
   m_GameObject: {fileID: 1198879950516023628}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.84, y: 0.69, z: 0}
+  m_LocalPosition: {x: -1.041, y: 0.476, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -179,7 +179,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: f85c2a913f21b1d428ac1739ea40866f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -289,7 +289,7 @@ Transform:
   m_GameObject: {fileID: 2847194124359202088}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.9999998, z: -10}
+  m_LocalPosition: {x: 0, y: -3, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -318,7 +318,7 @@ MonoBehaviour:
   m_Follow: {fileID: 5595682832789274083}
   m_Lens:
     FieldOfView: 34
-    OrthographicSize: 10
+    OrthographicSize: 15
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -434,7 +434,7 @@ MonoBehaviour:
   grabPos: {fileID: 0}
   fouldOutOnStart: 1
   attachPos: {fileID: 5727340508969391670}
-  pointFollowMode: 1
+  pointFollowMode: 0
   length: 50
   vertexDistance: 0.01
   smoothSpeed: 0.01
@@ -464,7 +464,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: f85c2a913f21b1d428ac1739ea40866f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -657,7 +657,7 @@ Transform:
   m_GameObject: {fileID: 5720743549193068567}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.23, y: 0.82, z: 0}
+  m_LocalPosition: {x: 0.048, y: 0.625, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -761,6 +761,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6090682547833513853}
   - component: {fileID: 1845658889463928694}
+  - component: {fileID: 5221142400550500744}
   m_Layer: 0
   m_Name: MoonJelly_Concept_2
   m_TagString: Untagged
@@ -776,13 +777,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6045442474539075855}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0.1582969, w: 0.98739165}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5441, y: 0.5441, z: 0.5441}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2445621561155417592}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -18.216}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1845658889463928694
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -835,6 +836,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5221142400550500744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6045442474539075855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bb89b1651314f141a8b384327c57aa3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationParent: {fileID: 5595682832789274083}
+  flipRange:
+    Min: 0
+    Max: 180
+  flip: 0
+  invert: 1
 --- !u!1 &6145912591781063555
 GameObject:
   m_ObjectHideFlags: 0
@@ -860,7 +879,7 @@ Transform:
   m_GameObject: {fileID: 6145912591781063555}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.7950211, w: 0.60658175}
-  m_LocalPosition: {x: 0.63, y: 0.72, z: 0}
+  m_LocalPosition: {x: 0.857, y: 0.324, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1125,57 +1144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tailEnd: {fileID: 0}
-  bodyParts:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  bodyParts: []
   grabSpeed: 60
   grabPos: {fileID: 4264362017283934740}
   fouldOutOnStart: 1
@@ -1210,7 +1179,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: f85c2a913f21b1d428ac1739ea40866f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1241,8 +1210,8 @@ LineRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0.0016326904
-        value: 0.17831802
+        time: 0
+        value: 0.105768204
         inSlope: 0
         outSlope: 0
         tangentMode: 0
