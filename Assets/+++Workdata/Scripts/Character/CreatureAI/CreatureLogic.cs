@@ -50,11 +50,6 @@ public abstract class CreatureLogic : MonoBehaviour
 
     void Awake()
     {
-        thisHealthScript = GetComponentInChildren<Health>();
-        stunState = GetComponentInChildren<StunState>();
-        stun = GetComponentInChildren<Stun>();
-        agent = GetComponent<NavMeshAgent>();
-
         agent.updateRotation = false;
         agent.updateUpAxis = false;
     }
@@ -62,7 +57,11 @@ public abstract class CreatureLogic : MonoBehaviour
     void Start() => ResetAgentVars();
     void OnValidate()
     {
+        thisHealthScript = GetComponentInChildren<Health>();
+        stunState = GetComponentInChildren<StunState>();
+        stun = GetComponentInChildren<Stun>();
         agent = GetComponent<NavMeshAgent>();
+
         ResetAgentVars();
     }
     void OnEnable()
@@ -117,6 +116,7 @@ public abstract class CreatureLogic : MonoBehaviour
         }
     }
 
+#if UNITY_EDITOR
     void OnDrawGizmosSelected()
     {
         Handles.color = Color.green;
@@ -130,6 +130,8 @@ public abstract class CreatureLogic : MonoBehaviour
         Gizmos.DrawLine(Vector3.zero, viewAngle01 * DetectionRadius); //This visualizes the FOV 
         Gizmos.DrawLine(Vector3.zero, viewAngle02 * DetectionRadius); //This visualizes the FOV 
     }
+#endif
+
     private Vector3 DirectionFromAngle(float eulerY, float angleInDegrees)
     {
         angleInDegrees += eulerY;

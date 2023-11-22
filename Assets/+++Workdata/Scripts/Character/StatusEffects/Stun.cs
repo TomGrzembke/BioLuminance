@@ -55,8 +55,7 @@ public class Stun : MonoBehaviour
 
         for (int i = (int)currentStun; i > 0; i--)
         {
-            if (i != 0)
-                stunState = StunState.stunDescending;
+            stunState = StunState.stunDescending;
 
             StunLogic(currentStun - 1, false);
             yield return new WaitForSeconds(falloffTick);
@@ -105,10 +104,7 @@ public class Stun : MonoBehaviour
 
     private float SetStun(float newStun)
     {
-        if (newStun >= maximumStun)
-            newStun = maximumStun;
-        else if (newStun <= 0)
-            newStun = 0;
+        newStun = Mathf.Clamp(newStun, 0, maximumStun);
 
         currentStun = newStun;
 

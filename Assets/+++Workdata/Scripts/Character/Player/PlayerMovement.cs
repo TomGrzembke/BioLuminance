@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
         agent.speed = defaultSpeed;
     }
 
-    void FixedUpdate()
+    void Update()
     {
         HandleRotation();
         if (controlState != ControlState.playerControl) return;

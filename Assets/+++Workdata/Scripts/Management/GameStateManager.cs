@@ -1,5 +1,6 @@
 using MyBox;
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,7 +8,7 @@ public class GameStateManager : MonoBehaviour
 {
     static GameStateManager Instance;
 
-    [Scene, SerializeField] string startScene;
+    [SerializeField] SceneReference startScene;
     [SerializeField] GameObject optionsWindow;
 
     void Awake() => Instance = this;
@@ -28,9 +29,9 @@ public class GameStateManager : MonoBehaviour
     }
 
     /// <summary> Depends on the naming (0_Scene), since its gets the first char and ints it</summary>
-    int GetSceneID(string scene)
+    int GetSceneID(SceneReference sceneRef)
     {
-        return (char)scene[0] - '0';
+        return sceneRef.GetSceneIndex();
     }
 
     IEnumerator LoadScenesCoroutine(int oldScene, int newScene)
