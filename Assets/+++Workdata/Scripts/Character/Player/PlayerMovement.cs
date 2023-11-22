@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     #region serialized fields
     [SerializeField] float defaultSpeed;
     [SerializeField] float sprintSpeed;
+    [SerializeField] float smoothing = 10;
     [SerializeField] ControlState controlState;
     #endregion
 
@@ -41,8 +42,17 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         HandleRotation();
-        if (controlState == ControlState.playerControl)
-            SetAgentPosition();
+        if (controlState != ControlState.playerControl) return;
+
+
+        SetAgentPosition();
+        Smoothing();
+    }
+
+    void Smoothing()
+    {
+        if (movement != Vector2.zero) return;
+        SetAgentPosition(Vector3.Lerp(transform.position, gameObject.transform.localPosition, smoothing));
     }
 
     private void HandleRotation()
@@ -60,7 +70,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void SetAgentPosition()
     {
-        SetAgentPosition(transform.position + new Vector3(movement.x + 0.0001f, movement.y, 0));
+        if (movement != Vector2.zero)
+            SetAgentPosition(transform.position + new Vector3(movement.x + 0.0001f, movement.y, 0));
     }
 
     public void SetAgentPosition(Vector3 targetPos)
