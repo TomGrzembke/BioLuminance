@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float sprintSpeed;
     [SerializeField] float smoothing = 10;
     [SerializeField] ControlState controlState;
+    [SerializeField] bool isPerformingMove;
     #endregion
 
     #region private fields
@@ -45,14 +46,15 @@ public class PlayerMovement : MonoBehaviour
         if (controlState != ControlState.playerControl) return;
 
 
-        SetAgentPosition();
         Smoothing();
+        SetAgentPosition();
     }
 
     void Smoothing()
     {
-        if (movement != Vector2.zero) return;
-        SetAgentPosition(Vector3.Lerp(transform.position, gameObject.transform.localPosition, smoothing));
+        if (isPerformingMove) return;
+        //SetAgentPosition(Vector3.Lerp(transform.position, transform.position + transform.forward * 10, smoothing));
+        movement = Vector2.Lerp(movement, Vector2.zero, smoothing);
     }
 
     private void HandleRotation()
@@ -65,6 +67,9 @@ public class PlayerMovement : MonoBehaviour
 
     void Movement(Vector2 direction)
     {
+        isPerformingMove = direction != Vector2.zero;
+
+        if(direction != Vector2.zero)
         movement = direction.normalized;
     }
 
