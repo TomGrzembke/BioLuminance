@@ -981,7 +981,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
   speed: 0
-  defaultSpeed: 5
+  defaultSpeed: 10
 --- !u!1 &6718664181072349119
 GameObject:
   m_ObjectHideFlags: 0
@@ -1069,9 +1069,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 156d565f8b5f4894cb019d2c7e839f18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedSubject: {fileID: 0}
-  sprintSpeed: 15
-  smoothing: 5
+  speedSubject: {fileID: 3205010244368379526}
+  sprintSpeed: 5
+  smoothing: 4
   controlState: 0
   isPerformingMove: 0
   timeUntilMaximumSpeed: 0.3
