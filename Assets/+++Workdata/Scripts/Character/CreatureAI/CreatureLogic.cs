@@ -1,10 +1,7 @@
 using System;
 using UnityEditor;
 using UnityEngine;
-using System.Collections.Generic;
 using UnityEngine.AI;
-using System.Linq;
-using MyBox;
 
 public abstract class CreatureLogic : MonoBehaviour
 {
@@ -68,7 +65,7 @@ public abstract class CreatureLogic : MonoBehaviour
         ResetAgentVars();
     }
 
-    private void Update()
+     void Update()
     {
         HandleMapIndicators();
     }
@@ -99,31 +96,20 @@ public abstract class CreatureLogic : MonoBehaviour
         agent.stoppingDistance = defaultAgentStoppingDistance;
     }
 
-    public void SetAgentVars(float newSpeed = 3, float newAcceleration = 5, float newStoppingDistance = 0)
+    public void SetAgentVars(float newSpeed = -1, float newAcceleration = -1, float newStoppingDistance = -1)
     {
-        agent.speed = newSpeed;
-        agent.acceleration = newAcceleration;
-        agent.stoppingDistance = newStoppingDistance;
-    }
-    public void SetAgentVars(bool speedShouldBeSet, float newAcceleration = 5, float newStoppingDistance = 0)
-    {
-        agent.acceleration = newAcceleration;
-        agent.stoppingDistance = newStoppingDistance;
-    }
-    public void SetAgentVars(float newSpeed = 3, bool accelShouldBeSet = false, float newStoppingDistance = 0)
-    {
-        agent.speed = newSpeed;
-        agent.stoppingDistance = newStoppingDistance;
-    }
-    public void SetAgentVars(bool speedShouldBeSet, bool accelShouldBeSet, float newStoppingDistance = 0)
-    {
-        agent.stoppingDistance = newStoppingDistance;
+        if (newSpeed != -1)
+            agent.speed = newSpeed;
+        if (newAcceleration != -1)
+            agent.acceleration = newAcceleration;
+        if (newStoppingDistance != -1)
+            agent.stoppingDistance = newStoppingDistance;
     }
 
     public void HandleRotate()
     {
         Vector3 velocity = agent.velocity;
-        velocity.z = 0;
+        velocity.WithoutZ();
         velocity.Normalize();
 
         if (velocity != Vector3.zero)
@@ -179,7 +165,7 @@ public abstract class CreatureLogic : MonoBehaviour
     }
 #endif
 
-    private Vector3 DirectionFromAngle(float eulerY, float angleInDegrees)
+     Vector3 DirectionFromAngle(float eulerY, float angleInDegrees)
     {
         angleInDegrees += eulerY;
 

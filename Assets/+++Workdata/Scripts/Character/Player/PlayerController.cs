@@ -1,9 +1,7 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using Unity.AI;
-using MyBox;
 using UnityEngine.AI;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
@@ -22,7 +20,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Tooltip("Distance to Dash")] float dashPower = 20f;
     [SerializeField] float dashingTime = 0.2f;
     [SerializeField] float dashingCooldown = 1f;
-    
+
     #endregion
 
     #region private fields
@@ -82,7 +80,7 @@ public class PlayerController : MonoBehaviour
     private void Movement()
     {
         Vector2 targetVelocity = new Vector2(moveDir.x, moveDir.y).normalized * (moveSpeed * (isSprinting ? sprintSpeed : 1));
-        
+
         currentVelocity = Vector2.Lerp(currentVelocity, targetVelocity, deceleration * Time.fixedDeltaTime);
 
         if (currentVelocity.magnitude < 0.1f) currentVelocity = Vector2.zero;
@@ -92,7 +90,7 @@ public class PlayerController : MonoBehaviour
         Flip();
     }
 
-    private IEnumerator Dash()
+    IEnumerator Dash()
     {
         if (!canDash || isDashing) yield break;
         if (colliderDash) col.enabled = false;
@@ -117,7 +115,7 @@ public class PlayerController : MonoBehaviour
         col.enabled = true;
     }
 
-    private void Flip()
+    void Flip()
     {
         if (moveDir.x > 0) // Moving right
             gameObject.transform.localScale = new Vector3(1, 1, 1);
@@ -126,7 +124,7 @@ public class PlayerController : MonoBehaviour
             gameObject.transform.localScale = new Vector3(-1, 1, 1);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Damage"))
         {
