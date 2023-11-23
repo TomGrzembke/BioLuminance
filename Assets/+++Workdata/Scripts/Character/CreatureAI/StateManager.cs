@@ -3,7 +3,7 @@ using UnityEngine;
 public class StateManager : MonoBehaviour
 {
     #region serialized fields
-    [SerializeField] State currentState;
+    public State currentState;
     public State LastState => lastState;
     [SerializeField] State lastState;
     #endregion
