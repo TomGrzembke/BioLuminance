@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     #region serialized fields
-    [SerializeField] float defaultSpeed;
+    [SerializeField] SpeedSubject speedSubject;
     [SerializeField] float sprintSpeed;
     [SerializeField] float smoothing = 10;
     [SerializeField] ControlState controlState;
@@ -20,11 +20,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float timeUntilZeroSpeed = 1;
     #endregion
 
-    float _currentAgentSpeed;
-    float _maximumAgentSpeed;
+    float currentAgentSpeed;
 
     #region private fields
-    float speed;
     Vector2 movement;
     PlayerInputActions inputActions;
     NavMeshAgent agent;
@@ -42,10 +40,9 @@ public class PlayerMovement : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
-        agent.speed = defaultSpeed;
+        agent.speed = speedSubject.Speed;
 
-        _maximumAgentSpeed = agent.speed;
-        _currentAgentSpeed = _maximumAgentSpeed;
+        currentAgentSpeed = speedSubject.Speed;
     }
 
     void FixedUpdate()
@@ -60,17 +57,17 @@ public class PlayerMovement : MonoBehaviour
     void Smoothing()
     {
         if (isPerformingMove)
-            _currentAgentSpeed += SpeedRamp();
+            currentAgentSpeed += SpeedRamp();
         else
-            _currentAgentSpeed -= SpeedRamp();
+            currentAgentSpeed -= SpeedRamp();
 
-        _currentAgentSpeed = Mathf.Clamp(_currentAgentSpeed, 0, _maximumAgentSpeed);
-        agent.speed = _currentAgentSpeed;
+        currentAgentSpeed = Mathf.Clamp(currentAgentSpeed, 0, speedSubject.Speed);
+        agent.speed = currentAgentSpeed;
     }
 
     float SpeedRamp()
     {
-        return Time.deltaTime * _maximumAgentSpeed / timeUntilMaximumSpeed;
+        return Time.deltaTime * speedSubject.Speed / timeUntilMaximumSpeed;
     }
 
     void HandleRotation()
@@ -103,33 +100,16 @@ public class PlayerMovement : MonoBehaviour
     void Sprint(bool condition)
     {
         if (condition)
-        {
-            speed = sprintSpeed;
-            agent.speed = speed;
-        }
-        else if (!condition)
-        {
-            speed = defaultSpeed;
-            agent.speed = speed;
-        }
+            speedSubject.AddSpeedModifier(sprintSpeed);
+        else
+            speedSubject.RemoveSpeedModifier(sprintSpeed);
     }
     void OnDrawGizmosSelected()
     {
     }
 
-    #region Getters
-    public float GetPlayerSpeed()
-    {
-        return speed;
-    }
-    #endregion
 
     #region Setters
-    public void SetMoveSpeed(float newSpeed)
-    {
-        speed = newSpeed;
-        agent.speed = speed;
-    }
     public void SetControlState(ControlState newControlState)
     {
         controlState = newControlState;

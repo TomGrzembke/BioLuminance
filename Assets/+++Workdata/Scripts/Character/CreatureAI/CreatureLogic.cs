@@ -49,7 +49,8 @@ public abstract class CreatureLogic : MonoBehaviour
     protected ChaseState chaseState;
     protected StunSubject stun;
     [HideInInspector] public NavMeshAgent agent;
-    HealthSubject thisHealthScript;
+    HealthSubject healthSubject;
+    SpeedSubject speedSubject;
 
     #endregion
 
@@ -65,14 +66,15 @@ public abstract class CreatureLogic : MonoBehaviour
         ResetAgentVars();
     }
 
-     void Update()
+    void Update()
     {
         HandleMapIndicators();
     }
 
     void OnValidate()
     {
-        thisHealthScript = GetComponentInChildren<HealthSubject>();
+        healthSubject = GetComponentInChildren<HealthSubject>();
+        speedSubject = GetComponentInChildren<SpeedSubject>();
         stunState = GetComponentInChildren<StunState>();
         chaseState = GetComponentInChildren<ChaseState>();
         stun = GetComponentInChildren<StunSubject>();
@@ -91,7 +93,7 @@ public abstract class CreatureLogic : MonoBehaviour
 
     public void ResetAgentVars()
     {
-        agent.speed = defaultAgentSpeed;
+        speedSubject.SetDefault(defaultAgentSpeed);
         agent.acceleration = defaultAgentAcceleration;
         agent.stoppingDistance = defaultAgentStoppingDistance;
     }
@@ -99,7 +101,7 @@ public abstract class CreatureLogic : MonoBehaviour
     public void SetAgentVars(float newSpeed = -1, float newAcceleration = -1, float newStoppingDistance = -1)
     {
         if (newSpeed != -1)
-            agent.speed = newSpeed;
+            speedSubject.SetDefault(newSpeed);
         if (newAcceleration != -1)
             agent.acceleration = newAcceleration;
         if (newStoppingDistance != -1)
@@ -165,7 +167,7 @@ public abstract class CreatureLogic : MonoBehaviour
     }
 #endif
 
-     Vector3 DirectionFromAngle(float eulerY, float angleInDegrees)
+    Vector3 DirectionFromAngle(float eulerY, float angleInDegrees)
     {
         angleInDegrees += eulerY;
 
@@ -197,7 +199,7 @@ public abstract class CreatureLogic : MonoBehaviour
 
     public void SetTargetHealthScript(HealthSubject newTarget)
     {
-        if (newTarget != thisHealthScript)
+        if (newTarget != healthSubject)
             targetHealthScript = newTarget;
     }
     #endregion

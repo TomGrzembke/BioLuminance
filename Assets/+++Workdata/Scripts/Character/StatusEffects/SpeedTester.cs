@@ -4,7 +4,7 @@ public class SpeedTester : MonoBehaviour
 {
     #region serialized fields
     [SerializeField] SpeedSubject speedSubject;
-    [SerializeField] float amount;
+    [SerializeField] float amount = -2;
     #endregion
 
     #region private fields

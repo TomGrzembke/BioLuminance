@@ -1,26 +1,27 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class SpeedSubject : MonoBehaviour
 {
+    [SerializeField] NavMeshAgent agent;
     [SerializeField] float speed;
-    public float Speed => speed;
+    public float Speed
+    {
+        get
+        {
+            CalculateSpeed();
+            return speed;
+        }
+    }
+
     [SerializeField] float defaultSpeed = 5;
 
     readonly List<float> SpeedModifierList = new();
 
     void Awake()
     {
-        AddSpeedModifier(defaultSpeed);
-    }
-    public float GetCurrentSpeed()
-    {
-        float currentSpeed = defaultSpeed;
-        for (int i = 0; i < SpeedModifierList.Count; i++)
-        {
-            currentSpeed += SpeedModifierList[i];
-        }
-        return currentSpeed;
+        speed = defaultSpeed;
     }
 
     public void AddSpeedModifier(float addSpeed)
@@ -32,19 +33,33 @@ public class SpeedSubject : MonoBehaviour
 
     void CalculateSpeed()
     {
-        float currentSpeed = 0;
+        float currentSpeed = defaultSpeed;
         for (int i = 0; i < SpeedModifierList.Count; i++)
         {
             currentSpeed += SpeedModifierList[i];
         }
         speed = currentSpeed;
+
+        if (agent)
+            agent.speed = speed;
     }
 
     public void RemoveSpeedModifier(float remSpeed)
     {
-        if (!SpeedModifierList.Remove(remSpeed))
-            print(remSpeed + " couldnt be removed at " + gameObject.name);
+        SpeedModifierList.Remove(remSpeed);
+        CalculateSpeed();
+    }
 
+    public void ResetSpeed(float newDefault = 0)
+    {
+        SpeedModifierList.Clear();
+        defaultSpeed = newDefault;
+        CalculateSpeed();
+    }
+
+    public void SetDefault(float newDefault = 0)
+    {
+        defaultSpeed = newDefault;
         CalculateSpeed();
     }
 }

@@ -900,8 +900,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 361a35cc8f2720e47b877b2291e1cd56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
-  defaultSpeed: 0
+  agent: {fileID: 5218931249399040763}
+  speed: 3.5
+  defaultSpeed: 3.5
 --- !u!1 &6861142586313414311
 GameObject:
   m_ObjectHideFlags: 0
@@ -1320,8 +1321,8 @@ Transform:
   - {fileID: 7307126900260189495}
   - {fileID: 6635765345639443685}
   - {fileID: 234893108273228935}
-  - {fileID: 9076824883600998643}
   - {fileID: 560485438714945868}
+  - {fileID: 9076824883600998643}
   m_Father: {fileID: 5443997901060708342}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3289857228537091916
