@@ -69,8 +69,6 @@ public class TentacleBehavior : MonoBehaviour
     void OnValidate()
     {
         Recalculate();
-        lineRend = GetComponent<LineRenderer>();
-        lineRend.SetPosition(0, attachTrans.position);
     }
 
     #region recalculate/normalize values

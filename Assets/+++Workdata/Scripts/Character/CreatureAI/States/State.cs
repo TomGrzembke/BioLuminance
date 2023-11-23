@@ -26,18 +26,7 @@ public abstract class State : MonoBehaviour
         if (!uniqueState)
             return SwitchStateInternal();
 
-        if (!uniqueState.uniqueState)
-            return uniqueState.SwitchStateInternal();
-
-        for (int i = 0; i < Mathf.Infinity; i++)
-        {
-            if (!uniqueState.uniqueState)
-                break;
-
-            uniqueState = uniqueState.uniqueState;
-        }
-
-        return uniqueState.SwitchStateInternal();
+       return uniqueState.SwitchState();
     }
 
     public abstract State SwitchStateInternal();
@@ -57,7 +46,7 @@ public abstract class State : MonoBehaviour
     {
         TimeInState = 0;
         FixedTimeInState = 0;
-        if(useStateVars)
+        if (useStateVars)
             SetAgentVarsToStateVars();
         EnterInternal();
     }
