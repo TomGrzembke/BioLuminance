@@ -5,7 +5,7 @@ public class SpeedSubject : MonoBehaviour
 {
     [SerializeField] float speed;
     public float Speed => speed;
-    [SerializeField] float defaultSpeed;
+    [SerializeField] float defaultSpeed = 5;
 
     readonly List<float> SpeedModifierList = new();
     //readonly Dictionary<string, float> SpeedModifierDict = new();
