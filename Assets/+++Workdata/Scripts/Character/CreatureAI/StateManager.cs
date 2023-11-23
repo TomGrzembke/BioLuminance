@@ -34,16 +34,17 @@ public class StateManager : MonoBehaviour
 
     void HandleStateMachine()
     {
-        if (!currentState) return;
 
+        if (!currentState) return;
         State newState = currentState.SwitchState();
 
-        if (!newState) return;
         SetState(newState);
     }
 
     public void SetState(State newState)
     {
+        if (!currentState) return;
+        if (!newState) return;
         if (currentState == newState) return;
 
         currentState.ExitState();

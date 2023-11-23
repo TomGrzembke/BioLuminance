@@ -676,6 +676,8 @@ MonoBehaviour:
   randomMoveLength:
     Min: 0
     Max: 10
+  healthTargets: []
+  nearestHealthSubj: {fileID: 0}
 --- !u!1 &4297893035369412821
 GameObject:
   m_ObjectHideFlags: 0
@@ -833,7 +835,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: {fileID: 1015608502891901096}
   lastState: {fileID: 0}
-  lastStateIgnore: []
+  lastStateIgnore:
+  - {fileID: 8418933161765749820}
+  - {fileID: 7259974933193452982}
+  - {fileID: 9143300523547226659}
 --- !u!1 &5199863984124866248
 GameObject:
   m_ObjectHideFlags: 0
@@ -878,8 +883,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a2979f7b29a04e43b01fe76b32da132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maximumHealth: 40
-  currentHealth: 40
+  maximumHealth: 100
+  currentHealth: 100
 --- !u!1 &5433802666984487068
 GameObject:
   m_ObjectHideFlags: 0
@@ -1376,7 +1381,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   stateManager: {fileID: 2442591737056489558}
-  fleePercentage: 0
+  fleePercentage: 0.252
   mapSpriteRenderer: {fileID: 0}
   limbManager: {fileID: 0}
   agent: {fileID: 5218931249399040763}
