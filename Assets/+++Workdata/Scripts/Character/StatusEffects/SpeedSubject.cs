@@ -8,13 +8,11 @@ public class SpeedSubject : MonoBehaviour
     [SerializeField] float defaultSpeed = 5;
 
     readonly List<float> SpeedModifierList = new();
-    //readonly Dictionary<string, float> SpeedModifierDict = new();
 
     void Awake()
     {
-        speed = defaultSpeed;
+        AddSpeedModifier(defaultSpeed);
     }
-
     public float GetCurrentSpeed()
     {
         float currentSpeed = defaultSpeed;
@@ -34,7 +32,7 @@ public class SpeedSubject : MonoBehaviour
 
     void CalculateSpeed()
     {
-        float currentSpeed = defaultSpeed;
+        float currentSpeed = 0;
         for (int i = 0; i < SpeedModifierList.Count; i++)
         {
             currentSpeed += SpeedModifierList[i];
@@ -44,9 +42,7 @@ public class SpeedSubject : MonoBehaviour
 
     public void RemoveSpeedModifier(float remSpeed)
     {
-        if (SpeedModifierList.Contains(remSpeed))
-            SpeedModifierList.Remove(speed);
-        else
+        if (!SpeedModifierList.Remove(remSpeed))
             print(remSpeed + " couldnt be removed at " + gameObject.name);
 
         CalculateSpeed();
