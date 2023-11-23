@@ -39,7 +39,7 @@ public abstract class CreatureLogic : MonoBehaviour
     [SerializeField] protected StateManager stateManager;
     public LayerMask ObstacleLayer => obstacleLayer;
     [SerializeField] LayerMask obstacleLayer;
-    
+
     [SerializeField] SpriteRenderer mapSpriteRenderer;
 
     [Header("Health")]
@@ -47,13 +47,13 @@ public abstract class CreatureLogic : MonoBehaviour
     #endregion
 
     #region private fields
-    
+
     protected StunState stunState;
     protected ChaseState chaseState;
     protected Stun stun;
     [HideInInspector] public NavMeshAgent agent;
     Health thisHealthScript;
-    
+
     #endregion
 
     void Awake()
@@ -152,14 +152,15 @@ public abstract class CreatureLogic : MonoBehaviour
                 break;
             }
         }
-        
+
         return spriteRendererInLayer;
     }
 
     public void HandleMapIndicators()
     {
         if (stateManager.currentState == chaseState)
-            mapSpriteRenderer.color = new Color(255, 0, 0);
+            if (mapSpriteRenderer != null)
+                mapSpriteRenderer.color = new Color(255, 0, 0);
     }
 
 #if UNITY_EDITOR
