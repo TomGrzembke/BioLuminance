@@ -4,7 +4,7 @@ using UnityEngine;
 public class StunBar : Bar
 {
     #region serialized fields
-    [SerializeField] Stun stun;
+    [SerializeField] StunSubject stun;
     [SerializeField] Color stunCol;
     [SerializeField] Color defaultCol;
     #endregion

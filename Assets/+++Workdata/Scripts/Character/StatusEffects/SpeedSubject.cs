@@ -3,16 +3,52 @@ using UnityEngine;
 
 public class SpeedSubject : MonoBehaviour
 {
-    #region serialized fields
-
     [SerializeField] float speed;
     public float Speed => speed;
-    [SerializeField] float maxSpeed;
-    static readonly List<float> SpeedModifier = new List<float>();
-    #endregion
+    [SerializeField] float defaultSpeed;
 
-    #region private fields
+    readonly List<float> SpeedModifierList = new();
+    //readonly Dictionary<string, float> SpeedModifierDict = new();
 
-    #endregion
+    void Awake()
+    {
+        speed = defaultSpeed;
+    }
 
+    public float GetCurrentSpeed()
+    {
+        float currentSpeed = defaultSpeed;
+        for (int i = 0; i < SpeedModifierList.Count; i++)
+        {
+            currentSpeed += SpeedModifierList[i];
+        }
+        return currentSpeed;
+    }
+
+    public void AddSpeedModifier(float addSpeed)
+    {
+        SpeedModifierList.Add(addSpeed);
+
+        CalculateSpeed();
+    }
+
+    void CalculateSpeed()
+    {
+        float currentSpeed = defaultSpeed;
+        for (int i = 0; i < SpeedModifierList.Count; i++)
+        {
+            currentSpeed += SpeedModifierList[i];
+        }
+        speed = currentSpeed;
+    }
+
+    public void RemoveSpeedModifier(float remSpeed)
+    {
+        if (SpeedModifierList.Contains(remSpeed))
+            SpeedModifierList.Remove(speed);
+        else
+            print(remSpeed + " couldnt be removed at " + gameObject.name);
+
+        CalculateSpeed();
+    }
 }

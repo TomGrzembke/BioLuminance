@@ -3,7 +3,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class Stun : MonoBehaviour
+public class StunSubject : MonoBehaviour
 {
     enum StunState
     {

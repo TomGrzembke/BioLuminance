@@ -47,7 +47,7 @@ public abstract class CreatureLogic : MonoBehaviour
 
     protected StunState stunState;
     protected ChaseState chaseState;
-    protected Stun stun;
+    protected StunSubject stun;
     [HideInInspector] public NavMeshAgent agent;
     HealthSubject thisHealthScript;
 
@@ -75,7 +75,7 @@ public abstract class CreatureLogic : MonoBehaviour
         thisHealthScript = GetComponentInChildren<HealthSubject>();
         stunState = GetComponentInChildren<StunState>();
         chaseState = GetComponentInChildren<ChaseState>();
-        stun = GetComponentInChildren<Stun>();
+        stun = GetComponentInChildren<StunSubject>();
         agent = GetComponent<NavMeshAgent>();
 
         ResetAgentVars();
