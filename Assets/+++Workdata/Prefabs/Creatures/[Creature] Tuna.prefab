@@ -631,6 +631,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4920478150630365393}
+  - component: {fileID: 9143300523547226659}
   m_Layer: 0
   m_Name: Flee
   m_TagString: Untagged
@@ -653,6 +654,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6635765345639443685}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9143300523547226659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4159143466246497700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54361192ce6d94b499d0f13a2e30e782, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueState: {fileID: 0}
+  stateAgentSpeed: 14
+  stateAgentAcceleration: 5
+  stateAgentStoppingDistance: 0
+  useStateVars: 1
+  TimeInState: 0
+  FixedTimeInState: 0
+  randomMoveLength:
+    Min: 0
+    Max: 10
 --- !u!1 &4297893035369412821
 GameObject:
   m_ObjectHideFlags: 0
@@ -810,6 +833,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: {fileID: 1015608502891901096}
   lastState: {fileID: 0}
+  lastStateIgnore: []
 --- !u!1 &5199863984124866248
 GameObject:
   m_ObjectHideFlags: 0
@@ -1348,10 +1372,11 @@ MonoBehaviour:
   defaultAgentStoppingDistance: 1
   detectionRadius: 20
   detectionAngle: 50
-  stateManager: {fileID: 2442591737056489558}
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 256
+  stateManager: {fileID: 2442591737056489558}
+  fleePercentage: 0
   mapSpriteRenderer: {fileID: 0}
   limbManager: {fileID: 0}
   agent: {fileID: 5218931249399040763}
@@ -1421,6 +1446,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5125752987788624351}
+  - component: {fileID: 8418933161765749820}
   m_Layer: 0
   m_Name: Death
   m_TagString: Untagged
@@ -1443,3 +1469,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6635765345639443685}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8418933161765749820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9168644710826071263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8c1acac48f595f42a3962f4b7517468, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueState: {fileID: 0}
+  stateAgentSpeed: 0
+  stateAgentAcceleration: 0
+  stateAgentStoppingDistance: 0
+  useStateVars: 1
+  TimeInState: 0
+  FixedTimeInState: 0

@@ -91,9 +91,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if (movement == Vector2.zero) return;
 
-        //moveSafe += Time.deltaTime * movement * 3;
-        //moveSafe.x = Mathf.Clamp(moveSafe.x, -1, 1);
-        //moveSafe.y = Mathf.Clamp(moveSafe.y, -1, 1);
         moveSafe = Vector2.Lerp(moveSafe, movement, Time.deltaTime * smoothing);
         SetAgentPosition(transform.position + new Vector3(moveSafe.x + 0.0001f, moveSafe.y, 0));
     }

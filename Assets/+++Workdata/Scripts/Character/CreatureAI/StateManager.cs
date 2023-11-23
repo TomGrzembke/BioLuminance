@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class StateManager : MonoBehaviour
@@ -6,6 +7,7 @@ public class StateManager : MonoBehaviour
     public State currentState;
     public State LastState => lastState;
     [SerializeField] State lastState;
+    [SerializeField] List<State> lastStateIgnore = new();
     #endregion
 
     #region private fields
@@ -36,18 +38,23 @@ public class StateManager : MonoBehaviour
 
         State newState = currentState.SwitchState();
 
-        if (currentState == newState) return;
         if (!newState) return;
+        SetState(newState);
+    }
 
-        lastState = currentState;
-        lastState.ExitState();
+    public void SetState(State newState)
+    {
+        if (currentState == newState) return;
+
+        currentState.ExitState();
+        SetLastState(currentState);
         currentState = newState;
         currentState.EnterState();
     }
 
-    public void SetState(State _state)
+    void SetLastState(State _state)
     {
-        lastState = currentState;
-        currentState = _state;
+        if (!lastStateIgnore.Contains(_state))
+            lastState = currentState;
     }
 }

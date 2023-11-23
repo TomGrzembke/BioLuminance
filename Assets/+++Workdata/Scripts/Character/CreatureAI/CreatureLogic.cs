@@ -31,12 +31,14 @@ public abstract class CreatureLogic : MonoBehaviour
 
     public float DetectionAngle => detectionAngle;
     [Range(0, 360)][SerializeField] float detectionAngle = 50f;
-
-
-    [SerializeField] protected StateManager stateManager;
     public LayerMask ObstacleLayer => obstacleLayer;
     [SerializeField] LayerMask obstacleLayer;
 
+    [Header("States")]
+    [SerializeField] protected StateManager stateManager;
+    [Range(0, 1), SerializeField] float fleePercentage = .2f;
+
+    [Header("Map")]
     [SerializeField] SpriteRenderer mapSpriteRenderer;
 
     [Header("Health")]
@@ -47,6 +49,8 @@ public abstract class CreatureLogic : MonoBehaviour
 
     protected StunState stunState;
     protected ChaseState chaseState;
+    protected FleeState fleeState;
+    protected DeathState deathState;
     protected StunSubject stun;
     [HideInInspector] public NavMeshAgent agent;
     HealthSubject healthSubject;
@@ -73,6 +77,8 @@ public abstract class CreatureLogic : MonoBehaviour
 
     void OnValidate()
     {
+        fleeState = GetComponentInChildren<FleeState>();
+        deathState = GetComponentInChildren<DeathState>();
         healthSubject = GetComponentInChildren<HealthSubject>();
         speedSubject = GetComponentInChildren<SpeedSubject>();
         stunState = GetComponentInChildren<StunState>();
@@ -85,10 +91,12 @@ public abstract class CreatureLogic : MonoBehaviour
     void OnEnable()
     {
         stun.RegisterOnStun(OnStun);
+        healthSubject.RegisterOnHealthChangedAlpha(OnHealthChangedAlpha);
     }
     void OnDisable()
     {
         stun.OnStun -= OnStun;
+        healthSubject.OnHealthChangedAlpha -= OnHealthChangedAlpha;
     }
 
     public void ResetAgentVars()
@@ -184,6 +192,23 @@ public abstract class CreatureLogic : MonoBehaviour
 
         stateManager.SetState(stateManager.LastState);
         agent.isStopped = condition;
+    }
+
+    void OnHealthChangedAlpha(float alpha)
+    {
+        if (alpha <= 0)
+        {
+            stateManager.SetState(deathState);
+            return;
+        }
+
+        if (alpha <= fleePercentage)
+        {
+            stateManager.SetState(fleeState);
+            return;
+        }
+
+        stateManager.SetState(stateManager.LastState);
     }
 
     #region Setter
