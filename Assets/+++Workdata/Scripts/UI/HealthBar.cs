@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class HealthBar : Bar
 {
     #region serialized fields
-    [SerializeField] Health health;
+    [SerializeField] HealthSubject health;
     [SerializeField] Image afterShockBar;
     [ConditionalField(nameof(afterShockBar)), Tooltip("Multiplier of the delta time lerp modifier")]
     [SerializeField] float afterShockSpeed = 3;

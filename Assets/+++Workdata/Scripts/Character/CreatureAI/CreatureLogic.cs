@@ -6,9 +6,9 @@ using UnityEngine.AI;
 public abstract class CreatureLogic : MonoBehaviour
 {
     #region serialized fields
-    public Health TargetHealthScript => targetHealthScript;
+    public HealthSubject TargetHealthScript => targetHealthScript;
     [Header("AI Targeting")]
-    [SerializeField] Health targetHealthScript;
+    [SerializeField] HealthSubject targetHealthScript;
 
     public LayerMask TargetLayer => targetLayer;
     [SerializeField] LayerMask targetLayer;
@@ -49,7 +49,7 @@ public abstract class CreatureLogic : MonoBehaviour
     protected ChaseState chaseState;
     protected Stun stun;
     [HideInInspector] public NavMeshAgent agent;
-    Health thisHealthScript;
+    HealthSubject thisHealthScript;
 
     #endregion
 
@@ -72,7 +72,7 @@ public abstract class CreatureLogic : MonoBehaviour
 
     void OnValidate()
     {
-        thisHealthScript = GetComponentInChildren<Health>();
+        thisHealthScript = GetComponentInChildren<HealthSubject>();
         stunState = GetComponentInChildren<StunState>();
         chaseState = GetComponentInChildren<ChaseState>();
         stun = GetComponentInChildren<Stun>();
@@ -195,7 +195,7 @@ public abstract class CreatureLogic : MonoBehaviour
         canSeeTarget = condition;
     }
 
-    public void SetTargetHealthScript(Health newTarget)
+    public void SetTargetHealthScript(HealthSubject newTarget)
     {
         if (newTarget != thisHealthScript)
             targetHealthScript = newTarget;

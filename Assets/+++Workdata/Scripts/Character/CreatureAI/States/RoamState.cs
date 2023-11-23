@@ -7,7 +7,7 @@ public class RoamState : State
     [Header(nameof(RoamState))]
     [SerializeField] float minRoamRange = 5f;
     [SerializeField] float maxRoamRange = 5f;
-    [SerializeField] List<Health> healthTargets = new();
+    [SerializeField] List<HealthSubject> healthTargets = new();
     [SerializeField] State chaseState;
     #endregion
 
@@ -76,7 +76,7 @@ public class RoamState : State
 
         for (int i = 0; i < colliders.Length; i++)
         {
-            Health _healthTarget = colliders[i].GetComponentInChildren<Health>();
+            HealthSubject _healthTarget = colliders[i].GetComponentInChildren<HealthSubject>();
 
             if (!_healthTarget)
                 continue;
@@ -88,7 +88,7 @@ public class RoamState : State
         }
     }
 
-    void LookLogic(Health _healthTarget)
+    void LookLogic(HealthSubject _healthTarget)
     {
         Vector2 targetDirection = (_healthTarget.transform.position - transform.position).normalized;
 

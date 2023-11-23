@@ -2,7 +2,7 @@ using UnityEngine;
 using System;
 using MyBox;
 
-public class Health : MonoBehaviour
+public class HealthSubject : MonoBehaviour
 {
     public event Action<float> OnHealthChanged;
     public event Action<float> OnHealthChangedAlpha;
