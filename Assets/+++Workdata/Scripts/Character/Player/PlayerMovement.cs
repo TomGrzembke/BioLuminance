@@ -16,8 +16,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float smoothing = 10;
     [SerializeField] ControlState controlState;
     [SerializeField] bool isPerformingMove;
+    [SerializeField] private float timeUntilMaximumSpeed = 1;
+    [SerializeField] private float timeUntilZeroSpeed = 1;
     #endregion
 
+    private float _currentAgentSpeed;
+    private float _maximumAgentSpeed;
+    
     #region private fields
     float speed;
     Vector2 movement;
@@ -33,14 +38,17 @@ public class PlayerMovement : MonoBehaviour
         inputActions.Player.Move.canceled += ctx => Movement(ctx.ReadValue<Vector2>());
         inputActions.Player.Sprint.performed += ctx => Sprint(true);
         inputActions.Player.Sprint.canceled += ctx => Sprint(false);
-
+        
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
         agent.speed = defaultSpeed;
+        
+        _maximumAgentSpeed = agent.speed;
+        _currentAgentSpeed = _maximumAgentSpeed;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         HandleRotation();
         if (controlState != ControlState.playerControl) return;
@@ -52,9 +60,16 @@ public class PlayerMovement : MonoBehaviour
 
     void Smoothing()
     {
-        if (isPerformingMove) return;
-        //SetAgentPosition(Vector3.Lerp(transform.position, transform.position + transform.forward * 10, smoothing));
-        movement = Vector2.Lerp(movement, Vector2.zero, smoothing);
+        if (isPerformingMove)
+            _currentAgentSpeed += Time.deltaTime * _maximumAgentSpeed / timeUntilMaximumSpeed;
+        else
+            _currentAgentSpeed -= Time.deltaTime * _maximumAgentSpeed / timeUntilZeroSpeed;
+        _currentAgentSpeed = Mathf.Clamp(_currentAgentSpeed, 0, _maximumAgentSpeed);
+        agent.speed = _currentAgentSpeed;
+
+        // if (isPerformingMove) return;
+        // //SetAgentPosition(Vector3.Lerp(transform.position, transform.position + transform.forward * 10, smoothing));
+        // movement = Vector2.Lerp(movement, Vector2.zero, smoothing);
     }
 
     private void HandleRotation()
@@ -70,7 +85,7 @@ public class PlayerMovement : MonoBehaviour
         isPerformingMove = direction != Vector2.zero;
 
         if(direction != Vector2.zero)
-        movement = direction.normalized;
+            movement = direction.normalized;
     }
 
     public void SetAgentPosition()

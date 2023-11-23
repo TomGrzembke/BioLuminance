@@ -30,7 +30,7 @@ public class TentacleBehavior : MonoBehaviour
     [SerializeField, ConditionalField(true, nameof(GetIsInPlaymode))] bool fouldOutOnStart = true;
     bool GetIsInPlaymode() => !Application.isPlaying;
 
-    [SerializeField] Transform attachPos;
+    [SerializeField] Transform attachTrans;
     [SerializeField] PointFollowMode pointFollowMode;
 
     [Tooltip("Will be multiplied times 5 when switching to Point follow mode: stack")]
@@ -69,6 +69,8 @@ public class TentacleBehavior : MonoBehaviour
     void OnValidate()
     {
         Recalculate();
+        lineRend = GetComponent<LineRenderer>();
+        lineRend.SetPosition(0, attachTrans.position);
     }
 
     #region recalculate/normalize values
@@ -126,7 +128,7 @@ public class TentacleBehavior : MonoBehaviour
         {
             for (int i = 1; i < calc_length; i++)
             {
-                segmentPoses[i] = Vector3.SmoothDamp(segmentPoses[i], (GetLastSegmentPose(i) + attachPos.right * calc_vertexDistance) + GetCalcGrabPos(i), ref segmentV[i], calc_smoothSpeed + i / trailSpeed);
+                segmentPoses[i] = Vector3.SmoothDamp(segmentPoses[i], (GetLastSegmentPose(i) + attachTrans.right * calc_vertexDistance) + GetCalcGrabPos(i), ref segmentV[i], calc_smoothSpeed + i / trailSpeed);
 
                 MoveBodyParts(i);
             }
@@ -154,7 +156,7 @@ public class TentacleBehavior : MonoBehaviour
         if (pointFollowMode == PointFollowMode.stack)
             return (grabPos.position - GetLastSegmentPose(i)).normalized / grabSpeed;
         else if (pointFollowMode == PointFollowMode.overlap)
-            return (grabPos.position - GetLastSegmentPose(i)).normalized / 10;
+            return (grabPos.position - GetLastSegmentPose(i)) / 10;
 
         else
             return Vector3.zero;
@@ -184,7 +186,7 @@ public class TentacleBehavior : MonoBehaviour
 
     private void AttachedPart()
     {
-        segmentPoses[0] = attachPos.position;
+        segmentPoses[0] = attachTrans.position;
     }
 
     void WiggleLogic()
@@ -198,7 +200,7 @@ public class TentacleBehavior : MonoBehaviour
         AttachedPart();
         for (int i = 1; i < calc_length; i++)
         {
-            segmentPoses[i] = GetLastSegmentPose(i) + attachPos.right;
+            segmentPoses[i] = GetLastSegmentPose(i) + attachTrans.right;
         }
         lineRend.SetPositions(segmentPoses);
     }
