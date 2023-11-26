@@ -1,9 +1,10 @@
+using UnityEditorInternal;
 using UnityEngine;
 
 public class DeathState : State
 {
     #region serialized fields
-
+    [SerializeField] StateManager stateManager;
     #endregion
 
     #region private fields
@@ -17,6 +18,7 @@ public class DeathState : State
 
     protected override void EnterInternal()
     {
+        stateManager.enabled = false;
     }
 
     protected override void ExitInternal()
