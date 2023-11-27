@@ -1,16 +1,20 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using MyBox;
 using UnityEngine;
 
 public class Minimap : MonoBehaviour
 {
+    [SerializeField] StateManager stateManager;
     [SerializeField] SpriteRenderer mapSpriteRenderer;
-    StateManager stateManager;
+
+    public float indicatorSize = 1f;
+    Vector2 indicatorSizeVec;
 
     private void Awake()
     {
-        stateManager = GetComponent<StateManager>();
+        stateManager = GetComponentInChildren<StateManager>();
     }
 
     private void Start()
@@ -18,19 +22,24 @@ public class Minimap : MonoBehaviour
         mapSpriteRenderer = GetSpriteRendererInLayer(gameObject, "Map");
     }
 
-    private void Update()
+    private void OnValidate()
+    {
+        indicatorSizeVec.x = indicatorSize;
+        indicatorSizeVec.y = indicatorSize;
+        mapSpriteRenderer.transform.localScale = indicatorSizeVec;
+    }
+
+    private void FixedUpdate()
     {
         HandleMapIndicators();
     }
 
-    public SpriteRenderer GetSpriteRendererInLayer(GameObject parent, string layerName)
+    SpriteRenderer GetSpriteRendererInLayer(GameObject parent, string layerName)
     {
         SpriteRenderer spriteRendererInLayer = null;
-
-        // Get all child objects of the parent GameObject
+        
         Transform[] allChildren = parent.GetComponentsInChildren<Transform>(true);
-
-        // Find the first child object that matches the layer, is active, and has a SpriteRenderer component
+        
         foreach (Transform child in allChildren)
         {
             SpriteRenderer childSpriteRenderer = child.GetComponent<SpriteRenderer>();
@@ -46,10 +55,9 @@ public class Minimap : MonoBehaviour
 
     public void HandleMapIndicators()
     {
-        /*
-        if (stateManager.currentState == chaseState)
-            if (mapSpriteRenderer != null)
-                mapSpriteRenderer.color = new Color(255, 0, 0);
-         */
+        if (stateManager.currentState)
+            mapSpriteRenderer.color = new Color(255, 0, 0);
+        else
+            mapSpriteRenderer.color = new Color(255, 255, 255);
     }
 }
