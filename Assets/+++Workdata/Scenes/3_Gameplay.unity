@@ -281,7 +281,7 @@ GameObject:
   - component: {fileID: 32497063}
   - component: {fileID: 32497065}
   - component: {fileID: 32497064}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ---MapConcept_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -510,7 +510,7 @@ GameObject:
   m_Component:
   - component: {fileID: 361785483}
   - component: {fileID: 361785482}
-  m_Layer: 31
+  m_Layer: 3
   m_Name: MapLight 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1436,7 +1436,7 @@ GameObject:
   - component: {fileID: 1425512083}
   - component: {fileID: 1425512082}
   - component: {fileID: 1425512084}
-  m_Layer: 31
+  m_Layer: 0
   m_Name: ---MapConcept
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2235,6 +2235,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: '[Creature] Tuna'
       objectReference: {fileID: 0}
+    - target: {fileID: 3289857228537091916, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
+      propertyPath: creatureLayer.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
     - target: {fileID: 3301028009289224524, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
       propertyPath: stateDuration
       value: 5
@@ -2318,6 +2322,10 @@ PrefabInstance:
     - target: {fileID: 1239250974739085181, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
       propertyPath: m_Name
       value: '[Player] JellyFish'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4370512893488078419, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 2147483656
       objectReference: {fileID: 0}
     - target: {fileID: 5343152892081987542, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
       propertyPath: m_LocalPosition.x

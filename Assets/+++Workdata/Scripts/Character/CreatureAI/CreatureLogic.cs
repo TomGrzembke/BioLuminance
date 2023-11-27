@@ -10,8 +10,8 @@ public abstract class CreatureLogic : MonoBehaviour
     [Header("AI Targeting")]
     [SerializeField] StatusManager targetStatusManager;
 
-    public LayerMask TargetLayer => targetLayer;
-    [SerializeField] LayerMask targetLayer;
+    public Creatures TargetLayer => targetLayer;
+    [SerializeField] Creatures targetLayer;
 
     public bool CanSeeTarget => canSeeTarget;
 
@@ -32,8 +32,9 @@ public abstract class CreatureLogic : MonoBehaviour
     [Range(0, 360)][SerializeField] float detectionAngle = 50f;
     public LayerMask ObstacleLayer => obstacleLayer;
     [SerializeField] LayerMask obstacleLayer;
+    public LayerMask CreatureLayer => creatureLayer;
+    [SerializeField] LayerMask creatureLayer;
 
- 
     #endregion
 
     #region private fields

@@ -48,7 +48,7 @@ public class FleeState : State
 
     public void HandleDetection()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, creatureLogic.DetectionRadius, creatureLogic.TargetLayer);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, creatureLogic.DetectionRadius, creatureLogic.CreatureLayer);
 
         if (colliders.Length == 0)
         {
