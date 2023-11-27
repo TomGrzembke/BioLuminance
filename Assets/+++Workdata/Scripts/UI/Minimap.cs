@@ -8,9 +8,30 @@ public class Minimap : MonoBehaviour
 {
     [SerializeField] StateManager stateManager;
     [SerializeField] SpriteRenderer mapSpriteRenderer;
+    [SerializeField] SpriteRenderer creatureRenderer;
+    
+    [SerializeField] Vector2 indicatorSizeVec;
 
-    public float indicatorSize = 1f;
-    Vector2 indicatorSizeVec;
+    
+    [Flags]
+    public enum Flags
+    {
+        none = 0,
+        North = 1,
+        NorthEast = 2,
+        NorthWest = 4,
+        East = 8,
+        EastWest = 16,
+        EastSouth = 32,
+        South = 64,
+        SouthEast = 128,
+        SouthWest = 256,
+        West = 512,
+        WestSouth = 1024,
+        WestNorth = 2048,
+    }
+
+    public Flags flags;
 
     private void Awake()
     {
@@ -22,10 +43,13 @@ public class Minimap : MonoBehaviour
         mapSpriteRenderer = GetSpriteRendererInLayer(gameObject, "Map");
     }
 
-    private void OnValidate()
+    //TODO Remove this code from update
+    private void Update()
     {
-        indicatorSizeVec.x = indicatorSize;
-        indicatorSizeVec.y = indicatorSize;
+        indicatorSizeVec = (creatureRenderer.bounds.extents * 2);
+        Vector2 roundedVec = new (Mathf.Round(indicatorSizeVec.x * 1.5f), Mathf.Round(indicatorSizeVec.y * 1.5f));
+        indicatorSizeVec = roundedVec;
+        indicatorSizeVec.x = indicatorSizeVec.y;
         mapSpriteRenderer.transform.localScale = indicatorSizeVec;
     }
 
@@ -55,7 +79,7 @@ public class Minimap : MonoBehaviour
 
     public void HandleMapIndicators()
     {
-        if (stateManager.currentState)
+        if (stateManager.currentState.Dangerous)
             mapSpriteRenderer.color = new Color(255, 0, 0);
         else
             mapSpriteRenderer.color = new Color(255, 255, 255);
