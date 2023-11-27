@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public abstract class State : MonoBehaviour
@@ -17,9 +18,19 @@ public abstract class State : MonoBehaviour
     [SerializeField] protected float stateAgentStoppingDistance = 1f;
     [SerializeField] bool useStateVars;
 
+    [SerializeField] StateEvent stateEvent;
+
     #endregion
 
     void Awake() => creatureLogic = GetComponentInParent<CreatureLogic>();
+
+    [Serializable]
+    public struct StateEvent
+    {
+        public State switchState;
+        public int hitPoints;
+        public bool hasHealthPotion;
+    }
 
     public State SwitchState()
     {
