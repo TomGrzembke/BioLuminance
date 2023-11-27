@@ -115,7 +115,7 @@ public abstract class CreatureLogic : MonoBehaviour
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, detectionRadius, creatureLayer);
 
-        if (colliders.Length == 0)
+        if (colliders.Length <= 1)
         {
             ResetStatusTarget();
             return;
@@ -161,7 +161,7 @@ public abstract class CreatureLogic : MonoBehaviour
     {
         statusTargets.Clear();
         closestStatusTarget = null;
-        closestDistance = 0;
+        closestDistance = 100;
     }
 
     void CalculateClosestDistance(StatusManager statusTarget)
@@ -170,7 +170,7 @@ public abstract class CreatureLogic : MonoBehaviour
         if (dangerDistance < closestDistance || (targetStatusManager && targetStatusManager == statusTarget))
         {
             closestDistance = dangerDistance;
-            SetTargetStatusManager(statusTarget);
+            closestStatusTarget = statusTarget;
         }
     }
 
