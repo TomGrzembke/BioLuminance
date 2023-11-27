@@ -33,12 +33,7 @@ public abstract class CreatureLogic : MonoBehaviour
     public LayerMask ObstacleLayer => obstacleLayer;
     [SerializeField] LayerMask obstacleLayer;
 
-    [Header("States")]
-    [SerializeField] protected StateManager stateManager;
-    [Range(0, 1), SerializeField] float fleePercentage = .2f;
-
-    [Header("Health")]
-    [SerializeField] LimbManager limbManager;
+ 
     #endregion
 
     #region private fields
@@ -77,16 +72,6 @@ public abstract class CreatureLogic : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
 
         ResetAgentVars();
-    }
-    void OnEnable()
-    {
-        stun.RegisterOnStun(OnStun);
-        healthSubject.RegisterOnHealthChangedAlpha(OnHealthChangedAlpha);
-    }
-    void OnDisable()
-    {
-        stun.OnStun -= OnStun;
-        healthSubject.OnHealthChangedAlpha -= OnHealthChangedAlpha;
     }
 
     public void ResetAgentVars()
@@ -142,35 +127,6 @@ public abstract class CreatureLogic : MonoBehaviour
         angleInDegrees += eulerY;
 
         return new Vector2(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
-    }
-
-    void OnStun(bool condition)
-    {
-        if (condition)
-        {
-            stateManager.SetState(stunState);
-            return;
-        }
-
-        stateManager.SetState(stateManager.LastState);
-        agent.isStopped = condition;
-    }
-
-    void OnHealthChangedAlpha(float alpha)
-    {
-        if (alpha <= 0)
-        {
-            stateManager.SetState(deathState);
-            return;
-        }
-
-        if (alpha <= fleePercentage)
-        {
-            stateManager.SetState(fleeState);
-            return;
-        }
-
-        stateManager.SetState(stateManager.LastState);
     }
 
     #region Setter

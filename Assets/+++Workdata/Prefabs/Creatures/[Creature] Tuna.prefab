@@ -895,6 +895,12 @@ MonoBehaviour:
   - {fileID: 8418933161765749820}
   - {fileID: 7259974933193452982}
   - {fileID: 9143300523547226659}
+  statusManager: {fileID: 0}
+  stunState: {fileID: 0}
+  deathState: {fileID: 0}
+  fleeState: {fileID: 0}
+  fleeHealthPercentage: 0.2
+  limbManager: {fileID: 0}
 --- !u!1 &5199863984124866248
 GameObject:
   m_ObjectHideFlags: 0
@@ -1429,9 +1435,6 @@ MonoBehaviour:
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 256
-  stateManager: {fileID: 2442591737056489558}
-  fleePercentage: 0.252
-  limbManager: {fileID: 0}
   agent: {fileID: 5218931249399040763}
 --- !u!114 &3337988882416940407
 MonoBehaviour:
