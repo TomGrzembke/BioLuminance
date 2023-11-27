@@ -38,9 +38,6 @@ public abstract class CreatureLogic : MonoBehaviour
     [SerializeField] protected StateManager stateManager;
     [Range(0, 1), SerializeField] float fleePercentage = .2f;
 
-    [Header("Map")]
-    [SerializeField] SpriteRenderer mapSpriteRenderer;
-
     [Header("Health")]
     [SerializeField] LimbManager limbManager;
     #endregion

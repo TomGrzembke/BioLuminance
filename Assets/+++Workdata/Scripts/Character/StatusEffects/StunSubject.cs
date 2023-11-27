@@ -32,9 +32,9 @@ public class StunSubject : MonoBehaviour
         set => StunLogic(value);
     }
 
-    public void AddStun(float additionalHealth)
+    public void AddStun(float additionalStun)
     {
-        StunLogic(currentStun + additionalHealth);
+        StunLogic(currentStun + additionalStun);
     }
 
     public void AddStunPercentage(float percent)
