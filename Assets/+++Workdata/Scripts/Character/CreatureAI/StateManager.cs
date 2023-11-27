@@ -44,7 +44,6 @@ public class StateManager : MonoBehaviour
 
     void HandleStateMachine()
     {
-
         if (!currentState) return;
         State newState = currentState.SwitchState();
 

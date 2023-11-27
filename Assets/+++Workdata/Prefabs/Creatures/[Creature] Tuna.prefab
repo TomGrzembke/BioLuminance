@@ -453,7 +453,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1992697026913468807}
   - component: {fileID: 6125215089113598604}
-  m_Layer: 31
+  m_Layer: 3
   m_Name: MapIndicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -732,7 +732,7 @@ MonoBehaviour:
   randomMoveLength:
     Min: 0
     Max: 10
-  healthTargets: []
+  statusTargets: []
   nearestHealthSubj: {fileID: 0}
 --- !u!1 &4297893035369412821
 GameObject:
@@ -848,7 +848,7 @@ GameObject:
   - component: {fileID: 6635765345639443685}
   - component: {fileID: 2442591737056489558}
   m_Layer: 0
-  m_Name: Statemachine
+  m_Name: '[StateManager] Statemachine'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -895,11 +895,11 @@ MonoBehaviour:
   - {fileID: 8418933161765749820}
   - {fileID: 7259974933193452982}
   - {fileID: 9143300523547226659}
-  statusManager: {fileID: 0}
-  stunState: {fileID: 0}
-  deathState: {fileID: 0}
-  fleeState: {fileID: 0}
-  fleeHealthPercentage: 0.2
+  statusManager: {fileID: 3337988882416940407}
+  stunState: {fileID: 7259974933193452982}
+  deathState: {fileID: 8418933161765749820}
+  fleeState: {fileID: 9143300523547226659}
+  fleeHealthPercentage: 0.25
   limbManager: {fileID: 0}
 --- !u!1 &5199863984124866248
 GameObject:
@@ -964,6 +964,7 @@ MonoBehaviour:
   agent: {fileID: 5218931249399040763}
   speed: 3.5
   defaultSpeed: 3.5
+  minSpeed: 0.5
 --- !u!114 &4479989650701452774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1039,7 +1040,7 @@ MonoBehaviour:
   chaseRange: 10
   attackState: {fileID: 1022936343491123460}
   roamState: {fileID: 1015608502891901096}
-  stateDuration: 0
+  stateDuration: 5
 --- !u!1 &7446373072917147322
 GameObject:
   m_ObjectHideFlags: 0
@@ -1385,7 +1386,7 @@ GameObject:
   - component: {fileID: 3337988882416940407}
   - component: {fileID: 5218931249399040763}
   - component: {fileID: 3368700571256832399}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: Tuna
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1423,9 +1424,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetStatusManager: {fileID: 0}
-  targetLayer:
-    serializedVersion: 2
-    m_Bits: 1536
+  targetLayer: -1
   distanceFromTarget: 0
   defaultAgentSpeed: 3.5
   defaultAgentAcceleration: 5
@@ -1435,6 +1434,9 @@ MonoBehaviour:
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 256
+  creatureLayer:
+    serializedVersion: 2
+    m_Bits: 128
   agent: {fileID: 5218931249399040763}
 --- !u!114 &3337988882416940407
 MonoBehaviour:
@@ -1448,7 +1450,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f0ed5816d3fe72458602006eb00551c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trans: {fileID: 0}
+  trans: {fileID: 5418364295651411625}
   stunSubject: {fileID: 4479989650701452774}
   healthSubject: {fileID: 1439254893094524010}
   speedSubject: {fileID: 9113877598871375429}

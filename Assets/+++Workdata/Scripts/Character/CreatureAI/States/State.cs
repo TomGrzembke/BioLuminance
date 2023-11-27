@@ -1,7 +1,6 @@
+using MyBox;
 using System;
 using UnityEngine;
-using MyBox;
-using System.Linq;
 
 public abstract class State : MonoBehaviour
 {
