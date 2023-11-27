@@ -383,56 +383,6 @@ Transform:
   - {fileID: 6090682547833513853}
   m_Father: {fileID: 5595682832789274083}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &3195058962701602005
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3718489227116566059}
-  - component: {fileID: 4516473553407240352}
-  m_Layer: 0
-  m_Name: Stun
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3718489227116566059
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3195058962701602005}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 5595682832789274083}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4516473553407240352
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3195058962701602005}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b729b08c2a8f9b4eab0d76a6274c100, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stunState: 0
-  maximumStun: 10
-  currentStun: 0
-  stunFallofTime: 3
-  stunTime: 2
-  falloffTick: 0.2
 --- !u!1 &4589218793629938644
 GameObject:
   m_ObjectHideFlags: 0
@@ -936,53 +886,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8877778046217296273}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -105.315}
---- !u!1 &6379079520141786052
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4441001049402476147}
-  - component: {fileID: 3205010244368379526}
-  m_Layer: 0
-  m_Name: Speed
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4441001049402476147
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6379079520141786052}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 5595682832789274083}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3205010244368379526
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6379079520141786052}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 361a35cc8f2720e47b877b2291e1cd56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agent: {fileID: 0}
-  speed: 0
-  defaultSpeed: 10
 --- !u!1 &6718664181072349119
 GameObject:
   m_ObjectHideFlags: 0
@@ -1028,7 +931,7 @@ GameObject:
   - component: {fileID: 7845883195136958720}
   - component: {fileID: 7098681110829944815}
   - component: {fileID: 2643141759927054665}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: Jellyfish
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1050,8 +953,6 @@ Transform:
   m_Children:
   - {fileID: 2445621561155417592}
   - {fileID: 8541991554515935659}
-  - {fileID: 4441001049402476147}
-  - {fileID: 3718489227116566059}
   - {fileID: 8024821159919851362}
   - {fileID: 6492342498208184681}
   - {fileID: 3968470042410611126}
@@ -1071,7 +972,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 156d565f8b5f4894cb019d2c7e839f18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedSubject: {fileID: 3205010244368379526}
+  speedSubject: {fileID: 95591704801732508}
   sprintSpeed: 5
   smoothing: 4
   controlState: 0
@@ -1091,9 +992,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trans: {fileID: 5595682832789274083}
-  stunSubject: {fileID: 4516473553407240352}
+  stunSubject: {fileID: 6017859251663530628}
   healthSubject: {fileID: 5646787825360742053}
-  speedSubject: {fileID: 3205010244368379526}
+  speedSubject: {fileID: 95591704801732508}
 --- !u!195 &7845883195136958720
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1379,8 +1280,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8541991554515935659}
   - component: {fileID: 5646787825360742053}
+  - component: {fileID: 95591704801732508}
+  - component: {fileID: 6017859251663530628}
   m_Layer: 0
-  m_Name: Health
+  m_Name: '[Health,Speed, Stun] Status'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1415,6 +1318,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maximumHealth: 1000
   currentHealth: 1000
+--- !u!114 &95591704801732508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8241781525165388662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 361a35cc8f2720e47b877b2291e1cd56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 0}
+  speed: 0
+  defaultSpeed: 10
+  minSpeed: 0.5
+--- !u!114 &6017859251663530628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8241781525165388662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b729b08c2a8f9b4eab0d76a6274c100, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stunState: 0
+  maximumStun: 10
+  currentStun: 0
+  stunFallofTime: 3
+  stunTime: 2
+  falloffTick: 0.2
 --- !u!1 &8611130859453909012
 GameObject:
   m_ObjectHideFlags: 0
@@ -1496,7 +1433,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 67930628204450673, guid: ef021f085885ead4a8f3fc6b28cdc4a3, type: 3}
       propertyPath: m_CullingMask.m_Bits
-      value: 2147483648
+      value: 2147483656
       objectReference: {fileID: 0}
     - target: {fileID: 3221205733291114032, guid: ef021f085885ead4a8f3fc6b28cdc4a3, type: 3}
       propertyPath: m_AllowXRRendering

@@ -111,6 +111,7 @@ public abstract class CreatureLogic : MonoBehaviour
         }
     }
 
+    #region Handle Detection
     public void HandleDetection()
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, detectionRadius, creatureLayer);
@@ -173,6 +174,7 @@ public abstract class CreatureLogic : MonoBehaviour
             closestStatusTarget = statusTarget;
         }
     }
+    #endregion
 
 #if UNITY_EDITOR
     void OnDrawGizmosSelected()

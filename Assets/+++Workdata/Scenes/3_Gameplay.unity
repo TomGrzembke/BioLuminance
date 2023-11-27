@@ -2194,6 +2194,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bio_Luminance_Thunfish
       objectReference: {fileID: 0}
+    - target: {fileID: 5199863984124866248, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
+      propertyPath: m_Name
+      value: '[Health,Speed, Stun] Status'
+      objectReference: {fileID: 0}
     - target: {fileID: 5443997901060708342, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.56
@@ -2266,10 +2270,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: '[Player] JellyFish'
       objectReference: {fileID: 0}
-    - target: {fileID: 4370512893488078419, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
-      propertyPath: m_CullingMask.m_Bits
-      value: 2147483656
-      objectReference: {fileID: 0}
     - target: {fileID: 5343152892081987542, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2309,10 +2309,6 @@ PrefabInstance:
     - target: {fileID: 5343152892081987542, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6732813511311533440, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
-      propertyPath: m_Layer
-      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7334235293886078406, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
       propertyPath: m_BoundingShape2D
