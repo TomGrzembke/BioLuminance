@@ -156,6 +156,7 @@ public abstract class State : MonoBehaviour
         creatureLogic.ResetAgentVars();
         TimeInState = 0;
         FixedTimeInState = 0;
+        distanceTravelled = 0;
         ExitInternal();
     }
 

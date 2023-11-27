@@ -193,7 +193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bar: {fileID: 6021706579224295546}
-  stun: {fileID: 0}
+  stun: {fileID: 4479989650701452774}
   stunCol: {r: 0.54718304, g: 0, b: 1, a: 1}
   defaultCol: {r: 0.9960785, g: 0.9960785, b: 0.9960785, a: 1}
 --- !u!114 &6021706579224295546
@@ -406,7 +406,8 @@ MonoBehaviour:
   stateEvent: []
   minRoamRange: 5
   maxRoamRange: 5
-  healthTargets: []
+  statusTargets: []
+  statusManager: {fileID: 3337988882416940407}
   chaseState: {fileID: 5839027869137408290}
 --- !u!1 &3157321582516056299
 GameObject:
@@ -1414,7 +1415,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfad8942c39eb5c49abb27e9d4443844, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetHealthScript: {fileID: 0}
+  targetStatusManager: {fileID: 0}
   targetLayer:
     serializedVersion: 2
     m_Bits: 1536
@@ -1443,7 +1444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f0ed5816d3fe72458602006eb00551c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pos: {fileID: 5418364295651411625}
+  trans: {fileID: 0}
   stunSubject: {fileID: 4479989650701452774}
   healthSubject: {fileID: 1439254893094524010}
   speedSubject: {fileID: 9113877598871375429}
