@@ -1,5 +1,6 @@
 using MyBox;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class FleeState : State
@@ -7,7 +8,7 @@ public class FleeState : State
     #region serialized fields
     [MinMaxRange(0, 10)]
     [SerializeField] RangedFloat randomMoveLength = new(0, 10);
-    [SerializeField] List<HealthSubject> healthTargets = new();
+    [SerializeField] List<StatusManager> statusTargets = new();
     [SerializeField] HealthSubject nearestHealthSubj;
     #endregion
 
@@ -52,21 +53,21 @@ public class FleeState : State
 
         if (colliders.Length == 0)
         {
-            healthTargets.Clear();
+            statusTargets.Clear();
             return;
         }
 
         for (int i = 0; i < colliders.Length; i++)
         {
-            HealthSubject _healthTarget = colliders[i].GetComponentInChildren<HealthSubject>();
+            StatusManager statusManager = colliders[i].GetComponentInChildren<StatusManager>();
 
-            if (!_healthTarget)
+            if (!statusManager)
                 continue;
 
-            if (!healthTargets.Contains(_healthTarget))
-                healthTargets.Add(_healthTarget);
+            if (!statusTargets.Contains(statusManager))
+                statusTargets.Add(statusManager);
 
-            var dangerDistance = _healthTarget.transform.position - transform.position;
+            var dangerDistance = statusManager.transform.position - transform.position;
         }
     }
 }
