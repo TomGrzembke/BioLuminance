@@ -587,17 +587,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5343152892081987542, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
   m_PrefabInstance: {fileID: 7608655987527139202}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &515347654 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3301028009289224524, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
-  m_PrefabInstance: {fileID: 5685878510402938606}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 810e60622f023b44e9a9935213b6ab82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2343,38 +2332,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5839027869137408290, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
-      propertyPath: stateEvent.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5839027869137408290, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
-      propertyPath: stateEvent.Array.data[0].time
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5839027869137408290, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
-      propertyPath: stateEvent.Array.data[1].time
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5839027869137408290, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
-      propertyPath: stateEvent.Array.data[0].reason
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5839027869137408290, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
-      propertyPath: stateEvent.Array.data[1].reason
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5839027869137408290, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
-      propertyPath: stateEvent.Array.data[1].distance
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5839027869137408290, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
-      propertyPath: stateEvent.Array.data[0].switchState
+    - target: {fileID: 7650239154033359450, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
+      propertyPath: stun
       value: 
-      objectReference: {fileID: 515347654}
-    - target: {fileID: 5839027869137408290, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
-      propertyPath: stateEvent.Array.data[1].switchState
-      value: 
-      objectReference: {fileID: 515347654}
+      objectReference: {fileID: 0}
     - target: {fileID: 8910744880728304415, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
       propertyPath: m_Camera
       value: 

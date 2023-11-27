@@ -14,7 +14,6 @@ public abstract class CreatureLogic : MonoBehaviour
     [SerializeField] LayerMask targetLayer;
 
     public bool CanSeeTarget => canSeeTarget;
-    [SerializeField] bool canSeeTarget = false;
 
     [SerializeField] float distanceFromTarget;
     public float DistanceFromTarget => distanceFromTarget;
@@ -44,6 +43,7 @@ public abstract class CreatureLogic : MonoBehaviour
 
     #region private fields
 
+    bool canSeeTarget = false;
     protected StunState stunState;
     protected ChaseState chaseState;
     protected FleeState fleeState;
