@@ -119,14 +119,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa3e069d9ae7fc04caf6fe7d57107024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TimeInState: 0
+  distanceTravelled: 0
+  FixedTimeInState: 0
   uniqueState: {fileID: 0}
   stateAgentSpeed: 3.5
   stateAgentAcceleration: 5
   stateAgentStoppingDistance: 2
   useStateVars: 1
+  dangerous: 0
   stateEvent: []
-  TimeInState: 0
-  FixedTimeInState: 0
   attackDamage: 5
   chaseState: {fileID: 5839027869137408290}
   roamState: {fileID: 1015608502891901096}
@@ -268,14 +270,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0285bd7e29adb52438d3263aef0c33f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TimeInState: 0
+  distanceTravelled: 0
+  FixedTimeInState: 0
   uniqueState: {fileID: 0}
   stateAgentSpeed: 5
   stateAgentAcceleration: 9
   stateAgentStoppingDistance: 0
   useStateVars: 1
+  dangerous: 0
   stateEvent: []
-  TimeInState: 0
-  FixedTimeInState: 0
   chaseState: {fileID: 5839027869137408290}
   roamState: {fileID: 1015608502891901096}
   stanceTime: 4
@@ -326,14 +330,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0712df3ef83006a498b4ddacc686b979, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TimeInState: 0
+  distanceTravelled: 0
+  FixedTimeInState: 0
   uniqueState: {fileID: 0}
   stateAgentSpeed: 4.5
   stateAgentAcceleration: 6
   stateAgentStoppingDistance: 2
   useStateVars: 1
+  dangerous: 0
   stateEvent: []
-  TimeInState: 0
-  FixedTimeInState: 0
   chaseRange: 10
   attackState: {fileID: 1022936343491123460}
   roamState: {fileID: 1015608502891901096}
@@ -382,14 +388,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fe50b0595703854cba355c439e5c301, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TimeInState: 0
+  distanceTravelled: 0
+  FixedTimeInState: 0
   uniqueState: {fileID: 0}
   stateAgentSpeed: 3.5
   stateAgentAcceleration: 3
   stateAgentStoppingDistance: 1
   useStateVars: 1
+  dangerous: 0
   stateEvent: []
-  TimeInState: 0
-  FixedTimeInState: 0
   minRoamRange: 5
   maxRoamRange: 5
   healthTargets: []
@@ -670,14 +678,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54361192ce6d94b499d0f13a2e30e782, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TimeInState: 0
+  distanceTravelled: 0
+  FixedTimeInState: 0
   uniqueState: {fileID: 0}
   stateAgentSpeed: 14
   stateAgentAcceleration: 5
   stateAgentStoppingDistance: 0
   useStateVars: 1
+  dangerous: 0
   stateEvent: []
-  TimeInState: 0
-  FixedTimeInState: 0
   randomMoveLength:
     Min: 0
     Max: 10
@@ -981,14 +991,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 810e60622f023b44e9a9935213b6ab82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TimeInState: 0
+  distanceTravelled: 0
+  FixedTimeInState: 0
   uniqueState: {fileID: 0}
   stateAgentSpeed: 10
   stateAgentAcceleration: 9
   stateAgentStoppingDistance: 0.5
   useStateVars: 1
+  dangerous: 0
   stateEvent: []
-  TimeInState: 0
-  FixedTimeInState: 0
   chaseRange: 10
   attackState: {fileID: 1022936343491123460}
   roamState: {fileID: 1015608502891901096}
@@ -1314,14 +1326,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e88af8f8d4ec6974bbb11b3705521555, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TimeInState: 0
+  distanceTravelled: 0
+  FixedTimeInState: 0
   uniqueState: {fileID: 0}
   stateAgentSpeed: 0
   stateAgentAcceleration: 0
   stateAgentStoppingDistance: 0
   useStateVars: 1
+  dangerous: 0
   stateEvent: []
-  TimeInState: 0
-  FixedTimeInState: 0
 --- !u!1 &8771526564780753755
 GameObject:
   m_ObjectHideFlags: 0
@@ -1493,12 +1507,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8c1acac48f595f42a3962f4b7517468, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TimeInState: 0
+  distanceTravelled: 0
+  FixedTimeInState: 0
   uniqueState: {fileID: 0}
   stateAgentSpeed: 0
   stateAgentAcceleration: 0
   stateAgentStoppingDistance: 0
   useStateVars: 1
+  dangerous: 0
   stateEvent: []
-  TimeInState: 0
-  FixedTimeInState: 0
   stateManager: {fileID: 2442591737056489558}

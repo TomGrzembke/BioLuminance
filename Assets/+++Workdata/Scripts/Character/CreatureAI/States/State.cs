@@ -1,10 +1,25 @@
 using System;
 using UnityEngine;
 using MyBox;
+using System.Linq;
 
 public abstract class State : MonoBehaviour
 {
-    #region private fields
+    #region serialized fields
+    [Header(nameof(Time))]
+    /// <summary>
+    /// The time since the state was entered.
+    /// </summary>
+    public float TimeInState;
+
+    [SerializeField] float distanceTravelled;
+    public float DistanceTravelled => distanceTravelled;
+    Vector3 oldPos;
+
+    /// <summary>
+    /// The fixed time since the state was entered, for any physics tests.
+    /// </summary>
+    public float FixedTimeInState;
     [Header(nameof(State))]
     [SerializeField] protected State uniqueState;
 
@@ -18,6 +33,8 @@ public abstract class State : MonoBehaviour
     public float StateAgentStoppingDistance => stateAgentStoppingDistance;
     [SerializeField] protected float stateAgentStoppingDistance = 1f;
     [SerializeField] bool useStateVars;
+    public bool Dangerous => dangerous;
+    [SerializeField] bool dangerous;
 
     [SerializeField] StateEvent[] stateEvent;
 
@@ -44,7 +61,7 @@ public abstract class State : MonoBehaviour
     public struct StateEvent
     {
         public State switchState;
-        [ConditionalField(nameof(switchState), false)] 
+        [ConditionalField(nameof(switchState), false)]
         public SwitchReason reason;
 
         //time
@@ -72,9 +89,12 @@ public abstract class State : MonoBehaviour
             switch (stateEvent[i].reason)
             {
                 case SwitchReason.time:
-
+                    if (stateEvent[i].time < TimeInState)
+                        return stateEvent[i].switchState;
                     break;
                 case SwitchReason.distanceTraveled:
+                    if (stateEvent[i].distance < distanceTravelled)
+                        return stateEvent[i].switchState;
                     break;
                 case SwitchReason.damage:
                     break;
@@ -83,38 +103,29 @@ public abstract class State : MonoBehaviour
             }
         }
 
-        return false;
+        return SwitchStateInternal();
     }
 
     public State SwitchState()
     {
-        if (!uniqueState && !stateEvent[0].switchState)
-            return CheckStateEvent();
-        else if(!uniqueState)
-            return SwitchStateInternal();
-
-        
+        if (!uniqueState)
+            if (stateEvent.Length > 0)
+                return CheckStateEvent();
+            else
+                return SwitchStateInternal();
 
         return uniqueState.SwitchState();
     }
 
     public abstract State SwitchStateInternal();
 
-    [Header(nameof(Time))]
-    /// <summary>
-    /// The time since the state was entered.
-    /// </summary>
-    public float TimeInState;
-
-    /// <summary>
-    /// The fixed time since the state was entered, for any physics tests.
-    /// </summary>
-    public float FixedTimeInState;
 
     public void EnterState()
     {
         TimeInState = 0;
         FixedTimeInState = 0;
+        oldPos = transform.position;
+        distanceTravelled = 0;
         if (useStateVars)
             SetAgentVarsToStateVars();
         EnterInternal();
@@ -125,6 +136,8 @@ public abstract class State : MonoBehaviour
     public void UpdateState()
     {
         TimeInState += Time.deltaTime;
+        distanceTravelled += Vector3.Distance(transform.position, oldPos);
+        oldPos = transform.position;
         UpdateInternal();
     }
 
