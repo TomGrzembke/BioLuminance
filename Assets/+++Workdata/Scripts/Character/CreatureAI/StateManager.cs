@@ -1,8 +1,5 @@
 using System.Collections.Generic;
-using Unity.IO.LowLevel.Unsafe;
-using UnityEditorInternal;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class StateManager : MonoBehaviour
 {

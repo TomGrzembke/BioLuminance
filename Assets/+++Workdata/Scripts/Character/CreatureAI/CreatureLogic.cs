@@ -45,7 +45,6 @@ public abstract class CreatureLogic : MonoBehaviour
     protected DeathState deathState;
     protected StunSubject stun;
     [HideInInspector] public NavMeshAgent agent;
-    HealthSubject healthSubject;
     SpeedSubject speedSubject;
     #endregion
 
@@ -64,7 +63,6 @@ public abstract class CreatureLogic : MonoBehaviour
     {
         fleeState = GetComponentInChildren<FleeState>();
         deathState = GetComponentInChildren<DeathState>();
-        healthSubject = GetComponentInChildren<HealthSubject>();
         speedSubject = GetComponentInChildren<SpeedSubject>();
         stunState = GetComponentInChildren<StunState>();
         chaseState = GetComponentInChildren<ChaseState>();
