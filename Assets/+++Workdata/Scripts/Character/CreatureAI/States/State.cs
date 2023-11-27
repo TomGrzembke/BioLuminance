@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using MyBox;
 
 public abstract class State : MonoBehaviour
 {
@@ -18,18 +19,26 @@ public abstract class State : MonoBehaviour
     [SerializeField] protected float stateAgentStoppingDistance = 1f;
     [SerializeField] bool useStateVars;
 
-    [SerializeField] StateEvent stateEvent;
+    [SerializeField] StateEvent[] stateEvent;
 
     #endregion
 
     void Awake() => creatureLogic = GetComponentInParent<CreatureLogic>();
 
+    public enum SwitchReason
+    {
+        time,
+        distanceTraveled,
+        damage,
+    }
+
     [Serializable]
     public struct StateEvent
     {
+        public SwitchReason reason;
         public State switchState;
-        public int hitPoints;
-        public bool hasHealthPotion;
+        [ConditionalField(nameof(reason), false, SwitchReason.time),]
+        public float time;
     }
 
     public State SwitchState()
@@ -37,7 +46,7 @@ public abstract class State : MonoBehaviour
         if (!uniqueState)
             return SwitchStateInternal();
 
-       return uniqueState.SwitchState();
+        return uniqueState.SwitchState();
     }
 
     public abstract State SwitchStateInternal();
