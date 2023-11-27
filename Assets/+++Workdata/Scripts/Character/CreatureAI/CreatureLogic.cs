@@ -34,7 +34,6 @@ public abstract class CreatureLogic : MonoBehaviour
     public LayerMask ObstacleLayer => obstacleLayer;
     [SerializeField] LayerMask obstacleLayer;
 
-<<<<<<< HEAD
     [Header("States")]
     [SerializeField] protected StateManager stateManager;
     [Range(0, 1), SerializeField] float fleePercentage = .2f;
@@ -42,8 +41,6 @@ public abstract class CreatureLogic : MonoBehaviour
     [Header("Map")]
     [SerializeField] SpriteRenderer mapSpriteRenderer;
 
-=======
->>>>>>> origin/minimap
     [Header("Health")]
     [SerializeField] LimbManager limbManager;
     #endregion
@@ -71,16 +68,7 @@ public abstract class CreatureLogic : MonoBehaviour
     {
         ResetAgentVars();
     }
-<<<<<<< HEAD
 
-    void Update()
-    {
-        HandleMapIndicators();
-    }
-
-=======
-    
->>>>>>> origin/minimap
     void OnValidate()
     {
         fleeState = GetComponentInChildren<FleeState>();

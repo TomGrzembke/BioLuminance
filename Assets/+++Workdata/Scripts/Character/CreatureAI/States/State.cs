@@ -25,26 +25,75 @@ public abstract class State : MonoBehaviour
 
     void Awake() => creatureLogic = GetComponentInParent<CreatureLogic>();
 
+    #region StateEvent
     public enum SwitchReason
     {
+        none,
         time,
         distanceTraveled,
         damage,
+    }
+    public enum DamageType
+    {
+        none,
+        amount,
+        hit
     }
 
     [Serializable]
     public struct StateEvent
     {
-        public SwitchReason reason;
         public State switchState;
-        [ConditionalField(nameof(reason), false, SwitchReason.time),]
+        [ConditionalField(nameof(switchState), false)] 
+        public SwitchReason reason;
+
+        //time
+        [ConditionalField(nameof(reason), false, SwitchReason.time)]
         public float time;
+
+        //distanceTraveled
+        [ConditionalField(nameof(reason), false, SwitchReason.distanceTraveled)]
+        public float distance;
+
+        //distanceTraveled
+        [ConditionalField(nameof(reason), false, SwitchReason.damage)]
+        public DamageType damageType;
+        [ConditionalField(nameof(damageType), false, DamageType.amount)]
+        public float damage;
+        [ConditionalField(nameof(damageType), false, DamageType.hit)]
+        public float hitAmount;
+    }
+    #endregion
+
+    public State CheckStateEvent()
+    {
+        for (int i = 0; i < stateEvent.Length; i++)
+        {
+            switch (stateEvent[i].reason)
+            {
+                case SwitchReason.time:
+
+                    break;
+                case SwitchReason.distanceTraveled:
+                    break;
+                case SwitchReason.damage:
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        return false;
     }
 
     public State SwitchState()
     {
-        if (!uniqueState)
+        if (!uniqueState && !stateEvent[0].switchState)
+            return CheckStateEvent();
+        else if(!uniqueState)
             return SwitchStateInternal();
+
+        
 
         return uniqueState.SwitchState();
     }
