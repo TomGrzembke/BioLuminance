@@ -31,7 +31,7 @@ public class RoamState : State
 
     protected override void UpdateInternal()
     {
-        HandleDetection();
+        creatureLogic.HandleDetection();
         HandleRoaming();
         creatureLogic.HandleRotate();
     }

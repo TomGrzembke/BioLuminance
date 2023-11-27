@@ -2182,6 +2182,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: '[Creature] Tuna'
       objectReference: {fileID: 0}
+    - target: {fileID: 3289857228537091916, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
+      propertyPath: statusManager
+      value: 
+      objectReference: {fileID: 5685878510402938612}
+    - target: {fileID: 3289857228537091916, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
+      propertyPath: closestDistance
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297893035369412821, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
+      propertyPath: m_Name
+      value: Bio_Luminance_Thunfish
+      objectReference: {fileID: 0}
     - target: {fileID: 5443997901060708342, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.74
@@ -2231,6 +2243,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
+--- !u!114 &5685878510402938612 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3337988882416940407, guid: 77f5cc1748340974ebf41b4e207ec80a, type: 3}
+  m_PrefabInstance: {fileID: 5685878510402938606}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f0ed5816d3fe72458602006eb00551c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7608655987527139202
 PrefabInstance:
   m_ObjectHideFlags: 0

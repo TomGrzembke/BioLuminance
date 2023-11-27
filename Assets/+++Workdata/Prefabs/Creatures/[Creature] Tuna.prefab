@@ -733,7 +733,7 @@ MonoBehaviour:
     Min: 0
     Max: 10
   statusTargets: []
-  nearestHealthSubj: {fileID: 0}
+  nearestStatusTarget: {fileID: 0}
 --- !u!1 &4297893035369412821
 GameObject:
   m_ObjectHideFlags: 0
@@ -1424,6 +1424,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetStatusManager: {fileID: 0}
+  closestStatusTarget: {fileID: 0}
+  closestDistance: 0
   targetLayer: -1
   distanceFromTarget: 0
   defaultAgentSpeed: 3.5
@@ -1438,6 +1440,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   agent: {fileID: 5218931249399040763}
+  statusManager: {fileID: 0}
+  statusTargets: []
 --- !u!114 &3337988882416940407
 MonoBehaviour:
   m_ObjectHideFlags: 0

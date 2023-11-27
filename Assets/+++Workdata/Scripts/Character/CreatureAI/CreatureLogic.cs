@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
@@ -9,6 +10,8 @@ public abstract class CreatureLogic : MonoBehaviour
     public StatusManager TargetStatusManager => targetStatusManager;
     [Header("AI Targeting")]
     [SerializeField] StatusManager targetStatusManager;
+    [SerializeField] StatusManager closestStatusTarget;
+    [SerializeField] float closestDistance;
 
     public Creatures TargetLayer => targetLayer;
     [SerializeField] Creatures targetLayer;
@@ -47,6 +50,8 @@ public abstract class CreatureLogic : MonoBehaviour
     protected StunSubject stun;
     [HideInInspector] public NavMeshAgent agent;
     SpeedSubject speedSubject;
+    [SerializeField] StatusManager statusManager;
+    [SerializeField] List<StatusManager> statusTargets = new();
     #endregion
 
     void Awake()
@@ -54,6 +59,7 @@ public abstract class CreatureLogic : MonoBehaviour
         agent.updateRotation = false;
         agent.updateUpAxis = false;
     }
+
 
     void Start()
     {
@@ -102,6 +108,69 @@ public abstract class CreatureLogic : MonoBehaviour
 
             float step = agent.acceleration * Time.deltaTime;
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, step);
+        }
+    }
+
+    public void HandleDetection()
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, detectionRadius, creatureLayer);
+
+        if (colliders.Length == 0)
+        {
+            ResetStatusTarget();
+            return;
+        }
+
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            if (!colliders[i].TryGetComponent(out StatusManager statusTarget))
+                statusTarget = colliders[i].GetComponentInChildren<StatusManager>();
+
+            if (!statusTarget || statusTarget == statusManager)
+                continue;
+
+            if (!statusTargets.Contains(statusTarget))
+                statusTargets.Add(statusTarget);
+
+            CalculateClosestDistance(statusTarget);
+            LookLogic(statusTarget);
+        }
+    }
+    void LookLogic(StatusManager targetStatusManager)
+    {
+        Vector2 targetDirection = (targetStatusManager.Trans.position - transform.position).normalized;
+
+        if (Vector2.Angle(transform.up, targetDirection) < detectionAngle / 2)
+        {
+            if (!Physics2D.Raycast(transform.position, targetDirection, distanceFromTarget, obstacleLayer))
+            {
+                SetCanSeePlayer(true);
+                SetTargetStatusManager(targetStatusManager);
+            }
+            else
+            {
+                SetCanSeePlayer(false);
+                SetTargetStatusManager(null);
+            }
+        }
+        else if (canSeeTarget)
+            SetCanSeePlayer(false);
+    }
+
+    void ResetStatusTarget()
+    {
+        statusTargets.Clear();
+        closestStatusTarget = null;
+        closestDistance = 0;
+    }
+
+    void CalculateClosestDistance(StatusManager statusTarget)
+    {
+        float dangerDistance = Vector3.Distance(transform.position, statusTarget.transform.position);
+        if (dangerDistance < closestDistance || (targetStatusManager && targetStatusManager == statusTarget))
+        {
+            closestDistance = dangerDistance;
+            SetTargetStatusManager(statusTarget);
         }
     }
 

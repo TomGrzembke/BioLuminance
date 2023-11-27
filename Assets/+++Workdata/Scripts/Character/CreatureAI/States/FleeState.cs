@@ -8,7 +8,8 @@ public class FleeState : State
     [MinMaxRange(0, 10)]
     [SerializeField] RangedFloat randomMoveLength = new(0, 10);
     [SerializeField] List<StatusManager> statusTargets = new();
-    [SerializeField] HealthSubject nearestHealthSubj;
+    [SerializeField] StatusManager nearestStatusTarget;
+
     #endregion
 
     #region private fields
@@ -35,7 +36,7 @@ public class FleeState : State
 
     protected override void UpdateInternal()
     {
-        HandleDetection();
+        creatureLogic.HandleDetection();
         if (creatureLogic.agent.hasPath) return;
 
         int pathHorizontal = Random.Range(-1, 2);
@@ -44,29 +45,5 @@ public class FleeState : State
 
         float randomMultiplier = Random.Range(randomMoveLength.Min, randomMoveLength.Max);
         creatureLogic.agent.SetDestination(transform.position + pathAddVec3 * randomMultiplier);
-    }
-
-    public void HandleDetection()
-    {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, creatureLogic.DetectionRadius, creatureLogic.CreatureLayer);
-
-        if (colliders.Length == 0)
-        {
-            statusTargets.Clear();
-            return;
-        }
-
-        for (int i = 0; i < colliders.Length; i++)
-        {
-            StatusManager statusManager = colliders[i].GetComponentInChildren<StatusManager>();
-
-            if (!statusManager)
-                continue;
-
-            if (!statusTargets.Contains(statusManager))
-                statusTargets.Add(statusManager);
-
-            var dangerDistance = statusManager.transform.position - transform.position;
-        }
     }
 }
