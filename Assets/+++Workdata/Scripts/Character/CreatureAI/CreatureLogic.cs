@@ -34,6 +34,7 @@ public abstract class CreatureLogic : MonoBehaviour
     public LayerMask ObstacleLayer => obstacleLayer;
     [SerializeField] LayerMask obstacleLayer;
 
+<<<<<<< HEAD
     [Header("States")]
     [SerializeField] protected StateManager stateManager;
     [Range(0, 1), SerializeField] float fleePercentage = .2f;
@@ -41,6 +42,8 @@ public abstract class CreatureLogic : MonoBehaviour
     [Header("Map")]
     [SerializeField] SpriteRenderer mapSpriteRenderer;
 
+=======
+>>>>>>> origin/minimap
     [Header("Health")]
     [SerializeField] LimbManager limbManager;
     #endregion
@@ -66,15 +69,18 @@ public abstract class CreatureLogic : MonoBehaviour
 
     void Start()
     {
-        mapSpriteRenderer = GetSpriteRendererInLayer(gameObject, "Map");
         ResetAgentVars();
     }
+<<<<<<< HEAD
 
     void Update()
     {
         HandleMapIndicators();
     }
 
+=======
+    
+>>>>>>> origin/minimap
     void OnValidate()
     {
         fleeState = GetComponentInChildren<FleeState>();
@@ -129,34 +135,6 @@ public abstract class CreatureLogic : MonoBehaviour
             float step = agent.acceleration * Time.deltaTime;
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, step);
         }
-    }
-
-    public SpriteRenderer GetSpriteRendererInLayer(GameObject parent, string layerName)
-    {
-        SpriteRenderer spriteRendererInLayer = null;
-
-        // Get all child objects of the parent GameObject
-        Transform[] allChildren = parent.GetComponentsInChildren<Transform>(true);
-
-        // Find the first child object that matches the layer, is active, and has a SpriteRenderer component
-        foreach (Transform child in allChildren)
-        {
-            SpriteRenderer childSpriteRenderer = child.GetComponent<SpriteRenderer>();
-            if (childSpriteRenderer != null && child.gameObject.layer == LayerMask.NameToLayer(layerName))
-            {
-                spriteRendererInLayer = childSpriteRenderer;
-                break;
-            }
-        }
-
-        return spriteRendererInLayer;
-    }
-
-    public void HandleMapIndicators()
-    {
-        if (stateManager.currentState == chaseState)
-            if (mapSpriteRenderer != null)
-                mapSpriteRenderer.color = new Color(255, 0, 0);
     }
 
 #if UNITY_EDITOR
