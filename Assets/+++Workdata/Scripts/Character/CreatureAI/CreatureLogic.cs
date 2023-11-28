@@ -168,7 +168,7 @@ public abstract class CreatureLogic : MonoBehaviour
     void CalculateClosestDistance(StatusManager statusTarget)
     {
         float dangerDistance = Vector3.Distance(transform.position, statusTarget.transform.position);
-        if (dangerDistance < closestDistance || (targetStatusManager && targetStatusManager == statusTarget))
+        if (dangerDistance < closestDistance || closestStatusTarget == statusTarget)
         {
             closestDistance = dangerDistance;
             closestStatusTarget = statusTarget;
