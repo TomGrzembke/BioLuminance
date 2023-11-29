@@ -21,7 +21,7 @@ public class TentacleBehavior : MonoBehaviour
     [Foldout("TailCustomization", true)]
     [SerializeField] Transform tailEnd;
     [SerializeField] Transform[] bodyParts;
-    [SerializeField] int grabSpeed = 60;
+    [ConditionalField(nameof(grabPos)),SerializeField] int grabSpeed = 60;
 
     [Foldout("TailCustomization", false)]
 
