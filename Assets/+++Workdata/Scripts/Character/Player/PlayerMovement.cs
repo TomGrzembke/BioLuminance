@@ -68,6 +68,7 @@ public class PlayerMovement : MonoBehaviour
 
     float SpeedRamp()
     {
+        var speed = currentAgentSpeed / speedSubject.Speed;
         return Time.deltaTime * speedSubject.Speed / timeUntilMaximumSpeed;
     }
 
