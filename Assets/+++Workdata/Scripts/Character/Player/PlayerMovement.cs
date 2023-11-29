@@ -68,7 +68,6 @@ public class PlayerMovement : MonoBehaviour
 
     float SpeedRamp()
     {
-        var speed = currentAgentSpeed / speedSubject.Speed;
         return Time.deltaTime * speedSubject.Speed / timeUntilMaximumSpeed;
     }
 
@@ -93,7 +92,7 @@ public class PlayerMovement : MonoBehaviour
         if (movement == Vector2.zero) return;
 
         moveSafe = Vector2.Lerp(moveSafe, movement, Time.deltaTime * smoothing);
-        SetAgentPosition(transform.position + new Vector3(moveSafe.x + 0.0001f, moveSafe.y, 0));
+        SetAgentPosition(transform.position + new Vector3(moveSafe.x + 0.0001f, moveSafe.y, 0) * 5);
     }
 
     public void SetAgentPosition(Vector3 targetPos)

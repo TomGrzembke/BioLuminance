@@ -162,14 +162,12 @@ public class TentacleBehavior : MonoBehaviour
 
     void MoveBodyParts(int i)
     {
-        if (bodyParts.Length == 0)
-            return;
-        if (bodyParts.Length < i)
-            return;
-        if (calc_length < i + calc_bodyPartDistance)
-            return;
+        if (bodyParts.Length == 0) return;
+        if (bodyParts.Length < i) return;
+        if (bodyParts[i - 1] == null) return;
 
-        bodyParts[i - 1].position = segmentPoses[i * calc_bodyPartDistance];
+        print(bodyParts[i - 1].name);
+        bodyParts[i - 1].position = segmentPoses[i];
     }
 
     Vector3 GetLastSegmentPose(int i)
