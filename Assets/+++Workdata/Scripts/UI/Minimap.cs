@@ -10,7 +10,7 @@ public class Minimap : MonoBehaviour
     [SerializeField] SpriteRenderer mapSpriteRenderer;
     [SerializeField] SpriteRenderer creatureRenderer;
     
-    [SerializeField] Vector2 indicatorSizeVec;
+    public Vector2 indicatorSizeVec;
 
     
     [Flags]
@@ -36,10 +36,6 @@ public class Minimap : MonoBehaviour
     private void Awake()
     {
         stateManager = GetComponentInChildren<StateManager>();
-    }
-
-    private void Start()
-    {
         mapSpriteRenderer = GetSpriteRendererInLayer(gameObject, "Map");
     }
 
@@ -47,8 +43,7 @@ public class Minimap : MonoBehaviour
     private void Update()
     {
         indicatorSizeVec = (creatureRenderer.bounds.extents * 2);
-        Vector2 roundedVec = new (Mathf.Round(indicatorSizeVec.x * 1.5f), Mathf.Round(indicatorSizeVec.y * 1.5f));
-        indicatorSizeVec = roundedVec;
+        indicatorSizeVec = new (Mathf.Round(indicatorSizeVec.x * 1.5f), Mathf.Round(indicatorSizeVec.y * 1.5f));
         indicatorSizeVec.x = indicatorSizeVec.y;
         mapSpriteRenderer.transform.localScale = indicatorSizeVec;
     }
