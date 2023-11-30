@@ -21,11 +21,12 @@ public class TentacleBehavior : MonoBehaviour
     [Foldout("TailCustomization", true)]
     [SerializeField] Transform tailEnd;
     [SerializeField] Transform[] bodyParts;
-    [ConditionalField(nameof(grabPos)),SerializeField] int grabSpeed = 60;
+    [ConditionalField(nameof(grabTrans)), SerializeField] int grabSpeed = 60;
 
     [Foldout("TailCustomization", false)]
 
-    [SerializeField] Transform grabPos;
+    [SerializeField] Transform grabTrans;
+    public Transform GrabTrans => grabTrans;
 
     [SerializeField, ConditionalField(true, nameof(GetIsInPlaymode))] bool fouldOutOnStart = true;
     bool GetIsInPlaymode() => !Application.isPlaying;
@@ -58,11 +59,14 @@ public class TentacleBehavior : MonoBehaviour
     Vector3[] segmentPoses;
     Vector3[] segmentV;
     Vector3 targetPos;
+    Transform defaultGrabTrans;
+    public Transform DefaultGrabTrans => defaultGrabTrans;
     #endregion
     void Awake() => lineRend = GetComponent<LineRenderer>();
 
     void Start()
     {
+        defaultGrabTrans = grabTrans;
         Recalculate();
         StartSettings();
     }
@@ -148,13 +152,13 @@ public class TentacleBehavior : MonoBehaviour
 
     Vector3 GetCalcGrabPos(int i)
     {
-        if (grabPos == null)
+        if (grabTrans == null)
             return Vector3.zero;
 
         if (pointFollowMode == PointFollowMode.stack)
-            return (grabPos.position - GetLastSegmentPose(i)).normalized / grabSpeed;
+            return (grabTrans.position - GetLastSegmentPose(i)).normalized / grabSpeed;
         else if (pointFollowMode == PointFollowMode.overlap)
-            return (grabPos.position - GetLastSegmentPose(i)) / 10;
+            return (grabTrans.position - GetLastSegmentPose(i)) / 10;
 
         else
             return Vector3.zero;
@@ -199,5 +203,13 @@ public class TentacleBehavior : MonoBehaviour
             segmentPoses[i] = GetLastSegmentPose(i) + attachTrans.right;
         }
         lineRend.SetPositions(segmentPoses);
+    }
+
+    public void SetGrabTarget(Transform grabTarget)
+    {
+        if (grabTarget == null)
+            grabTrans = defaultGrabTrans;
+        else
+            grabTrans = grabTarget;
     }
 }
