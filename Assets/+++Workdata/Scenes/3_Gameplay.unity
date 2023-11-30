@@ -865,8 +865,8 @@ MonoBehaviour:
   flipRange:
     Min: 0
     Max: 180
-  flip: 0
-  invert: 0
+  flip: 1
+  invert: 1
 --- !u!114 &359109057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3053,8 +3053,8 @@ MonoBehaviour:
   flipRange:
     Min: 0
     Max: 180
-  flip: 0
-  invert: 0
+  flip: 1
+  invert: 1
 --- !u!1 &1307043042
 GameObject:
   m_ObjectHideFlags: 0
@@ -3080,7 +3080,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1307043042}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 1.501132, y: -0.37759686, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3088,7 +3088,7 @@ Transform:
   - {fileID: 359109053}
   - {fileID: 1302530137}
   m_Father: {fileID: 1953696798}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!95 &1307043046
 Animator:
   serializedVersion: 5
