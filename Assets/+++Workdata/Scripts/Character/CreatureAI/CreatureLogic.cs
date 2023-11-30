@@ -11,6 +11,7 @@ public abstract class CreatureLogic : MonoBehaviour
     [Header("AI Targeting")]
     [SerializeField] StatusManager targetStatusManager;
     [SerializeField] StatusManager closestStatusTarget;
+    public StatusManager ClosestManagerTarget => closestStatusTarget;
     [SerializeField] float closestDistance;
 
     public Creatures TargetLayer => targetLayer;
@@ -214,6 +215,16 @@ public abstract class CreatureLogic : MonoBehaviour
     {
         if (newTarget != targetStatusManager)
             targetStatusManager = newTarget;
+    }
+
+    public void SetDestination(Transform targetTrans)
+    {
+        agent.SetDestination(targetTrans.position);
+    }
+
+    public void SetDestination(Vector3 targetPos)
+    {
+        agent.SetDestination(targetPos);
     }
     #endregion
 }

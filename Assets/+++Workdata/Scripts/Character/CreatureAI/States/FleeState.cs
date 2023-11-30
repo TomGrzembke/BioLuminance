@@ -1,19 +1,18 @@
 using MyBox;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class FleeState : State
 {
     #region serialized fields
     [MinMaxRange(0, 10)]
     [SerializeField] RangedFloat randomMoveLength = new(0, 10);
-    [SerializeField] List<StatusManager> statusTargets = new();
     [SerializeField] StatusManager nearestStatusTarget;
 
     #endregion
 
     #region private fields
-
+    NavMeshAgent agent => creatureLogic.agent;
     #endregion
 
     public override State SwitchStateInternal()
@@ -37,13 +36,20 @@ public class FleeState : State
     protected override void UpdateInternal()
     {
         creatureLogic.HandleDetection();
-        if (creatureLogic.agent.hasPath) return;
 
-        int pathHorizontal = Random.Range(-1, 2);
-        int pathVertical = Random.Range(-1, 2);
-        Vector3 pathAddVec3 = new(pathVertical, pathHorizontal);
+        if (creatureLogic.ClosestManagerTarget && agent.velocity.magnitude > 1f)
+        {
+            creatureLogic.SetDestination(transform.position + (transform.position - creatureLogic.ClosestManagerTarget.Trans.position));
+        }
+        else
+        {
+            if (agent.remainingDistance > 5) return;
+            int pathHorizontal = Random.Range(-1, 2);
+            int pathVertical = Random.Range(-1, 2);
+            Vector3 pathAddVec3 = new(pathVertical, pathHorizontal);
 
-        float randomMultiplier = Random.Range(randomMoveLength.Min, randomMoveLength.Max);
-        creatureLogic.agent.SetDestination(transform.position + pathAddVec3 * randomMultiplier);
+            float randomMultiplier = Random.Range(randomMoveLength.Min, randomMoveLength.Max);
+            creatureLogic.SetDestination(transform.position + pathAddVec3 * randomMultiplier);
+        }
     }
 }
