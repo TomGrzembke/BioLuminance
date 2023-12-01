@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
@@ -7,14 +6,15 @@ using UnityEngine.AI;
 public abstract class CreatureLogic : MonoBehaviour
 {
     #region serialized fields
-    public StatusManager TargetStatusManager => targetStatusManager;
+    public HealthSubject TargetHealthScript => targetHealthScript;
     [Header("AI Targeting")]
-    [SerializeField] StatusManager targetStatusManager;
-    [SerializeField] StatusManager closestStatusTarget;
-    public StatusManager ClosestManagerTarget => closestStatusTarget;
-    [SerializeField] float closestDistance;
+    [SerializeField] HealthSubject targetHealthScript;
+
+    public LayerMask TargetLayer => targetLayer;
+    [SerializeField] LayerMask targetLayer;
 
     public bool CanSeeTarget => canSeeTarget;
+    [SerializeField] bool canSeeTarget = false;
 
     [SerializeField] float distanceFromTarget;
     public float DistanceFromTarget => distanceFromTarget;
@@ -31,35 +31,39 @@ public abstract class CreatureLogic : MonoBehaviour
 
     public float DetectionAngle => detectionAngle;
     [Range(0, 360)][SerializeField] float detectionAngle = 50f;
+    public LayerMask ObstacleLayer => obstacleLayer;
+    [SerializeField] LayerMask obstacleLayer;
 
+    [Header("States")]
+    [SerializeField] protected StateManager stateManager;
+    [Range(0, 1), SerializeField] float fleePercentage = .2f;
+
+    [Header("Map")]
+    [SerializeField] SpriteRenderer mapSpriteRenderer;
+
+    [Header("Health")]
+    [SerializeField] LimbManager limbManager;
     #endregion
 
     #region private fields
-    public LayerMask ObstacleLayer => obstacleLayer;
-    LayerMask obstacleLayer;
-    public LayerMask CreatureLayer => creatureLayer;
-    LayerMask creatureLayer;
 
-    bool canSeeTarget = false;
     protected StunState stunState;
     protected ChaseState chaseState;
     protected FleeState fleeState;
     protected DeathState deathState;
     protected StunSubject stun;
     [HideInInspector] public NavMeshAgent agent;
+    HealthSubject healthSubject;
     SpeedSubject speedSubject;
-    [SerializeField] StatusManager statusManager;
-    [SerializeField] List<StatusManager> statusTargets = new();
+    Minimap minimap;
+    
     #endregion
 
     void Awake()
     {
         agent.updateRotation = false;
         agent.updateUpAxis = false;
-        creatureLayer = LayerMask.NameToLayer("Creature");
-        obstacleLayer = LayerMask.NameToLayer("Obstacle");
     }
-
 
     void Start()
     {
@@ -70,6 +74,7 @@ public abstract class CreatureLogic : MonoBehaviour
     {
         fleeState = GetComponentInChildren<FleeState>();
         deathState = GetComponentInChildren<DeathState>();
+        healthSubject = GetComponentInChildren<HealthSubject>();
         speedSubject = GetComponentInChildren<SpeedSubject>();
         stunState = GetComponentInChildren<StunState>();
         chaseState = GetComponentInChildren<ChaseState>();
@@ -77,6 +82,16 @@ public abstract class CreatureLogic : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
 
         ResetAgentVars();
+    }
+    void OnEnable()
+    {
+        stun.RegisterOnStun(OnStun);
+        healthSubject.RegisterOnHealthChangedAlpha(OnHealthChangedAlpha);
+    }
+    void OnDisable()
+    {
+        stun.OnStun -= OnStun;
+        healthSubject.OnHealthChangedAlpha -= OnHealthChangedAlpha;
     }
 
     public void ResetAgentVars()
@@ -111,74 +126,6 @@ public abstract class CreatureLogic : MonoBehaviour
         }
     }
 
-    #region Handle Detection
-    public void HandleDetection()
-    {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, detectionRadius, creatureLayer);
-
-        if (colliders.Length <= 1)
-        {
-            ResetStatusTarget();
-            return;
-        }
-
-        for (int i = 0; i < colliders.Length; i++)
-        {
-            if (!colliders[i].TryGetComponent(out StatusManager statusTarget))
-                statusTarget = colliders[i].GetComponentInChildren<StatusManager>();
-
-            if (!statusTarget || statusTarget == statusManager)
-                continue;
-
-            if (!statusManager.TargetLayer.HasFlag(statusTarget.CreatureType))
-                continue;
-
-            if (!statusTargets.Contains(statusTarget))
-                statusTargets.Add(statusTarget);
-
-            CalculateClosestDistance(statusTarget);
-            LookLogic(statusTarget);
-        }
-    }
-    void LookLogic(StatusManager targetStatusManager)
-    {
-        Vector2 targetDirection = (targetStatusManager.Trans.position - transform.position).normalized;
-
-        if (Vector2.Angle(transform.up, targetDirection) < detectionAngle / 2)
-        {
-            if (!Physics2D.Raycast(transform.position, targetDirection, distanceFromTarget, obstacleLayer))
-            {
-                SetCanSeePlayer(true);
-                SetTargetStatusManager(targetStatusManager);
-            }
-            else
-            {
-                SetCanSeePlayer(false);
-                SetTargetStatusManager(null);
-            }
-        }
-        else if (canSeeTarget)
-            SetCanSeePlayer(false);
-    }
-
-    void ResetStatusTarget()
-    {
-        statusTargets.Clear();
-        closestStatusTarget = null;
-        closestDistance = 100;
-    }
-
-    void CalculateClosestDistance(StatusManager statusTarget)
-    {
-        float dangerDistance = Vector3.Distance(transform.position, statusTarget.transform.position);
-        if (dangerDistance < closestDistance || closestStatusTarget == statusTarget)
-        {
-            closestDistance = dangerDistance;
-            closestStatusTarget = statusTarget;
-        }
-    }
-    #endregion
-
 #if UNITY_EDITOR
     void OnDrawGizmosSelected()
     {
@@ -202,6 +149,35 @@ public abstract class CreatureLogic : MonoBehaviour
         return new Vector2(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
     }
 
+    void OnStun(bool condition)
+    {
+        if (condition)
+        {
+            stateManager.SetState(stunState);
+            return;
+        }
+
+        stateManager.SetState(stateManager.LastState);
+        agent.isStopped = condition;
+    }
+
+    void OnHealthChangedAlpha(float alpha)
+    {
+        if (alpha <= 0)
+        {
+            stateManager.SetState(deathState);
+            return;
+        }
+
+        if (alpha <= fleePercentage)
+        {
+            stateManager.SetState(fleeState);
+            return;
+        }
+
+        stateManager.SetState(stateManager.LastState);
+    }
+
     #region Setter
     public void SetDistanceFromTarget(float newDistance)
     {
@@ -213,20 +189,10 @@ public abstract class CreatureLogic : MonoBehaviour
         canSeeTarget = condition;
     }
 
-    public void SetTargetStatusManager(StatusManager newTarget)
+    public void SetTargetHealthScript(HealthSubject newTarget)
     {
-        if (newTarget != targetStatusManager)
-            targetStatusManager = newTarget;
-    }
-
-    public void SetDestination(Transform targetTrans)
-    {
-        agent.SetDestination(targetTrans.position);
-    }
-
-    public void SetDestination(Vector3 targetPos)
-    {
-        agent.SetDestination(targetPos);
+        if (newTarget != healthSubject)
+            targetHealthScript = newTarget;
     }
     #endregion
 }

@@ -3,30 +3,41 @@ using System.Collections;
 using System.Collections.Generic;
 using MyBox;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Minimap : MonoBehaviour
 {
     [SerializeField] StateManager stateManager;
     [SerializeField] SpriteRenderer mapSpriteRenderer;
+    [SerializeField] SpriteRenderer creatureRenderer;
+    
+    public Vector2 spriteSizeVec;
 
-    public float indicatorSize = 1f;
-    Vector2 indicatorSizeVec;
+    
+    [Flags]
+    public enum Flags
+    {
+        none = 0,
+        North = 1,
+        NorthEast = 2,
+        NorthWest = 4,
+        East = 8,
+        EastWest = 16,
+        EastSouth = 32,
+        South = 64,
+        SouthEast = 128,
+        SouthWest = 256,
+        West = 512,
+        WestSouth = 1024,
+        WestNorth = 2048,
+    }
+
+    public Flags flags;
 
     private void Awake()
     {
         stateManager = GetComponentInChildren<StateManager>();
-    }
-
-    private void Start()
-    {
         mapSpriteRenderer = GetSpriteRendererInLayer(gameObject, "Map");
-    }
-
-    private void OnValidate()
-    {
-        indicatorSizeVec.x = indicatorSize;
-        indicatorSizeVec.y = indicatorSize;
-        mapSpriteRenderer.transform.localScale = indicatorSizeVec;
     }
 
     private void FixedUpdate()
@@ -55,7 +66,7 @@ public class Minimap : MonoBehaviour
 
     public void HandleMapIndicators()
     {
-        if (stateManager.currentState)
+        if (stateManager.currentState.Dangerous)
             mapSpriteRenderer.color = new Color(255, 0, 0);
         else
             mapSpriteRenderer.color = new Color(255, 255, 255);
