@@ -179,7 +179,8 @@ MonoBehaviour:
   stateEvent: []
   minRoamRange: 5
   maxRoamRange: 5
-  healthTargets: []
+  statusTargets: []
+  statusManager: {fileID: 0}
   chaseState: {fileID: 2039439006}
 --- !u!1 &122143629
 GameObject:
@@ -834,7 +835,7 @@ GameObject:
   m_Component:
   - component: {fileID: 508540281}
   - component: {fileID: 508540282}
-  m_Layer: 31
+  m_Layer: 3
   m_Name: MapIndicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1906,6 +1907,12 @@ MonoBehaviour:
   currentState: {fileID: 17291131}
   lastState: {fileID: 0}
   lastStateIgnore: []
+  statusManager: {fileID: 0}
+  stunState: {fileID: 0}
+  deathState: {fileID: 0}
+  fleeState: {fileID: 0}
+  fleeHealthPercentage: 0.2
+  limbManager: {fileID: 0}
 --- !u!195 &946661494
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1967,11 +1974,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b60208ccf395074e95eb89a31da65e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetHealthScript: {fileID: 0}
-  targetLayer:
-    serializedVersion: 2
-    m_Bits: 512
-  canSeeTarget: 0
+  targetStatusManager: {fileID: 0}
+  closestStatusTarget: {fileID: 0}
+  closestDistance: 0
   distanceFromTarget: 0
   defaultAgentSpeed: 3.5
   defaultAgentAcceleration: 3.5
@@ -1981,11 +1986,12 @@ MonoBehaviour:
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 256
-  stateManager: {fileID: 946661492}
-  fleePercentage: 0.2
-  mapSpriteRenderer: {fileID: 0}
-  limbManager: {fileID: 0}
+  creatureLayer:
+    serializedVersion: 2
+    m_Bits: 0
   agent: {fileID: 946661494}
+  statusManager: {fileID: 0}
+  statusTargets: []
 --- !u!114 &946661497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2000,9 +2006,92 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stateManager: {fileID: 0}
   mapSpriteRenderer: {fileID: 0}
-  creatureRenderer: {fileID: 946661488}
+  creatureRenderer: {fileID: 0}
   spriteSizeVec: {x: 0, y: 0}
-  flags: 0
+--- !u!1 &988310136
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 988310138}
+  - component: {fileID: 988310137}
+  m_Layer: 0
+  m_Name: MapConcept_1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!212 &988310137
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 988310136}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 967d7674281dc1b4db822a23e814d378, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 14.24, y: 5.77}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &988310138
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 988310136}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.7, y: -1.2, z: 0}
+  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1026930283
 GameObject:
   m_ObjectHideFlags: 0
@@ -2155,6 +2244,7 @@ MonoBehaviour:
   chaseRange: 10
   attackState: {fileID: 841660800}
   roamState: {fileID: 17291131}
+  stateDuration: 5
 --- !u!4 &1104060566 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4318507074946202405, guid: ef021f085885ead4a8f3fc6b28cdc4a3, type: 3}
@@ -2290,6 +2380,88 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1455308560
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1455308562}
+  - component: {fileID: 1455308561}
+  m_Layer: 3
+  m_Name: Light 2D_1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1455308561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1455308560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ComponentVersion: 1
+  m_LightType: 4
+  m_BlendStyleIndex: 0
+  m_FalloffIntensity: 0.5
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1
+  m_LightVolumeIntensity: 1
+  m_LightVolumeIntensityEnabled: 0
+  m_ApplyToSortingLayers: 00000000
+  m_LightCookieSprite: {fileID: 0}
+  m_DeprecatedPointLightCookieSprite: {fileID: 0}
+  m_LightOrder: 0
+  m_AlphaBlendOnOverlap: 0
+  m_OverlapOperation: 0
+  m_NormalMapDistance: 3
+  m_NormalMapQuality: 2
+  m_UseNormalMap: 0
+  m_ShadowIntensityEnabled: 0
+  m_ShadowIntensity: 0.75
+  m_ShadowVolumeIntensityEnabled: 0
+  m_ShadowVolumeIntensity: 0.75
+  m_LocalBounds:
+    m_Center: {x: 0, y: -0.00000011920929, z: 0}
+    m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
+  m_PointLightInnerAngle: 360
+  m_PointLightOuterAngle: 360
+  m_PointLightInnerRadius: 0
+  m_PointLightOuterRadius: 1
+  m_ShapeLightParametricSides: 5
+  m_ShapeLightParametricAngleOffset: 0
+  m_ShapeLightParametricRadius: 1
+  m_ShapeLightFalloffSize: 0.5
+  m_ShapeLightFalloffOffset: {x: 0, y: 0}
+  m_ShapePath:
+  - {x: -0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: 0.5, z: 0}
+  - {x: -0.5, y: 0.5, z: 0}
+--- !u!4 &1455308562
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1455308560}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.4780188, y: -22.392057, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1511307343
 GameObject:
   m_ObjectHideFlags: 0
@@ -3228,7 +3400,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1813615260}
   - component: {fileID: 1813615259}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: MapConcept
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3396,7 +3568,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1899946735}
   - component: {fileID: 1899946736}
-  m_Layer: 31
+  m_Layer: 3
   m_Name: MapIndicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3413,7 +3585,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 946661489}
@@ -4031,7 +4203,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 67930628204450673, guid: ef021f085885ead4a8f3fc6b28cdc4a3, type: 3}
       propertyPath: m_CullingMask.m_Bits
-      value: 2147483649
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4318507074946202405, guid: ef021f085885ead4a8f3fc6b28cdc4a3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4212,8 +4384,10 @@ SceneRoots:
   - {fileID: 946661489}
   - {fileID: 1711915164}
   - {fileID: 1813615260}
+  - {fileID: 988310138}
   - {fileID: 1616803116}
   - {fileID: 1637955773}
+  - {fileID: 1455308562}
   - {fileID: 1618944381}
   - {fileID: 1631112411}
   - {fileID: 1511307345}

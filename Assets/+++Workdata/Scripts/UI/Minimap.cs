@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using MyBox;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -12,32 +13,20 @@ public class Minimap : MonoBehaviour
     [SerializeField] SpriteRenderer creatureRenderer;
     
     public Vector2 spriteSizeVec;
-
     
-    [Flags]
-    public enum Flags
-    {
-        none = 0,
-        North = 1,
-        NorthEast = 2,
-        NorthWest = 4,
-        East = 8,
-        EastWest = 16,
-        EastSouth = 32,
-        South = 64,
-        SouthEast = 128,
-        SouthWest = 256,
-        West = 512,
-        WestSouth = 1024,
-        WestNorth = 2048,
-    }
-
-    public Flags flags;
-
     private void Awake()
     {
         stateManager = GetComponentInChildren<StateManager>();
         mapSpriteRenderer = GetSpriteRendererInLayer(gameObject, "Map");
+        creatureRenderer = GetComponent<SpriteRenderer>();
+    }
+    
+    void Start()
+    {
+        spriteSizeVec = (creatureRenderer.bounds.extents * 2);
+        spriteSizeVec = new(Mathf.Round(spriteSizeVec.x * 1.5f), Mathf.Round(spriteSizeVec.y * 1.5f));
+        spriteSizeVec.x = spriteSizeVec.y;
+        mapSpriteRenderer.transform.localScale = spriteSizeVec;
     }
 
     private void FixedUpdate()
