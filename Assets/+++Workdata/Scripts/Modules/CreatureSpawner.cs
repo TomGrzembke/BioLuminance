@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using MyBox;
 using Random = UnityEngine.Random;
@@ -8,6 +9,7 @@ public class CreatureSpawner : MonoBehaviour
     public float numberToSpawn;
     public Transform spawnInto;
     public WeightedArray[] creaturesToSpawn;
+    public List<GameObject> instantiatedObjects;
 
     Collider2D _collider;
 
@@ -41,6 +43,7 @@ public class CreatureSpawner : MonoBehaviour
                     Vector2 spawnPosition = GetRandomSpawnPosition(_collider);
                     GameObject instantiated = Instantiate(weightedArrays._creatureToSpawn, spawnPosition, Quaternion.identity);
                     instantiated.transform.SetParent(spawnInto);
+                    instantiatedObjects.Add(instantiated);
                     break;
                 }
             }
@@ -87,6 +90,8 @@ public class CreatureSpawner : MonoBehaviour
         if (!isSpawnPosValid)
         {
             Debug.Log("Could not find spawn position");
+            Destroy(instantiatedObjects[0-1000]);
+            instantiatedObjects.Clear();
         }
 
         return spawnPosition;
