@@ -55,6 +55,7 @@ public abstract class CreatureLogic : MonoBehaviour
     [HideInInspector] public NavMeshAgent agent;
     HealthSubject healthSubject;
     SpeedSubject speedSubject;
+    Minimap minimap;
     
     #endregion
 

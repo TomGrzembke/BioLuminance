@@ -1,64 +1,55 @@
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using MyBox;
 using Random = UnityEngine.Random;
 
 public class CreatureSpawner : MonoBehaviour
 {
-    public SpawnType spawnType;
-    
     public float numberToSpawn;
-    Collider2D collider;
-    [ConditionalField(nameof(spawnType), false, SpawnType.singleTypeSpawn)] public GameObject creatureToSpawn;
-    [ConditionalField(nameof(spawnType), false, SpawnType.randomTypeSpawn)] public WeightedArray[] creaturesToSpawn;
+    public Transform spawnInto;
+    public WeightedArray[] creaturesToSpawn;
 
-    //TODO put this into CreatureLogic
-    public Minimap minimap;
-    
-    public enum SpawnType
-    {
-        singleTypeSpawn,
-        randomTypeSpawn,
-    }
+    Collider2D _collider;
 
-    void Awake()
+    void Awake() => _collider = GetComponent<Collider2D>();
+
+    private void OnValidate()
     {
-        collider = GetComponent<Collider2D>();
+        foreach (WeightedArray weightedArray in creaturesToSpawn)
+            weightedArray.characterName = weightedArray._creatureToSpawn.name;
     }
     
     [ButtonMethod]
-    void RandomSpawn()
+    void SpawnRandomCreatures()
     {
-        SpawnCreatureRandom();
-    }
-    
-    [ButtonMethod]
-    void Spawn()
-    {
-        SpawnCreature();
-    }
+        for (int i = 0; i < numberToSpawn; i++)
+        {
+            float totalWeight = 0f;
+            foreach (WeightedArray weightedArrays in creaturesToSpawn)
+            {
+                totalWeight += weightedArrays._weight;
+            }
 
-    void SpawnCreature()
-    {
-        for (int i = 0; i < numberToSpawn; i++)
-        {
-            Vector2 spawnPosition = GetRandomSpawnPosition(collider);
-            Instantiate(creatureToSpawn, spawnPosition, Quaternion.identity);
-        }
-    }
-    
-    void SpawnCreatureRandom()
-    {
-        for (int i = 0; i < numberToSpawn; i++)
-        {
-            Vector2 spawnPosition = GetRandomSpawnPosition(collider);
-            Instantiate(creaturesToSpawn[Random.Range(0, creaturesToSpawn.Length)].creatureToSpawnn, spawnPosition, Quaternion.identity);
+            float rand = Random.Range(0, totalWeight);
+
+            float cummChance = 0f;
+            foreach (WeightedArray weightedArrays in creaturesToSpawn)
+            {
+                cummChance += weightedArrays._weight;
+                if (rand <= cummChance)
+                {
+                    Vector2 spawnPosition = GetRandomSpawnPosition(_collider);
+                    GameObject instantiated = Instantiate(weightedArrays._creatureToSpawn, spawnPosition, Quaternion.identity);
+                    instantiated.transform.SetParent(spawnInto);
+                    break;
+                }
+            }
         }
     }
 
     Vector2 GetRandomSpawnPosition(Collider2D spawnableAreaCollider)
     {
-        Vector2 spawnposition = Vector2.zero;
+        Vector2 spawnPosition = Vector2.zero;
         bool isSpawnPosValid = false;
 
         int attemptCount = 0;
@@ -66,10 +57,16 @@ public class CreatureSpawner : MonoBehaviour
 
         int layerToNotSpawnOn = LayerMask.NameToLayer("Obstacle");
 
+        float radius = 0f;
+
+        foreach (WeightedArray weightedArray in creaturesToSpawn)
+            radius = weightedArray._radius;
+
         while (!isSpawnPosValid && attemptCount < maxAttempts)
         {
-            spawnposition = GetRandomPointInCollider(spawnableAreaCollider);
-            Collider2D[] collider = Physics2D.OverlapCircleAll(spawnposition, minimap.indicatorSizeVec.x);
+            spawnPosition = GetRandomPointInCollider(spawnableAreaCollider);
+
+            Collider2D[] collider = Physics2D.OverlapCircleAll(spawnPosition, radius);
 
             bool isInvalidCollision = false;
             foreach (Collider2D colliders in collider)
@@ -82,25 +79,20 @@ public class CreatureSpawner : MonoBehaviour
             }
 
             if (!isInvalidCollision)
-            {
                 isSpawnPosValid = true;
-            }
 
             attemptCount++;
         }
 
         if (!isSpawnPosValid)
-        {
             Debug.Log("Could not find spawn position");
-        }
 
-        return spawnposition;
+        return spawnPosition;
     }
-
-    [ButtonMethod]
+    
     Vector2 GetRandomPointInCollider(Collider2D collider2D)
     {
-        Bounds collBounds = collider.bounds;
+        Bounds collBounds = _collider.bounds;
 
         Vector2 minBounds = new Vector2(collBounds.min.x, collBounds.min.y);
         Vector2 maxBounds = new Vector2(collBounds.max.x, collBounds.max.y);
@@ -112,10 +104,16 @@ public class CreatureSpawner : MonoBehaviour
     }
 }
 
-[System.Serializable]
+[Serializable]
 public class WeightedArray
 {
-    public GameObject creatureToSpawnn;
+    public GameObject _creatureToSpawn;
+
+    [Tooltip("The Radius in which the creature is spawned x amount away from a wall")]
+    public float _radius = 2f;
     
-    [Range(0f, 100f)]public float weight;
+    [Tooltip("This defines the probability in which a creature is spawned")]
+    [Range(0,100)] public float _weight;
+    
+    [HideInInspector]public string characterName;
 }

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using MyBox;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Minimap : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class Minimap : MonoBehaviour
     [SerializeField] SpriteRenderer mapSpriteRenderer;
     [SerializeField] SpriteRenderer creatureRenderer;
     
-    public Vector2 indicatorSizeVec;
+    public Vector2 spriteSizeVec;
 
     
     [Flags]
@@ -37,15 +38,6 @@ public class Minimap : MonoBehaviour
     {
         stateManager = GetComponentInChildren<StateManager>();
         mapSpriteRenderer = GetSpriteRendererInLayer(gameObject, "Map");
-    }
-
-    //TODO Remove this code from update
-    private void Update()
-    {
-        indicatorSizeVec = (creatureRenderer.bounds.extents * 2);
-        indicatorSizeVec = new (Mathf.Round(indicatorSizeVec.x * 1.5f), Mathf.Round(indicatorSizeVec.y * 1.5f));
-        indicatorSizeVec.x = indicatorSizeVec.y;
-        mapSpriteRenderer.transform.localScale = indicatorSizeVec;
     }
 
     private void FixedUpdate()
