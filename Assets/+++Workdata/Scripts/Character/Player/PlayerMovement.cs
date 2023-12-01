@@ -17,7 +17,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] ControlState controlState;
     [SerializeField] bool isPerformingMove;
     [SerializeField] float timeUntilMaximumSpeed = 1;
-    [SerializeField] float timeUntilZeroSpeed = 1;
     #endregion
 
     float currentAgentSpeed;

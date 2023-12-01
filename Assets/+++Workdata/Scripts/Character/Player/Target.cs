@@ -7,7 +7,9 @@ public class Target : MonoBehaviour
 {
     #region serialized fields
     [SerializeField] Camera cam;
+    public List<StatusManager> PossibleTargets => possibleTargets;
     [SerializeField] List<StatusManager> possibleTargets = new();
+    public bool HasTargets => possibleTargets.Count > 0;
     public LayerMask CreatureLayer => creatureLayer;
     [SerializeField] LayerMask creatureLayer;
     [SerializeField] float detectionRadius;
@@ -56,7 +58,7 @@ public class Target : MonoBehaviour
 #if UNITY_EDITOR
     void OnDrawGizmosSelected()
     {
-        Handles.color = Color.green;
+        Handles.color = Color.yellow;
         Handles.DrawWireArc(transform.position, Vector3.forward, Vector3.up, 360, detectionRadius); //This visualizes the detection radius
     }
 #endif

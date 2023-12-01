@@ -53,7 +53,6 @@ public class TentacleBehavior : MonoBehaviour
     float calc_smoothSpeed;
     /// <summary> Used for Stack length</summary>
     int calc_length;
-    int calc_bodyPartDistance = 1;
 
     LineRenderer lineRend;
     Vector3[] segmentPoses;
@@ -88,7 +87,6 @@ public class TentacleBehavior : MonoBehaviour
         else if (pointFollowMode == PointFollowMode.stack)
         {
             calc_smoothSpeed = smoothSpeed / 200;
-            calc_bodyPartDistance = 10;
             calc_length = length * 12;
         }
     }
