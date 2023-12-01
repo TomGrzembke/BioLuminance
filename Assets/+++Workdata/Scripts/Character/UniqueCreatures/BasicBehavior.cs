@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TunaBehavior : CreatureLogic
+public class BasicBehavior : CreatureLogic
 {
     #region serialized fields
 

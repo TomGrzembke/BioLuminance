@@ -29,7 +29,10 @@ public class TentacleController : MonoBehaviour
             tentacleTargetManager.AddAttackPoint(target.transform);
         }
         else
-            tentacleTargetManager.AddAttackPoint(target.PossibleTargets);
+        {
+            tentacleTargetManager.ResetAttackPoint();
+            tentacleTargetManager.AddAttackPoint(target.PossibleTargets, target.transform);
+        }
     }
     void ResetTentacles()
     {

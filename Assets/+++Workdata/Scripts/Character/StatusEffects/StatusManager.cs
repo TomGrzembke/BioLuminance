@@ -3,6 +3,10 @@ using UnityEngine;
 public class StatusManager : MonoBehaviour
 {
     #region serialized fields
+    public Creatures TargetLayer => targetLayer;
+    [SerializeField] Creatures targetLayer;
+    public Creatures CreatureType => creatureType;
+    [SerializeField] Creatures creatureType;
     public Transform Trans => trans;
     [SerializeField] Transform trans;
     public StunSubject StunSunject => stunSubject;
@@ -11,6 +15,9 @@ public class StatusManager : MonoBehaviour
     [SerializeField] HealthSubject healthSubject;
     public SpeedSubject SpeedSubject => speedSubject;
     [SerializeField] SpeedSubject speedSubject;
+
+    public GrabTransformManager GrabManager => grabManager;
+    [SerializeField] GrabTransformManager grabManager;
     #endregion
 
     #region private fields

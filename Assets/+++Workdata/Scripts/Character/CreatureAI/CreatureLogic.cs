@@ -14,9 +14,6 @@ public abstract class CreatureLogic : MonoBehaviour
     public StatusManager ClosestManagerTarget => closestStatusTarget;
     [SerializeField] float closestDistance;
 
-    public Creatures TargetLayer => targetLayer;
-    [SerializeField] Creatures targetLayer;
-
     public bool CanSeeTarget => canSeeTarget;
 
     [SerializeField] float distanceFromTarget;
@@ -129,6 +126,9 @@ public abstract class CreatureLogic : MonoBehaviour
                 statusTarget = colliders[i].GetComponentInChildren<StatusManager>();
 
             if (!statusTarget || statusTarget == statusManager)
+                continue;
+
+            if(!statusManager.TargetLayer.HasFlag(statusTarget.CreatureType))
                 continue;
 
             if (!statusTargets.Contains(statusTarget))
