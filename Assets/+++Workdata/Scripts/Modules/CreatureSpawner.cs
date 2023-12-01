@@ -85,7 +85,9 @@ public class CreatureSpawner : MonoBehaviour
         }
 
         if (!isSpawnPosValid)
+        {
             Debug.Log("Could not find spawn position");
+        }
 
         return spawnPosition;
     }
