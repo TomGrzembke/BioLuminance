@@ -33,6 +33,11 @@ public abstract class CreatureLogic : MonoBehaviour
     [Range(0, 360)][SerializeField] float detectionAngle = 50f;
     public LayerMask ObstacleLayer => obstacleLayer;
     [SerializeField] LayerMask obstacleLayer;
+<<<<<<< HEAD
+=======
+    public LayerMask CreatureLayer => creatureLayer;
+    [SerializeField] LayerMask creatureLayer;
+>>>>>>> Bugfix
 
     [Header("States")]
     [SerializeField] protected StateManager stateManager;
