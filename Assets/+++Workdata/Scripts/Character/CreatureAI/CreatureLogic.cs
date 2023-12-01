@@ -31,14 +31,14 @@ public abstract class CreatureLogic : MonoBehaviour
 
     public float DetectionAngle => detectionAngle;
     [Range(0, 360)][SerializeField] float detectionAngle = 50f;
-    public LayerMask ObstacleLayer => obstacleLayer;
-    [SerializeField] LayerMask obstacleLayer;
-    public LayerMask CreatureLayer => creatureLayer;
-    [SerializeField] LayerMask creatureLayer;
 
     #endregion
 
     #region private fields
+    public LayerMask ObstacleLayer => obstacleLayer;
+    LayerMask obstacleLayer;
+    public LayerMask CreatureLayer => creatureLayer;
+    LayerMask creatureLayer;
 
     bool canSeeTarget = false;
     protected StunState stunState;
@@ -56,6 +56,8 @@ public abstract class CreatureLogic : MonoBehaviour
     {
         agent.updateRotation = false;
         agent.updateUpAxis = false;
+        creatureLayer = LayerMask.NameToLayer("Creature");
+        obstacleLayer = LayerMask.NameToLayer("Obstacle");
     }
 
 
@@ -128,7 +130,7 @@ public abstract class CreatureLogic : MonoBehaviour
             if (!statusTarget || statusTarget == statusManager)
                 continue;
 
-            if(!statusManager.TargetLayer.HasFlag(statusTarget.CreatureType))
+            if (!statusManager.TargetLayer.HasFlag(statusTarget.CreatureType))
                 continue;
 
             if (!statusTargets.Contains(statusTarget))

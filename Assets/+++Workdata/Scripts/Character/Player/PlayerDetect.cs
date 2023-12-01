@@ -1,12 +1,11 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
-public class Target : MonoBehaviour
+public class PlayerDetect : MonoBehaviour
 {
     #region serialized fields
-    [SerializeField] Camera cam;
+    [SerializeField] Transform middle;
     public List<StatusManager> PossibleTargets => possibleTargets;
     [SerializeField] List<StatusManager> possibleTargets = new();
     public bool HasTargets => possibleTargets.Count > 0;
@@ -17,30 +16,18 @@ public class Target : MonoBehaviour
     #endregion
 
     #region private fields
-    Transform trans;
-    #endregion
 
-    void Awake()
-    {
-        trans = transform;
-    }
+    #endregion
 
     void Update()
     {
-        trans.position = cam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-
         DetectTargets();
     }
 
     private void DetectTargets()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, detectionRadius, creatureLayer);
-
-        if (colliders.Length <= 0)
-        {
-            possibleTargets.Clear();
-            return;
-        }
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(middle.position, detectionRadius, creatureLayer);
+        possibleTargets.Clear();
 
         for (int i = 0; i < colliders.Length; i++)
         {

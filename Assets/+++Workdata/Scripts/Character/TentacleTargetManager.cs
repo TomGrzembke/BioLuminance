@@ -6,74 +6,105 @@ public class TentacleTargetManager : MonoBehaviour
 {
     #region serialized fields
     [SerializeField] List<TentacleBehavior> tentacles;
-    [SerializeField] List<Transform> targetPoints;
+    [SerializeField] List<StatusManager> targetSM;
+    [SerializeField] List<Transform> targetTrans;
     #endregion
 
     #region private fields
 
     #endregion
 
-    void SetTargets()
+    public void SetTargets()
     {
         RemoveAllNullTargets();
+        targetTrans.Clear();
 
-        float tentacleCount = tentacles.Count;
-        float targetCount = targetPoints.Count;
-        //tentacles[i].SetGrabTarget(attackTarget);
-    }
+        int tentacleCount = tentacles.Count;
+        int targetCount = targetSM.Count;
 
-    private void RemoveAllNullTargets()
-    {
-        for (int i = 0; i < targetPoints.Count; i++)
+        switch (targetCount)
         {
-            if (targetPoints[i] == null)
-                targetPoints.RemoveAt(i);
+            case 0:
+                targetTrans.Clear();
+                ResetTentacles();
+                break;
+            case 1:
+                for (int i = 0; i < tentacleCount; i++)
+                {
+                    AddTargetTrans(targetSM[0].GrabManager.GetRandomGrabTrans());
+                }
+                break;
+            default:
+                for (int i = 0; i < tentacleCount; i++)
+                {
+                    AddTargetTrans(targetSM[Random.Range(0, targetCount)].GrabManager.GetRandomGrabTrans());
+                }
+                break;
+        }
+
+        targetTrans.Shuffle();
+        for (int i = 0; i < tentacleCount; i++)
+        {
+            tentacles[i].SetGrabTarget(targetTrans[i].transform);
         }
     }
 
-    public void AddAttackPoint(Transform attackTarget)
+    public void ResetTentacles(Transform newTarget = null)
     {
-        targetPoints.Add(attackTarget);
-
         for (int i = 0; i < tentacles.Count; i++)
         {
-            tentacles[i].SetGrabTarget(attackTarget);
+            tentacles[i].SetGrabTarget(newTarget);
         }
     }
 
-    public void AddAttackPoint(List<StatusManager> attackTarget, Transform target = null)
+    void AddTargetTrans(Transform singleTarget)
     {
+        targetTrans.Add(singleTarget);
+    }
+
+    void RemoveAllNullTargets()
+    {
+        for (int i = 0; i < targetSM.Count; i++)
+        {
+            if (targetSM[i] == null)
+            {
+                targetSM.RemoveAt(i);
+                i--;
+            }
+        }
+    }
+
+    public void AddAttackStatusManager(StatusManager attackTarget)
+    {
+        targetSM.Clear();
+        targetSM.Add(attackTarget);
+        SetTargets();
+    }
+
+    public void SetAttackStatusManager(List<StatusManager> attackTarget)
+    {
+        targetSM.Clear();
         for (int i = 0; i < attackTarget.Count; i++)
         {
-            if (!targetPoints.Contains(attackTarget[i].transform))
+            if (!targetSM.Contains(attackTarget[i]))
             {
-                if (!target)
-                    targetPoints.Add(attackTarget[i].transform);
-                else
-                    targetPoints.Add(attackTarget[i].GrabManager.GetClosestGrabTrans(target.position));
+                targetSM.Add(attackTarget[i]);
             }
         }
 
-        for (int i = 0; i < tentacles.Count; i++)
-        {
-            if (attackTarget.Count < i + 1) break;
-            tentacles[i].SetGrabTarget(attackTarget[i].transform);
-        }
-
-        targetPoints.Shuffle();
+        SetTargets();
     }
 
-    public void RemoveAttackPoint(Transform attackTarget)
+    public void RemoveAttackStatusManager(StatusManager attackTarget)
     {
-        if (targetPoints.Remove(attackTarget))
-            for (int i = 0; i < tentacles.Count; ++i)
-            {
-                tentacles[i].SetGrabTarget(null);
-            }
+        if (targetSM.Remove(attackTarget))
+            SetTargets();
     }
 
-    public void ResetAttackPoint()
+    public void SetOneTarget(Transform target)
     {
-        targetPoints.Clear();
+        targetSM.Clear();
+        targetTrans.Clear();
+        ResetTentacles(target);
     }
 }

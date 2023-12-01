@@ -35,4 +35,11 @@ public class GrabTransformManager : MonoBehaviour
 
         return closestTrans;
     }
+
+    public Transform GetRandomGrabTrans()
+    {
+        int randomNumber = Random.Range(0, grabTrans.Count);
+
+        return grabTrans[randomNumber];
+    }
 }
