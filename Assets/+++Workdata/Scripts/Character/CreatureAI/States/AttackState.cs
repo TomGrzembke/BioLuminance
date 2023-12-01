@@ -25,12 +25,12 @@ public class AttackState : State
 
     protected override void EnterInternal()
     {
-        creatureLogic.TargetHealthScript.AddHealth(-attackDamage);
+        creatureLogic.TargetStatusManager.AddHealth(-attackDamage);
     }
 
     protected override void UpdateInternal()
     {
-        creatureLogic.SetDistanceFromTarget(Vector3.Distance(creatureLogic.TargetHealthScript.transform.position, creatureLogic.transform.position));
+        creatureLogic.SetDistanceFromTarget(Vector3.Distance(creatureLogic.TargetStatusManager.transform.position, creatureLogic.transform.position));
 
         creatureLogic.HandleRotate();
     }

@@ -8,6 +8,16 @@ public class StateManager : MonoBehaviour
     public State LastState => lastState;
     [SerializeField] State lastState;
     [SerializeField] List<State> lastStateIgnore = new();
+
+    [Header("States")]
+    [SerializeField] StatusManager statusManager;
+    [SerializeField] State stunState;
+    [SerializeField] State deathState;
+    [SerializeField] State fleeState;
+    [Range(0, 1), SerializeField] float fleeHealthPercentage = .2f;
+
+    [Header("Health")]
+    [SerializeField] LimbManager limbManager;
     #endregion
 
     #region private fields
@@ -34,7 +44,6 @@ public class StateManager : MonoBehaviour
 
     void HandleStateMachine()
     {
-
         if (!currentState) return;
         State newState = currentState.SwitchState();
 
@@ -57,5 +66,45 @@ public class StateManager : MonoBehaviour
     {
         if (!lastStateIgnore.Contains(_state))
             lastState = currentState;
+    }
+
+    void OnEnable()
+    {
+        statusManager.StunSunject.RegisterOnStun(OnStun);
+        statusManager.HealthSubject.RegisterOnHealthChangedAlpha(OnHealthChangedAlpha);
+    }
+
+    void OnDisable()
+    {
+        statusManager.StunSunject.OnStun -= OnStun;
+        statusManager.HealthSubject.OnHealthChangedAlpha -= OnHealthChangedAlpha;
+    }
+
+    void OnStun(bool condition)
+    {
+        if (condition)
+        {
+            SetState(stunState);
+            return;
+        }
+
+        SetState(LastState);
+    }
+
+    void OnHealthChangedAlpha(float alpha)
+    {
+        if (alpha <= 0)
+        {
+            SetState(deathState);
+            return;
+        }
+
+        if (alpha <= fleeHealthPercentage)
+        {
+            SetState(fleeState);
+            return;
+        }
+
+        SetState(LastState);
     }
 }

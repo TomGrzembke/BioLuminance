@@ -14,8 +14,8 @@ public class SpeedSubject : MonoBehaviour
             return speed;
         }
     }
-
     [SerializeField] float defaultSpeed = 5;
+    [SerializeField] float minSpeed = 0.5f;
 
     readonly List<float> SpeedModifierList = new();
 
@@ -38,6 +38,10 @@ public class SpeedSubject : MonoBehaviour
         {
             currentSpeed += SpeedModifierList[i];
         }
+
+        if(currentSpeed < minSpeed)
+            currentSpeed = minSpeed;
+
         speed = currentSpeed;
 
         if (agent)

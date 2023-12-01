@@ -1,7 +1,6 @@
+using MyBox;
 using System;
 using UnityEngine;
-using MyBox;
-using System.Linq;
 
 public abstract class State : MonoBehaviour
 {
@@ -156,6 +155,7 @@ public abstract class State : MonoBehaviour
         creatureLogic.ResetAgentVars();
         TimeInState = 0;
         FixedTimeInState = 0;
+        distanceTravelled = 0;
         ExitInternal();
     }
 

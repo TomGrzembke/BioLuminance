@@ -39,7 +39,7 @@ public class AttackStanceState : State
         Vector3 pathAddVec3 = new(pathVertical, pathHorizontal);
 
         float randomMultiplier = Random.Range(randomMoveLength.Min, randomMoveLength.Max);
-        creatureLogic.agent.SetDestination(creatureLogic.TargetHealthScript.transform.position + pathAddVec3 * randomMultiplier);
+        creatureLogic.agent.SetDestination(creatureLogic.TargetStatusManager.transform.position + pathAddVec3 * randomMultiplier);
     }
 
     protected override void FixedUpdateInternal()

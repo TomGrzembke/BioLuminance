@@ -35,18 +35,13 @@ public class HealthSubject : MonoBehaviour
 
     public void SetCurrentHealth(float newHealth)
     {
-        if (newHealth > maximumHealth)
-            newHealth = maximumHealth;
-        else if (currentHealth + newHealth < 0)
-            newHealth = 0;
+        newHealth = Mathf.Clamp(newHealth, 0f, maximumHealth);
 
-        var oldHealth = currentHealth;
         currentHealth = newHealth;
 
         OnHealthChanged?.Invoke(currentHealth);
         OnHealthChangedAlpha?.Invoke(currentHealth / maximumHealth);
     }
-
 
     public void RegisterOnHealthChanged(Action<float> callback, bool getInstantCallback = false)
     {

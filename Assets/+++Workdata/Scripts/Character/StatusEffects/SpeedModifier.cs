@@ -1,8 +1,9 @@
 using UnityEngine;
 
-public class SpeedTester : MonoBehaviour
+public class SpeedModifier : MonoBehaviour
 {
     #region serialized fields
+    [SerializeField] string note = "Comment for Overview";
     [SerializeField] SpeedSubject speedSubject;
     [SerializeField] float amount = -2;
     #endregion

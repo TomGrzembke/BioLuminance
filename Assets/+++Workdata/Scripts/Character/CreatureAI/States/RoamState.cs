@@ -7,7 +7,8 @@ public class RoamState : State
     [Header(nameof(RoamState))]
     [SerializeField] float minRoamRange = 5f;
     [SerializeField] float maxRoamRange = 5f;
-    [SerializeField] List<HealthSubject> healthTargets = new();
+    [SerializeField] List<StatusManager> statusTargets = new();
+    [SerializeField] StatusManager statusManager;
     [SerializeField] State chaseState;
     #endregion
 
@@ -18,7 +19,7 @@ public class RoamState : State
 
     public override State SwitchStateInternal()
     {
-        if (creatureLogic.TargetHealthScript != null)
+        if (creatureLogic.TargetStatusManager != null)
             return chaseState;
         else
             return this;
@@ -30,7 +31,7 @@ public class RoamState : State
 
     protected override void UpdateInternal()
     {
-        HandleDetection();
+        creatureLogic.HandleDetection();
         HandleRoaming();
         creatureLogic.HandleRotate();
     }
@@ -66,43 +67,45 @@ public class RoamState : State
 
     public void HandleDetection()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, creatureLogic.DetectionRadius, creatureLogic.TargetLayer);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, creatureLogic.DetectionRadius, creatureLogic.CreatureLayer);
 
         if (colliders.Length == 0)
         {
-            healthTargets.Clear();
+            statusTargets.Clear();
             return;
         }
 
         for (int i = 0; i < colliders.Length; i++)
         {
-            HealthSubject _healthTarget = colliders[i].GetComponentInChildren<HealthSubject>();
+            StatusManager targetStatusManager = colliders[i].GetComponentInChildren<StatusManager>();
 
-            if (!_healthTarget)
+            if (statusManager == targetStatusManager)
+                continue;
+            if (!targetStatusManager)
                 continue;
 
-            if (!healthTargets.Contains(_healthTarget))
-                healthTargets.Add(_healthTarget);
+            if (!statusTargets.Contains(targetStatusManager))
+                statusTargets.Add(targetStatusManager);
 
-            LookLogic(_healthTarget);
+            LookLogic(targetStatusManager);
         }
     }
 
-    void LookLogic(HealthSubject _healthTarget)
+    void LookLogic(StatusManager targetStatusManager)
     {
-        Vector2 targetDirection = (_healthTarget.transform.position - transform.position).normalized;
+        Vector2 targetDirection = (targetStatusManager.Trans.position - transform.position).normalized;
 
         if (Vector2.Angle(transform.up, targetDirection) < creatureLogic.DetectionAngle / 2)
         {
             if (!Physics2D.Raycast(transform.position, targetDirection, creatureLogic.DistanceFromTarget, creatureLogic.ObstacleLayer))
             {
                 creatureLogic.SetCanSeePlayer(true);
-                creatureLogic.SetTargetHealthScript(_healthTarget);
+                creatureLogic.SetTargetStatusManager(targetStatusManager);
             }
             else
             {
                 creatureLogic.SetCanSeePlayer(false);
-                creatureLogic.SetTargetHealthScript(null);
+                creatureLogic.SetTargetStatusManager(null);
             }
         }
         else if (creatureLogic.CanSeeTarget)

@@ -20,7 +20,7 @@ public class ChaseState : State
 
         else if (creatureLogic.DistanceFromTarget >= chaseRange)
         {
-            creatureLogic.SetTargetHealthScript(null);
+            creatureLogic.SetTargetStatusManager(null);
             creatureLogic.SetCanSeePlayer(false);
             return roamState;
         }
@@ -48,8 +48,8 @@ public class ChaseState : State
 
     void HandleMovement()
     {
-        creatureLogic.SetDistanceFromTarget(Vector3.Distance(creatureLogic.TargetHealthScript.transform.position, creatureLogic.transform.position));
-        creatureLogic.agent.SetDestination(creatureLogic.TargetHealthScript.transform.position);
+        creatureLogic.SetDistanceFromTarget(Vector3.Distance(creatureLogic.TargetStatusManager.transform.position, creatureLogic.transform.position));
+        creatureLogic.agent.SetDestination(creatureLogic.TargetStatusManager.transform.position);
     }
 
 }

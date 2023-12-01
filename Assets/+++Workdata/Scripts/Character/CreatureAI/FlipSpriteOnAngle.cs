@@ -28,8 +28,10 @@ public class FlipSpriteOnAngle : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
     }
 
-    void FixedUpdate()
+    void Update()
     {
+        if (rotationParent == null) return;
+
         float angle = rotationParent.rotation.eulerAngles.z;
 
         if (flip == Flip.x)
