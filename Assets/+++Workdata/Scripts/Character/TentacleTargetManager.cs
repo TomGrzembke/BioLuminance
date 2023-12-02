@@ -43,8 +43,11 @@ public class TentacleTargetManager : MonoBehaviour
         }
 
         targetTrans.Shuffle();
+
         for (int i = 0; i < tentacleCount; i++)
         {
+            if (i > targetTrans.Count -1)
+                break;
             tentacles[i].SetGrabTarget(targetTrans[i].transform);
         }
     }
