@@ -5,7 +5,7 @@ using UnityEngine;
 public class TentacleCollider : MonoBehaviour
 {
     #region serialized fields
-
+    [SerializeField] int pointsDividedBy = 3;
     #endregion
 
     #region private fields
@@ -27,13 +27,25 @@ public class TentacleCollider : MonoBehaviour
     void SetEdgeCollider()
     {
         List<Vector2> edges = new();
-        for (int i = 0; i < lineRenderer.positionCount; i++)
+        AddPoints(edges, 0);
+        for (int i = 0; i < lineRenderer.positionCount / pointsDividedBy; i++)
         {
-            Vector3 lineRendererPoint = lineRenderer.GetPosition(i);
-            edges.Add(new(lineRendererPoint.x, lineRendererPoint.y));
-            edges[i] = transform.InverseTransformPoint(edges[i]);;
+            AddPointsDivided(edges, i);
         }
+        AddPoints(edges, lineRenderer.positionCount - 1);
 
         edgeCollider.SetPoints(edges);
+    }
+
+    void AddPointsDivided(List<Vector2> edges, int i)
+    {
+        Vector2 lineRendererPoint = transform.InverseTransformPoint(lineRenderer.GetPosition(i * pointsDividedBy));
+        edges.Add(lineRendererPoint);
+    }
+
+    void AddPoints(List<Vector2> edges, int i)
+    {
+        Vector2 lineRendererPoint = transform.InverseTransformPoint(lineRenderer.GetPosition(i));
+        edges.Add(lineRendererPoint);
     }
 }

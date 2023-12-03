@@ -82,8 +82,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31ed1c938d06d8746aeff5dccd32540f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  detachCheckTime: 3
   tentacleTargetManager: {fileID: 6073687186117087248}
-  target: {fileID: 5058524136151182333}
+  cursorDetect: {fileID: 5058524136151182333}
+  playerDetect: {fileID: 1461240600810685299}
+  savedPossibleTarget: []
 --- !u!114 &6073687186117087248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98,9 +101,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tentacles:
   - {fileID: 7270641368243846166}
-  - {fileID: 2556797988019359288}
   - {fileID: 8491114510153316245}
-  targetPoints: []
+  - {fileID: 2556797988019359288}
+  targetSM: []
+  targetTrans: []
 --- !u!1 &754643918045001180
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,9 +442,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd1e94032de09e408a6aba9b30e7086, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grabSpeed: 40
   tailEnd: {fileID: 0}
   bodyParts: []
-  grabSpeed: 60
   grabTrans: {fileID: 0}
   fouldOutOnStart: 1
   attachTrans: {fileID: 978846455705220696}
@@ -1127,6 +1131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd1e94032de09e408a6aba9b30e7086, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grabSpeed: 60
   tailEnd: {fileID: 0}
   bodyParts:
   - {fileID: 9187510681244231546}
@@ -1165,7 +1170,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 3944254333075477887}
-  grabSpeed: 60
   grabTrans: {fileID: 0}
   fouldOutOnStart: 1
   attachTrans: {fileID: 3824276873419913079}
@@ -1328,9 +1332,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd1e94032de09e408a6aba9b30e7086, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grabSpeed: 40
   tailEnd: {fileID: 0}
   bodyParts: []
-  grabSpeed: 60
   grabTrans: {fileID: 0}
   fouldOutOnStart: 1
   attachTrans: {fileID: 5727340508969391670}
@@ -1671,7 +1675,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8608689297635819524}
   m_Layer: 0
-  m_Name: '[GrabTrans] Stingray_0'
+  m_Name: '[GrabTrans_0] Player'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1686,7 +1690,7 @@ Transform:
   m_GameObject: {fileID: 5631742901987143705}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.69, y: 1.76, z: 0}
+  m_LocalPosition: {x: -0.16, y: 0.39, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1924,7 +1928,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5073451920637419956}
   m_Layer: 0
-  m_Name: '[GrabTrans] Stingray_2'
+  m_Name: '[GrabTrans_2] Player'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1939,7 +1943,7 @@ Transform:
   m_GameObject: {fileID: 6057415844667656274}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.91, y: -1.05, z: 0}
+  m_LocalPosition: {x: 0.68, y: -0.56, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2050,6 +2054,7 @@ GameObject:
   - component: {fileID: 5595682832789274083}
   - component: {fileID: 2829320683562155310}
   - component: {fileID: 2856363000226415612}
+  - component: {fileID: 1461240600810685299}
   - component: {fileID: 7845883195136958720}
   - component: {fileID: 2643141759927054665}
   m_Layer: 7
@@ -2115,7 +2120,26 @@ MonoBehaviour:
   stunSubject: {fileID: 6017859251663530628}
   healthSubject: {fileID: 5646787825360742053}
   speedSubject: {fileID: 95591704801732508}
-  grabManager: {fileID: 0}
+  grabManager: {fileID: 7235609408345186596}
+--- !u!114 &1461240600810685299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6732813511311533440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3989ad8a1722214aab9f2682c879e56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  middle: {fileID: 5595682832789274083}
+  possibleTargets: []
+  creatureLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  detectionRadius: 16.01
+  playerStatusManager: {fileID: 2856363000226415612}
 --- !u!195 &7845883195136958720
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2183,7 +2207,7 @@ GameObject:
   m_Component:
   - component: {fileID: 42519551272822072}
   m_Layer: 0
-  m_Name: '[GrabTrans] Stingray_1'
+  m_Name: '[GrabTrans_1] Player'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2198,7 +2222,7 @@ Transform:
   m_GameObject: {fileID: 6800146133540904587}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.23, y: 0.56, z: 0}
+  m_LocalPosition: {x: -1.21, y: -0.53, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2329,7 +2353,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8024821159919851362}
   - component: {fileID: 7270641368243846166}
+  - component: {fileID: 1888681059319444949}
   - component: {fileID: 797188073028259027}
+  - component: {fileID: 2027507007649285773}
   m_Layer: 0
   m_Name: Tentacle
   m_TagString: Untagged
@@ -2345,8 +2371,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7920379363736573840}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.833, y: -1.339, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2365,9 +2391,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd1e94032de09e408a6aba9b30e7086, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grabSpeed: 40
   tailEnd: {fileID: 0}
   bodyParts: []
-  grabSpeed: 60
   grabTrans: {fileID: 4264362017283934740}
   fouldOutOnStart: 1
   attachTrans: {fileID: 978846455705220696}
@@ -2380,6 +2406,19 @@ MonoBehaviour:
   wiggleSpeed: 10
   wiggleMagnitude: 20
   wiggleDir: {fileID: 48125592018295978}
+--- !u!114 &1888681059319444949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7920379363736573840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb7785d2b8c46bc408948610869007fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointsDividedBy: 3
 --- !u!120 &797188073028259027
 LineRenderer:
   serializedVersion: 2
@@ -2484,6 +2523,47 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!68 &2027507007649285773
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7920379363736573840}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 2.191, y: 1.245}
+  - {x: 8.333, y: 1.245}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1 &8178821665228991671
 GameObject:
   m_ObjectHideFlags: 0
@@ -2718,6 +2798,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8913485209195692372}
   - component: {fileID: 5058524136151182333}
+  - component: {fileID: 3424435662422000367}
   m_Layer: 0
   m_Name: Target
   m_TagString: Untagged
@@ -2752,13 +2833,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3989ad8a1722214aab9f2682c879e56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
+  middle: {fileID: 8913485209195692372}
   possibleTargets: []
   creatureLayer:
     serializedVersion: 2
     m_Bits: 128
   detectionRadius: 8.05
   playerStatusManager: {fileID: 2856363000226415612}
+--- !u!114 &3424435662422000367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8676541848072522287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5d74ff3260f3574bb38471e2adb6aa6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 0}
 --- !u!1 &8700682864381002874
 GameObject:
   m_ObjectHideFlags: 0
