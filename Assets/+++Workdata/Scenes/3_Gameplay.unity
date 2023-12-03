@@ -1778,6 +1778,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8004924450197427197, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 8004924450197427197, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 8004924450197427197, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2940,10 +2952,6 @@ PrefabInstance:
     - target: {fileID: 5951047566704116028, guid: e5616ed57e42d9f49ab933a6be6a4a46, type: 3}
       propertyPath: m_Name
       value: '[Creature] Tuna'
-      objectReference: {fileID: 0}
-    - target: {fileID: 5951047566704116028, guid: e5616ed57e42d9f49ab933a6be6a4a46, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7065252597165299522, guid: e5616ed57e42d9f49ab933a6be6a4a46, type: 3}
       propertyPath: m_LocalPosition.x

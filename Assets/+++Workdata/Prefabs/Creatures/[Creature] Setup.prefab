@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5670604380686470094}
   - component: {fileID: 907766980465430614}
   - component: {fileID: 563368637058944709}
-  - component: {fileID: 2731794577119680122}
+  - component: {fileID: 1963122716833880277}
   m_Layer: 7
   m_Name: '[Behavior] Setup'
   m_TagString: Untagged
@@ -109,8 +109,8 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!58 &2731794577119680122
-CircleCollider2D:
+--- !u!70 &1963122716833880277
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -141,9 +141,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
+  m_Offset: {x: 0.2071464, y: 0.8285847}
+  m_Size: {x: 0.892488, y: 2.6571693}
+  m_Direction: 0
 --- !u!1 &1161203872786208409
 GameObject:
   m_ObjectHideFlags: 0
