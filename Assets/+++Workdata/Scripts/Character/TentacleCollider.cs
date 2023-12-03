@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(EdgeCollider2D))]
@@ -6,6 +7,7 @@ public class TentacleCollider : MonoBehaviour
 {
     #region serialized fields
     [SerializeField] int pointsDividedBy = 3;
+    [SerializeField] ContactFilter2D contactFilter;
     #endregion
 
     #region private fields
@@ -22,6 +24,13 @@ public class TentacleCollider : MonoBehaviour
     void Update()
     {
         SetEdgeCollider();
+        HandleDetection();
+    }
+
+    void HandleDetection()
+    {
+        Collider2D[] colliders = new Collider2D[10];
+        Physics2D.OverlapCollider(edgeCollider, contactFilter, colliders);
     }
 
     void SetEdgeCollider()
