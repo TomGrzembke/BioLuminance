@@ -6,6 +6,7 @@ using Random = UnityEngine.Random;
 
 public class CreatureSpawner : MonoBehaviour
 {
+    public bool spawnOnStart;
     [SerializeField] private bool randomNumberToSpawn;
     [SerializeField, ConditionalField(nameof(randomNumberToSpawn), true)] float numberToSpawn;
     [SerializeField, ConditionalField(nameof(randomNumberToSpawn))] float minNumberToSpawn;
@@ -20,6 +21,14 @@ public class CreatureSpawner : MonoBehaviour
     Collider2D _collider;
 
     void Awake() => _collider = GetComponent<Collider2D>();
+
+    private void Start()
+    {
+        _collider.isTrigger = true;
+        
+        if (spawnOnStart)
+            SpawnRandomCreatures();
+    }
 
     private void OnValidate()
     {
