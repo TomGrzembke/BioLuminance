@@ -1,17 +1,34 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using MyBox;
 using Random = UnityEngine.Random;
 
 public class CreatureSpawner : MonoBehaviour
 {
-    public float numberToSpawn;
-    public Transform spawnInto;
-    public WeightedArray[] creaturesToSpawn;
+    public bool spawnOnStart;
+    [SerializeField] private bool randomNumberToSpawn;
+    [SerializeField, ConditionalField(nameof(randomNumberToSpawn), true)] float numberToSpawn;
+    [SerializeField, ConditionalField(nameof(randomNumberToSpawn))] float minNumberToSpawn;
+    [SerializeField, ConditionalField(nameof(randomNumberToSpawn))] float maxNumberToSpawn;
+    
+    [Separator]
+    
+    [SerializeField] Transform spawnInto;
+    [SerializeField] WeightedArray[] creaturesToSpawn;
+    [SerializeField] List<GameObject> instantiatedObjects;
 
     Collider2D _collider;
 
     void Awake() => _collider = GetComponent<Collider2D>();
+
+    private void Start()
+    {
+        _collider.isTrigger = true;
+        
+        if (spawnOnStart)
+            SpawnRandomCreatures();
+    }
 
     private void OnValidate()
     {
@@ -22,7 +39,14 @@ public class CreatureSpawner : MonoBehaviour
     [ButtonMethod]
     void SpawnRandomCreatures()
     {
-        for (int i = 0; i < numberToSpawn; i++)
+        float setNumberToSpawn = new float();
+
+        if (!randomNumberToSpawn)
+            setNumberToSpawn = numberToSpawn;
+        else if (randomNumberToSpawn)
+            setNumberToSpawn = Random.Range(minNumberToSpawn, maxNumberToSpawn);
+        
+        for (int i = 0; i < setNumberToSpawn; i++)
         {
             float totalWeight = 0f;
             foreach (WeightedArray weightedArrays in creaturesToSpawn)
@@ -41,6 +65,7 @@ public class CreatureSpawner : MonoBehaviour
                     Vector2 spawnPosition = GetRandomSpawnPosition(_collider);
                     GameObject instantiated = Instantiate(weightedArrays._creatureToSpawn, spawnPosition, Quaternion.identity);
                     instantiated.transform.SetParent(spawnInto);
+                    instantiatedObjects.Add(instantiated);
                     break;
                 }
             }
@@ -85,7 +110,11 @@ public class CreatureSpawner : MonoBehaviour
         }
 
         if (!isSpawnPosValid)
+        {
             Debug.Log("Could not find spawn position");
+            Destroy(instantiatedObjects[0-1000]);
+            instantiatedObjects.Clear();
+        }
 
         return spawnPosition;
     }
