@@ -1683,6 +1683,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1775795466345194663, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 1775795466345194663, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.22
+      objectReference: {fileID: 0}
     - target: {fileID: 2098536029566859663, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.91
@@ -1715,6 +1723,10 @@ PrefabInstance:
       propertyPath: grabTrans.Array.data[1]
       value: 
       objectReference: {fileID: 5766394670172550573}
+    - target: {fileID: 5695632020067386860, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: creatureRenderer
+      value: 
+      objectReference: {fileID: 2334789098399015460}
     - target: {fileID: 6156355649812583662, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: m_Name
       value: '[GrabTrans_0] Stingray'

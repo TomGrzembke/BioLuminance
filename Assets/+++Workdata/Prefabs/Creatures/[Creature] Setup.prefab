@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7360798349380117563}
   - component: {fileID: 5670604380686470094}
   - component: {fileID: 907766980465430614}
+  - component: {fileID: 5695632020067386860}
   - component: {fileID: 563368637058944709}
   - component: {fileID: 1963122716833880277}
   m_Layer: 7
@@ -87,6 +88,28 @@ MonoBehaviour:
   healthSubject: {fileID: 1937458173023117751}
   speedSubject: {fileID: 7968696186739195705}
   grabManager: {fileID: 5691099337415648018}
+--- !u!114 &5695632020067386860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15204248062647766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a6db188f55490547bf09487c5901eae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateManager: {fileID: 852289035523142219}
+  mapSpriteRenderer: {fileID: 0}
+  creatureRenderer: {fileID: 5797602997725594434}
+  neutralColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  agressiveColor:
+    serializedVersion: 2
+    rgba: 4278190335
+  spriteSizeVec: {x: 0, y: 0}
 --- !u!195 &563368637058944709
 NavMeshAgent:
   m_ObjectHideFlags: 0
