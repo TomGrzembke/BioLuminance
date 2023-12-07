@@ -1,10 +1,16 @@
 using UnityEngine;
+using MyBox;
 
 public class Minimap : MonoBehaviour
 {
     [SerializeField] StateManager stateManager;
     [SerializeField] SpriteRenderer mapSpriteRenderer;
     [SerializeField] SpriteRenderer creatureRenderer;
+    
+    [Separator] 
+    
+    [SerializeField] Color32 neutralColor = new Color(255, 255, 255, 255);
+    [SerializeField] Color32 agressiveColor = new Color(255, 0, 0, 255);
     
     public Vector2 spriteSizeVec;
     
@@ -55,8 +61,8 @@ public class Minimap : MonoBehaviour
     public void HandleMapIndicators()
     {
         if (stateManager.currentState.Dangerous)
-            mapSpriteRenderer.color = new Color(255, 0, 0);
+            mapSpriteRenderer.color = agressiveColor;
         else
-            mapSpriteRenderer.color = new Color(255, 255, 255);
+            mapSpriteRenderer.color = neutralColor;
     }
 }

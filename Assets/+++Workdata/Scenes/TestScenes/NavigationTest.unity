@@ -1966,6 +1966,12 @@ MonoBehaviour:
   stateManager: {fileID: 0}
   mapSpriteRenderer: {fileID: 0}
   creatureRenderer: {fileID: 0}
+  neutralColor:
+    serializedVersion: 2
+    rgba: 0
+  agressiveColor:
+    serializedVersion: 2
+    rgba: 0
   spriteSizeVec: {x: 0, y: 0}
 --- !u!1 &988310136
 GameObject:
@@ -7606,6 +7612,12 @@ MonoBehaviour:
   stateManager: {fileID: 4116715168172507218}
   mapSpriteRenderer: {fileID: 0}
   creatureRenderer: {fileID: 7403347673086810901}
+  neutralColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  agressiveColor:
+    serializedVersion: 2
+    rgba: 4278255533
   spriteSizeVec: {x: 0, y: 0}
 --- !u!4 &8978269810536848068
 Transform:
