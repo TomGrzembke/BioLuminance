@@ -33,6 +33,10 @@ public class StatusManager : MonoBehaviour
     {
         healthSubject.AddHealth(additionalHealth);
     }
+    public void AddDamage(float additionalHealth)
+    {
+        healthSubject.AddHealth(-additionalHealth);
+    }
 
     public void AddStun(float additionalStun)
     {
@@ -41,7 +45,7 @@ public class StatusManager : MonoBehaviour
 
     public void ApplyTentacle(TentacleDetection.TentacleEffects tentacleEffects)
     {
-        AddHealth(tentacleEffects.damagePerInstance);
+        AddDamage(tentacleEffects.damagePerInstance);
         AddStun(tentacleEffects.stunPerInstance);
     }
 }
