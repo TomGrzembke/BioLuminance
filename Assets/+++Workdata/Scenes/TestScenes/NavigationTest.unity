@@ -2401,7 +2401,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1507369279
 Transform:
   m_ObjectHideFlags: 0
@@ -4304,7 +4304,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ee1551868607244ba71b4f4bff07eed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  randomNumberToSpawn: 0
   numberToSpawn: 10
+  minNumberToSpawn: 0
+  maxNumberToSpawn: 0
   spawnInto: {fileID: 2334907076120760327}
   creaturesToSpawn:
   - _creatureToSpawn: {fileID: 5007524509860467351, guid: 47a1aa438cbf28a49a974d003e1bfa1a, type: 3}

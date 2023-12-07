@@ -6,10 +6,16 @@ using Random = UnityEngine.Random;
 
 public class CreatureSpawner : MonoBehaviour
 {
-    public float numberToSpawn;
-    public Transform spawnInto;
-    public WeightedArray[] creaturesToSpawn;
-    public List<GameObject> instantiatedObjects;
+    [SerializeField] private bool randomNumberToSpawn;
+    [SerializeField, ConditionalField(nameof(randomNumberToSpawn), true)] float numberToSpawn;
+    [SerializeField, ConditionalField(nameof(randomNumberToSpawn))] float minNumberToSpawn;
+    [SerializeField, ConditionalField(nameof(randomNumberToSpawn))] float maxNumberToSpawn;
+    
+    [Separator]
+    
+    [SerializeField] Transform spawnInto;
+    [SerializeField] WeightedArray[] creaturesToSpawn;
+    [SerializeField] List<GameObject> instantiatedObjects;
 
     Collider2D _collider;
 
@@ -24,7 +30,14 @@ public class CreatureSpawner : MonoBehaviour
     [ButtonMethod]
     void SpawnRandomCreatures()
     {
-        for (int i = 0; i < numberToSpawn; i++)
+        float setNumberToSpawn = new float();
+
+        if (!randomNumberToSpawn)
+            setNumberToSpawn = numberToSpawn;
+        else if (randomNumberToSpawn)
+            setNumberToSpawn = Random.Range(minNumberToSpawn, maxNumberToSpawn);
+        
+        for (int i = 0; i < setNumberToSpawn; i++)
         {
             float totalWeight = 0f;
             foreach (WeightedArray weightedArrays in creaturesToSpawn)
