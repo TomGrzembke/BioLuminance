@@ -1,10 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using MyBox;
-using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class Minimap : MonoBehaviour
 {
@@ -18,20 +12,26 @@ public class Minimap : MonoBehaviour
     {
         stateManager = GetComponentInChildren<StateManager>();
         mapSpriteRenderer = GetSpriteRendererInLayer(gameObject, "Map");
-        creatureRenderer = GetComponent<SpriteRenderer>();
+        if(creatureRenderer == null)
+            creatureRenderer = GetComponent<SpriteRenderer>();
     }
     
     void Start()
     {
-        spriteSizeVec = (creatureRenderer.bounds.extents * 2);
-        spriteSizeVec = new(Mathf.Round(spriteSizeVec.x * 1.5f), Mathf.Round(spriteSizeVec.y * 1.5f));
-        spriteSizeVec.x = spriteSizeVec.y;
-        mapSpriteRenderer.transform.localScale = spriteSizeVec;
+        CalculateSpriteSize();
     }
 
     private void FixedUpdate()
     {
         HandleMapIndicators();
+    }
+
+    void CalculateSpriteSize()
+    {
+        spriteSizeVec = (creatureRenderer.bounds.extents * 2);
+        spriteSizeVec = new(Mathf.Round(spriteSizeVec.x * 1.5f), Mathf.Round(spriteSizeVec.y * 1.5f));
+        spriteSizeVec.x = spriteSizeVec.y;
+        mapSpriteRenderer.transform.localScale = spriteSizeVec;
     }
 
     SpriteRenderer GetSpriteRendererInLayer(GameObject parent, string layerName)
@@ -49,7 +49,6 @@ public class Minimap : MonoBehaviour
                 break;
             }
         }
-
         return spriteRendererInLayer;
     }
 
