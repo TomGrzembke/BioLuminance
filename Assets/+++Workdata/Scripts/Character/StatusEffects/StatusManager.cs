@@ -29,13 +29,19 @@ public class StatusManager : MonoBehaviour
         trans = transform;
     }
 
+    public void AddHealth(float additionalHealth)
+    {
+        healthSubject.AddHealth(additionalHealth);
+    }
+
     public void AddStun(float additionalStun)
     {
         stunSubject.AddStun(additionalStun);
     }
 
-    public void AddHealth(float additionalHealth)
+    public void ApplyTentacle(TentacleDetection.TentacleEffects tentacleEffects)
     {
-        healthSubject.AddHealth(additionalHealth);
+        AddHealth(tentacleEffects.damagePerInstance);
+        AddStun(tentacleEffects.stunPerInstance);
     }
 }
