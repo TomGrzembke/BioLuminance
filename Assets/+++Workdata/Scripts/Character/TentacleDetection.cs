@@ -8,15 +8,14 @@ public class TentacleDetection : MonoBehaviour
     #region serialized fields
     [SerializeField] TentacleEffects tentacleEffects = new();
     [SerializeField] StatusManager ownStatusManager;
-    [SerializeField] TentacleTargetManager targetManager;
     [SerializeField] int pointsDividedBy = 3;
     [SerializeField] ContactFilter2D contactFilter;
-    [SerializeField] List<StatusManager> statusManager;
     #endregion
 
     #region private fields
     EdgeCollider2D edgeCollider;
     LineRenderer lineRenderer;
+    List<Collider2D> colliders = new();
     #endregion
 
     void Awake()
@@ -33,18 +32,13 @@ public class TentacleDetection : MonoBehaviour
 
     void HandleDetection()
     {
-        statusManager.Clear();
-        List<Collider2D> colliders = new();
-
         if (Physics2D.OverlapCollider(edgeCollider, contactFilter, colliders) < 0) return;
 
         for (int i = 0; i < colliders.Count; i++)
         {
             if (!colliders[i].TryGetComponent(out StatusManager _statusManager)) continue;
-            if (statusManager.Contains(_statusManager)) continue;
-            if (_statusManager != ownStatusManager) continue;
+            if (_statusManager == ownStatusManager) continue;
 
-            statusManager.Add(_statusManager);
             _statusManager.ApplyTentacle(tentacleEffects);
         }
     }

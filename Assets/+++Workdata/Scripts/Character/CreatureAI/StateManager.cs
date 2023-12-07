@@ -105,6 +105,7 @@ public class StateManager : MonoBehaviour
             return;
         }
 
-        SetState(LastState);
+        if (currentState == fleeState)
+            SetState(LastState);
     }
 }
