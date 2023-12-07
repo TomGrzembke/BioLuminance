@@ -2969,6 +2969,10 @@ PrefabInstance:
       propertyPath: contactFilter.useTriggers
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1888681059319444949, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
+      propertyPath: contactFilter.layerMask.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
     - target: {fileID: 2027507007649285773, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
       propertyPath: m_EdgeRadius
       value: 0.1
@@ -3032,6 +3036,14 @@ PrefabInstance:
     - target: {fileID: 5343152892081987542, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6073687186117087248, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
+      propertyPath: tentacles.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6073687186117087248, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
+      propertyPath: tentacles.Array.data[3]
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7334235293886078406, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
       propertyPath: m_BoundingShape2D

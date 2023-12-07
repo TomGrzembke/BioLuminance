@@ -6,6 +6,7 @@ public class TentacleTargetManager : MonoBehaviour
 {
     #region serialized fields
     [SerializeField] List<TentacleBehavior> tentacles;
+    [SerializeField] List<TentacleDetection> tentacleDetection;
     [SerializeField] List<StatusManager> targetSM;
     [SerializeField] List<Transform> targetTrans;
     #endregion
@@ -13,6 +14,14 @@ public class TentacleTargetManager : MonoBehaviour
     #region private fields
 
     #endregion
+    void Awake()
+    {
+        for (int i = 0; i < tentacles.Count; i++)
+        {
+            if (tentacles[i].TryGetComponent(out TentacleDetection _tentacleDetection))
+                tentacleDetection.Add(_tentacleDetection);
+        }
+    }
 
     public void SetTargets()
     {
