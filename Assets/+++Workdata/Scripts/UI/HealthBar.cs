@@ -27,7 +27,7 @@ public class HealthBar : Bar
     }
 
     void OnHealthChanged(float health)
-    {
+    { 
         bar.fillAmount = health;
 
         AfterShockLogic(health);

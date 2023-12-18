@@ -19,11 +19,12 @@ public class LoadingScreen : MonoBehaviour
     {
         loadingInstigator.Remove(instigator);
 
-        if (ScreenManager.Instance != null)
+        if (ScreenManager.Instance == null)
             return;
 
         if (loadingInstigator.Count == 0)
             ScreenManager.Instance.LoadingScreen.Hide();
+
     }
 
     public void Initialize()
