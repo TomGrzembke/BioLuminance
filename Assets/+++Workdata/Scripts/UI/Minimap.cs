@@ -34,7 +34,7 @@ public class Minimap : MonoBehaviour
 
     void CalculateSpriteSize()
     {
-        spriteSizeVec = (creatureRenderer.bounds.extents * 2);
+        spriteSizeVec = (creatureRenderer.bounds.extents);
         spriteSizeVec = new(Mathf.Round(spriteSizeVec.x * 1.5f), Mathf.Round(spriteSizeVec.y * 1.5f));
         spriteSizeVec.x = spriteSizeVec.y;
         mapSpriteRenderer.transform.localScale = spriteSizeVec;

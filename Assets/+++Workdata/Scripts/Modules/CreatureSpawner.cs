@@ -140,9 +140,9 @@ public class WeightedArray
 
     [Tooltip("The Radius in which the creature is spawned x amount away from a wall")]
     public float _radius = 2f;
-    
-    [Tooltip("This defines the probability in which a creature is spawned")]
-    [Range(0,100)] public float _weight;
+
+    [Tooltip("This defines the probability in which a creature is spawned")] [Range(0, 100)]
+    public float _weight = 100f;
     
     [HideInInspector]public string characterName;
 }
