@@ -13,21 +13,12 @@ public class PointSystem : MonoBehaviour
     [SerializeField] PlayerController playerController;
     [SerializeField] List<PointPool> pointPools;
     [SerializeField] List<StatusManager> allObjects;
-    private List<Creatures> creaturesList = new List<Creatures>();
-
-    private void Awake()
-    {
-    }
+    public List<Creatures> creaturesList = new List<Creatures>();
 
     private void Start()
     {
         CollectCreatures();
         playerController = FindObjectOfType<PlayerController>();
-        // Goes through every element in PointPool List and adds the Flag (creature) to the private string (creatureName)
-        foreach (PointPool pointPool in pointPools)
-        {
-            pointPool._creatureName = pointPool.creature.ToString();
-        }
     }
 
     private void Update()
@@ -40,9 +31,19 @@ public class PointSystem : MonoBehaviour
         }
     }
 
+    [ButtonMethod]
+    public void GetCreatures()
+    {
+        pointPools.Clear();
+        allObjects.Clear();
+        creaturesList.Clear();
+        
+        CollectCreatures();
+    }
+
     public void CollectCreatures()
     {
-        // Goes through every object and checks for the script "StatusManager"
+        // Goes through the Inspector and adds any object with the StatusManager script to the List "allObjects"
         allObjects = new List<StatusManager>(FindObjectsOfType<StatusManager>());
         AssignCreatures();
     }
@@ -73,7 +74,14 @@ public class PointSystem : MonoBehaviour
 
             pointPools.Add(pointPool);
         }
+        
+        // Goes through every element in PointPool List and adds the Flag (creature) to the private string (creatureName)
+        foreach (PointPool pointPool in pointPools)
+        {
+            pointPool._creatureName = pointPool.creature.ToString();
+        }
     }
+    
 
     public void SetCreatureDnaStats(Creatures creatureType, float points, float percentage)
     {
