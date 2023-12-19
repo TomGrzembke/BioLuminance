@@ -10,6 +10,7 @@ public class AnimateFromTo : MonoBehaviour
     [SerializeField] Transform target;
     [SerializeField] ParentSwapper swapper;
     [SerializeField] Transform gfx;
+    [SerializeField] float animDelay = 1.5f;
     #endregion
 
     #region private fields
