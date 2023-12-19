@@ -1,34 +1,38 @@
 using MyBox;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class AnimateFromTo : MonoBehaviour
 {
     #region serialized fields
-    [SerializeField] Transform toTransform;
+    [SerializeField] float animDelay = 1.5f;
+    [SerializeField] float animTime = 3;
+    [SerializeField] float animationStepsTimes = 0.9f;
     [SerializeField] AnimationCurve curve;
+    [SerializeField] Transform reparentTarget;
+    [SerializeField] Transform toTransform;
     [SerializeField] Transform target;
     [SerializeField] ParentSwapper swapper;
-    [SerializeField] Transform gfx;
-    [SerializeField] float animDelay = 1.5f;
+    [SerializeField] UnityEvent onFinished;
     #endregion
 
     #region private fields
-    int animationSteps = 1;
-    [SerializeField] float animTime = 3;
+    float animationSteps = 1;
     Vector2 originalPos;
     #endregion
 
     void Start()
     {
         animationSteps = animTime.RoundToInt() * 200;
+        animationSteps *= animationStepsTimes;
         StartCoroutine(Animate());
     }
     IEnumerator Animate()
     {
         originalPos = target.position;
-        yield return new WaitForSeconds(2);
-        swapper.Swap(gfx, target);
+        yield return new WaitForSeconds(animDelay);
+        swapper.Swap(reparentTarget, target);
         float progress = 0;
 
         for (int i = 0; i < animationSteps; i++)
@@ -38,5 +42,7 @@ public class AnimateFromTo : MonoBehaviour
             yield return null;
         }
         swapper.UnSwap();
+        onFinished?.Invoke();
+        Destroy(gameObject);
     }
 }
