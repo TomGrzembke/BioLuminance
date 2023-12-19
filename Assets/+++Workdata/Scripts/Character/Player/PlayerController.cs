@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
 {
     #region serialized fields
 
+    public float points;
+    [Space(10)]
     public float playerHP;
     [Space(10)]
     [SerializeField] float moveSpeed = 5f;

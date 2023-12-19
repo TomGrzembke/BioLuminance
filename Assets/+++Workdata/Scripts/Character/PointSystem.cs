@@ -2,22 +2,27 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using MyBox;
+using Unity.Collections.LowLevel.Unsafe;
+using UnityEditorInternal;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PointSystem : MonoBehaviour
 {
-    [SerializeField] private GameObject givePointsTo;
-    public List<PointPool> pointPools = new List<PointPool>();
-    public StatusManager[] allObjects;
-    public List<Creatures> creaturesList;
+    [SerializeField] PlayerController playerController;
+    [SerializeField] List<PointPool> pointPools;
+    [SerializeField] List<StatusManager> allObjects;
+    private List<Creatures> creaturesList = new List<Creatures>();
 
     private void Awake()
     {
-        CollectCreatures();
     }
 
     private void Start()
     {
+        CollectCreatures();
+        playerController = FindObjectOfType<PlayerController>();
         // Goes through every element in PointPool List and adds the Flag (creature) to the private string (creatureName)
         foreach (PointPool pointPool in pointPools)
         {
@@ -25,10 +30,20 @@ public class PointSystem : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        foreach (var pointPool in pointPools)
+        {
+            pointPool.dNAFalloffPercentage = Mathf.Ceil(pointPool.dNAFalloffPercentage);
+            pointPool.dNAFalloffPercentage = Mathf.Clamp(pointPool.dNAFalloffPercentage, 0, 100);
+            pointPool.creaturesInScene = Mathf.Clamp(pointPool.creaturesInScene, 0, 99999);
+        }
+    }
+
     public void CollectCreatures()
     {
         // Goes through every object and checks for the script "StatusManager"
-        allObjects = FindObjectsOfType<StatusManager>();
+        allObjects = new List<StatusManager>(FindObjectsOfType<StatusManager>());
         AssignCreatures();
     }
 
@@ -49,12 +64,59 @@ public class PointSystem : MonoBehaviour
         {
             PointPool pointPool = new PointPool();
             pointPool.creature = creatures;
+
+            // Count the occurrences of the creature type in allObjects
+            int count = allObjects.Count(obj => obj.CreatureType == creatures);
+
+            // Set the creatureAmount property
+            pointPool.creaturesInScene = count;
+
             pointPools.Add(pointPool);
         }
+    }
 
-        foreach (PointPool pointPool in pointPools)
+    public void SetCreatureDnaStats(Creatures creatureType, float points, float percentage)
+    {
+        foreach (var pointPool in pointPools)
         {
-            //pointPool.creatureAmount = creaturesAmount;
+            if (pointPool.creature == creatureType)
+            {
+                pointPool.initialDNAAmount = points;
+                pointPool.dNAFalloffPercentage = percentage;
+            }
+        }
+    }
+
+    public void CalculatePoints(Creatures creatureType)
+    {
+        foreach (var pointPool in pointPools)
+        {
+            if (pointPool.creature == creatureType)
+            {
+                playerController.points += pointPool.initialDNAAmount;
+                
+                float percent = pointPool.initialDNAAmount * pointPool.dNAFalloffPercentage / 100;
+                pointPool.initialDNAAmount -= percent;
+
+                pointPool.initialDNAAmount = Mathf.Round(pointPool.initialDNAAmount);
+            }
+        }
+    }
+    
+    public void CalculatePoints2(Creatures creatureType)
+    {
+        foreach (var pointPool in pointPools)
+        {
+            if (pointPool.creature == creatureType)
+            {
+                playerController.points += pointPool.initialDNAAmount;
+
+                float percent = pointPool.initialDNAAmount / pointPool.creaturesInScene;
+                pointPool.initialDNAAmount -= percent;
+                pointPool.creaturesInScene--;
+                
+                pointPool.initialDNAAmount = Mathf.Round(pointPool.initialDNAAmount);
+            }
         }
     }
 }
@@ -64,5 +126,7 @@ public class PointPool
 {
     [HideInInspector] public string _creatureName;
     public Creatures creature;
-    public float creatureAmount;
+    public float creaturesInScene;
+    [Space(5)] public float initialDNAAmount;
+    public float dNAFalloffPercentage;
 }

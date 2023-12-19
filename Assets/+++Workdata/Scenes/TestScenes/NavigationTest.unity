@@ -329,17 +329,6 @@ MonoBehaviour:
   m_Area: 1
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
---- !u!114 &134566253 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8696543891219929982, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
-  m_PrefabInstance: {fileID: 1258786601}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f0ed5816d3fe72458602006eb00551c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &167770193
 GameObject:
   m_ObjectHideFlags: 3
@@ -1137,6 +1126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03f4465234e01c24fb6be9dca09b4247, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  points: 0
   playerHP: 100
   moveSpeed: 5
   deceleration: 3
@@ -1451,6 +1441,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5616ed57e42d9f49ab933a6be6a4a46, type: 3}
+--- !u!1001 &812013957
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5951047566704116028, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: m_Name
+      value: '[Creature] Stingray'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7065252597165299522, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7065252597165299522, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7065252597165299522, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7065252597165299522, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7065252597165299522, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7065252597165299522, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7065252597165299522, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7065252597165299522, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7065252597165299522, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7065252597165299522, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
 --- !u!1 &841660798
 GameObject:
   m_ObjectHideFlags: 0
@@ -2413,6 +2460,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1252416455 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5951047566704116028, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+  m_PrefabInstance: {fileID: 1258786601}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1258786601
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3310,6 +3362,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1684580389}
   - component: {fileID: 1684580388}
+  - component: {fileID: 1684580390}
   m_Layer: 0
   m_Name: ---Manager---
   m_TagString: Untagged
@@ -3329,10 +3382,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25dce1461494d7045a82c1e4be2998b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  givePointsTo: {fileID: 0}
+  playerController: {fileID: 0}
   pointPools: []
   allObjects: []
-  creaturesList: 
 --- !u!4 &1684580389
 Transform:
   m_ObjectHideFlags: 0
@@ -3348,6 +3400,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1684580390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684580387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0783a26d634e47a4383d5052edfd154e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  creatures: 4
+  points: 150
+  percentage: 25
 --- !u!1 &1711915161
 GameObject:
   m_ObjectHideFlags: 0
@@ -3416,6 +3483,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1714210383 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5951047566704116028, guid: e5616ed57e42d9f49ab933a6be6a4a46, type: 3}
+  m_PrefabInstance: {fileID: 756145705}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1719762798
 GameObject:
   m_ObjectHideFlags: 0
@@ -3650,13 +3722,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25dce1461494d7045a82c1e4be2998b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  givePointsTo: {fileID: 0}
+  playerController: {fileID: 0}
   pointPools: []
-  allObjects:
-  - {fileID: 2054456838}
-  - {fileID: 134566253}
-  - {fileID: 4497824703352349263}
-  creaturesList: 020000000400000004000000020000000400000004000000020000000400000004000000
+  allObjects: []
 --- !u!1 &1881924834
 GameObject:
   m_ObjectHideFlags: 0
@@ -3964,17 +4032,6 @@ MonoBehaviour:
   chaseRange: 10
   attackState: {fileID: 841660800}
   roamState: {fileID: 17291131}
---- !u!114 &2054456838 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8696543891219929982, guid: e5616ed57e42d9f49ab933a6be6a4a46, type: 3}
-  m_PrefabInstance: {fileID: 756145705}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f0ed5816d3fe72458602006eb00551c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2105730888
 GameObject:
   m_ObjectHideFlags: 0
@@ -5896,14 +5953,14 @@ MonoBehaviour:
   maxNumberToSpawn: 0
   spawnInto: {fileID: 940661554914948712}
   creaturesToSpawn:
-  - _creatureToSpawn: {fileID: 5007524509860467351, guid: 47a1aa438cbf28a49a974d003e1bfa1a, type: 3}
+  - _creatureToSpawn: {fileID: 1252416455}
     _radius: 0
     _weight: 100
-    characterName: Blue
-  - _creatureToSpawn: {fileID: 5007524509860467351, guid: f13f1e630566bef48a8fed37435548c0, type: 3}
+    characterName: '[Creature] Stingray'
+  - _creatureToSpawn: {fileID: 1714210383}
     _radius: 0
     _weight: 25
-    characterName: Green
+    characterName: '[Creature] Tuna'
   instantiatedObjects: []
 --- !u!1 &4900063375258736246
 GameObject:
@@ -7837,4 +7894,5 @@ SceneRoots:
   - {fileID: 946661489}
   - {fileID: 2654870772358278771}
   - {fileID: 1258786601}
+  - {fileID: 812013957}
   - {fileID: 756145705}

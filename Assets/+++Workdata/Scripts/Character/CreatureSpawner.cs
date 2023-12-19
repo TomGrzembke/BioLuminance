@@ -20,14 +20,17 @@ public class CreatureSpawner : MonoBehaviour
 
     Collider2D _collider;
 
-    void Awake() => _collider = GetComponent<Collider2D>();
+    void Awake()
+    {
+        _collider = GetComponent<Collider2D>();
+        
+        if (spawnOnStart)
+            SpawnRandomCreatures();
+    } 
 
     private void Start()
     {
         _collider.isTrigger = true;
-        
-        if (spawnOnStart)
-            SpawnRandomCreatures();
     }
 
     private void OnValidate()
