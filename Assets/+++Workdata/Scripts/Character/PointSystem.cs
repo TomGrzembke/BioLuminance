@@ -15,7 +15,7 @@ public class PointSystem : MonoBehaviour
     [SerializeField] List<StatusManager> allObjects;
     public List<Creatures> creaturesList = new List<Creatures>();
 
-    private void Start()
+    private void Awake()
     {
         CollectCreatures();
         playerController = FindObjectOfType<PlayerController>();
@@ -25,8 +25,6 @@ public class PointSystem : MonoBehaviour
     {
         foreach (var pointPool in pointPools)
         {
-            pointPool.dNAFalloffPercentage = Mathf.Ceil(pointPool.dNAFalloffPercentage);
-            pointPool.dNAFalloffPercentage = Mathf.Clamp(pointPool.dNAFalloffPercentage, 0, 100);
             pointPool.creaturesInScene = Mathf.Clamp(pointPool.creaturesInScene, 0, 99999);
             pointPool.initialDNAAmount = Mathf.Clamp(pointPool.initialDNAAmount, 0, 99999);
         }
@@ -38,7 +36,7 @@ public class PointSystem : MonoBehaviour
         pointPools.Clear();
         allObjects.Clear();
         creaturesList.Clear();
-        
+
         CollectCreatures();
     }
 
@@ -75,7 +73,7 @@ public class PointSystem : MonoBehaviour
 
             pointPools.Add(pointPool);
         }
-        
+
         // Goes through every element in PointPool List and adds the Flag (creature) to the private string (creatureName)
         foreach (PointPool pointPool in pointPools)
         {
@@ -83,15 +81,12 @@ public class PointSystem : MonoBehaviour
         }
     }
 
-    public void SetCreatureDnaStats(Creatures creatureType, float points, float percentage)
+    public void SetCreatureDnaStats(Creatures creatureType, float points)
     {
         foreach (var pointPool in pointPools)
         {
             if (pointPool.creature == creatureType)
-            {
                 pointPool.initialDNAAmount = points;
-                pointPool.dNAFalloffPercentage = percentage;
-            }
         }
     }
 
@@ -102,27 +97,11 @@ public class PointSystem : MonoBehaviour
             if (pointPool.creature == creatureType)
             {
                 playerController.points += pointPool.initialDNAAmount;
-                
-                float percent = pointPool.initialDNAAmount * pointPool.dNAFalloffPercentage / 100;
-                pointPool.initialDNAAmount -= percent;
-
-                pointPool.initialDNAAmount = Mathf.Round(pointPool.initialDNAAmount);
-            }
-        }
-    }
-    
-    public void CalculatePoints2(Creatures creatureType)
-    {
-        foreach (var pointPool in pointPools)
-        {
-            if (pointPool.creature == creatureType)
-            {
-                playerController.points += pointPool.initialDNAAmount;
 
                 float percent = pointPool.initialDNAAmount / pointPool.creaturesInScene;
                 pointPool.initialDNAAmount -= percent;
                 pointPool.creaturesInScene--;
-                
+
                 pointPool.initialDNAAmount = Mathf.Round(pointPool.initialDNAAmount);
             }
         }
@@ -136,5 +115,4 @@ public class PointPool
     public Creatures creature;
     public float creaturesInScene;
     [Space(5)] public float initialDNAAmount;
-    public float dNAFalloffPercentage;
 }
