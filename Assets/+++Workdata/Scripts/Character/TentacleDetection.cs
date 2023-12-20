@@ -36,7 +36,12 @@ public class TentacleDetection : MonoBehaviour
 
         for (int i = 0; i < colliders.Count; i++)
         {
-            if (!colliders[i].TryGetComponent(out StatusManager _statusManager)) continue;
+            StatusManager _statusManager;
+            if (!colliders[i].TryGetComponent(out _statusManager)) continue;
+            //if (colliders[i].GetComponentInParent<StatusManager>())
+
+            //    if (!colliders[i].GetComponentInParent<StatusManager>()) continue;
+
             if (_statusManager == ownStatusManager) continue;
 
             _statusManager.ApplyTentacle(tentacleEffects);
