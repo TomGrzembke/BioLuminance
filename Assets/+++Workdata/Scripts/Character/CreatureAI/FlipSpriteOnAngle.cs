@@ -20,19 +20,27 @@ public class FlipSpriteOnAngle : MonoBehaviour
 
     #region private fields
     SpriteRenderer sr;
-
+    [SerializeField] bool flipped;
     #endregion
 
     void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
     }
-
     void Update()
     {
+        float angle = rotationParent.rotation.eulerAngles.z;
+
+        if (flipped != (angle > flipRange.Min && angle < flipRange.Max))
+        {
+            print("a");
+            transform.localScale = new(1, flipped ? -1 : 1, 1);
+            flipped = !flipped;
+        }
+
+        return;
         if (rotationParent == null) return;
 
-        float angle = rotationParent.rotation.eulerAngles.z;
 
         if (flip == Flip.x)
         {

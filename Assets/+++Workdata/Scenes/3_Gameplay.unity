@@ -1689,6 +1689,10 @@ PrefabInstance:
       propertyPath: m_FlipY
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5237192906561623951, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5951047566704116028, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
       propertyPath: m_Name
       value: '[Creature] Stingray'
@@ -1733,14 +1737,48 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2082797666195262913, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+    - {fileID: 6334391887047934242, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 6168663570134088011, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1233759010}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2779299187699882873, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1235248148}
   m_SourcePrefab: {fileID: 100100000, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+--- !u!4 &1235248146 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1301420226074390291, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+  m_PrefabInstance: {fileID: 1235248145}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1235248147 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2779299187699882873, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+  m_PrefabInstance: {fileID: 1235248145}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1235248148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1235248147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bb89b1651314f141a8b384327c57aa3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationParent: {fileID: 1235248146}
+  flipRange:
+    Min: 0
+    Max: 180.00006
+  flip: 1
+  invert: 1
+  flipped: 0
 --- !u!1 &1253227938
 GameObject:
   m_ObjectHideFlags: 0
