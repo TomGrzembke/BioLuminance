@@ -71,6 +71,7 @@ public class TentacleBehavior : MonoBehaviour
     }
     void OnValidate()
     {
+        if(Application.isPlaying) return;
         lineRend = GetComponent<LineRenderer>();
         VisualizeTentaclesOnValidate();
         Recalculate();
