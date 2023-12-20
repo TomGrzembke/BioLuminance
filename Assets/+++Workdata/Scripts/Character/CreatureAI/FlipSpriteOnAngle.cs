@@ -10,7 +10,6 @@ public class FlipSpriteOnAngle : MonoBehaviour
     [SerializeField] RangedFloat flipRange = new(0, 180);
     #endregion
 
-
     #region private fields
     bool flipped;
     #endregion
@@ -21,7 +20,7 @@ public class FlipSpriteOnAngle : MonoBehaviour
 
         if (flipped != (angle > flipRange.Min && angle < flipRange.Max))
         {
-            transform.localScale = new(1, flipped ? -1 : 1, 1);
+            transform.localScale = new(transform.localScale.x, flipped ? -transform.localScale.y : transform.localScale.y, transform.localScale.z);
             flipped = !flipped;
         }
     }
