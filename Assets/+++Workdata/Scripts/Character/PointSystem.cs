@@ -21,13 +21,14 @@ public class PointSystem : MonoBehaviour
         playerController = FindObjectOfType<PlayerController>();
     }
 
-    private void Update()
+    void Update()
     {
         foreach (var pointPool in pointPools)
         {
             pointPool.dNAFalloffPercentage = Mathf.Ceil(pointPool.dNAFalloffPercentage);
             pointPool.dNAFalloffPercentage = Mathf.Clamp(pointPool.dNAFalloffPercentage, 0, 100);
             pointPool.creaturesInScene = Mathf.Clamp(pointPool.creaturesInScene, 0, 99999);
+            pointPool.initialDNAAmount = Mathf.Clamp(pointPool.initialDNAAmount, 0, 99999);
         }
     }
 
@@ -41,14 +42,14 @@ public class PointSystem : MonoBehaviour
         CollectCreatures();
     }
 
-    public void CollectCreatures()
+    void CollectCreatures()
     {
         // Goes through the Inspector and adds any object with the StatusManager script to the List "allObjects"
         allObjects = new List<StatusManager>(FindObjectsOfType<StatusManager>());
         AssignCreatures();
     }
 
-    public void AssignCreatures()
+    void AssignCreatures()
     {
         // Goes through the list "allObjects"
         foreach (StatusManager statusManager in allObjects)
@@ -81,7 +82,6 @@ public class PointSystem : MonoBehaviour
             pointPool._creatureName = pointPool.creature.ToString();
         }
     }
-    
 
     public void SetCreatureDnaStats(Creatures creatureType, float points, float percentage)
     {
