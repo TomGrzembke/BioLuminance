@@ -106,9 +106,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7961293696093522976}
   - component: {fileID: 2334789098399015460}
-  - component: {fileID: 2082797666195262913}
   - component: {fileID: 3374965050508495145}
-  - component: {fileID: 2631959088860406604}
   m_Layer: 0
   m_Name: Ray_Back
   m_TagString: Untagged
@@ -184,25 +182,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2082797666195262913
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 542257531951538762}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3bb89b1651314f141a8b384327c57aa3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationParent: {fileID: 1301420226074390291}
-  flipRange:
-    Min: 0
-    Max: 180
-  flip: 1
-  invert: 1
-  flipped: 1
 --- !u!114 &3374965050508495145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,25 +219,6 @@ MonoBehaviour:
     m_Extent: {x: 4.80593, y: 2.2806199, z: 0}
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
---- !u!114 &2631959088860406604
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 542257531951538762}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3bb89b1651314f141a8b384327c57aa3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationParent: {fileID: 0}
-  flipRange:
-    Min: 0
-    Max: 180
-  flip: 1
-  invert: 0
-  flipped: 1
 --- !u!1 &718827602842581611
 GameObject:
   m_ObjectHideFlags: 0
@@ -1122,7 +1082,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5164604533420814092}
   - component: {fileID: 1250977834680381981}
-  - component: {fileID: 6334391887047934242}
   - component: {fileID: 4925138685079198470}
   m_Layer: 0
   m_Name: Ray_animation_belly
@@ -1199,25 +1158,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6334391887047934242
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6385612236596510848}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3bb89b1651314f141a8b384327c57aa3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationParent: {fileID: 1301420226074390291}
-  flipRange:
-    Min: 0
-    Max: 180
-  flip: 1
-  invert: 1
-  flipped: 1
 --- !u!114 &4925138685079198470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1777,11 +1717,6 @@ PrefabInstance:
 --- !u!4 &1008979188488418153 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8802779068583147585, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
-  m_PrefabInstance: {fileID: 8370324554416474920}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1301420226074390291 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7360798349380117563, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
   m_PrefabInstance: {fileID: 8370324554416474920}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2397772133183070150 stripped
