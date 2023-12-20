@@ -74,4 +74,13 @@ public class TentacleDetection : MonoBehaviour
         public float damagePerInstance;
         public float stunPerInstance;
     }
+
+    void OnEnable()
+    {
+        edgeCollider.enabled = true;
+    }
+    void OnDisable()
+    {
+        edgeCollider.enabled = false;
+    }
 }

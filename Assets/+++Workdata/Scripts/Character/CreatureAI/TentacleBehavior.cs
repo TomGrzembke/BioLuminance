@@ -71,7 +71,18 @@ public class TentacleBehavior : MonoBehaviour
     }
     void OnValidate()
     {
+        lineRend = GetComponent<LineRenderer>();
+        VisualizeTentaclesOnValidate();
         Recalculate();
+    }
+
+    void VisualizeTentaclesOnValidate()
+    {
+        lineRend.positionCount = 2;
+        Vector3[] startPositions = new Vector3[2];
+        startPositions[0] = attachTrans.position;
+        startPositions[1] = attachTrans.position + Vector3.down;
+        lineRend.SetPositions(startPositions);
     }
 
     #region recalculate/normalize values
