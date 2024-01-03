@@ -1528,6 +1528,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 87592674243586264, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: flipRange.Max
+      value: 360
+      objectReference: {fileID: 0}
+    - target: {fileID: 87592674243586264, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: flipRange.Min
+      value: 179.99992
+      objectReference: {fileID: 0}
+    - target: {fileID: 1250977834680381981, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5951047566704116028, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
       propertyPath: m_Name
       value: '[Creature] Stingray'
@@ -1571,6 +1583,10 @@ PrefabInstance:
     - target: {fileID: 7065252597165299522, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7568013892377942787, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7983305598072597151, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
       propertyPath: limbSubjects.Array.size
@@ -2829,6 +2845,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1947514897360650441, guid: e5616ed57e42d9f49ab933a6be6a4a46, type: 3}
+      propertyPath: flipRange.Max
+      value: 170.19336
+      objectReference: {fileID: 0}
+    - target: {fileID: 1947514897360650441, guid: e5616ed57e42d9f49ab933a6be6a4a46, type: 3}
+      propertyPath: flipRange.Min
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5951047566704116028, guid: e5616ed57e42d9f49ab933a6be6a4a46, type: 3}
       propertyPath: m_Name
       value: '[Creature] Tuna'
