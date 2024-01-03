@@ -8,6 +8,7 @@ public class FlipSpriteOnAngle : MonoBehaviour
     [SerializeField] Transform rotationParent;
     [MinMaxRange(0, 360)]
     [SerializeField] RangedFloat flipRange = new(0, 180);
+    [SerializeField] Transform[] additionalFlipObjectsX;
     float angle;
     #endregion
 
@@ -33,6 +34,13 @@ public class FlipSpriteOnAngle : MonoBehaviour
             transform.localScale = localScale;
 
             flipped = inFlipRange;
+
+            for (int i = 0; i < additionalFlipObjectsX.Length; i++)
+            {
+                Vector3 localScaleX = additionalFlipObjectsX[i].localScale;
+                localScaleX.x = -localScaleX.x;
+                additionalFlipObjectsX[i].localScale = localScaleX;
+            }
         }
     }
 }

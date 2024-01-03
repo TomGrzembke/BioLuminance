@@ -592,6 +592,7 @@ MonoBehaviour:
   flipRange:
     Min: 0
     Max: 170.1933
+  additionalFlipObjectsX: []
 --- !u!1 &2257475370228475287
 GameObject:
   m_ObjectHideFlags: 0
@@ -875,9 +876,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a2979f7b29a04e43b01fe76b32da132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  limbSubjects: []
-  maximumHealth: 100
-  currentHealth: 100
+  limbSubjects:
+  - {fileID: 3566949603382941934}
+  currentHealth: 10
 --- !u!114 &7968696186739195705
 MonoBehaviour:
   m_ObjectHideFlags: 0

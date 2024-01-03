@@ -926,7 +926,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &635546211
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1528,6 +1528,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 87592674243586264, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: additionalFlipObjects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 87592674243586264, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: additionalFlipObjectsX.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 87592674243586264, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: additionalFlipObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 1261625851}
+    - target: {fileID: 87592674243586264, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: additionalFlipObjectsX.Array.data[0]
+      value: 
+      objectReference: {fileID: 1261625851}
+    - target: {fileID: 1250977834680381981, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4238878340115048506, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
       propertyPath: grabTrans.Array.data[0]
       value: 
@@ -1546,11 +1566,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7065252597165299522, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.9679518
+      value: 20.4
       objectReference: {fileID: 0}
     - target: {fileID: 7065252597165299522, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.465976
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7065252597165299522, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1583,6 +1603,10 @@ PrefabInstance:
     - target: {fileID: 7065252597165299522, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7983305598072597151, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: currentHealth
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4238878340115048506, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
@@ -1638,6 +1662,11 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 0
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!4 &1261625851 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6029422862115696705, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+  m_PrefabInstance: {fileID: 1235248145}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1271241706 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7581285178778694311, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
@@ -2743,6 +2772,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5019547733189792710, guid: e5616ed57e42d9f49ab933a6be6a4a46, type: 3}
+      propertyPath: currentHealth
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5019547733189792710, guid: e5616ed57e42d9f49ab933a6be6a4a46, type: 3}
+      propertyPath: maximumHealth
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 5951047566704116028, guid: e5616ed57e42d9f49ab933a6be6a4a46, type: 3}
       propertyPath: m_Name
       value: '[Creature] Tuna'

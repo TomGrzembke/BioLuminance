@@ -45,7 +45,6 @@ public class StatusManager : MonoBehaviour
 
     public void ApplyTentacle(TentacleDetection.TentacleEffects tentacleEffects)
     {
-        AddDamage(tentacleEffects.damagePerInstance);
         AddStun(tentacleEffects.stunPerInstance);
     }
 }

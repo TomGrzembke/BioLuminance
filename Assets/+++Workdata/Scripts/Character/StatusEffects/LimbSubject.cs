@@ -10,6 +10,8 @@ public class LimbSubject : MonoBehaviour
     [SerializeField] float maximumHealth = 10;
     [SerializeField] float currentHealth = 10;
     public StatusManager ownStatusManager { private set; get; }
+    public float MaximumHealth => maximumHealth;
+
 
     public float CurrentHealth
     {
@@ -30,6 +32,10 @@ public class LimbSubject : MonoBehaviour
     public void AddHealth(float additionalHealth)
     {
         SetCurrentHealth(currentHealth + additionalHealth);
+    }
+    public void AddDamage(float additionalHealth)
+    {
+        SetCurrentHealth(currentHealth - additionalHealth);
     }
 
     public void SetCurrentHealth(float newHealth)
