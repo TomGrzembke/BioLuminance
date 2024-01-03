@@ -9,6 +9,7 @@ public class LimbSubject : MonoBehaviour
 
     [SerializeField] float maximumHealth = 10;
     [SerializeField] float currentHealth = 10;
+    public StatusManager ownStatusManager { private set; get; }
 
     public float CurrentHealth
     {
@@ -19,6 +20,11 @@ public class LimbSubject : MonoBehaviour
     void OnValidate()
     {
         SetCurrentHealth(maximumHealth);
+        ownStatusManager = transform.parent.GetComponent<StatusManager>();
+
+        if (!ownStatusManager)
+            ownStatusManager = transform.parent.parent.GetComponent<StatusManager>();
+
     }
 
     public void AddHealth(float additionalHealth)

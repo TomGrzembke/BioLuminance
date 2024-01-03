@@ -6,8 +6,8 @@ public class PlayerDetect : MonoBehaviour
 {
     #region serialized fields
     [SerializeField] Transform middle;
-    public List<StatusManager> PossibleTargets => possibleTargets;
-    [SerializeField] List<StatusManager> possibleTargets = new();
+    public List<LimbSubject> PossibleTargets => possibleTargets;
+    [SerializeField] List<LimbSubject> possibleTargets = new();
     public bool HasTargets => possibleTargets.Count > 0;
     public LayerMask CreatureLayer => creatureLayer;
     [SerializeField] LayerMask creatureLayer;
@@ -31,14 +31,14 @@ public class PlayerDetect : MonoBehaviour
 
         for (int i = 0; i < colliders.Length; i++)
         {
-            if (!colliders[i].TryGetComponent(out StatusManager statusTarget))
-                statusTarget = colliders[i].GetComponentInChildren<StatusManager>();
+            if (!colliders[i].TryGetComponent(out LimbSubject limbTarget))
+                limbTarget = colliders[i].GetComponentInChildren<LimbSubject>();
 
-            if (statusTarget == playerStatusManager)
-                continue;
+            if (!limbTarget) continue;
+            if (limbTarget.ownStatusManager == playerStatusManager) continue;
 
-            if (!possibleTargets.Contains(statusTarget))
-                possibleTargets.Add(statusTarget);
+            if (!possibleTargets.Contains(limbTarget))
+                possibleTargets.Add(limbTarget);
         }
     }
 

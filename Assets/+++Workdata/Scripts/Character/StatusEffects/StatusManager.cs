@@ -16,8 +16,8 @@ public class StatusManager : MonoBehaviour
     public SpeedSubject SpeedSubject => speedSubject;
     [SerializeField] SpeedSubject speedSubject;
 
-    public GrabTransformManager GrabManager => grabManager;
-    [SerializeField] GrabTransformManager grabManager;
+    public GrabTransManager GrabManager => grabManager;
+    [SerializeField] GrabTransManager grabManager;
     #endregion
 
     #region private fields

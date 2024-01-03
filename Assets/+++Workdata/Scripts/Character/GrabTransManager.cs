@@ -1,7 +1,8 @@
+using MyBox;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GrabTransformManager : MonoBehaviour
+public class GrabTransManager : MonoBehaviour
 {
     #region serialized fields
     [SerializeField] List<Transform> grabTrans = new();
@@ -11,7 +12,8 @@ public class GrabTransformManager : MonoBehaviour
 
     #endregion
 
-    void OnValidate()
+    [ButtonMethod]
+    public void GatherChilds()
     {
         grabTrans.Clear();
         for (int i = 0; i < transform.childCount; i++)

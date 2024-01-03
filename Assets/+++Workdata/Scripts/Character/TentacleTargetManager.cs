@@ -6,7 +6,7 @@ public class TentacleTargetManager : MonoBehaviour
 {
     #region serialized fields
     [SerializeField] List<TentacleBehavior> tentacles;
-    [SerializeField] List<StatusManager> targetSM;
+    [SerializeField] List<LimbSubject> targetLimbs;
     [SerializeField] List<Transform> targetTrans;
     #endregion
 
@@ -20,7 +20,7 @@ public class TentacleTargetManager : MonoBehaviour
         targetTrans.Clear();
 
         int tentacleCount = tentacles.Count;
-        int targetCount = targetSM.Count;
+        int targetCount = targetLimbs.Count;
 
         switch (targetCount)
         {
@@ -31,13 +31,13 @@ public class TentacleTargetManager : MonoBehaviour
             case 1:
                 for (int i = 0; i < tentacleCount; i++)
                 {
-                    AddTargetTrans(targetSM[0].GrabManager.GetRandomGrabTrans());
+                    AddTargetTrans(targetLimbs[0].ownStatusManager.GrabManager.GetRandomGrabTrans());
                 }
                 break;
             default:
                 for (int i = 0; i < tentacleCount; i++)
                 {
-                    AddTargetTrans(targetSM[Random.Range(0, targetCount)].GrabManager.GetRandomGrabTrans());
+                    AddTargetTrans(targetLimbs[Random.Range(0, targetCount)].ownStatusManager.GrabManager.GetRandomGrabTrans());
                 }
                 break;
         }
@@ -67,46 +67,46 @@ public class TentacleTargetManager : MonoBehaviour
 
     void RemoveAllNullTargets()
     {
-        for (int i = 0; i < targetSM.Count; i++)
+        for (int i = 0; i < targetLimbs.Count; i++)
         {
-            if (targetSM[i] == null)
+            if (targetLimbs[i] == null)
             {
-                targetSM.RemoveAt(i);
+                targetLimbs.RemoveAt(i);
                 i--;
             }
         }
     }
 
-    public void AddAttackStatusManager(StatusManager attackTarget)
+    public void AddAttackStatusManager(LimbSubject attackTarget)
     {
-        targetSM.Clear();
-        targetSM.Add(attackTarget);
+        targetLimbs.Clear();
+        targetLimbs.Add(attackTarget);
         SetTargets();
     }
 
-    public void SetAttackStatusManager(List<StatusManager> attackTarget)
+    public void SetAttackStatusManager(List<LimbSubject> attackTarget)
     {
-        targetSM.Clear();
+        targetLimbs.Clear();
         for (int i = 0; i < attackTarget.Count; i++)
         {
-            if (!targetSM.Contains(attackTarget[i]))
+            if (!targetLimbs.Contains(attackTarget[i]))
             {
-                targetSM.Add(attackTarget[i]);
+                targetLimbs.Add(attackTarget[i]);
             }
         }
 
         SetTargets();
     }
 
-    public void RemoveAttackStatusManager(StatusManager attackTarget)
+    public void RemoveAttackStatusManager(LimbSubject attackTarget)
     {
-        if (targetSM.Remove(attackTarget))
+        if (targetLimbs.Remove(attackTarget))
             SetTargets();
     }
 
     public void SetOneTarget(Transform target)
     {
-        targetSM.Clear();
+        targetLimbs.Clear();
         targetTrans.Clear();
         ResetTentacles(target);
     }
