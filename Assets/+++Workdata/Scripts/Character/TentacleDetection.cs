@@ -40,6 +40,8 @@ public class TentacleDetection : MonoBehaviour
 
             if (_limbTarget == ownStatusManager) continue;
 
+            if (_limbTarget.ownStatusManager == ownStatusManager) continue;
+
             _limbTarget.AddDamage(tentacleEffects.damagePerInstance);
             _limbTarget.ownStatusManager.ApplyTentacle(tentacleEffects);
         }
