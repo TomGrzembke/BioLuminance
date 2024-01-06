@@ -1114,6 +1114,14 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4646503755686847668, guid: 75162ae4234a8ac4e9ac0b299f7ec4d7, type: 3}
+      propertyPath: maxNumberToSpawn
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4646503755686847668, guid: 75162ae4234a8ac4e9ac0b299f7ec4d7, type: 3}
+      propertyPath: minNumberToSpawn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4646503755686847668, guid: 75162ae4234a8ac4e9ac0b299f7ec4d7, type: 3}
       propertyPath: randomNumberToSpawn
       value: 0
       objectReference: {fileID: 0}
