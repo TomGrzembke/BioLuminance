@@ -1,3 +1,4 @@
+using MyBox;
 using System;
 using UnityEngine;
 
@@ -36,6 +37,11 @@ public class LimbSubject : MonoBehaviour
     public void AddDamage(float additionalHealth)
     {
         SetCurrentHealth(currentHealth - additionalHealth);
+    }
+    [ButtonMethod]
+    public void TestDamage()
+    {
+        SetCurrentHealth(currentHealth - maximumHealth / 5);
     }
 
     public void SetCurrentHealth(float newHealth)
