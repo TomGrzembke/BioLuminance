@@ -6,7 +6,7 @@ public class LimbSubject : MonoBehaviour
 {
     public event Action<float> OnHealthChanged;
     public event Action<float> OnHealthChangedAlpha;
-    public event Action<CreatureLogic> OnCreatureDied;
+    public event Action<CreatureLogic> OnLimbDied;
 
     [SerializeField] float maximumHealth = 10;
     [SerializeField] float currentHealth = 10;
@@ -41,7 +41,7 @@ public class LimbSubject : MonoBehaviour
     [ButtonMethod]
     public void TestDamage()
     {
-        SetCurrentHealth(currentHealth - maximumHealth / 5);
+        AddDamage(maximumHealth / 5);
     }
 
     public void SetCurrentHealth(float newHealth)
