@@ -9,7 +9,7 @@ using TMPro;
 using System.Linq;
 
 
-public class SkillNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class SkillNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     [SerializeField] GameObject[] nextSkills;
     [SerializeField] InformationSO informationField;
@@ -69,11 +69,17 @@ public class SkillNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         }
     }
 
+    public void PointerClick()
+    {
+        skillManager.SkillUpdate(informationField);
+    }
+
     public void PointerEnter()
     {
         skillManager.imageInformationField.SetActive(true);
+        
         skillNameText.text = informationField.skillName;
-        skillDescriptionText.text = informationField.skillDescription;
+        skillDescriptionText.text = informationField.skillDescription.Replace(",", "\n");
     }
 
     public void PointerExit()
@@ -92,4 +98,11 @@ public class SkillNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         PointerExit();
     }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        PointerClick();
+    }
+
+
 }

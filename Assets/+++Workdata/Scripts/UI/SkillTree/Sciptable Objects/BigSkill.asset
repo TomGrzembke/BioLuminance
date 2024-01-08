@@ -12,7 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddd75069e8f18e54aa7882a9179853b7, type: 3}
   m_Name: BigSkill
   m_EditorClassIdentifier: 
-  skillName: Chipi Chipi
-  skillDescription: Chapa Chapa
+  skillName: Tolerance Upgrade
+  skillList:
+  - skill: 2
+    skillPointAmount: 1
+  - skill: 1
+    skillPointAmount: 1
+  - skill: 3
+    skillPointAmount: 1
+  skillDescription: +Pressure Tolerance
   acquired: {r: 0, g: 1, b: 0, a: 1}
   notAcquired: {r: 1, g: 0, b: 0, a: 1}
