@@ -1,12 +1,8 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using MyBox;
-using Unity.Collections.LowLevel.Unsafe;
-using UnityEditorInternal;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class PointSystem : MonoBehaviour
 {
