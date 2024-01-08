@@ -13,7 +13,6 @@ public class InformationSO : ScriptableObject
     [Space(15)]
     public Color acquired = new Color32(0, 255, 0, 255);
     public Color notAcquired = new Color32(255, 0, 0, 255);
-    
 }
 
 [Serializable]

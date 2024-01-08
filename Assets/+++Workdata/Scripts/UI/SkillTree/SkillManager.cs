@@ -60,7 +60,7 @@ public class SkillManager : MonoBehaviour
         {
             string skillName = skillClass.skill.ToString();
 
-            if (skillName == "None")
+            if (skillName == SkillClass.Skill.None.ToString())
             {
                 print("Assign Skill in SkillList");
                 return;

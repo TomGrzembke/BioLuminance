@@ -194,6 +194,34 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""UserInterface"",
+            ""id"": ""24be81ca-cdd9-47ff-8fd6-1610399572a1"",
+            ""actions"": [
+                {
+                    ""name"": ""SkillTree"",
+                    ""type"": ""Button"",
+                    ""id"": ""f9ae266f-044f-461e-942e-b8c2ba142df0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=1)"",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""db0df5ab-a7d7-43e5-a749-f36453e6236a"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SkillTree"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -206,6 +234,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_Target = m_Player.FindAction("Target", throwIfNotFound: true);
         m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
+        // UserInterface
+        m_UserInterface = asset.FindActionMap("UserInterface", throwIfNotFound: true);
+        m_UserInterface_SkillTree = m_UserInterface.FindAction("SkillTree", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -349,6 +380,52 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
+
+    // UserInterface
+    private readonly InputActionMap m_UserInterface;
+    private List<IUserInterfaceActions> m_UserInterfaceActionsCallbackInterfaces = new List<IUserInterfaceActions>();
+    private readonly InputAction m_UserInterface_SkillTree;
+    public struct UserInterfaceActions
+    {
+        private @PlayerInputActions m_Wrapper;
+        public UserInterfaceActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @SkillTree => m_Wrapper.m_UserInterface_SkillTree;
+        public InputActionMap Get() { return m_Wrapper.m_UserInterface; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(UserInterfaceActions set) { return set.Get(); }
+        public void AddCallbacks(IUserInterfaceActions instance)
+        {
+            if (instance == null || m_Wrapper.m_UserInterfaceActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_UserInterfaceActionsCallbackInterfaces.Add(instance);
+            @SkillTree.started += instance.OnSkillTree;
+            @SkillTree.performed += instance.OnSkillTree;
+            @SkillTree.canceled += instance.OnSkillTree;
+        }
+
+        private void UnregisterCallbacks(IUserInterfaceActions instance)
+        {
+            @SkillTree.started -= instance.OnSkillTree;
+            @SkillTree.performed -= instance.OnSkillTree;
+            @SkillTree.canceled -= instance.OnSkillTree;
+        }
+
+        public void RemoveCallbacks(IUserInterfaceActions instance)
+        {
+            if (m_Wrapper.m_UserInterfaceActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IUserInterfaceActions instance)
+        {
+            foreach (var item in m_Wrapper.m_UserInterfaceActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_UserInterfaceActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public UserInterfaceActions @UserInterface => new UserInterfaceActions(this);
     public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
@@ -357,5 +434,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnTarget(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+    }
+    public interface IUserInterfaceActions
+    {
+        void OnSkillTree(InputAction.CallbackContext context);
     }
 }
