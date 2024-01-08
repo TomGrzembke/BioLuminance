@@ -22,6 +22,6 @@ public class OnPlayerDead : MonoBehaviour
     void OnPlayerDied(bool dead)
     {
         if (dead)
-            print("a");
+            SkillManager.ToggleSkillManager();
     }
 }

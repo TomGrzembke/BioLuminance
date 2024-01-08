@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class SkillManager : MonoBehaviour
 {
-
     static SkillManager Instance;
     void Awake() => Instance = this;
 
@@ -25,13 +24,13 @@ public class SkillManager : MonoBehaviour
     }
 
     [ButtonMethod]
-    public void ToggleSkillManager()
+    public static void ToggleSkillManager()
     {
-        toggle = !toggle;
-        skillTree.SetActive(toggle);
+        Instance.toggle = !Instance.toggle;
+        Instance.skillTree.SetActive(Instance.toggle);
 
-        if (skillTree != null && !skillTree.activeSelf)
-            SetImageInformationField(false);
+        if (Instance.skillTree != null && !Instance.skillTree.activeSelf)
+            Instance.SetImageInformationField(false);
     }
 
     public void SetImageInformationField(bool condition)
@@ -53,17 +52,17 @@ public class SkillManager : MonoBehaviour
 
             if (skillName == SkillClass.Skill.Oxygen.ToString())
             {
-                oxygen += skillClass.skillPointAmount;
+                Instance.oxygen += skillClass.skillPointAmount;
             }
 
             if (skillName == SkillClass.Skill.Pressure.ToString())
             {
-                pressure += skillClass.skillPointAmount;
+                Instance.pressure += skillClass.skillPointAmount;
             }
 
             if (skillName == SkillClass.Skill.Temperature.ToString())
             {
-                temperature += skillClass.skillPointAmount;
+                Instance.temperature += skillClass.skillPointAmount;
             }
         }
     }
