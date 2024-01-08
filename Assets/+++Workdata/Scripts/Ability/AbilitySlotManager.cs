@@ -17,8 +17,9 @@ public class AbilitySlotManager : MonoBehaviour
     {
         for (int i = 0; i < abilitySlots.Length; i++)
         {
+            abilitySlots[i].SetSlotIndex(i);
             if (abilitySlots[i].CurrentAbility)
-                abilitySlots[i].EnterAbility(this);
+                AddNewAbility(abilitySlots[i].CurrentAbilityPrefab, i);
         }
     }
 
@@ -30,7 +31,6 @@ public class AbilitySlotManager : MonoBehaviour
     public void AddNewAbility(GameObject newPrefab, int slotIndex)
     {
         abilitySlots[slotIndex].Execute(false);
-        abilitySlots[slotIndex].ChangeAbilityPrefab(newPrefab);
-        abilitySlots[slotIndex].EnterAbility(this);
+        abilitySlots[slotIndex].ChangeAbilityPrefab(newPrefab, this);
     }
 }

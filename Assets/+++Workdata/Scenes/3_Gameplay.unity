@@ -702,7 +702,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -96938834, guid: c1f1abec6ea6e0d4ebb6cd067fb679e9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -724,7 +724,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3da779b23eba41148ad75bba061d6cdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentAbilityPrefab: {fileID: 0}
+  currentAbilityPrefab: {fileID: 2889186154452174338, guid: 98a03bc05f393774ebf17ec060a1f849, type: 3}
+  slotIndex: 2
   abilityImage: {fileID: 342004855}
 --- !u!222 &342004857
 CanvasRenderer:
@@ -1045,6 +1046,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentAbilityPrefab: {fileID: 0}
+  slotIndex: 3
   abilityImage: {fileID: 470431410}
 --- !u!222 &470431412
 CanvasRenderer:
@@ -1166,6 +1168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentAbilityPrefab: {fileID: 2889186154452174338, guid: 98a03bc05f393774ebf17ec060a1f849, type: 3}
+  slotIndex: 1
   abilityImage: {fileID: 509733849}
 --- !u!222 &509733851
 CanvasRenderer:
@@ -2200,6 +2203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentAbilityPrefab: {fileID: 2889186154452174338, guid: 98a03bc05f393774ebf17ec060a1f849, type: 3}
+  slotIndex: 0
   abilityImage: {fileID: 1172146436}
 --- !u!1 &1194214774
 GameObject:

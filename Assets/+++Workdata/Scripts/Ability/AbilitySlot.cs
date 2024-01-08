@@ -4,7 +4,9 @@ using UnityEngine.UI;
 public class AbilitySlot : MonoBehaviour
 {
     #region serialized fields
+    public GameObject CurrentAbilityPrefab => currentAbilityPrefab;
     [SerializeField] GameObject currentAbilityPrefab;
+    [SerializeField] int slotIndex;
     [SerializeField] Image abilityImage;
     #endregion
 
@@ -16,6 +18,9 @@ public class AbilitySlot : MonoBehaviour
 
     void OnValidate()
     {
+        if (Application.isPlaying)
+            if (currentAbilityPrefab && abilitySlotManager)
+                abilitySlotManager.AddNewAbility(currentAbilityPrefab, slotIndex);
         RefreshPicture();
     }
     void RefreshPicture()
@@ -26,14 +31,22 @@ public class AbilitySlot : MonoBehaviour
         abilityImage.sprite = currentAbilityPrefab ? currentAbility.AbilitySprite : null;
     }
 
-    public void ChangeAbilityPrefab(GameObject newAbilityPrefab)
+    public void ChangeAbilityPrefab(GameObject newAbilityPrefab, AbilitySlotManager _abilitySlotManager)
     {
+        if (currentAbility && newAbilityPrefab != currentAbilityPrefab)
+            DestroyImmediate(currentAbility.gameObject, true);
         currentAbilityPrefab = newAbilityPrefab;
+
+        if (currentAbilityPrefab)
+        {
+            currentAbility = Instantiate(newAbilityPrefab, gameObject.transform).GetComponent<Ability>();
+            abilitySlotManager = _abilitySlotManager;
+            EnterAbility();
+        }
         RefreshPicture();
     }
-    public void EnterAbility(AbilitySlotManager _abilitySlotManager)
+    public void EnterAbility()
     {
-        abilitySlotManager = _abilitySlotManager;
         if (currentAbility)
             currentAbility.EnterAbility(abilitySlotManager);
     }
@@ -41,5 +54,10 @@ public class AbilitySlot : MonoBehaviour
     {
         if (currentAbility)
             currentAbility.Execute(abilitySlotManager, deactivate);
+    }
+
+    public void SetSlotIndex(int index)
+    {
+        slotIndex = index;
     }
 }
