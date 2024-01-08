@@ -1,6 +1,5 @@
 using MyBox;
 using System.Collections;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,6 +9,7 @@ public class GameStateManager : MonoBehaviour
 
     [SerializeField] SceneReference startScene;
     [SerializeField] GameObject optionsWindow;
+    [SerializeField] PauseManager pauseManager;
 
     void Awake() => Instance = this;
 
@@ -21,6 +21,7 @@ public class GameStateManager : MonoBehaviour
     public static void OptionsWindow(bool status = true)
     {
         Instance.optionsWindow?.SetActive(status);
+        Instance.pauseManager.PauseLogic();
     }
 
     public static void GoToMainMenu()
@@ -36,9 +37,10 @@ public class GameStateManager : MonoBehaviour
 
     IEnumerator LoadScenesCoroutine(int oldScene, int newScene)
     {
-        //LoadingScreen.Show(this);
+        yield return null;
+        LoadingScreen.Show(this);
         yield return SceneLoader.Instance.LoadSceneViaIndex(newScene);
         yield return SceneLoader.Instance.UnloadSceneViaIndex(oldScene);
-        //LoadingScreen.Hide(this);
+        LoadingScreen.Hide(this);
     }
 }

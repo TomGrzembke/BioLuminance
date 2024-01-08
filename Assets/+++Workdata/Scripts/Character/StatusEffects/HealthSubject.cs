@@ -1,14 +1,17 @@
-using UnityEngine;
-using System;
 using MyBox;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 
 public class HealthSubject : MonoBehaviour
 {
     public event Action<float> OnHealthChanged;
     public event Action<float> OnHealthChangedAlpha;
     public event Action<CreatureLogic> OnCreatureDied;
+    [SerializeField] List<LimbSubject> limbSubjects = new();
 
-    [SerializeField] float maximumHealth = 10;
+    float maximumHealth = 10;
     [SerializeField] float currentHealth = 10;
 
     public float CurrentHealth
@@ -17,20 +20,52 @@ public class HealthSubject : MonoBehaviour
         set => SetCurrentHealth(value);
     }
 
-    void OnValidate()
+    void Awake()
     {
+        CalculateMaxHealth();
         SetCurrentHealth(maximumHealth);
     }
 
-    [ButtonMethod()]
-    public void DamageTest()
+    void OnValidate()
     {
-        AddHealth(-maximumHealth / 4);
+        CalculateMaxHealth();
+        SetCurrentHealth(maximumHealth);
+        if (limbSubjects.Count == 0)
+            GatherLimbs();
+    }
+
+    void CalculateMaxHealth()
+    {
+        MaximumHealth = 0;
+        for (int i = 0; i < limbSubjects.Count; i++)
+        {
+            MaximumHealth += limbSubjects[i].MaximumHealth;
+        }
+    }
+
+    [ButtonMethod]
+    public void GatherLimbs()
+    {
+        limbSubjects = transform.parent.GetComponentsInChildren<LimbSubject>().ToList();
+        CalculateMaxHealth();
     }
 
     public void AddHealth(float additionalHealth)
     {
+        CalculateLimbHealth();
+
         SetCurrentHealth(currentHealth + additionalHealth);
+    }
+
+    public void CalculateLimbHealth(float _ = 0)
+    {
+        if (limbSubjects.Count == 0) return;
+        float limbHealth = 0;
+        for (int i = 0; i < limbSubjects.Count; i++)
+        {
+            limbHealth += limbSubjects[i].CurrentHealth;
+        }
+        SetCurrentHealth(limbHealth);
     }
 
     public void SetCurrentHealth(float newHealth)
@@ -55,6 +90,22 @@ public class HealthSubject : MonoBehaviour
         OnHealthChangedAlpha += callback;
         if (getInstantCallback)
             callback(currentHealth / maximumHealth);
+    }
+
+    void OnEnable()
+    {
+        for (int i = 0; i < limbSubjects.Count; i++)
+        {
+            limbSubjects[i].RegisterOnHealthChangedAlpha(CalculateLimbHealth);
+        }
+    }
+
+    void OnDisable()
+    {
+        for (int i = 0; i < limbSubjects.Count; i++)
+        {
+            limbSubjects[i].OnHealthChangedAlpha -= CalculateLimbHealth;
+        }
     }
 
     #region MaxHealth

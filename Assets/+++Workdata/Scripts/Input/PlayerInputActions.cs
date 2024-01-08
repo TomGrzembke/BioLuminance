@@ -71,6 +71,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""7222c4c9-c08c-41a5-8f0f-fbaca78d13d6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -172,32 +181,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                }
-            ]
-        },
-        {
-            ""name"": ""UserInterface"",
-            ""id"": ""34236060-01c9-4f26-897a-6d1430c08786"",
-            ""actions"": [
-                {
-                    ""name"": ""SkillTree"",
-                    ""type"": ""Button"",
-                    ""id"": ""a38c86cd-bf47-4de6-bc41-7d7f85d37d75"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press(behavior=1)"",
-                    ""initialStateCheck"": false
-                }
-            ],
-            ""bindings"": [
+                },
                 {
                     ""name"": """",
-                    ""id"": ""448fcfce-9a96-4e16-b68f-d5dd7f0ca2c2"",
+                    ""id"": ""8f91542d-d027-4d67-bb94-e23ccc527a27"",
                     ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""SkillTree"",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -213,9 +205,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
         m_Player_Target = m_Player.FindAction("Target", throwIfNotFound: true);
         m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
-        // UserInterface
-        m_UserInterface = asset.FindActionMap("UserInterface", throwIfNotFound: true);
-        m_UserInterface_SkillTree = m_UserInterface.FindAction("SkillTree", throwIfNotFound: true);
+        m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -282,6 +272,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Dash;
     private readonly InputAction m_Player_Target;
     private readonly InputAction m_Player_Attack;
+    private readonly InputAction m_Player_Pause;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -291,6 +282,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
         public InputAction @Target => m_Wrapper.m_Player_Target;
         public InputAction @Attack => m_Wrapper.m_Player_Attack;
+        public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -315,6 +307,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Attack.started += instance.OnAttack;
             @Attack.performed += instance.OnAttack;
             @Attack.canceled += instance.OnAttack;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -334,6 +329,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Attack.started -= instance.OnAttack;
             @Attack.performed -= instance.OnAttack;
             @Attack.canceled -= instance.OnAttack;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -351,52 +349,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
-
-    // UserInterface
-    private readonly InputActionMap m_UserInterface;
-    private List<IUserInterfaceActions> m_UserInterfaceActionsCallbackInterfaces = new List<IUserInterfaceActions>();
-    private readonly InputAction m_UserInterface_SkillTree;
-    public struct UserInterfaceActions
-    {
-        private @PlayerInputActions m_Wrapper;
-        public UserInterfaceActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @SkillTree => m_Wrapper.m_UserInterface_SkillTree;
-        public InputActionMap Get() { return m_Wrapper.m_UserInterface; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(UserInterfaceActions set) { return set.Get(); }
-        public void AddCallbacks(IUserInterfaceActions instance)
-        {
-            if (instance == null || m_Wrapper.m_UserInterfaceActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_UserInterfaceActionsCallbackInterfaces.Add(instance);
-            @SkillTree.started += instance.OnSkillTree;
-            @SkillTree.performed += instance.OnSkillTree;
-            @SkillTree.canceled += instance.OnSkillTree;
-        }
-
-        private void UnregisterCallbacks(IUserInterfaceActions instance)
-        {
-            @SkillTree.started -= instance.OnSkillTree;
-            @SkillTree.performed -= instance.OnSkillTree;
-            @SkillTree.canceled -= instance.OnSkillTree;
-        }
-
-        public void RemoveCallbacks(IUserInterfaceActions instance)
-        {
-            if (m_Wrapper.m_UserInterfaceActionsCallbackInterfaces.Remove(instance))
-                UnregisterCallbacks(instance);
-        }
-
-        public void SetCallbacks(IUserInterfaceActions instance)
-        {
-            foreach (var item in m_Wrapper.m_UserInterfaceActionsCallbackInterfaces)
-                UnregisterCallbacks(item);
-            m_Wrapper.m_UserInterfaceActionsCallbackInterfaces.Clear();
-            AddCallbacks(instance);
-        }
-    }
-    public UserInterfaceActions @UserInterface => new UserInterfaceActions(this);
     public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
@@ -404,9 +356,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnDash(InputAction.CallbackContext context);
         void OnTarget(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
-    }
-    public interface IUserInterfaceActions
-    {
-        void OnSkillTree(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }

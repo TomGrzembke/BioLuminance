@@ -14,7 +14,7 @@ public class TentacleController : MonoBehaviour
     #region private fields
     bool targetCursor;
     PlayerInputActions inputActions;
-    [SerializeField] List<StatusManager> savedPossibleTarget;
+    [SerializeField] List<LimbSubject> savedPossibleTarget;
     Coroutine checkIfStillInRangeCO;
     #endregion
 

@@ -112,13 +112,19 @@ public class PlayerMovement : MonoBehaviour
 
 
     #region Setters
-    public void SetControlState(ControlState newControlState)
+    public void SetControlState(ControlState newControlState, bool disableAgent = false)
     {
         controlState = newControlState;
+
+        if(disableAgent)
+            agent.enabled = !disableAgent;
     }
-    public void ReenableMovement()
+    public void ReenableMovement(bool enableAgent = false)
     {
         controlState = ControlState.playerControl;
+
+        if (enableAgent)
+            agent.enabled = enableAgent;
     }
     #endregion
 

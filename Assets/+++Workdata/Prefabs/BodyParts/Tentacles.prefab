@@ -49,7 +49,7 @@ MonoBehaviour:
   - {fileID: 4638649176901513567}
   - {fileID: 0}
   - {fileID: 0}
-  targetSM: []
+  targetLimbs: []
   targetTrans: []
 --- !u!1001 &4067758052681197254
 PrefabInstance:
@@ -59,6 +59,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1317646430033100462}
     m_Modifications:
+    - target: {fileID: 1718951351359858524, guid: f2eb33e0513e87146b1b814b0e22e90d, type: 3}
+      propertyPath: m_Positions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8151524536603786271, guid: f2eb33e0513e87146b1b814b0e22e90d, type: 3}
       propertyPath: m_Name
       value: Tentacle

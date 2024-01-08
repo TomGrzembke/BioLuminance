@@ -6,7 +6,7 @@ public class StartupManager : MonoBehaviour
 {
     IEnumerator Start()
     {
-        //LoadingScreen.Show(this);
+        LoadingScreen.Show(this);
         yield return SceneLoader.LoadScene(Scenes.Manager);
 
         if (!SceneManager.GetSceneByBuildIndex((int)Scenes.Gameplay).IsValid())
@@ -14,7 +14,7 @@ public class StartupManager : MonoBehaviour
         else
             yield return SceneLoader.UnloadScene(Scenes.MainMenu);
 
-        //LoadingScreen.Hide(this);
+        LoadingScreen.Hide(this);
     }
 
 }

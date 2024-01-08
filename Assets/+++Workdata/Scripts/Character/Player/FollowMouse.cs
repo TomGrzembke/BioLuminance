@@ -9,6 +9,7 @@ public class FollowMouse : MonoBehaviour
 
     #region private fields
     Transform trans;
+    Vector3 camPos;
     #endregion
 
     void Awake()
@@ -18,6 +19,7 @@ public class FollowMouse : MonoBehaviour
 
     void Update()
     {
-        trans.position = cam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+        camPos = cam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+        trans.position = new Vector3(camPos.x, camPos.y, 0);
     }
 }

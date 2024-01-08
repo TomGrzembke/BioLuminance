@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using UnityEngine;
+using static TentacleDetection;
 
 public class AttackState : State
 {
@@ -10,9 +12,15 @@ public class AttackState : State
     [SerializeField] ChaseState chaseState;
     [SerializeField] RoamState roamState;
     [SerializeField] AttackStanceState attackStanceState;
+    [SerializeField] Collider2D attackHitbox;
+    [SerializeField] ContactFilter2D contactFilter;
+    [SerializeField] StatusManager ownStatusManager;
     [SerializeField] float maxTimeInState = 1.5f;
     #endregion
 
+    #region private fields
+    List<Collider2D> colliders = new();
+    #endregion
     public override State SwitchStateInternal()
     {
         if (creatureLogic.DistanceFromTarget > stateAgentStoppingDistance)
@@ -24,12 +32,13 @@ public class AttackState : State
     }
 
     protected override void EnterInternal()
-    {
-        creatureLogic.TargetStatusManager.AddHealth(-attackDamage);
+    {    
     }
 
     protected override void UpdateInternal()
     {
+        HandleDetection();
+
         creatureLogic.SetDistanceFromTarget(Vector3.Distance(creatureLogic.TargetStatusManager.transform.position, creatureLogic.transform.position));
 
         creatureLogic.HandleRotate();
@@ -41,5 +50,19 @@ public class AttackState : State
 
     protected override void ExitInternal()
     {
+    }
+
+    void HandleDetection()
+    {
+        if (Physics2D.OverlapCollider(attackHitbox, contactFilter, colliders) < 0) return;
+
+        for (int i = 0; i < colliders.Count; i++)
+        {
+            if (!colliders[i].TryGetComponent(out LimbSubject _limbTarget)) continue;
+
+            if (_limbTarget == ownStatusManager) continue;
+
+            _limbTarget.AddDamage(attackDamage);
+        }
     }
 }
