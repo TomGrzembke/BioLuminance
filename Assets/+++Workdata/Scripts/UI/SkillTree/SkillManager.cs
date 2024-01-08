@@ -1,57 +1,42 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using MyBox;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
 public class SkillManager : MonoBehaviour
 {
-    public Vector3 offset;
-    public GameObject imageInformationField;
-    public GameObject skillTree;
+
+    static SkillManager Instance;
+    void Awake() => Instance = this;
+
+    [SerializeField] Vector3 offset;
+    [SerializeField] GameObject imageInformationField;
+    [SerializeField] GameObject skillTree;
 
     //TODO Transfer skill to other script
-    
-    public float pressure;
-    public float temperature;
-    public float oxygen;
 
-    PlayerInputActions playerControls;
+    [SerializeField] float pressure;
+    [SerializeField] float temperature;
+    [SerializeField] float oxygen;
+
     bool toggle;
-
-    private void Awake()
-    {
-        playerControls = new PlayerInputActions();
-    }
-
-    private void OnEnable()
-    {
-        playerControls.UserInterface.SkillTree.performed += ctx => pressedEsc();
-
-        playerControls.Enable();
-    }
-
-    private void OnDisable()
-    {
-        playerControls.Disable();
-    }
 
     void Update()
     {
-        imageInformationField.transform.position = Input.mousePosition + offset;
+        Instance.imageInformationField.transform.position = Input.mousePosition + offset;
     }
 
-    public void pressedEsc()
+    [ButtonMethod]
+    public void ToggleSkillManager()
     {
-        if (playerControls.UserInterface.SkillTree.triggered)
-        {
-            toggle = !toggle;
-            skillTree.SetActive(toggle);
-        }
+        toggle = !toggle;
+        skillTree.SetActive(toggle);
 
         if (skillTree != null && !skillTree.activeSelf)
-            imageInformationField.SetActive(false);
+            SetImageInformationField(false);
+    }
+
+    public void SetImageInformationField(bool condition)
+    {
+        Instance.imageInformationField.SetActive(condition);
     }
 
     public void SkillUpdate(InformationSO informationSO)

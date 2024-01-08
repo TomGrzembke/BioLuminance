@@ -10,8 +10,8 @@ public class GameStateManager : MonoBehaviour
     [SerializeField] SceneReference startScene;
     [SerializeField] GameObject optionsWindow;
     [SerializeField] PauseManager pauseManager;
-
     void Awake() => Instance = this;
+
 
     public static void StartGame()
     {
