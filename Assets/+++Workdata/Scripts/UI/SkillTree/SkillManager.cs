@@ -16,18 +16,24 @@ public class SkillManager : MonoBehaviour
     [SerializeField] float temperature;
     [SerializeField] float oxygen;
 
-    bool toggle;
-
     void Update()
     {
         Instance.imageInformationField.transform.position = Input.mousePosition + offset;
     }
 
     [ButtonMethod]
-    public static void ToggleSkillManager()
+    public static void OpenSkillManager()
     {
-        Instance.toggle = !Instance.toggle;
-        Instance.skillTree.SetActive(Instance.toggle);
+        Instance.skillTree.SetActive(true);
+
+        if (Instance.skillTree != null && !Instance.skillTree.activeSelf)
+            Instance.SetImageInformationField(false);
+    }
+
+    [ButtonMethod]
+    public static void CloseSkillManager()
+    {
+        Instance.skillTree.SetActive(false);
 
         if (Instance.skillTree != null && !Instance.skillTree.activeSelf)
             Instance.SetImageInformationField(false);

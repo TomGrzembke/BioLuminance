@@ -209,7 +209,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1798368463}
         m_TargetAssemblyTypeName: SkillManager, Assembly-CSharp
-        m_MethodName: ToggleSkillManager
+        m_MethodName: CloseSkillManager
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4835,7 +4835,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &7857940534194225712
 MonoBehaviour:
   m_ObjectHideFlags: 0

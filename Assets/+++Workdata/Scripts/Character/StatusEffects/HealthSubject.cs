@@ -8,7 +8,7 @@ public class HealthSubject : MonoBehaviour
 {
     public event Action<float> OnHealthChanged;
     public event Action<float> OnHealthChangedAlpha;
-    public event Action<bool>OnCreatureDied;
+    public event Action<bool> OnCreatureDied;
     [SerializeField] List<LimbSubject> limbSubjects = new();
 
     float maximumHealth = 10;
@@ -38,7 +38,7 @@ public class HealthSubject : MonoBehaviour
         maximumHealth = 0;
         for (int i = 0; i < limbSubjects.Count; i++)
         {
-            MaximumHealth += limbSubjects[i].MaximumHealth;
+            maximumHealth += limbSubjects[i].MaximumHealth;
         }
     }
 
@@ -128,6 +128,8 @@ public class HealthSubject : MonoBehaviour
 
     public void SetMaximumHealth(float newMaximum)
     {
+        if (newMaximum == maximumHealth) return;
+
         maximumHealth = newMaximum;
         OnMaximumHealthChanged?.Invoke(newMaximum);
 
