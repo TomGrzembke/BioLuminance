@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Ability : MonoBehaviour
+public abstract class Ability : MonoBehaviour
 {
     #region serialized fields
     [SerializeField] protected Sprite abilitySprite;
@@ -8,20 +8,30 @@ public class Ability : MonoBehaviour
     #endregion
 
     #region private fields
+    protected AbilitySlotManager abilitySlotManager;
 
     #endregion
-    void Start()
+    public void EnterAbility(AbilitySlotManager _abilitySlotManager)
     {
+        abilitySlotManager = _abilitySlotManager;
         OnInitialized();
     }
 
-    public void Execute(bool deactivate = false)
+    public virtual void Execute(AbilitySlotManager _abilitySlotManager, bool deactivate = false)
     {
-        print(deactivate + " Exec " + gameObject.name);
+        abilitySlotManager = _abilitySlotManager;
+        if (!deactivate)
+            ExecuteInternal();
+        else
+            DeExecuteInternal();
     }
+    protected abstract void ExecuteInternal();
+    protected abstract void DeExecuteInternal();
+
 
     public void OnInitialized()
     {
-        print("Init " + gameObject.name);
+        OnInitializedInternal();
     }
+    protected abstract void OnInitializedInternal();
 }

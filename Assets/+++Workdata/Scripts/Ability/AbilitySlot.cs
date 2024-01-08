@@ -10,13 +10,14 @@ public class AbilitySlot : MonoBehaviour
 
     #region private fields
     Ability currentAbility;
+    public Ability CurrentAbility => currentAbility;
+    AbilitySlotManager abilitySlotManager;
     #endregion
 
     void OnValidate()
     {
         RefreshPicture();
     }
-
     void RefreshPicture()
     {
         if (currentAbilityPrefab)
@@ -30,10 +31,15 @@ public class AbilitySlot : MonoBehaviour
         currentAbilityPrefab = newAbilityPrefab;
         RefreshPicture();
     }
-
+    public void EnterAbility(AbilitySlotManager _abilitySlotManager)
+    {
+        abilitySlotManager = _abilitySlotManager;
+        if (currentAbility)
+            currentAbility.EnterAbility(abilitySlotManager);
+    }
     public void Execute(bool deactivate = false)
     {
         if (currentAbility)
-            currentAbility.Execute(deactivate);
+            currentAbility.Execute(abilitySlotManager, deactivate);
     }
 }

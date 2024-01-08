@@ -9,17 +9,32 @@ public class SpeedModifier : MonoBehaviour
     #endregion
 
     #region private fields
-
+    bool subscribed;
     #endregion
-
-    private void OnEnable()
+    public void SetSpeedSubject(SpeedSubject _speedSubject)
     {
-        speedSubject.AddSpeedModifier(amount);
+        speedSubject = _speedSubject;
+        SubscribeModifier();
+    }
+    void OnEnable()
+    {
+        SubscribeModifier();
     }
 
-    private void OnDisable()
+    private void SubscribeModifier()
     {
-        speedSubject.RemoveSpeedModifier(amount);
+        if (subscribed) return;
+        if (speedSubject)
+        {
+            speedSubject.AddSpeedModifier(amount);
+            subscribed = true;
+        }
+    }
+
+    void OnDisable()
+    {
+        if (speedSubject)
+            speedSubject.RemoveSpeedModifier(amount);
     }
 
 }
