@@ -1,15 +1,14 @@
-using System;
+using MyBox;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using MyBox;
-using UnityEngine.Serialization;
 
 public class StingrayStinger : MonoBehaviour
 {
     #region serialized fields
 
-    [Header("Stinger Info")] [SerializeField]
+    [Header("Stinger Info")]
+    [SerializeField]
     GameObject snapStingerTo;
 
     [SerializeField] GameObject stinger;
@@ -21,7 +20,7 @@ public class StingrayStinger : MonoBehaviour
     [SerializeField] AnimationCurve animationCurve;
     [SerializeField] private float animationCurveDuration = 1;
 
-    [Header("Time Info")] [SerializeField] float timeToAttack;
+    [Header("Time Info")][SerializeField] float timeToAttack;
     [SerializeField] float cooldownForNextAttack;
 
     [Header("Layer Info")] public LayerMask creatureLayer;
@@ -31,7 +30,7 @@ public class StingrayStinger : MonoBehaviour
     [SerializeField] List<StatusManager> statusTargets;
     List<Collider2D> colliders;
 
-    [MinMaxRange(0, 360)] [SerializeField] RangedFloat flipRange = new(0, 180);
+    [MinMaxRange(0, 360)][SerializeField] RangedFloat flipRange = new(0, 180);
     float angle;
 
     #endregion
@@ -151,7 +150,7 @@ public class StingrayStinger : MonoBehaviour
         stinger.transform.localPosition = stingerOriginalPosition;
         stingerGFX.transform.localPosition = Vector3.Lerp(stingerGFX.transform.localPosition, Vector3.zero,
             Mathf.Clamp01(animationCurve.Evaluate(animationCurveDuration * Time.deltaTime)));
-        
+
         attackTime = timeToAttack;
         isCooldown = true;
         isAttacking = false;
