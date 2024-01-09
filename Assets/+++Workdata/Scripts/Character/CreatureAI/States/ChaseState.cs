@@ -4,8 +4,7 @@ public class ChaseState : State
 {
     #region serialized fields
     [Header(nameof(ChaseState))]
-
-    [SerializeField] protected float chaseRange;
+    
     [SerializeField] protected AttackState attackState;
     [SerializeField] protected RoamState roamState;
     #endregion
@@ -18,7 +17,7 @@ public class ChaseState : State
         if (creatureLogic.DistanceFromTarget <= stateAgentStoppingDistance)
             return attackState;
 
-        else if (creatureLogic.DistanceFromTarget >= chaseRange)
+        if (creatureLogic.DistanceFromTarget >= creatureLogic.DetectionRadius)
         {
             creatureLogic.SetTargetStatusManager(null);
             creatureLogic.SetCanSeePlayer(false);

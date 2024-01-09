@@ -20,7 +20,7 @@ public class AgressiveChaseState : ChaseState
         {
             return attackState;
         }
-        else if (creatureLogic.DistanceFromTarget >= chaseRange)
+        else if (creatureLogic.DistanceFromTarget >= creatureLogic.DetectionRadius)
         {
             creatureLogic.SetTargetStatusManager(null);
             creatureLogic.SetCanSeePlayer(false);
