@@ -3,7 +3,10 @@ using UnityEngine;
 public class SpeedModifier : MonoBehaviour
 {
     #region serialized fields
+#pragma warning disable 414
     [SerializeField] string note = "Comment for Overview";
+#pragma warning restore 414
+
     [SerializeField] SpeedSubject speedSubject;
     [SerializeField] float amount = -2;
     #endregion
