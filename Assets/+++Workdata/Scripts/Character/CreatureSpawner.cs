@@ -8,13 +8,17 @@ public class CreatureSpawner : MonoBehaviour
 {
     public bool spawnOnStart;
     [SerializeField] private bool randomNumberToSpawn;
-    [SerializeField, ConditionalField(nameof(randomNumberToSpawn), true)] float numberToSpawn;
-    [SerializeField, ConditionalField(nameof(randomNumberToSpawn))] float minNumberToSpawn;
-    [SerializeField, ConditionalField(nameof(randomNumberToSpawn))] float maxNumberToSpawn;
-    
-    [Separator]
-    
-    [SerializeField] Transform spawnInto;
+
+    [SerializeField, ConditionalField(nameof(randomNumberToSpawn), true)]
+    float numberToSpawn;
+
+    [SerializeField, ConditionalField(nameof(randomNumberToSpawn))]
+    float minNumberToSpawn;
+
+    [SerializeField, ConditionalField(nameof(randomNumberToSpawn))]
+    float maxNumberToSpawn;
+
+    [Separator] [SerializeField] Transform spawnInto;
     [SerializeField] WeightedArray[] creaturesToSpawn;
     [SerializeField] List<GameObject> instantiatedObjects;
 
@@ -23,10 +27,10 @@ public class CreatureSpawner : MonoBehaviour
     void Awake()
     {
         _collider = GetComponent<Collider2D>();
-        
+
         if (spawnOnStart)
             SpawnRandomCreatures();
-    } 
+    }
 
     private void Start()
     {
@@ -36,9 +40,11 @@ public class CreatureSpawner : MonoBehaviour
     private void OnValidate()
     {
         foreach (WeightedArray weightedArray in creaturesToSpawn)
+        {
             weightedArray.characterName = weightedArray._creatureToSpawn.name;
+        }
     }
-    
+
     [ButtonMethod]
     void SpawnRandomCreatures()
     {
@@ -48,7 +54,7 @@ public class CreatureSpawner : MonoBehaviour
             setNumberToSpawn = numberToSpawn;
         else if (randomNumberToSpawn)
             setNumberToSpawn = Random.Range(minNumberToSpawn, maxNumberToSpawn);
-        
+
         for (int i = 0; i < setNumberToSpawn; i++)
         {
             float totalWeight = 0f;
@@ -66,7 +72,8 @@ public class CreatureSpawner : MonoBehaviour
                 if (rand <= cummChance)
                 {
                     Vector2 spawnPosition = GetRandomSpawnPosition(_collider);
-                    GameObject instantiated = Instantiate(weightedArrays._creatureToSpawn, spawnPosition, Quaternion.identity);
+                    GameObject instantiated = Instantiate(weightedArrays._creatureToSpawn, spawnPosition,
+                        Quaternion.identity);
                     instantiated.transform.SetParent(spawnInto);
                     instantiatedObjects.Add(instantiated);
                     break;
@@ -115,13 +122,13 @@ public class CreatureSpawner : MonoBehaviour
         if (!isSpawnPosValid)
         {
             Debug.Log("Could not find spawn position");
-            Destroy(instantiatedObjects[0-1000]);
+            Destroy(instantiatedObjects[0 - 1000]);
             instantiatedObjects.Clear();
         }
 
         return spawnPosition;
     }
-    
+
     Vector2 GetRandomPointInCollider(Collider2D collider2D)
     {
         Bounds collBounds = _collider.bounds;
@@ -146,6 +153,6 @@ public class WeightedArray
 
     [Tooltip("This defines the probability in which a creature is spawned")] [Range(0, 100)]
     public float _weight = 100f;
-    
-    [HideInInspector]public string characterName;
+
+    [HideInInspector] public string characterName;
 }
