@@ -110,4 +110,18 @@ public class TentacleTargetManager : MonoBehaviour
         targetTrans.Clear();
         ResetTentacles(target);
     }
+
+    public void AddTentacle(GameObject newTentacle)
+    {
+
+    }
+
+    public void SetTentacles(bool condition)
+    {
+        for (int i = 0; i < tentacles.Count; i++)
+        {
+            tentacles[i].TryGetComponent(out TentacleDetection _tentacleDetection);
+            //if(_tentacleDetection)
+        }
+    }
 }
