@@ -121,7 +121,8 @@ public class TentacleTargetManager : MonoBehaviour
         for (int i = 0; i < tentacles.Count; i++)
         {
             tentacles[i].TryGetComponent(out TentacleDetection _tentacleDetection);
-            //if(_tentacleDetection)
+            if(_tentacleDetection)
+                _tentacleDetection.enabled = condition;
         }
     }
 }
