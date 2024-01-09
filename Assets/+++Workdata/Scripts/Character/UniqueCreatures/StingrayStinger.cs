@@ -7,17 +7,22 @@ using UnityEngine.Serialization;
 
 public class StingrayStinger : MonoBehaviour
 {
-    [Header("Stinger Info")] public GameObject snapStingerTo;
-    public GameObject stinger;
-    public GameObject stingerGFX;
-    public float stingerRadius;
-    [Space(5)] 
-    public float stingerDamage;
+    #region serialized fields
+
+    [Header("Stinger Info")] [SerializeField]
+    GameObject snapStingerTo;
+
+    [SerializeField] GameObject stinger;
+    [SerializeField] GameObject stingerGFX;
+    [SerializeField] float stingerRadius;
+    [Space(5)] public float stingerDamage;
     public float placeholderHealth;
 
-    [Header("Time Info")] 
-    public float timeToAttack;
-    public float cooldownForNextAttack;
+    [SerializeField] AnimationCurve animationCurve;
+    [SerializeField] private float animationCurveDuration = 1;
+
+    [Header("Time Info")] [SerializeField] float timeToAttack;
+    [SerializeField] float cooldownForNextAttack;
 
     [Header("Layer Info")] public LayerMask creatureLayer;
     [SerializeField] Creatures creatureType;
@@ -25,8 +30,6 @@ public class StingrayStinger : MonoBehaviour
 
     [SerializeField] List<StatusManager> statusTargets;
     List<Collider2D> colliders;
-
-    #region serialized fields
 
     [MinMaxRange(0, 360)] [SerializeField] RangedFloat flipRange = new(0, 180);
     float angle;
@@ -36,12 +39,12 @@ public class StingrayStinger : MonoBehaviour
     #region private fields
 
     private Vector2 stingerOriginalPosition;
-    
+
     bool flipped;
     bool inFlipRange;
     bool isCooldown;
-    [HideInInspector]public bool isAttacking;
-    
+    [HideInInspector] public bool isAttacking;
+
     float attackTime;
 
     #endregion
@@ -57,14 +60,6 @@ public class StingrayStinger : MonoBehaviour
         HandleDetection();
         AttachStinger();
         FlipStinger();
-        AttackTarget();
-        
-        if (statusTargets.Count == 0)
-        {
-            stinger.transform.localPosition = stingerOriginalPosition;
-            stingerGFX.transform.localPosition = Vector3.zero;
-            attackTime = timeToAttack;
-        }
     }
 
     public void AttachStinger()
@@ -77,7 +72,7 @@ public class StingrayStinger : MonoBehaviour
     {
         if (isAttacking)
             return;
-        
+
         angle = snapStingerTo.transform.rotation.eulerAngles.z;
         inFlipRange = angle > flipRange.Min && angle < flipRange.Max;
 
@@ -101,13 +96,16 @@ public class StingrayStinger : MonoBehaviour
         for (int i = 0; i < colliders.Count; i++)
         {
             if (!colliders[i].TryGetComponent(out StatusManager statusTarget))
-                statusTarget = colliders[i].GetComponentInParent<StatusManager>(); // TODO MIT TOMMY BESPRECHEN, GETCOMPONENT PROBLEM
+                statusTarget =
+                    colliders[i].GetComponentInParent<StatusManager>();
 
             if (!statusTarget.TargetLayer.HasFlag(creatureType))
                 continue;
 
             if (!statusTargets.Contains(statusTarget))
                 statusTargets.Add(statusTarget);
+
+            AttackTarget();
         }
     }
 
@@ -118,7 +116,7 @@ public class StingrayStinger : MonoBehaviour
             StartCoroutine(Cooldown());
             return;
         }
-        
+
         if (statusTargets.Count == 0)
             return;
 
@@ -129,13 +127,16 @@ public class StingrayStinger : MonoBehaviour
     {
         attackTime -= Time.deltaTime;
         isAttacking = true;
-        
+
         if (attackTime <= 0)
         {
-            stingerGFX.transform.position = statusTargets[0].transform.position;
+            stingerGFX.transform.position = Vector3.Lerp(stingerGFX.transform.position,
+                statusTargets[0].transform.position,
+                Mathf.Clamp01(animationCurve.Evaluate(animationCurveDuration * Time.deltaTime)));
             yield return new WaitForSeconds(0.2f);
-            isCooldown = true;
-            isAttacking = false;
+            ResetStinger();
+            yield return new WaitForSeconds(0.2f);
+            stingerGFX.transform.localPosition = Vector3.zero;
         }
     }
 
@@ -143,6 +144,17 @@ public class StingrayStinger : MonoBehaviour
     {
         yield return new WaitForSeconds(cooldownForNextAttack);
         isCooldown = false;
+    }
+
+    public void ResetStinger()
+    {
+        stinger.transform.localPosition = stingerOriginalPosition;
+        stingerGFX.transform.localPosition = Vector3.Lerp(stingerGFX.transform.localPosition, Vector3.zero,
+            Mathf.Clamp01(animationCurve.Evaluate(animationCurveDuration * Time.deltaTime)));
+        
+        attackTime = timeToAttack;
+        isCooldown = true;
+        isAttacking = false;
     }
 
     private void OnDrawGizmosSelected()
