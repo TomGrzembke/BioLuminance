@@ -97,8 +97,7 @@ public class StingrayStinger : MonoBehaviour
         {
             if (!colliders[i].TryGetComponent(out StatusManager statusTarget))
                 statusTarget =
-                    colliders[i]
-                        .GetComponentInParent<StatusManager>(); // TODO MIT TOMMY BESPRECHEN, GETCOMPONENT PROBLEM
+                    colliders[i].GetComponentInParent<StatusManager>();
 
             if (!statusTarget.TargetLayer.HasFlag(creatureType))
                 continue;
@@ -136,6 +135,8 @@ public class StingrayStinger : MonoBehaviour
                 Mathf.Clamp01(animationCurve.Evaluate(animationCurveDuration * Time.deltaTime)));
             yield return new WaitForSeconds(0.2f);
             ResetStinger();
+            yield return new WaitForSeconds(0.2f);
+            stingerGFX.transform.localPosition = Vector3.zero;
         }
     }
 
