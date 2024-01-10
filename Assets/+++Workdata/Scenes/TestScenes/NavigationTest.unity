@@ -8872,12 +8872,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapSprite: {fileID: 1813615259}
-  spriteVerticalSize: 0
   subject: {fileID: 655692373}
   subjectVerticalPosition: 0
+  maxHeight: 52.2
+  minHeight: -54.600002
+  clampedHeight: 0
+  testHeight: 0
   light2D: {fileID: 1637955772}
-  maxLightingLevel: 0.7
-  minLightingLevel: 0.2
+  lightLevel: 0.7
+  maxLightLevel: 0.7
+  minLightLevel: 0.2
 --- !u!1 &1710604404
 GameObject:
   m_ObjectHideFlags: 0
@@ -16277,10 +16281,6 @@ PrefabInstance:
     - target: {fileID: 3928384606272014347, guid: 897a513455e88cd4982d1325763087fc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8448716883208287983, guid: 897a513455e88cd4982d1325763087fc, type: 3}
-      propertyPath: InitialModule.startSize.minScalar
-      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8673089320445150022, guid: 897a513455e88cd4982d1325763087fc, type: 3}
       propertyPath: m_Name
