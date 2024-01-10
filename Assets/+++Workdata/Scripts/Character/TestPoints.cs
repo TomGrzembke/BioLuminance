@@ -6,9 +6,14 @@ using UnityEngine;
 
 public class TestPoints : MonoBehaviour
 {
-    private PointSystem pointSystem;
+    public PointSystem pointSystem;
     public Creatures creatures;
-    
+
+    private void Awake()
+    {
+        pointSystem = FindObjectOfType<PointSystem>();
+    }
+
     [ButtonMethod]
     public void PercentOption()
     {

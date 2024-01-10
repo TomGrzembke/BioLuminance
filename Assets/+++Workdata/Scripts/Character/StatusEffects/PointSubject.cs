@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using MyBox;
 using UnityEngine;
 
 public class PointSubject : MonoBehaviour
@@ -22,7 +23,8 @@ public class PointSubject : MonoBehaviour
     {
         pointSystem.SetCreatureDnaStats(creatures, points);
     }
-
+    
+    [ButtonMethod]
     public void PercentOption()
     {
         pointSystem.CalculatePoints(creatures);
