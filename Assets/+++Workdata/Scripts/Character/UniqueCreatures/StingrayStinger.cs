@@ -8,7 +8,7 @@ public class StingrayStinger : MonoBehaviour
     #region serialized fields
 
     [Header("Stinger Info")]
-    
+
     [SerializeField] GameObject snapStingerTo;
     [SerializeField] GameObject stinger;
     [SerializeField] GameObject stingerGFX;
@@ -47,41 +47,22 @@ public class StingrayStinger : MonoBehaviour
 
     #endregion
 
-    private void Start()
+    void Start()
     {
         stingerOriginalPosition = stinger.transform.localPosition;
         attackTime = timeToAttack;
     }
 
-    private void Update()
+    void Update()
     {
         HandleDetection();
         AttachStinger();
-        FlipStinger();
     }
 
     public void AttachStinger()
     {
         gameObject.transform.position = snapStingerTo.transform.position;
         gameObject.transform.rotation = snapStingerTo.transform.rotation;
-    }
-
-    public void FlipStinger()
-    {
-        if (isAttacking)
-            return;
-
-        angle = snapStingerTo.transform.rotation.eulerAngles.z;
-        inFlipRange = angle > flipRange.Min && angle < flipRange.Max;
-
-        if (flipped != inFlipRange)
-        {
-            Vector3 localScale = transform.localScale;
-            localScale.y = -localScale.y;
-            transform.localScale = localScale;
-
-            flipped = inFlipRange;
-        }
     }
 
     public void HandleDetection()
@@ -155,7 +136,7 @@ public class StingrayStinger : MonoBehaviour
         isAttacking = false;
     }
 
-    private void OnDrawGizmosSelected()
+    void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(stinger.transform.position, stingerRadius);
         Gizmos.DrawLine(stinger.transform.position, stingerGFX.transform.position);

@@ -54,7 +54,6 @@ MonoBehaviour:
   useStateVars: 1
   dangerous: 1
   stateEvent: []
-  chaseRange: 0
   attackState: {fileID: 7867434260259355355}
   roamState: {fileID: 7247853247259251392}
   stateDuration: 5
@@ -277,6 +276,7 @@ MonoBehaviour:
     Min: 0
     Max: 170.19336
   additionalFlipObjectsX: []
+  additionalFlipObjectsY: []
 --- !u!114 &7867434260259355355 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1803656548544049651, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}

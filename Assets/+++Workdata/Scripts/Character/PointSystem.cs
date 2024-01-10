@@ -9,9 +9,9 @@ public class PointSystem : MonoBehaviour
     [SerializeField] PlayerController playerController;
     [SerializeField] List<PointPool> pointPools;
     [SerializeField] List<StatusManager> allObjects;
-    public List<Creatures> creaturesList = new List<Creatures>();
+    public List<Creatures> creaturesList = new();
 
-    private void Awake()
+     void Awake()
     {
         CollectCreatures();
         playerController = FindObjectOfType<PlayerController>();
@@ -58,7 +58,7 @@ public class PointSystem : MonoBehaviour
         // This gets the length of creaturesList, adds it to pointPools and changes the name accordingly
         foreach (Creatures creatures in creaturesList)
         {
-            PointPool pointPool = new PointPool();
+            PointPool pointPool = new();
             pointPool.creature = creatures;
 
             // Count the occurrences of the creature type in allObjects
