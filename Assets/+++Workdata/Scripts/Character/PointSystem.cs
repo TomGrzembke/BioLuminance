@@ -1,7 +1,7 @@
+using MyBox;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using MyBox;
 using UnityEngine;
 
 public class PointSystem : MonoBehaviour
@@ -11,7 +11,7 @@ public class PointSystem : MonoBehaviour
     [SerializeField] List<StatusManager> allObjects;
     public List<Creatures> creaturesList = new();
 
-     void Awake()
+    void Awake()
     {
         CollectCreatures();
         playerController = FindObjectOfType<PlayerController>();

@@ -181,7 +181,6 @@ public class TentacleBehavior : MonoBehaviour
         if (bodyParts.Length < i) return;
         if (bodyParts[i - 1] == null) return;
 
-        print(bodyParts[i - 1].name);
         bodyParts[i - 1].position = segmentPoses[i];
     }
 
