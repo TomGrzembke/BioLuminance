@@ -52,7 +52,7 @@ public class TentacleBehavior : MonoBehaviour
     float calc_vertexDistance;
     float calc_smoothSpeed;
     /// <summary> Used for Stack length</summary>
-    float calc_length;
+    int calc_length;
 
     LineRenderer lineRend;
     Vector3[] segmentPoses;
@@ -94,12 +94,12 @@ public class TentacleBehavior : MonoBehaviour
         if (pointFollowMode == PointFollowMode.overlap)
         {
             calc_smoothSpeed = smoothSpeed / 100;
-            calc_length = length;
+            calc_length = (int)length;
         }
         else if (pointFollowMode == PointFollowMode.stack)
         {
             calc_smoothSpeed = smoothSpeed / 200;
-            calc_length = length * (halfSize ? 6 : 12);
+            calc_length = (int)(length * (halfSize ? 6 : 12));
 
         }
     }
@@ -108,9 +108,9 @@ public class TentacleBehavior : MonoBehaviour
 
     void StartSettings()
     {
-        segmentV = new Vector3[(int)calc_length];
-        lineRend.positionCount = (int)calc_length;
-        segmentPoses = new Vector3[(int)calc_length];
+        segmentV = new Vector3[calc_length];
+        lineRend.positionCount = calc_length;
+        segmentPoses = new Vector3[calc_length];
 
         if (fouldOutOnStart)
             FoldoutOnStart();

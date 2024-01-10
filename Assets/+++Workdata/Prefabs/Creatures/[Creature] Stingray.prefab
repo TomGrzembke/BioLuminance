@@ -1197,11 +1197,11 @@ Transform:
   m_GameObject: {fileID: 4076696042859553613}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.39, y: -3.58, z: 0}
+  m_LocalPosition: {x: -0.3899994, y: -3.58, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5852454490228580216}
+  m_Father: {fileID: 6832758820423366268}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5302669610412029854
 MonoBehaviour:
@@ -1219,12 +1219,12 @@ MonoBehaviour:
   tailEnd: {fileID: 0}
   bodyParts: []
   halfSize: 1
-  grabTrans: {fileID: 388772149135526249}
+  grabTrans: {fileID: 7449219112510172328}
   fouldOutOnStart: 0
   attachTrans: {fileID: 267559026054132069}
   pointFollowMode: 1
-  length: 0.5
-  vertexDistance: 0
+  length: 0.7
+  vertexDistance: 0.00001
   smoothSpeed: 1
   trailSpeed: 500
   wiggleMode: 0
@@ -1274,8 +1274,8 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: 21.972, y: 18.664, z: 0}
-  - {x: 21.972, y: 17.664, z: 0}
+  - {x: 19.767, y: 15.513999, z: 0}
+  - {x: 19.767, y: 14.513999, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -1284,7 +1284,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.16012001
+        value: 0.5731602
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -1301,8 +1301,8 @@ LineRenderer:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.99020237
-        value: 0.5326084
+        time: 1
+        value: 0.005440116
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -1602,6 +1602,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5511253174336360866}
+  - {fileID: 749606310624965755}
   m_Father: {fileID: 7372412382876710607}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6508899269675569132
@@ -1660,13 +1661,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6539477602156699234}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.05, y: -0.29, z: 0}
-  m_LocalScale: {x: 3.333333, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.6927589, w: 0.72116935}
+  m_LocalPosition: {x: 0.73360085, y: -0.11291394, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 267559026054132069}
-  m_Father: {fileID: 7449219112510172328}
+  m_Father: {fileID: 1169334013569284881}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6543354147870268405
 GameObject:
@@ -2385,6 +2386,14 @@ PrefabInstance:
       propertyPath: snapStingerTo
       value: 
       objectReference: {fileID: 2722729859185127609}
+    - target: {fileID: 52550066214761477, guid: 0e0a55ad5dff1b740bbefd510890e154, type: 3}
+      propertyPath: stingerRadius
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 52550066214761477, guid: 0e0a55ad5dff1b740bbefd510890e154, type: 3}
+      propertyPath: cooldownForNextAttack
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 229861996149333733, guid: 0e0a55ad5dff1b740bbefd510890e154, type: 3}
       propertyPath: m_Name
       value: Stingray Stinger
@@ -2455,10 +2464,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 1035275422216541489, guid: 0e0a55ad5dff1b740bbefd510890e154, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 749606310624965755}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e0a55ad5dff1b740bbefd510890e154, type: 3}
 --- !u!4 &255145518308453277 stripped
@@ -2682,7 +2688,7 @@ PrefabInstance:
     - target: {fileID: 5695632020067386860, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: creatureRenderer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 986733101667129129}
     - target: {fileID: 6156355649812583662, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: m_Name
       value: '[GrabTrans_0] Stingray'
@@ -2725,10 +2731,10 @@ PrefabInstance:
       addedObject: {fileID: 255145518308453277}
     - targetCorrespondingSourceObject: {fileID: 2670992523527165008, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       insertIndex: 1
-      addedObject: {fileID: 1485926306729960757}
-    - targetCorrespondingSourceObject: {fileID: 2670992523527165008, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
-      insertIndex: 2
       addedObject: {fileID: 5237192906561623951}
+    - targetCorrespondingSourceObject: {fileID: 3097218872247926100, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1485926306729960757}
     - targetCorrespondingSourceObject: {fileID: 5416434499698059608, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       insertIndex: 3
       addedObject: {fileID: 3506191160105417827}
@@ -2782,6 +2788,11 @@ Transform:
 --- !u!1 &6295873749298408986 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2555284835385615666, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+  m_PrefabInstance: {fileID: 8370324554416474920}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6832758820423366268 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3097218872247926100, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
   m_PrefabInstance: {fileID: 8370324554416474920}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &7247853247259251392 stripped
