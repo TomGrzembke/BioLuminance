@@ -10,16 +10,24 @@ public class DepthLighting : MonoBehaviour
 {
     public SpriteRenderer mapSprite;
     public GameObject subject;
-    public float subjectVerticalPosition;
-    [Space(5)] public float maxHeight;
-    public float minHeight;
+    public Material mat;
+    
+    [Space(5)]
     public float clampedHeight;
-    public float testHeight;
 
-    [Header("Lighting")] public Light2D light2D;
+    [Header("Lighting")] 
+    public Light2D light2D;
+    
+    [Space(5)]
     public float lightLevel;
     public float maxLightLevel;
     public float minLightLevel;
+
+    public Color ab;
+    
+    float subjectVerticalPosition;
+    float maxHeight;
+    float minHeight;
 
     private void Awake()
     {
@@ -32,14 +40,6 @@ public class DepthLighting : MonoBehaviour
 
         clampedHeight = subjectVerticalPosition;
         clampedHeight = Mathf.Clamp(clampedHeight, minHeight, maxHeight);
-        
-        if (clampedHeight < 0)
-        {
-            float percent = clampedHeight / 100;
-            testHeight = percent;
-            if (testHeight < 0)
-                testHeight *= -1f;
-        }
 
         LightInfo();
     }
@@ -51,12 +51,26 @@ public class DepthLighting : MonoBehaviour
         minHeight = mapSprite.bounds.min.y;
     }
 
+    [ButtonMethod]
+    public void Test()
+    {
+        mat.color = ab;
+    }
+
     public void LightInfo()
     {
+        if (clampedHeight < 0)
+        {
+            float percent = clampedHeight / 100;
+            float testHeight = percent;
+            if (testHeight < 0)
+                testHeight *= -1f;
+            lightLevel =+ maxLightLevel - testHeight;
+        }
+        
         lightLevel = Mathf.Clamp(lightLevel, minLightLevel, maxLightLevel);
         light2D.intensity = Mathf.Clamp(light2D.intensity, minLightLevel, maxLightLevel);
-
-
+        
         light2D.intensity = lightLevel;
     }
 }
