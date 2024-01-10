@@ -2749,7 +2749,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5416434499698059608, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       insertIndex: 3
       addedObject: {fileID: 3506191160105417827}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 15204248062647766, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3588738484209116626}
   m_SourcePrefab: {fileID: 100100000, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
 --- !u!4 &1008979188488418153 stripped
 Transform:
@@ -2828,3 +2831,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa3e069d9ae7fc04caf6fe7d57107024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &8367505568396515070 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 15204248062647766, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+  m_PrefabInstance: {fileID: 8370324554416474920}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3588738484209116626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8367505568396515070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1228b8027c71e9448a205d0592f700ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointSystem: {fileID: 0}
+  statusManager: {fileID: 0}
+  creatures: 4
+  points: 50
