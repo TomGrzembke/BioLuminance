@@ -78,7 +78,7 @@ public class StingrayStinger : MonoBehaviour
         if (flipped != inFlipRange)
         {
             Vector3 localScale = transform.localScale;
-            localScale.x = -localScale.x;
+            localScale.y = -localScale.y;
             transform.localScale = localScale;
 
             flipped = inFlipRange;

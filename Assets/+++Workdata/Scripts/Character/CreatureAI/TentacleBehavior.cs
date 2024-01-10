@@ -22,7 +22,7 @@ public class TentacleBehavior : MonoBehaviour
     [SerializeField] int grabSpeed = 60;
     [SerializeField] Transform tailEnd;
     [SerializeField] Transform[] bodyParts;
-
+    [SerializeField,ConditionalField(nameof(pointFollowMode), false, PointFollowMode.stack)] bool halfSize;
     [Foldout("TailCustomization", false)]
 
     [SerializeField] Transform grabTrans;
@@ -34,8 +34,8 @@ public class TentacleBehavior : MonoBehaviour
     [SerializeField] Transform attachTrans;
     [SerializeField] PointFollowMode pointFollowMode;
 
-    [Tooltip("Will be multiplied times 5 when switching to Point follow mode: stack")]
-    [SerializeField] int length = 30;
+    [Tooltip("Will be multiplied times 12 when switching to Point follow mode: stack")]
+    [SerializeField] float length = 30;
     [Tooltip("Distance between created Points, will feel smoother when smaller and more stagnant when higher")]
     [SerializeField] float vertexDistance;
     [Tooltip("Determines the delay of how fast the points will follow the following point")]
@@ -52,7 +52,7 @@ public class TentacleBehavior : MonoBehaviour
     float calc_vertexDistance;
     float calc_smoothSpeed;
     /// <summary> Used for Stack length</summary>
-    int calc_length;
+    float calc_length;
 
     LineRenderer lineRend;
     Vector3[] segmentPoses;
@@ -99,7 +99,8 @@ public class TentacleBehavior : MonoBehaviour
         else if (pointFollowMode == PointFollowMode.stack)
         {
             calc_smoothSpeed = smoothSpeed / 200;
-            calc_length = length * 12;
+            calc_length = length * (halfSize ? 6 : 12);
+
         }
     }
 
@@ -107,9 +108,9 @@ public class TentacleBehavior : MonoBehaviour
 
     void StartSettings()
     {
-        segmentV = new Vector3[calc_length];
-        lineRend.positionCount = calc_length;
-        segmentPoses = new Vector3[calc_length];
+        segmentV = new Vector3[(int)calc_length];
+        lineRend.positionCount = (int)calc_length;
+        segmentPoses = new Vector3[(int)calc_length];
 
         if (fouldOutOnStart)
             FoldoutOnStart();
