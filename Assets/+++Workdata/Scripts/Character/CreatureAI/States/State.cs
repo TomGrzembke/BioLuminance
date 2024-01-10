@@ -11,7 +11,7 @@ public abstract class State : MonoBehaviour
     /// </summary>
     public float TimeInState;
 
-    [SerializeField] float distanceTravelled;
+    [ConditionalField(nameof(uniqueState), true), SerializeField] float distanceTravelled;
     public float DistanceTravelled => distanceTravelled;
     Vector3 oldPos;
 
@@ -24,16 +24,16 @@ public abstract class State : MonoBehaviour
 
     protected CreatureLogic creatureLogic;
     public float StateAgentSpeed => stateAgentSpeed;
-    [SerializeField] protected float stateAgentSpeed = 3.5f;
+    [ConditionalField(nameof(uniqueState), true), SerializeField] protected float stateAgentSpeed = 3.5f;
 
     public float StateAgentAcceleration => stateAgentAcceleration;
-    [SerializeField] protected float stateAgentAcceleration = 5f;
+    [ConditionalField(nameof(uniqueState), true), SerializeField] protected float stateAgentAcceleration = 5f;
 
     public float StateAgentStoppingDistance => stateAgentStoppingDistance;
-    [SerializeField] protected float stateAgentStoppingDistance = 1f;
-    [SerializeField] bool useStateVars;
+    [ConditionalField(nameof(uniqueState), true), SerializeField] protected float stateAgentStoppingDistance = 1f;
+    [ConditionalField(nameof(uniqueState), true), SerializeField] bool useStateVars;
     public bool Dangerous => dangerous;
-    [SerializeField] bool dangerous;
+    [ConditionalField(nameof(uniqueState), true), SerializeField] bool dangerous;
 
     [SerializeField] StateEvent[] stateEvent;
 
