@@ -16,6 +16,11 @@ public class HealthBar : Bar
     Coroutine afterShockCoroutine;
     #endregion
 
+    void Start()
+    {
+        afterShockBar.fillAmount = 1;
+    }
+
     void OnEnable()
     {
         health.RegisterOnHealthChangedAlpha(OnHealthChanged, true);
@@ -27,7 +32,7 @@ public class HealthBar : Bar
     }
 
     void OnHealthChanged(float health)
-    { 
+    {
         bar.fillAmount = health;
 
         AfterShockLogic(health);

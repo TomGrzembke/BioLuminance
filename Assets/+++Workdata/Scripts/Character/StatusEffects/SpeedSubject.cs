@@ -39,7 +39,7 @@ public class SpeedSubject : MonoBehaviour
             currentSpeed += SpeedModifierList[i];
         }
 
-        if(currentSpeed < minSpeed)
+        if (currentSpeed < minSpeed)
             currentSpeed = minSpeed;
 
         speed = currentSpeed;

@@ -22,7 +22,7 @@ public class TentacleBehavior : MonoBehaviour
     [SerializeField] int grabSpeed = 60;
     [SerializeField] Transform tailEnd;
     [SerializeField] Transform[] bodyParts;
-
+    [SerializeField,ConditionalField(nameof(pointFollowMode), false, PointFollowMode.stack)] bool halfSize;
     [Foldout("TailCustomization", false)]
 
     [SerializeField] Transform grabTrans;
@@ -34,8 +34,8 @@ public class TentacleBehavior : MonoBehaviour
     [SerializeField] Transform attachTrans;
     [SerializeField] PointFollowMode pointFollowMode;
 
-    [Tooltip("Will be multiplied times 5 when switching to Point follow mode: stack")]
-    [SerializeField] int length = 30;
+    [Tooltip("Will be multiplied times 12 when switching to Point follow mode: stack")]
+    [SerializeField] float length = 30;
     [Tooltip("Distance between created Points, will feel smoother when smaller and more stagnant when higher")]
     [SerializeField] float vertexDistance;
     [Tooltip("Determines the delay of how fast the points will follow the following point")]
@@ -94,12 +94,13 @@ public class TentacleBehavior : MonoBehaviour
         if (pointFollowMode == PointFollowMode.overlap)
         {
             calc_smoothSpeed = smoothSpeed / 100;
-            calc_length = length;
+            calc_length = (int)length;
         }
         else if (pointFollowMode == PointFollowMode.stack)
         {
             calc_smoothSpeed = smoothSpeed / 200;
-            calc_length = length * 12;
+            calc_length = (int)(length * (halfSize ? 6 : 12));
+
         }
     }
 

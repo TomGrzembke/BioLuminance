@@ -1,3 +1,4 @@
+using MyBox;
 using System;
 using UnityEngine;
 
@@ -5,7 +6,7 @@ public class LimbSubject : MonoBehaviour
 {
     public event Action<float> OnHealthChanged;
     public event Action<float> OnHealthChangedAlpha;
-    public event Action<CreatureLogic> OnCreatureDied;
+    public event Action<bool> OnLimbDied;
 
     [SerializeField] float maximumHealth = 10;
     [SerializeField] float currentHealth = 10;
@@ -37,6 +38,11 @@ public class LimbSubject : MonoBehaviour
     {
         SetCurrentHealth(currentHealth - additionalHealth);
     }
+    [ButtonMethod]
+    public void TestDamage()
+    {
+        AddDamage(maximumHealth / 5);
+    }
 
     public void SetCurrentHealth(float newHealth)
     {
@@ -46,6 +52,9 @@ public class LimbSubject : MonoBehaviour
 
         OnHealthChanged?.Invoke(currentHealth);
         OnHealthChangedAlpha?.Invoke(currentHealth / maximumHealth);
+
+        if (currentHealth <= 0)
+            OnLimbDied?.Invoke(true);
     }
 
     public void RegisterOnHealthChanged(Action<float> callback, bool getInstantCallback = false)

@@ -8,7 +8,7 @@ public class HealthSubject : MonoBehaviour
 {
     public event Action<float> OnHealthChanged;
     public event Action<float> OnHealthChangedAlpha;
-    public event Action<CreatureLogic> OnCreatureDied;
+    public event Action<bool> OnCreatureDied;
     [SerializeField] List<LimbSubject> limbSubjects = new();
 
     float maximumHealth = 10;
@@ -23,7 +23,6 @@ public class HealthSubject : MonoBehaviour
     void Awake()
     {
         CalculateMaxHealth();
-        SetCurrentHealth(maximumHealth);
     }
 
     void OnValidate()
@@ -36,10 +35,10 @@ public class HealthSubject : MonoBehaviour
 
     void CalculateMaxHealth()
     {
-        MaximumHealth = 0;
+        maximumHealth = 0;
         for (int i = 0; i < limbSubjects.Count; i++)
         {
-            MaximumHealth += limbSubjects[i].MaximumHealth;
+            maximumHealth += limbSubjects[i].MaximumHealth;
         }
     }
 
@@ -70,12 +69,16 @@ public class HealthSubject : MonoBehaviour
 
     public void SetCurrentHealth(float newHealth)
     {
+        CalculateMaxHealth();
         newHealth = Mathf.Clamp(newHealth, 0f, maximumHealth);
 
         currentHealth = newHealth;
 
         OnHealthChanged?.Invoke(currentHealth);
         OnHealthChangedAlpha?.Invoke(currentHealth / maximumHealth);
+
+        if (currentHealth <= 0)
+            OnCreatureDied?.Invoke(true);
     }
 
     public void RegisterOnHealthChanged(Action<float> callback, bool getInstantCallback = false)
@@ -83,6 +86,11 @@ public class HealthSubject : MonoBehaviour
         OnHealthChanged += callback;
         if (getInstantCallback)
             callback(currentHealth);
+    }
+
+    public void RegisterOnAliveChanged(Action<bool> callback)
+    {
+        OnCreatureDied += callback;
     }
 
     public void RegisterOnHealthChangedAlpha(Action<float> callback, bool getInstantCallback = false)
@@ -96,7 +104,7 @@ public class HealthSubject : MonoBehaviour
     {
         for (int i = 0; i < limbSubjects.Count; i++)
         {
-            limbSubjects[i].RegisterOnHealthChangedAlpha(CalculateLimbHealth);
+            limbSubjects[i].RegisterOnHealthChanged(CalculateLimbHealth);
         }
     }
 
@@ -120,12 +128,15 @@ public class HealthSubject : MonoBehaviour
 
     public void SetMaximumHealth(float newMaximum)
     {
+        if (newMaximum == maximumHealth) return;
+
         maximumHealth = newMaximum;
         OnMaximumHealthChanged?.Invoke(newMaximum);
 
         if (currentHealth > newMaximum)
             SetCurrentHealth(newMaximum);
     }
+
     public void RegisterForOnMaximumHealthChanged(Action<float> callback, bool getInstantCallback = false)
     {
         OnMaximumHealthChanged += callback;

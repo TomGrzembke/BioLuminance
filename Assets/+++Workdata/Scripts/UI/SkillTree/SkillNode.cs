@@ -1,12 +1,7 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using TMPro;
-using System.Linq;
 
 
 public class SkillNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
@@ -20,12 +15,12 @@ public class SkillNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     Button btn;
     Image img;
 
-    private void Awake()
+    void Awake()
     {
         btn = GetComponent<Button>();
         img = GetComponent<Image>();
         skillManager = GetComponentInParent<SkillManager>();
-        skillManager.imageInformationField.SetActive(true);
+        skillManager.SetImageInformationField(true);
 
         skillNameText = GameObject.Find("SkillName").GetComponent<TextMeshProUGUI>();
         skillDescriptionText = GameObject.Find("SkillStats").GetComponent<TextMeshProUGUI>();
@@ -38,15 +33,15 @@ public class SkillNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         }
     }
 
-    private void Start()
+    void Start()
     {
-        skillManager.imageInformationField.SetActive(false);
+        skillManager.SetImageInformationField(false);
     }
 
     public void Selected()
     {
         img.color = new Color32(255, 255, 255, 255);
-        
+
         foreach (var nextSkill in nextSkills)
         {
             Image nextSkillImage = nextSkill.GetComponent<Image>();
@@ -54,13 +49,13 @@ public class SkillNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             {
                 nextSkillImage.color = new Color32(255, 255, 255, 40);
             }
-            
+
             SkillNode nextSkillNode = nextSkill.GetComponent<SkillNode>();
             if (nextSkillNode != null)
             {
                 nextSkillNode.enabled = true;
             }
-            
+
             Button nextSkillButton = nextSkillNode.GetComponent<Button>();
             if (nextSkillButton != null)
             {
@@ -76,15 +71,15 @@ public class SkillNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void PointerEnter()
     {
-        skillManager.imageInformationField.SetActive(true);
-        
+        skillManager.SetImageInformationField(true);
+
         skillNameText.text = informationField.skillName;
         skillDescriptionText.text = informationField.skillDescription.Replace(",", "\n");
     }
 
     public void PointerExit()
     {
-        skillManager.imageInformationField.SetActive(false);
+        skillManager.SetImageInformationField(false);
         skillNameText.text = null;
         skillDescriptionText.text = null;
     }

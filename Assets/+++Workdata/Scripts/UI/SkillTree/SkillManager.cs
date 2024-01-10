@@ -1,57 +1,47 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using MyBox;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
 public class SkillManager : MonoBehaviour
 {
-    public Vector3 offset;
-    public GameObject imageInformationField;
-    public GameObject skillTree;
+    static SkillManager Instance;
+    void Awake() => Instance = this;
+
+    [SerializeField] Vector3 offset;
+    [SerializeField] GameObject imageInformationField;
+    [SerializeField] GameObject skillTree;
 
     //TODO Transfer skill to other script
-    
-    public float pressure;
-    public float temperature;
-    public float oxygen;
 
-    PlayerInputActions playerControls;
-    bool toggle;
-
-    private void Awake()
-    {
-        playerControls = new PlayerInputActions();
-    }
-
-    private void OnEnable()
-    {
-        playerControls.UserInterface.SkillTree.performed += ctx => pressedEsc();
-
-        playerControls.Enable();
-    }
-
-    private void OnDisable()
-    {
-        playerControls.Disable();
-    }
+    [SerializeField] float pressure;
+    [SerializeField] float temperature;
+    [SerializeField] float oxygen;
 
     void Update()
     {
-        imageInformationField.transform.position = Input.mousePosition + offset;
+        Instance.imageInformationField.transform.position = Input.mousePosition + offset;
     }
 
-    public void pressedEsc()
+    [ButtonMethod]
+    public static void OpenSkillManager()
     {
-        if (playerControls.UserInterface.SkillTree.triggered)
-        {
-            toggle = !toggle;
-            skillTree.SetActive(toggle);
-        }
+        Instance.skillTree.SetActive(true);
 
-        if (skillTree != null && !skillTree.activeSelf)
-            imageInformationField.SetActive(false);
+        if (Instance.skillTree != null && !Instance.skillTree.activeSelf)
+            Instance.SetImageInformationField(false);
+    }
+
+    [ButtonMethod]
+    public static void CloseSkillManager()
+    {
+        Instance.skillTree.SetActive(false);
+
+        if (Instance.skillTree != null && !Instance.skillTree.activeSelf)
+            Instance.SetImageInformationField(false);
+    }
+
+    public void SetImageInformationField(bool condition)
+    {
+        Instance.imageInformationField.SetActive(condition);
     }
 
     public void SkillUpdate(InformationSO informationSO)
@@ -68,17 +58,17 @@ public class SkillManager : MonoBehaviour
 
             if (skillName == SkillClass.Skill.Oxygen.ToString())
             {
-                oxygen += skillClass.skillPointAmount;
+                Instance.oxygen += skillClass.skillPointAmount;
             }
 
             if (skillName == SkillClass.Skill.Pressure.ToString())
             {
-                pressure += skillClass.skillPointAmount;
+                Instance.pressure += skillClass.skillPointAmount;
             }
 
             if (skillName == SkillClass.Skill.Temperature.ToString())
             {
-                temperature += skillClass.skillPointAmount;
+                Instance.temperature += skillClass.skillPointAmount;
             }
         }
     }
