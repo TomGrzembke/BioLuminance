@@ -26,7 +26,7 @@ public class GameStateManager : MonoBehaviour
 
     public static void GoToMainMenu()
     {
-        Instance.StartCoroutine(Instance.LoadScenesCoroutine(SceneManager.GetActiveScene().buildIndex, (int)Scenes.MainMenu));
+        Instance.StartCoroutine(Instance.LoadScenesCoroutine(Instance.GetSceneID(Instance.gamePlayScene), (int)Scenes.MainMenu));
     }
 
     public static void ReloadGameScene()
