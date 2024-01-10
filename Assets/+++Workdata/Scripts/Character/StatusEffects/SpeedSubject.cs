@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -6,6 +7,7 @@ public class SpeedSubject : MonoBehaviour
 {
     [SerializeField] NavMeshAgent agent;
     [SerializeField] float speed;
+    public event Action<float> OnSpeedChanged;
     public float Speed
     {
         get
@@ -43,7 +45,7 @@ public class SpeedSubject : MonoBehaviour
             currentSpeed = minSpeed;
 
         speed = currentSpeed;
-
+        OnSpeedChanged?.Invoke(speed);
         if (agent)
             agent.speed = speed;
     }
@@ -65,5 +67,12 @@ public class SpeedSubject : MonoBehaviour
     {
         defaultSpeed = newDefault;
         CalculateSpeed();
+    }
+
+    public void RegisterOnSpeedChanged(Action<float> callback, bool getInstantCallback = false)
+    {
+        OnSpeedChanged += callback;
+        if (getInstantCallback)
+            callback(Speed);
     }
 }

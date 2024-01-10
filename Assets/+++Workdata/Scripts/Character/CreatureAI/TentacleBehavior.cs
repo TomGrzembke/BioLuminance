@@ -22,7 +22,7 @@ public class TentacleBehavior : MonoBehaviour
     [SerializeField] int grabSpeed = 60;
     [SerializeField] Transform tailEnd;
     [SerializeField] Transform[] bodyParts;
-    [SerializeField,ConditionalField(nameof(pointFollowMode), false, PointFollowMode.stack)] bool halfSize;
+    [SerializeField, ConditionalField(nameof(pointFollowMode), false, PointFollowMode.stack)] bool halfSize;
     [Foldout("TailCustomization", false)]
 
     [SerializeField] Transform grabTrans;
@@ -44,6 +44,8 @@ public class TentacleBehavior : MonoBehaviour
 
     [SerializeField] WiggleMode wiggleMode;
     [ConditionalField(nameof(wiggleMode), false, WiggleMode.wiggle), SerializeField] float wiggleSpeed = 10;
+    float mod_wiggleSpeed = 10;
+    float mod_wiggleMagnitude = 20;
     [ConditionalField(nameof(wiggleMode), false, WiggleMode.wiggle), SerializeField] float wiggleMagnitude = 20;
     [ConditionalField(nameof(wiggleMode), false, WiggleMode.wiggle), SerializeField] Transform wiggleDir;
     #endregion
@@ -71,7 +73,7 @@ public class TentacleBehavior : MonoBehaviour
     }
     void OnValidate()
     {
-        if(Application.isPlaying) return;
+        if (Application.isPlaying) return;
         lineRend = GetComponent<LineRenderer>();
         VisualizeTentaclesOnValidate();
         Recalculate();
@@ -90,6 +92,8 @@ public class TentacleBehavior : MonoBehaviour
     void Recalculate()
     {
         calc_vertexDistance = vertexDistance / 10;
+        mod_wiggleSpeed = wiggleSpeed;
+        mod_wiggleMagnitude = wiggleMagnitude;
 
         if (pointFollowMode == PointFollowMode.overlap)
         {
@@ -202,7 +206,7 @@ public class TentacleBehavior : MonoBehaviour
     void WiggleLogic()
     {
         if (wiggleDir != null && wiggleMode == WiggleMode.wiggle)
-            wiggleDir.localRotation = Quaternion.Euler(0, 0, Mathf.Sin(Time.time * wiggleSpeed) * wiggleMagnitude);
+            wiggleDir.localRotation = Quaternion.Euler(0, 0, Mathf.Sin(Time.time * mod_wiggleSpeed) * mod_wiggleMagnitude);
     }
 
     void FoldoutOnStart()
@@ -221,5 +225,10 @@ public class TentacleBehavior : MonoBehaviour
             grabTrans = defaultGrabTrans;
         else
             grabTrans = grabTarget;
+    }
+
+    public void SetMod_WiggleMagnitudeParameters(float add)
+    {
+        mod_wiggleMagnitude = wiggleMagnitude + add;
     }
 }
