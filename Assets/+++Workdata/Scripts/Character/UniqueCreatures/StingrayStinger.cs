@@ -8,9 +8,8 @@ public class StingrayStinger : MonoBehaviour
     #region serialized fields
 
     [Header("Stinger Info")]
-    [SerializeField]
-    GameObject snapStingerTo;
-
+    
+    [SerializeField] GameObject snapStingerTo;
     [SerializeField] GameObject stinger;
     [SerializeField] GameObject stingerGFX;
     [SerializeField] float stingerRadius;
