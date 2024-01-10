@@ -549,6 +549,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a2979f7b29a04e43b01fe76b32da132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &191118649 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8696543891219929982, guid: e5616ed57e42d9f49ab933a6be6a4a46, type: 3}
+  m_PrefabInstance: {fileID: 2085754628}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f0ed5816d3fe72458602006eb00551c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &247201806
 GameObject:
   m_ObjectHideFlags: 0
@@ -3095,6 +3106,17 @@ Transform:
   - {fileID: 2016507280}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1508710267 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8696543891219929982, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+  m_PrefabInstance: {fileID: 1235248145}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f0ed5816d3fe72458602006eb00551c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1521998777
 GameObject:
   m_ObjectHideFlags: 0
@@ -3466,9 +3488,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerController: {fileID: 0}
-  pointPools: []
-  allObjects: []
-  creaturesList: 
+  pointPools:
+  - _creatureName: StingRay
+    creature: 4
+    creaturesInScene: 1
+    initialDNAAmount: 0
+  - _creatureName: Tuna
+    creature: 2
+    creaturesInScene: 1
+    initialDNAAmount: 0
+  - _creatureName: Jellyfish
+    creature: 1
+    creaturesInScene: 1
+    initialDNAAmount: 0
+  allObjects:
+  - {fileID: 1508710267}
+  - {fileID: 191118649}
+  - {fileID: 7608655987527139218}
+  creaturesList: 040000000200000001000000
 --- !u!1 &1914116030
 GameObject:
   m_ObjectHideFlags: 0
@@ -4438,9 +4475,9 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 844995359}
   - {fileID: 269334643}
+  - {fileID: 1500829848}
   - {fileID: 1425512083}
   - {fileID: 755057423}
-  - {fileID: 1500829848}
   - {fileID: 7608655987527139202}
   - {fileID: 2085754628}
   - {fileID: 1235248145}
