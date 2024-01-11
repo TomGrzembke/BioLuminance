@@ -1,4 +1,5 @@
 using MyBox;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,9 +9,13 @@ public class TentacleTargetManager : MonoBehaviour
     [SerializeField] List<TentacleBehavior> tentacles;
     [SerializeField] List<LimbSubject> targetLimbs;
     [SerializeField] List<Transform> targetTrans;
+    public List<StatusManager> TargetStatusManagers => targetStatusManagers;
+    [SerializeField] List<StatusManager> targetStatusManagers;
+    public event Action<List<StatusManager>> OnTargetStatusManagersChanged;
     #endregion
 
     #region private fields
+    List<StatusManager> oldTargetStatusManagers;
 
     #endregion
 
@@ -37,7 +42,7 @@ public class TentacleTargetManager : MonoBehaviour
             default:
                 for (int i = 0; i < tentacleCount; i++)
                 {
-                    AddTargetTrans(targetLimbs[Random.Range(0, targetCount)].ownStatusManager.GrabManager.GetRandomGrabTrans());
+                    AddTargetTrans(targetLimbs[UnityEngine.Random.Range(0, targetCount)].ownStatusManager.GrabManager.GetRandomGrabTrans());
                 }
                 break;
         }
@@ -81,12 +86,14 @@ public class TentacleTargetManager : MonoBehaviour
     {
         targetLimbs.Clear();
         targetLimbs.Add(attackTarget);
+        RecalculateTargetStatusManager();
         SetTargets();
     }
 
     public void SetAttackStatusManager(List<LimbSubject> attackTarget)
     {
         targetLimbs.Clear();
+
         for (int i = 0; i < attackTarget.Count; i++)
         {
             if (!targetLimbs.Contains(attackTarget[i]))
@@ -95,7 +102,27 @@ public class TentacleTargetManager : MonoBehaviour
             }
         }
 
+        RecalculateTargetStatusManager();
+
         SetTargets();
+    }
+
+    void RecalculateTargetStatusManager()
+    {
+        oldTargetStatusManagers = new List<StatusManager>(targetStatusManagers);
+
+        targetStatusManagers.Clear();
+        for (int i = 0; i < targetLimbs.Count; i++)
+        {
+            StatusManager targetStatusManager = targetLimbs[i].ownStatusManager;
+            if (!targetStatusManagers.Contains(targetStatusManager))
+            {
+                targetStatusManagers.Add(targetStatusManager);
+            }
+        }
+
+        if (oldTargetStatusManagers != targetStatusManagers)
+            OnTargetStatusManagersChanged?.Invoke(targetStatusManagers);
     }
 
     public void RemoveAttackStatusManager(LimbSubject attackTarget)
@@ -121,8 +148,15 @@ public class TentacleTargetManager : MonoBehaviour
         for (int i = 0; i < tentacles.Count; i++)
         {
             tentacles[i].TryGetComponent(out TentacleDetection _tentacleDetection);
-            if(_tentacleDetection)
+            if (_tentacleDetection)
                 _tentacleDetection.enabled = condition;
         }
+    }
+
+    public void RegisterOnTargetStatusManagersChanged(Action<List<StatusManager>> callback, bool getInstantCallback = false)
+    {
+        OnTargetStatusManagersChanged += callback;
+        if (getInstantCallback)
+            callback(targetStatusManagers);
     }
 }
