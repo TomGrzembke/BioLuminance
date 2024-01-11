@@ -30,7 +30,8 @@ public class DepthLighting : MonoBehaviour
 
     private void Awake()
     {
-        GetSpritePos();
+        maxHeight = mapSprite.bounds.max.y;
+        minHeight = mapSprite.bounds.min.y;
     }
 
     private void Update()
@@ -41,13 +42,6 @@ public class DepthLighting : MonoBehaviour
         clampedHeight = Mathf.Clamp(clampedHeight, minHeight, maxHeight);
 
         LightInfo();
-    }
-
-    [ButtonMethod]
-    public void GetSpritePos()
-    {
-        maxHeight = mapSprite.bounds.max.y;
-        minHeight = mapSprite.bounds.min.y;
     }
     
     public void LightInfo()
