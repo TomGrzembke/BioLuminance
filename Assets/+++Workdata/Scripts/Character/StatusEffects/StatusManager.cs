@@ -15,9 +15,10 @@ public class StatusManager : MonoBehaviour
     [SerializeField] HealthSubject healthSubject;
     public SpeedSubject SpeedSubject => speedSubject;
     [SerializeField] SpeedSubject speedSubject;
-
     public GrabTransManager GrabManager => grabManager;
     [SerializeField] GrabTransManager grabManager;
+    public ApplyStatusEffects ApplyStatusEffects => applyStatusEffects;
+    [SerializeField] ApplyStatusEffects applyStatusEffects;
     #endregion
 
     #region private fields
@@ -43,8 +44,13 @@ public class StatusManager : MonoBehaviour
         stunSubject.AddStun(additionalStun);
     }
 
-    public void ApplyTentacle(TentacleDetection.TentacleEffects tentacleEffects)
+    public void AddSpeedModifier(SpeedModifier speedModifier)
     {
-        AddStun(tentacleEffects.stunPerInstance);
+        speedSubject.AddSpeedModifier(speedModifier);
+    }
+
+    public void RemoveSpeedModifier(SpeedModifier speedModifier)
+    {
+        speedSubject.RemoveSpeedModifier(speedModifier);
     }
 }

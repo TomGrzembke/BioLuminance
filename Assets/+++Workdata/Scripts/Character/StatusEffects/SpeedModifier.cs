@@ -9,6 +9,7 @@ public class SpeedModifier : MonoBehaviour
 
     [SerializeField] SpeedSubject speedSubject;
     [SerializeField] float amount = -2;
+    public float Amount => amount;
     #endregion
 
     #region private fields

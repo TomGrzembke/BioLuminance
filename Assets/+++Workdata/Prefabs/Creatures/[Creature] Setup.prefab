@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7360798349380117563}
   - component: {fileID: 5670604380686470094}
   - component: {fileID: 907766980465430614}
+  - component: {fileID: 1818415738067377841}
   - component: {fileID: 5695632020067386860}
   - component: {fileID: 563368637058944709}
   - component: {fileID: 1963122716833880277}
@@ -88,6 +89,19 @@ MonoBehaviour:
   healthSubject: {fileID: 1937458173023117751}
   speedSubject: {fileID: 7968696186739195705}
   grabManager: {fileID: 2024252366454839533}
+  applyStatusEffects: {fileID: 1818415738067377841}
+--- !u!114 &1818415738067377841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15204248062647766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7eb6391a461eb664fa4605891d8b8027, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5695632020067386860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -369,7 +383,7 @@ MonoBehaviour:
   useStateVars: 1
   dangerous: 0
   stateEvent: []
-  attackDamage: 0.01
+  maxTimeInState: 1
   chaseState: {fileID: 8477860675694297810}
   roamState: {fileID: 1206069651293198824}
   attackStanceState: {fileID: 1583032317030586209}
@@ -389,7 +403,11 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   ownStatusManager: {fileID: 907766980465430614}
-  maxTimeInState: 1
+  applyStatusEffects: {fileID: 1818415738067377841}
+  statusEffects:
+    damagePerInstance: 2
+    stunPerInstance: 0
+    speedModifier: {fileID: 0}
 --- !u!58 &5836167974553312313
 CircleCollider2D:
   m_ObjectHideFlags: 0

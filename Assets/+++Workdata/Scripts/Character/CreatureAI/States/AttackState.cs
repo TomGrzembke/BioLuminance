@@ -1,21 +1,21 @@
 using System.Collections.Generic;
 using UnityEngine;
-using static TentacleDetection;
 
 public class AttackState : State
 {
     #region serialized fields
     [Header(nameof(AttackState))]
 
-    [SerializeField] float attackDamage = 0.01f;
     [Space(5)]
+    [SerializeField] float maxTimeInState = 1.5f;
     [SerializeField] ChaseState chaseState;
     [SerializeField] RoamState roamState;
     [SerializeField] AttackStanceState attackStanceState;
     [SerializeField] Collider2D attackHitbox;
     [SerializeField] ContactFilter2D contactFilter;
     [SerializeField] StatusManager ownStatusManager;
-    [SerializeField] float maxTimeInState = 1.5f;
+    [SerializeField] ApplyStatusEffects applyStatusEffects;
+    [SerializeField] StatusEffects statusEffects;
     #endregion
 
     #region private fields
@@ -32,7 +32,7 @@ public class AttackState : State
     }
 
     protected override void EnterInternal()
-    {    
+    {
     }
 
     protected override void UpdateInternal()
@@ -62,7 +62,7 @@ public class AttackState : State
 
             if (_limbTarget == ownStatusManager) continue;
 
-            _limbTarget.AddDamage(attackDamage);
+            applyStatusEffects.ApplyEffects(statusEffects, _limbTarget);
         }
     }
 }

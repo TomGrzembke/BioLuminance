@@ -33,6 +33,13 @@ public class SpeedSubject : MonoBehaviour
         CalculateSpeed();
     }
 
+    public void AddSpeedModifier(SpeedModifier speedModifier)
+    {
+        SpeedModifierList.Add(speedModifier.Amount);
+
+        CalculateSpeed();
+    }
+
     void CalculateSpeed()
     {
         float currentSpeed = defaultSpeed;
@@ -53,6 +60,14 @@ public class SpeedSubject : MonoBehaviour
     public void RemoveSpeedModifier(float remSpeed)
     {
         SpeedModifierList.Remove(remSpeed);
+        CalculateSpeed();
+    }
+
+    public void RemoveSpeedModifier(SpeedModifier speedModifier)
+    {
+        if (SpeedModifierList.Contains(speedModifier.Amount))
+            SpeedModifierList.Remove(speedModifier.Amount);
+
         CalculateSpeed();
     }
 

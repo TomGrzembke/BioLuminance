@@ -6,7 +6,7 @@ using UnityEngine;
 public class TentacleDetection : MonoBehaviour
 {
     #region serialized fields
-    [SerializeField] TentacleEffects tentacleEffects = new();
+    [SerializeField] StatusEffects tentacleEffects = new();
     [SerializeField] StatusManager ownStatusManager;
     [SerializeField] int pointsDividedBy = 3;
     [SerializeField] ContactFilter2D contactFilter;
@@ -42,8 +42,7 @@ public class TentacleDetection : MonoBehaviour
 
             if (_limbTarget.ownStatusManager == ownStatusManager) continue;
 
-            _limbTarget.AddDamage(tentacleEffects.damagePerInstance);
-            _limbTarget.ownStatusManager.ApplyTentacle(tentacleEffects);
+            ownStatusManager.ApplyStatusEffects.ApplyEffects(tentacleEffects, _limbTarget);
         }
     }
 
@@ -70,13 +69,6 @@ public class TentacleDetection : MonoBehaviour
     {
         Vector2 lineRendererPoint = transform.InverseTransformPoint(lineRenderer.GetPosition(i));
         edges.Add(lineRendererPoint);
-    }
-
-    [Serializable]
-    public struct TentacleEffects
-    {
-        public float damagePerInstance;
-        public float stunPerInstance;
     }
 
     void OnEnable()
