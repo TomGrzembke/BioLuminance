@@ -48,18 +48,23 @@ public class DepthLighting : MonoBehaviour
     {
         if (clampedHeight < 0)
         {
-            float percent = clampedHeight / 100;
+            float percent = clampedHeight / 800;
             float testHeight = percent;
             if (testHeight < 0)
                 testHeight *= -1f;
-            lightLevel =+ maxLightLevel - testHeight;
+            lightLevel = maxLightLevel - testHeight;
             
             foreach (var p in particleSystem)
             {
                 var mainModule = p.main;
+                alpha = 1 - testHeight * 1.6f;
+
+                alpha = Mathf.Clamp(alpha, minLightLevel, 1);
+                
+                Debug.Log(alpha);
                 
                 Color c = new (mainModule.startColor.color.r, mainModule.startColor.color.g,
-                    mainModule.startColor.color.b, alpha = +maxLightLevel - testHeight * 1.1f);
+                    mainModule.startColor.color.b, alpha);
                 
                 mainModule.startColor = new (c);
             }
@@ -67,6 +72,7 @@ public class DepthLighting : MonoBehaviour
         
         lightLevel = Mathf.Clamp(lightLevel, minLightLevel, maxLightLevel);
         light2D.intensity = Mathf.Clamp(light2D.intensity, minLightLevel, maxLightLevel);
+        
         
         light2D.intensity = lightLevel;
     }
