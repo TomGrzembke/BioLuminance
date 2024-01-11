@@ -1,8 +1,11 @@
+using MyBox;
 using UnityEngine;
 
 public class StatusManager : MonoBehaviour
 {
     #region serialized fields
+    [SerializeField] bool isPlayer;
+    public bool IsPlayer => isPlayer;
     public Creatures TargetLayer => targetLayer;
     [SerializeField] Creatures targetLayer;
     public Creatures CreatureType => creatureType;
@@ -19,6 +22,8 @@ public class StatusManager : MonoBehaviour
     [SerializeField] GrabTransManager grabManager;
     public ApplyStatusEffects ApplyStatusEffects => applyStatusEffects;
     [SerializeField] ApplyStatusEffects applyStatusEffects;
+    public CreatureRewards CreatureRewards => creatureRewards;
+    [SerializeField, ConditionalField(nameof(isPlayer), true)] CreatureRewards creatureRewards;
     #endregion
 
     #region private fields

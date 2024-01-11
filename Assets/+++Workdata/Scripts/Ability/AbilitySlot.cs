@@ -12,6 +12,7 @@ public class AbilitySlot : MonoBehaviour
 
     #region private fields
     Ability currentAbility;
+    public bool occupied { get; private set; }
     public Ability CurrentAbility => currentAbility;
     AbilitySlotManager abilitySlotManager;
     #endregion
@@ -29,6 +30,15 @@ public class AbilitySlot : MonoBehaviour
             currentAbilityPrefab.TryGetComponent(out currentAbility);
 
         abilityImage.sprite = currentAbilityPrefab ? currentAbility.AbilitySprite : null;
+
+        if (!abilityImage.sprite)
+        {
+            occupied = false;
+        }
+        else
+        {
+            occupied = true;
+        }
     }
 
     public void ChangeAbilityPrefab(GameObject newAbilityPrefab, AbilitySlotManager _abilitySlotManager)

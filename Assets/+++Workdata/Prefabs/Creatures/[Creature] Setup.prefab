@@ -82,6 +82,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f0ed5816d3fe72458602006eb00551c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
   targetLayer: -1
   creatureType: 2
   trans: {fileID: 7360798349380117563}
@@ -90,6 +91,7 @@ MonoBehaviour:
   speedSubject: {fileID: 7968696186739195705}
   grabManager: {fileID: 2024252366454839533}
   applyStatusEffects: {fileID: 1818415738067377841}
+  creatureRewards: {fileID: 7627820772083735243}
 --- !u!114 &1818415738067377841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,7 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eb6391a461eb664fa4605891d8b8027, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  combatManager: {fileID: 0}
+  player: 0
 --- !u!114 &5695632020067386860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -797,6 +799,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1595835679270034538}
   - component: {fileID: 1241876678968463969}
+  - component: {fileID: 7627820772083735243}
   m_Layer: 0
   m_Name: '[Creature] Setup'
   m_TagString: Untagged
@@ -842,6 +845,20 @@ MonoBehaviour:
   - {fileID: 6170885787409977097}
   - {fileID: 2555284835385615666}
   - {fileID: 2791954618058492436}
+--- !u!114 &7627820772083735243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2791954618058492436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb2bd3043cd225b45aaaec649c33fcb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  passiveReward: {fileID: 2889186154452174338, guid: 98a03bc05f393774ebf17ec060a1f849, type: 3}
+  activeReward: {fileID: 2889186154452174338, guid: 98a03bc05f393774ebf17ec060a1f849, type: 3}
 --- !u!1 &3150980292284566887
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,8 +10,10 @@ public class AbilitySlotManager : MonoBehaviour
     #endregion
 
     #region private fields
-
+    public static AbilitySlotManager Instance;
     #endregion
+
+    void Awake() => Instance = this;
 
     void Start()
     {
@@ -32,5 +34,18 @@ public class AbilitySlotManager : MonoBehaviour
     {
         abilitySlots[slotIndex].Execute(false);
         abilitySlots[slotIndex].ChangeAbilityPrefab(newPrefab, this);
+    }
+
+    public void AddNewAbility(GameObject newPrefab)
+    {
+        for (int i = 0; i < abilitySlots.Length; i++)
+        {
+            if (!abilitySlots[i].occupied)
+            {
+                abilitySlots[i].Execute(false);
+                abilitySlots[i].ChangeAbilityPrefab(newPrefab, this);
+                break;
+            }
+        }
     }
 }

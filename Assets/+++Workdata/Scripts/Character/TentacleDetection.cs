@@ -42,7 +42,7 @@ public class TentacleDetection : MonoBehaviour
 
             if (_limbTarget.ownStatusManager == ownStatusManager) continue;
 
-            ownStatusManager.ApplyStatusEffects.ApplyEffects(tentacleEffects, _limbTarget);
+            ownStatusManager.ApplyStatusEffects.ApplyEffects(tentacleEffects, _limbTarget, ownStatusManager);
         }
     }
 

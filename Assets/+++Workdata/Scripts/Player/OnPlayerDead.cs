@@ -17,7 +17,7 @@ public class OnPlayerDead : MonoBehaviour
 
     void OnEnable()
     {
-        healthSubject.RegisterOnAliveChanged(OnPlayerDied);
+        healthSubject.RegisterOnCreatureDied(OnPlayerDied);
     }
     void OnDisable()
     {

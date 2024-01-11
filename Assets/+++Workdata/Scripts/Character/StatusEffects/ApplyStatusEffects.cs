@@ -4,7 +4,6 @@ using UnityEngine;
 public class ApplyStatusEffects : MonoBehaviour
 {
     #region serialized fields
-    [SerializeField] CombatManager combatManager;
     [SerializeField] bool player;
     #endregion
 
@@ -12,7 +11,7 @@ public class ApplyStatusEffects : MonoBehaviour
 
     #endregion
 
-    public void ApplyEffects(StatusEffects _statusEffects, StatusManager targetStatusManager, LimbSubject limbSubject = null)
+    public void ApplyEffects(StatusEffects _statusEffects, StatusManager targetStatusManager, LimbSubject limbSubject = null, StatusManager ownStatusManager = null)
     {
         bool hasDoneSmth = false;
 
@@ -34,17 +33,17 @@ public class ApplyStatusEffects : MonoBehaviour
             hasDoneSmth = true;
         }
 
-        if (!combatManager || !hasDoneSmth) return;
-        if(player)
-            combatManager.CreatureInteraction(targetStatusManager);
-        else
-            combatManager.CreatureInteraction(targetStatusManager);
+        if (!hasDoneSmth) return;
 
+        if(player)
+            CombatManager.Instance.CreatureInteraction(targetStatusManager);
+        else if(targetStatusManager.IsPlayer)
+            CombatManager.Instance.CreatureInteraction(ownStatusManager);
     }
 
-    public void ApplyEffects(StatusEffects _statusEffects, LimbSubject limbSubject)
+    public void ApplyEffects(StatusEffects _statusEffects, LimbSubject limbSubject, StatusManager ownStatusManager = null)
     {
-        ApplyEffects(_statusEffects, limbSubject.ownStatusManager, limbSubject);
+        ApplyEffects(_statusEffects, limbSubject.ownStatusManager, limbSubject, ownStatusManager);
     }
 
     public void RemoveSpeedModifier(StatusManager targetStatusManager, SpeedModifier speedModifier)

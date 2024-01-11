@@ -25,13 +25,11 @@ public abstract class Ability : MonoBehaviour
         else
             DeExecuteInternal();
     }
-    protected abstract void ExecuteInternal();
-    protected abstract void DeExecuteInternal();
-
-
     public void OnInitialized()
     {
         OnInitializedInternal();
     }
+    protected abstract void ExecuteInternal();
+    protected abstract void DeExecuteInternal();
     protected abstract void OnInitializedInternal();
 }

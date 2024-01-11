@@ -62,7 +62,7 @@ public class AttackState : State
 
             if (_limbTarget == ownStatusManager) continue;
 
-            applyStatusEffects.ApplyEffects(statusEffects, _limbTarget);
+            applyStatusEffects.ApplyEffects(statusEffects, _limbTarget, ownStatusManager);
         }
     }
 }

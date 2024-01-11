@@ -9,6 +9,8 @@ public class HealthSubject : MonoBehaviour
     public event Action<float> OnHealthChanged;
     public event Action<float> OnHealthChangedAlpha;
     public event Action<bool> OnCreatureDied;
+    public bool IsDead => isDead;
+    bool isDead;
     [SerializeField] List<LimbSubject> limbSubjects = new();
 
     float maximumHealth = 10;
@@ -78,7 +80,10 @@ public class HealthSubject : MonoBehaviour
         OnHealthChangedAlpha?.Invoke(currentHealth / maximumHealth);
 
         if (currentHealth <= 0)
-            OnCreatureDied?.Invoke(true);
+        {
+            isDead = true;
+            OnCreatureDied?.Invoke(isDead);
+        }
     }
 
     public void RegisterOnHealthChanged(Action<float> callback, bool getInstantCallback = false)
@@ -88,7 +93,7 @@ public class HealthSubject : MonoBehaviour
             callback(currentHealth);
     }
 
-    public void RegisterOnAliveChanged(Action<bool> callback)
+    public void RegisterOnCreatureDied(Action<bool> callback)
     {
         OnCreatureDied += callback;
     }

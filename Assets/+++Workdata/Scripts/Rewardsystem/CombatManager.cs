@@ -10,19 +10,34 @@ public class CombatManager : MonoBehaviour
     [SerializeField] TentacleTargetManager targetManager;
     [SerializeField] List<Interaction> creatureInteractions;
     [SerializeField] float interactionCooldown;
+    [SerializeField] int interactionNeeded = 4;
     [SerializeField] float fleeCooldown = 13;
     #endregion
 
     #region private fields
-
+    public static CombatManager Instance;
     #endregion
+    void Awake()
+    {
+        Instance = this;
+    }
+    void GiftRewardPassive(Interaction interaction)
+    {
+        AbilitySlotManager.Instance.AddNewAbility(interaction.targetStatusManager.CreatureRewards.PassiveReward);
+    }
+
+    void GiftRewardActive(int index)
+    {
+        AbilitySlotManager.Instance.AddNewAbility(creatureInteractions[index].targetStatusManager.CreatureRewards.ActiveReward);
+    }
 
     public void CreatureInteraction(StatusManager statusManager)
     {
+        if (statusManager.HealthSubject.IsDead) return;
+
         if (creatureInteractions.Count == 0)
-        {
             NewEntry(statusManager);
-        }
+
 
         for (int i = 0; i < creatureInteractions.Count; i++)
         {
@@ -33,21 +48,34 @@ public class CombatManager : MonoBehaviour
 
                 if (creatureInteractions[i].onCooldown) continue;
                 creatureInteractions[i].interactedTimes++;
-                StartCoroutine(InteractionCooldown(i));
+                creatureInteractions[i].interactionCooldownCoroutine = StartCoroutine(InteractionCooldown(i));
             }
-            else if (creatureInteractions[i].targetStatusManager != statusManager)
+            else
             {
                 bool existsInList = false;
                 for (int j = 0; j < creatureInteractions.Count; j++)
                 {
                     if (!existsInList)
-                        existsInList = CheckIfIndexIsTarget(statusManager, j);
+                        existsInList =  CheckIfIndexIsTarget(statusManager, j);
                 }
                 if (!existsInList)
                     NewEntry(statusManager);
             }
         }
+    }
 
+    void CheckCreatureKilled(bool _)
+    {
+        for (int i = 0; i < creatureInteractions.Count; i++)
+        {
+            if (!creatureInteractions[i].dead) continue;
+
+            StopCoroutine(creatureInteractions[i].fleeCheckCoroutine);
+            StopCoroutine(creatureInteractions[i].interactionCooldownCoroutine);
+
+            GiftRewardActive(i);
+            creatureInteractions.RemoveAt(i);
+        }
     }
 
     bool CheckIfIndexIsTarget(StatusManager statusManager, int index)
@@ -63,6 +91,10 @@ public class CombatManager : MonoBehaviour
         newInteraction.Initialize();
         newInteraction.fleeCheckCoroutine = StartCoroutine(FleeChecker(newInteraction));
         creatureInteractions.Add(newInteraction);
+
+        HealthSubject newInteractionHealthSubject = newInteraction.targetStatusManager.HealthSubject;
+        newInteractionHealthSubject.RegisterOnCreatureDied(newInteraction.ChangeDead);
+        newInteractionHealthSubject.RegisterOnCreatureDied(CheckCreatureKilled);
     }
 
     IEnumerator InteractionCooldown(int index)
@@ -75,7 +107,12 @@ public class CombatManager : MonoBehaviour
     IEnumerator FleeChecker(Interaction interaction)
     {
         yield return new WaitForSeconds(fleeCooldown);
-        print(interaction.creatureName + " fled");
+        if (interactionNeeded <= interaction.interactedTimes)
+        {
+            GiftRewardPassive(interaction);
+        }
+
+        creatureInteractions.Remove(interaction);
     }
 
     [Serializable]
@@ -84,17 +121,22 @@ public class CombatManager : MonoBehaviour
         [HideInInspector] public string creatureName;
         public StatusManager targetStatusManager;
 
-
+        public bool dead = false;
         public int interactedTimes;
         public bool onCooldown;
-        public float fleeCooldown;
         public Coroutine fleeCheckCoroutine;
+        public Coroutine interactionCooldownCoroutine;
+
         public void Initialize()
         {
             if (creatureName.IsNullOrEmpty())
             {
                 creatureName = targetStatusManager.CreatureType.ToString();
             }
+        }
+        public void ChangeDead(bool _dead)
+        {
+            dead = _dead;
         }
     }
 }

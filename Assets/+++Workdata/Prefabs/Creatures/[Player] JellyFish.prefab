@@ -1254,6 +1254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f0ed5816d3fe72458602006eb00551c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 1
   targetLayer: -1
   creatureType: 1
   trans: {fileID: 5595682832789274083}
@@ -1262,6 +1263,7 @@ MonoBehaviour:
   speedSubject: {fileID: 95591704801732508}
   grabManager: {fileID: 480719721031011748}
   applyStatusEffects: {fileID: 239935786374924627}
+  creatureRewards: {fileID: 0}
 --- !u!114 &239935786374924627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1274,7 +1276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eb6391a461eb664fa4605891d8b8027, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  combatManager: {fileID: 5757179453371546642}
+  player: 1
 --- !u!114 &5757179453371546642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1290,6 +1292,7 @@ MonoBehaviour:
   targetManager: {fileID: 4018721908022092382}
   creatureInteractions: []
   interactionCooldown: 1
+  interactionNeeded: 4
   fleeCooldown: 13
 --- !u!114 &1461240600810685299
 MonoBehaviour:
@@ -1776,7 +1779,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   limbSubjects:
   - {fileID: 126214913479075965}
-  currentHealth: 1
+  currentHealth: 50
 --- !u!114 &95591704801732508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1923,8 +1926,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbb486c01069ff64a8a6d0525bb60e0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maximumHealth: 1
-  currentHealth: 1
+  maximumHealth: 50
+  currentHealth: 50
 --- !u!1 &8611130859453909012
 GameObject:
   m_ObjectHideFlags: 0
