@@ -1410,6 +1410,17 @@ MonoBehaviour:
   - {fileID: 5007524509860467351, guid: f13f1e630566bef48a8fed37435548c0, type: 3}
   - {fileID: 5007524509860467351, guid: e3ead7cc1b9537041bd3d07bd6d5c6d9, type: 3}
   - {fileID: 5007524509860467351, guid: ebbe59ac4bcc82642a335f045087f61b, type: 3}
+--- !u!114 &604969765 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4018721908022092382, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
+  m_PrefabInstance: {fileID: 7608655987527139202}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c536d6d8379e594493df6716adc2c85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &635546210
 GameObject:
   m_ObjectHideFlags: 0
@@ -2265,48 +2276,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7867434260259355355, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
-      propertyPath: uniqueState
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6969762093777051922, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
-      insertIndex: 2
-      addedObject: {fileID: 1235248147}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
---- !u!1 &1235248146 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6969762093777051922, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
-  m_PrefabInstance: {fileID: 1235248145}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1235248147
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1235248146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 810e60622f023b44e9a9935213b6ab82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TimeInState: 0
-  distanceTravelled: 0
-  FixedTimeInState: 0
-  uniqueState: {fileID: 0}
-  stateAgentSpeed: 3.5
-  stateAgentAcceleration: 5
-  stateAgentStoppingDistance: 1
-  useStateVars: 0
-  dangerous: 0
-  stateEvent: []
-  attackState: {fileID: 0}
-  roamState: {fileID: 0}
-  stateDuration: 5
 --- !u!1 &1253227938
 GameObject:
   m_ObjectHideFlags: 0
@@ -3411,14 +3385,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5019547733189792710, guid: e5616ed57e42d9f49ab933a6be6a4a46, type: 3}
-      propertyPath: currentHealth
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 5019547733189792710, guid: e5616ed57e42d9f49ab933a6be6a4a46, type: 3}
-      propertyPath: maximumHealth
-      value: 20
-      objectReference: {fileID: 0}
     - target: {fileID: 5951047566704116028, guid: e5616ed57e42d9f49ab933a6be6a4a46, type: 3}
       propertyPath: m_Name
       value: '[Creature] Tuna'
@@ -3462,14 +3428,6 @@ PrefabInstance:
     - target: {fileID: 7065252597165299522, guid: e5616ed57e42d9f49ab933a6be6a4a46, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7867434260259355355, guid: e5616ed57e42d9f49ab933a6be6a4a46, type: 3}
-      propertyPath: stateEvent.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7983305598072597151, guid: e5616ed57e42d9f49ab933a6be6a4a46, type: 3}
-      propertyPath: currentHealth
-      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4042,6 +4000,10 @@ PrefabInstance:
       propertyPath: m_Positions.Array.data[1].y
       value: 40.79
       objectReference: {fileID: 0}
+    - target: {fileID: 5757179453371546642, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
+      propertyPath: targetManager
+      value: 
+      objectReference: {fileID: 604969765}
     - target: {fileID: 7334235293886078406, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
       propertyPath: m_BoundingShape2D
       value: 

@@ -1192,6 +1192,7 @@ GameObject:
   - component: {fileID: 2829320683562155310}
   - component: {fileID: 2856363000226415612}
   - component: {fileID: 239935786374924627}
+  - component: {fileID: 5757179453371546642}
   - component: {fileID: 1461240600810685299}
   - component: {fileID: 7845883195136958720}
   - component: {fileID: 2643141759927054665}
@@ -1273,6 +1274,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eb6391a461eb664fa4605891d8b8027, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  combatManager: {fileID: 5757179453371546642}
+--- !u!114 &5757179453371546642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6732813511311533440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93804f046fbe45a44ad40482d0119099, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetManager: {fileID: 0}
+  creatureInteractions: []
 --- !u!114 &1461240600810685299
 MonoBehaviour:
   m_ObjectHideFlags: 0
