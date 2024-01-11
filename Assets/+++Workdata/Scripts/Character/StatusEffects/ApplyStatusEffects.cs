@@ -5,6 +5,7 @@ public class ApplyStatusEffects : MonoBehaviour
 {
     #region serialized fields
     [SerializeField] CombatManager combatManager;
+    [SerializeField] bool player;
     #endregion
 
     #region private fields
@@ -33,8 +34,12 @@ public class ApplyStatusEffects : MonoBehaviour
             hasDoneSmth = true;
         }
 
-        if (combatManager && hasDoneSmth)
+        if (!combatManager || !hasDoneSmth) return;
+        if(player)
             combatManager.CreatureInteraction(targetStatusManager);
+        else
+            combatManager.CreatureInteraction(targetStatusManager);
+
     }
 
     public void ApplyEffects(StatusEffects _statusEffects, LimbSubject limbSubject)
