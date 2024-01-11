@@ -337,88 +337,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1441051576}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &95300034
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 95300035}
-  - component: {fileID: 95300036}
-  m_Layer: 0
-  m_Name: Light 2D
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &95300035
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 95300034}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1881924835}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &95300036
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 95300034}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ComponentVersion: 1
-  m_LightType: 2
-  m_BlendStyleIndex: 0
-  m_FalloffIntensity: 0.5
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.5
-  m_LightVolumeIntensity: 1
-  m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000
-  m_LightCookieSprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_DeprecatedPointLightCookieSprite: {fileID: 0}
-  m_LightOrder: 0
-  m_AlphaBlendOnOverlap: 0
-  m_OverlapOperation: 0
-  m_NormalMapDistance: 3
-  m_NormalMapQuality: 2
-  m_UseNormalMap: 0
-  m_ShadowIntensityEnabled: 0
-  m_ShadowIntensity: 0.75
-  m_ShadowVolumeIntensityEnabled: 0
-  m_ShadowVolumeIntensity: 0.75
-  m_LocalBounds:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0.5, y: 0.5, z: 0}
-  m_PointLightInnerAngle: 360
-  m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 1
-  m_ShapeLightParametricSides: 5
-  m_ShapeLightParametricAngleOffset: 0
-  m_ShapeLightParametricRadius: 1
-  m_ShapeLightFalloffSize: 0.5
-  m_ShapeLightFalloffOffset: {x: 0, y: 0}
-  m_ShapePath:
-  - {x: -0.5, y: -0.5, z: 0}
-  - {x: 0.5, y: -0.5, z: 0}
-  - {x: 0.5, y: 0.5, z: 0}
-  - {x: -0.5, y: 0.5, z: 0}
 --- !u!1 &102377731
 GameObject:
   m_ObjectHideFlags: 0
@@ -1477,6 +1395,7 @@ MonoBehaviour:
   - {fileID: 816478017}
   targetLimbs: []
   targetTrans: []
+  targetStatusManagers: []
 --- !u!1 &301777124
 GameObject:
   m_ObjectHideFlags: 0
@@ -2790,7 +2709,6 @@ Transform:
   - {fileID: 508540281}
   - {fileID: 562561575}
   - {fileID: 1619339231}
-  - {fileID: 697945455}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &655692375
@@ -3196,88 +3114,6 @@ Transform:
   - {fileID: 1595523409}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &697945454
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 697945455}
-  - component: {fileID: 697945456}
-  m_Layer: 0
-  m_Name: Light 2D
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &697945455
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 697945454}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 655692374}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &697945456
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 697945454}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ComponentVersion: 1
-  m_LightType: 2
-  m_BlendStyleIndex: 0
-  m_FalloffIntensity: 0.5
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.5
-  m_LightVolumeIntensity: 1
-  m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000
-  m_LightCookieSprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_DeprecatedPointLightCookieSprite: {fileID: 0}
-  m_LightOrder: 0
-  m_AlphaBlendOnOverlap: 0
-  m_OverlapOperation: 0
-  m_NormalMapDistance: 3
-  m_NormalMapQuality: 2
-  m_UseNormalMap: 0
-  m_ShadowIntensityEnabled: 0
-  m_ShadowIntensity: 0.75
-  m_ShadowVolumeIntensityEnabled: 0
-  m_ShadowVolumeIntensity: 0.75
-  m_LocalBounds:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0.5, y: 0.5, z: 0}
-  m_PointLightInnerAngle: 360
-  m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 1
-  m_ShapeLightParametricSides: 5
-  m_ShapeLightParametricAngleOffset: 0
-  m_ShapeLightParametricRadius: 1
-  m_ShapeLightFalloffSize: 0.5
-  m_ShapeLightFalloffOffset: {x: 0, y: 0}
-  m_ShapePath:
-  - {x: -0.5, y: -0.5, z: 0}
-  - {x: 0.5, y: -0.5, z: 0}
-  - {x: 0.5, y: 0.5, z: 0}
-  - {x: -0.5, y: 0.5, z: 0}
 --- !u!1 &707064428
 GameObject:
   m_ObjectHideFlags: 0
@@ -4099,6 +3935,7 @@ MonoBehaviour:
   tentacleEffects:
     damagePerInstance: 0.01
     stunPerInstance: 0.005
+    speedModifier: {fileID: 0}
   ownStatusManager: {fileID: 831110779}
   pointsDividedBy: 100
   contactFilter:
@@ -4339,6 +4176,7 @@ MonoBehaviour:
   healthSubject: {fileID: 1710604406}
   speedSubject: {fileID: 1710604405}
   grabManager: {fileID: 1259592570}
+  applyStatusEffects: {fileID: 0}
 --- !u!195 &831110780
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -4483,7 +4321,7 @@ MonoBehaviour:
   useStateVars: 0
   dangerous: 0
   stateEvent: []
-  attackDamage: 0.1
+  maxTimeInState: 1.5
   chaseState: {fileID: 2039439006}
   roamState: {fileID: 17291131}
   attackStanceState: {fileID: 0}
@@ -4503,7 +4341,11 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   ownStatusManager: {fileID: 0}
-  maxTimeInState: 1.5
+  applyStatusEffects: {fileID: 0}
+  statusEffects:
+    damagePerInstance: 0
+    stunPerInstance: 0
+    speedModifier: {fileID: 0}
 --- !u!1 &842713354
 GameObject:
   m_ObjectHideFlags: 0
@@ -5620,7 +5462,7 @@ MonoBehaviour:
   useStateVars: 1
   dangerous: 0
   stateEvent: []
-  attackDamage: 0.01
+  maxTimeInState: 1
   chaseState: {fileID: 1885219475}
   roamState: {fileID: 842713355}
   attackStanceState: {fileID: 578554713}
@@ -5640,7 +5482,11 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   ownStatusManager: {fileID: 831110779}
-  maxTimeInState: 1
+  applyStatusEffects: {fileID: 0}
+  statusEffects:
+    damagePerInstance: 0
+    stunPerInstance: 0
+    speedModifier: {fileID: 0}
 --- !u!58 &1030532832
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -8653,6 +8499,7 @@ MonoBehaviour:
     Min: 179.99992
     Max: 360
   additionalFlipObjectsX: []
+  additionalFlipObjectsY: []
 --- !u!95 &1670718214
 Animator:
   serializedVersion: 5
@@ -9725,8 +9572,7 @@ Transform:
   m_LocalPosition: {x: 0.17690003, y: 0.17409998, z: 0}
   m_LocalScale: {x: 0.9738, y: 0.3350971, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 95300035}
+  m_Children: []
   m_Father: {fileID: 655692374}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1881924836
@@ -12087,6 +11933,7 @@ MonoBehaviour:
     Min: 179.99992
     Max: 360
   additionalFlipObjectsX: []
+  additionalFlipObjectsY: []
 --- !u!114 &2305707160990897647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12594,6 +12441,10 @@ PrefabInstance:
     - target: {fileID: 894385398099924319, guid: bb5bd08dd0570a34ca5c7379379448d8, type: 3}
       propertyPath: m_Name
       value: '[Particle] Godrays'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005934555726572481, guid: bb5bd08dd0570a34ca5c7379379448d8, type: 3}
+      propertyPath: LightsModule.enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7559674481926416345, guid: bb5bd08dd0570a34ca5c7379379448d8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13174,6 +13025,7 @@ MonoBehaviour:
   - {fileID: 633077152389154858}
   targetLimbs: []
   targetTrans: []
+  targetStatusManagers: []
 --- !u!4 &4068718875739824808
 Transform:
   m_ObjectHideFlags: 0
@@ -14997,6 +14849,7 @@ MonoBehaviour:
     Min: 0
     Max: 170.19336
   additionalFlipObjectsX: []
+  additionalFlipObjectsY: []
 --- !u!4 &7135775613958870334
 Transform:
   m_ObjectHideFlags: 0
@@ -15219,6 +15072,7 @@ MonoBehaviour:
   healthSubject: {fileID: 8123322605266843274}
   speedSubject: {fileID: 346376783944591364}
   grabManager: {fileID: 8525168833829539792}
+  applyStatusEffects: {fileID: 0}
 --- !u!1 &7417711001561510868
 GameObject:
   m_ObjectHideFlags: 0
@@ -15702,7 +15556,7 @@ MonoBehaviour:
   useStateVars: 1
   dangerous: 0
   stateEvent: []
-  attackDamage: 0.01
+  maxTimeInState: 1
   chaseState: {fileID: 112084800106620403}
   roamState: {fileID: 7247853248594689737}
   attackStanceState: {fileID: 7048505414782169152}
@@ -15722,7 +15576,11 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   ownStatusManager: {fileID: 8696543890392020855}
-  maxTimeInState: 1
+  applyStatusEffects: {fileID: 0}
+  statusEffects:
+    damagePerInstance: 0
+    stunPerInstance: 0
+    speedModifier: {fileID: 0}
 --- !u!195 &7893000238193072632
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -16078,7 +15936,7 @@ MonoBehaviour:
   useStateVars: 1
   dangerous: 0
   stateEvent: []
-  attackDamage: 0.01
+  maxTimeInState: 1
   chaseState: {fileID: 2305707160990897647}
   roamState: {fileID: 8855269676521426645}
   attackStanceState: {fileID: 9196599680278888540}
@@ -16098,7 +15956,11 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   ownStatusManager: {fileID: 7404450423095183211}
-  maxTimeInState: 1
+  applyStatusEffects: {fileID: 0}
+  statusEffects:
+    damagePerInstance: 0
+    stunPerInstance: 0
+    speedModifier: {fileID: 0}
 --- !u!195 &8356465528439499236
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -16206,6 +16068,7 @@ MonoBehaviour:
   tentacleEffects:
     damagePerInstance: 0.01
     stunPerInstance: 0.005
+    speedModifier: {fileID: 0}
   ownStatusManager: {fileID: 7404450423095183211}
   pointsDividedBy: 100
   contactFilter:
@@ -16648,6 +16511,7 @@ MonoBehaviour:
   healthSubject: {fileID: 7983305597278226070}
   speedSubject: {fileID: 1927297802871314456}
   grabManager: {fileID: 7511664535382048716}
+  applyStatusEffects: {fileID: 0}
 --- !u!1 &8725299004482553180
 GameObject:
   m_ObjectHideFlags: 0
