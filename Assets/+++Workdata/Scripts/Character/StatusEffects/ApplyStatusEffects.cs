@@ -4,7 +4,7 @@ using UnityEngine;
 public class ApplyStatusEffects : MonoBehaviour
 {
     #region serialized fields
-
+    [SerializeField] CombatManager combatManager;
     #endregion
 
     #region private fields
@@ -13,26 +13,33 @@ public class ApplyStatusEffects : MonoBehaviour
 
     public void ApplyEffects(StatusEffects _statusEffects, StatusManager targetStatusManager, LimbSubject limbSubject = null)
     {
+        bool hasDoneSmth = false;
+
         if (_statusEffects.damagePerInstance != 0 && limbSubject)
+        {
             limbSubject.AddDamage(_statusEffects.damagePerInstance);
+            hasDoneSmth = true;
+        }
 
         if (_statusEffects.stunPerInstance != 0)
+        {
             targetStatusManager.AddStun(_statusEffects.stunPerInstance);
+            hasDoneSmth = true;
+        }
 
         if (_statusEffects.speedModifier)
+        {
             targetStatusManager.AddSpeedModifier(_statusEffects.speedModifier);
+            hasDoneSmth = true;
+        }
+
+        if (combatManager && hasDoneSmth)
+            combatManager.CreatureInteraction(targetStatusManager);
     }
 
     public void ApplyEffects(StatusEffects _statusEffects, LimbSubject limbSubject)
     {
-        if (_statusEffects.damagePerInstance != 0 && limbSubject)
-            limbSubject.AddDamage(_statusEffects.damagePerInstance);
-
-        if (_statusEffects.stunPerInstance != 0)
-            limbSubject.ownStatusManager.AddStun(_statusEffects.stunPerInstance);
-
-        if (_statusEffects.speedModifier)
-            limbSubject.ownStatusManager.AddSpeedModifier(_statusEffects.speedModifier);
+        ApplyEffects(_statusEffects, limbSubject.ownStatusManager, limbSubject);
     }
 
     public void RemoveSpeedModifier(StatusManager targetStatusManager, SpeedModifier speedModifier)
