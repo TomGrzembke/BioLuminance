@@ -10,7 +10,7 @@ public class DepthLighting : MonoBehaviour
 {
     public SpriteRenderer mapSprite;
     public GameObject subject;
-    public Material mat;
+    public ParticleSystem[] particleSystem;
     
     [Space(5)]
     public float clampedHeight;
@@ -22,16 +22,16 @@ public class DepthLighting : MonoBehaviour
     public float lightLevel;
     public float maxLightLevel;
     public float minLightLevel;
-
-    public Color ab;
     
     float subjectVerticalPosition;
     float maxHeight;
     float minHeight;
+    float alpha = 255;
 
     private void Awake()
     {
-        GetSpritePos();
+        maxHeight = mapSprite.bounds.max.y;
+        minHeight = mapSprite.bounds.min.y;
     }
 
     private void Update()
@@ -43,20 +43,7 @@ public class DepthLighting : MonoBehaviour
 
         LightInfo();
     }
-
-    [ButtonMethod]
-    public void GetSpritePos()
-    {
-        maxHeight = mapSprite.bounds.max.y;
-        minHeight = mapSprite.bounds.min.y;
-    }
-
-    [ButtonMethod]
-    public void Test()
-    {
-        mat.color = ab;
-    }
-
+    
     public void LightInfo()
     {
         if (clampedHeight < 0)
@@ -66,6 +53,16 @@ public class DepthLighting : MonoBehaviour
             if (testHeight < 0)
                 testHeight *= -1f;
             lightLevel =+ maxLightLevel - testHeight;
+            
+            foreach (var p in particleSystem)
+            {
+                var mainModule = p.main;
+                
+                Color c = new (mainModule.startColor.color.r, mainModule.startColor.color.g,
+                    mainModule.startColor.color.b, alpha = +maxLightLevel - testHeight * 1.1f);
+                
+                mainModule.startColor = new (c);
+            }
         }
         
         lightLevel = Mathf.Clamp(lightLevel, minLightLevel, maxLightLevel);
