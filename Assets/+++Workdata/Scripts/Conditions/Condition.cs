@@ -5,6 +5,7 @@ public class Condition : MonoBehaviour
     #region serialized fields
     [SerializeField, Range(0, 100)] protected float percentageEffectiveness = 0;
     [SerializeField] SkillClass.Skill skillType;
+    public float AlphaEffectiveness => percentageEffectiveness / 100;
     #endregion
 
     #region private fields
