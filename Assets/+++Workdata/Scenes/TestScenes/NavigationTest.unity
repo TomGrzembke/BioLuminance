@@ -4303,6 +4303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f0ed5816d3fe72458602006eb00551c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
   targetLayer: 3
   creatureType: 4
   trans: {fileID: 831110778}
@@ -4311,6 +4312,8 @@ MonoBehaviour:
   speedSubject: {fileID: 1710604405}
   grabManager: {fileID: 1259592570}
   applyStatusEffects: {fileID: 0}
+  creatureRewards: {fileID: 0}
+  pointSubject: {fileID: 0}
 --- !u!195 &831110780
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -4345,7 +4348,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1228b8027c71e9448a205d0592f700ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointSystem: {fileID: 0}
   statusManager: {fileID: 0}
   creatures: 4
   points: 1000
@@ -8784,7 +8786,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25dce1461494d7045a82c1e4be2998b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 0}
+  points: 0
   pointPools: []
   allObjects: []
   creaturesList: 
@@ -8815,7 +8817,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0783a26d634e47a4383d5052edfd154e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointSystem: {fileID: 0}
   creatures: 4
 --- !u!114 &1684580391
 MonoBehaviour:
@@ -30412,6 +30413,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f0ed5816d3fe72458602006eb00551c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
   targetLayer: 3
   creatureType: 4
   trans: {fileID: 900194594316727046}
@@ -30420,6 +30422,8 @@ MonoBehaviour:
   speedSubject: {fileID: 346376783944591364}
   grabManager: {fileID: 8525168833829539792}
   applyStatusEffects: {fileID: 0}
+  creatureRewards: {fileID: 0}
+  pointSubject: {fileID: 0}
 --- !u!1 &7417711001561510868
 GameObject:
   m_ObjectHideFlags: 0
@@ -31035,7 +31039,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1228b8027c71e9448a205d0592f700ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointSystem: {fileID: 0}
   statusManager: {fileID: 0}
   creatures: 4
   points: 1000
@@ -36746,6 +36749,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f0ed5816d3fe72458602006eb00551c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
   targetLayer: -1
   creatureType: 2
   trans: {fileID: 1301420225274905370}
@@ -36754,6 +36758,8 @@ MonoBehaviour:
   speedSubject: {fileID: 1927297802871314456}
   grabManager: {fileID: 7511664535382048716}
   applyStatusEffects: {fileID: 0}
+  creatureRewards: {fileID: 0}
+  pointSubject: {fileID: 0}
 --- !u!1 &8725299004482553180
 GameObject:
   m_ObjectHideFlags: 0
