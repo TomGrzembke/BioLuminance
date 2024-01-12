@@ -39,6 +39,7 @@ public class SpeedModifier : MonoBehaviour
     {
         if (speedSubject)
             speedSubject.RemoveSpeedModifier(amount);
+        subscribed = false;
     }
 
 }

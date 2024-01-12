@@ -3,17 +3,17 @@ using UnityEngine;
 public class Condition : MonoBehaviour
 {
     #region serialized fields
-    [SerializeField, Range(0, 100)] protected float percentageEffectiveness = 0;
+    [SerializeField, Range(0, 100)] protected float percentageDebuf = 0;
     [SerializeField] SkillClass.Skill skillType;
-    public float AlphaEffectiveness => percentageEffectiveness / 100;
+    public float AlphaDebuf => percentageDebuf / 100;
     #endregion
 
     #region private fields
-    protected float calc_percentageEffectiveness => percentageEffectiveness * SkillManager.Instance.GetSkillAmountAlpha(skillType);
+    public float Calc_percentageDebuff => -(-1 + Mathf.Clamp01(AlphaDebuf * -(-1 + SkillManager.Instance.GetSkillAmountAlpha(skillType))));
     #endregion
 
     public void SetPercentageEffectiveness(float _percentageEffectiveness)
     {
-        percentageEffectiveness = _percentageEffectiveness;
+        percentageDebuf = _percentageEffectiveness;
     }
 }

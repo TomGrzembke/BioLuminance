@@ -27,7 +27,7 @@ public class HealthRegenCondition : Condition
     {
         yield return new WaitForSeconds(interval);
 
-        limbSubject.AddHealth(regenPerTick * percentageEffectiveness / 100);
+        limbSubject.AddHealth(regenPerTick * Calc_percentageDebuff);
 
         regenRoutine = StartCoroutine(LifeRegen());
     }

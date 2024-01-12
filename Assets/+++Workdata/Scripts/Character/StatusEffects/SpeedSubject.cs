@@ -51,7 +51,7 @@ public class SpeedSubject : MonoBehaviour
         }
 
         if (slowCondition)
-            currentSpeed *= slowCondition.AlphaEffectiveness;
+            currentSpeed *= slowCondition.Calc_percentageDebuff;
 
         if (currentSpeed < minSpeed)
             currentSpeed = minSpeed;

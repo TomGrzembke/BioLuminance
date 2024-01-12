@@ -17,7 +17,7 @@ public class SkillManager : MonoBehaviour
     public int Oxygen => oxygen;
     [SerializeField] int oxygen;
 
-    [SerializeField] int maxPointAmount = 4;
+    [SerializeField] float maxPointAmount = 4;
     void Update()
     {
         imageInformationField.transform.position = Input.mousePosition + offset;
@@ -86,13 +86,13 @@ public class SkillManager : MonoBehaviour
         };
     }
 
-    public int GetSkillAmountAlpha(SkillClass.Skill skillType)
+    public float GetSkillAmountAlpha(SkillClass.Skill skillType)
     {
         return skillType switch
         {
-            SkillClass.Skill.Oxygen => Instance.oxygen / maxPointAmount,
-            SkillClass.Skill.Pressure => Instance.pressure / maxPointAmount,
-            SkillClass.Skill.Temperature => Instance.temperature / maxPointAmount,
+            SkillClass.Skill.Oxygen => oxygen / maxPointAmount,
+            SkillClass.Skill.Pressure => pressure / maxPointAmount,
+            SkillClass.Skill.Temperature => temperature / maxPointAmount,
             _ => 0,
         };
     }
