@@ -18,7 +18,7 @@ public class InformationSO : ScriptableObject
 public class SkillClass
 {
     public Skill skill;
-    public float skillPointAmount;
+    public int skillPointAmount;
 
     public enum Skill
     {

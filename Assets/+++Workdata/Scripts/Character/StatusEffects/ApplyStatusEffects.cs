@@ -5,6 +5,7 @@ public class ApplyStatusEffects : MonoBehaviour
 {
     #region serialized fields
     [SerializeField] bool player;
+    [SerializeField] StunEffectCondition stunEffectCondition;
     #endregion
 
     #region private fields
@@ -23,7 +24,7 @@ public class ApplyStatusEffects : MonoBehaviour
 
         if (_statusEffects.stunPerInstance != 0)
         {
-            targetStatusManager.AddStun(_statusEffects.stunPerInstance);
+            targetStatusManager.AddStun(_statusEffects.stunPerInstance * stunEffectCondition.AlphaEffectiveness);
             hasDoneSmth = true;
         }
 

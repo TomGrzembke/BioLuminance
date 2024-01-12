@@ -6,6 +6,7 @@ public class StartupManager : MonoBehaviour
 {
     IEnumerator Start()
     {
+        yield return null;
         LoadingScreen.Show(this);
         yield return SceneLoader.LoadScene(Scenes.Manager);
 

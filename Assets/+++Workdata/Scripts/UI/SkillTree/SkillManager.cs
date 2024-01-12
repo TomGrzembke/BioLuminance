@@ -3,22 +3,24 @@ using UnityEngine;
 
 public class SkillManager : MonoBehaviour
 {
-    static SkillManager Instance;
+    public static SkillManager Instance;
     void Awake() => Instance = this;
 
     [SerializeField] Vector3 offset;
     [SerializeField] GameObject imageInformationField;
     [SerializeField] GameObject skillTree;
 
-    //TODO Transfer skill to other script
+    public int Pressure => pressure;
+    [SerializeField] int pressure;
+    public int Temperature => temperature;
+    [SerializeField] int temperature;
+    public int Oxygen => oxygen;
+    [SerializeField] int oxygen;
 
-    [SerializeField] float pressure;
-    [SerializeField] float temperature;
-    [SerializeField] float oxygen;
-
+    [SerializeField] int maxPointAmount = 4;
     void Update()
     {
-        Instance.imageInformationField.transform.position = Input.mousePosition + offset;
+        imageInformationField.transform.position = Input.mousePosition + offset;
     }
 
     [ButtonMethod]
@@ -71,5 +73,27 @@ public class SkillManager : MonoBehaviour
                 Instance.temperature += skillClass.skillPointAmount;
             }
         }
+    }
+
+    public int GetSkillAmount(SkillClass.Skill skillType)
+    {
+        return skillType switch
+        {
+            SkillClass.Skill.Oxygen => Instance.oxygen,
+            SkillClass.Skill.Pressure => Instance.pressure,
+            SkillClass.Skill.Temperature => Instance.temperature,
+            _ => 0,
+        };
+    }
+
+    public int GetSkillAmountAlpha(SkillClass.Skill skillType)
+    {
+        return skillType switch
+        {
+            SkillClass.Skill.Oxygen => Instance.oxygen / maxPointAmount,
+            SkillClass.Skill.Pressure => Instance.pressure / maxPointAmount,
+            SkillClass.Skill.Temperature => Instance.temperature / maxPointAmount,
+            _ => 0,
+        };
     }
 }
