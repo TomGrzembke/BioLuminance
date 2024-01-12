@@ -23,12 +23,19 @@ public class CombatManager : MonoBehaviour
     }
     void GiftRewardPassive(Interaction interaction)
     {
-        AbilitySlotManager.Instance.AddNewAbility(interaction.targetStatusManager.CreatureRewards.PassiveReward);
+        Instance.GiftReward(interaction.targetStatusManager.CreatureRewards.PassiveReward, interaction);
     }
 
-    void GiftRewardActive(int index)
+    void GiftRewardActive(Interaction interaction)
     {
-        AbilitySlotManager.Instance.AddNewAbility(creatureInteractions[index].targetStatusManager.CreatureRewards.ActiveReward);
+        Instance.GiftReward(interaction.targetStatusManager.CreatureRewards.ActiveReward, interaction);
+    }
+
+    void GiftReward(GameObject reward, Interaction interaction = null)
+    {
+        AbilitySlotManager.Instance.AddNewAbility(reward);
+
+        interaction?.targetStatusManager.PointSubject.PercentOption();
     }
 
     public void CreatureInteraction(StatusManager statusManager)
@@ -73,7 +80,7 @@ public class CombatManager : MonoBehaviour
             StopCoroutine(creatureInteractions[i].fleeCheckCoroutine);
             StopCoroutine(creatureInteractions[i].interactionCooldownCoroutine);
 
-            GiftRewardActive(i);
+            GiftRewardActive(creatureInteractions[i]);
             creatureInteractions.RemoveAt(i);
         }
     }

@@ -14,7 +14,6 @@ public class PointSystem : MonoBehaviour
     void Awake()
     {
         Instance = this;
-        CollectCreatures();
     }
 
     void Update()
