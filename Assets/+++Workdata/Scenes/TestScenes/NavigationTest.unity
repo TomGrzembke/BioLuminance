@@ -12264,6 +12264,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4295896269665817983, guid: 7e9cdfba87075f74e88a883c7be2593d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4295896269665817983, guid: 7e9cdfba87075f74e88a883c7be2593d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4295896269665817983, guid: 7e9cdfba87075f74e88a883c7be2593d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -12306,6 +12314,54 @@ PrefabInstance:
     - target: {fileID: 4547200711770939818, guid: 7e9cdfba87075f74e88a883c7be2593d, type: 3}
       propertyPath: NoiseModule.strength.scalar
       value: 0.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 4547200711770939818, guid: 7e9cdfba87075f74e88a883c7be2593d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4547200711770939818, guid: 7e9cdfba87075f74e88a883c7be2593d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4547200711770939818, guid: 7e9cdfba87075f74e88a883c7be2593d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4547200711770939818, guid: 7e9cdfba87075f74e88a883c7be2593d, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4547200711770939818, guid: 7e9cdfba87075f74e88a883c7be2593d, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4547200711770939818, guid: 7e9cdfba87075f74e88a883c7be2593d, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4547200711770939818, guid: 7e9cdfba87075f74e88a883c7be2593d, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4547200711770939818, guid: 7e9cdfba87075f74e88a883c7be2593d, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4547200711770939818, guid: 7e9cdfba87075f74e88a883c7be2593d, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4547200711770939818, guid: 7e9cdfba87075f74e88a883c7be2593d, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key2.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4547200711770939818, guid: 7e9cdfba87075f74e88a883c7be2593d, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key2.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4547200711770939818, guid: 7e9cdfba87075f74e88a883c7be2593d, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key2.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4547200711770939818, guid: 7e9cdfba87075f74e88a883c7be2593d, type: 3}
       propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.size
@@ -12366,6 +12422,10 @@ PrefabInstance:
     - target: {fileID: 4547200711770939818, guid: 7e9cdfba87075f74e88a883c7be2593d, type: 3}
       propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[3].outWeight
       value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4674920038418080463, guid: 7e9cdfba87075f74e88a883c7be2593d, type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8149542758244869329, guid: 7e9cdfba87075f74e88a883c7be2593d, type: 3}
       propertyPath: m_Name
@@ -17320,5 +17380,5 @@ SceneRoots:
   - {fileID: 1297890047}
   - {fileID: 7065252596383529803}
   - {fileID: 3077377532094390264}
-  - {fileID: 7474670751652063209}
   - {fileID: 2602968947102708554}
+  - {fileID: 7474670751652063209}
