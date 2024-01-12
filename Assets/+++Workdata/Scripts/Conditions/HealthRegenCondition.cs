@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class HealthRegen : MonoBehaviour
+public class HealthRegenCondition : MonoBehaviour
 {
     #region serialized fields
     [SerializeField] LimbSubject limbSubject;
@@ -26,7 +26,15 @@ public class HealthRegen : MonoBehaviour
 
     IEnumerator LifeRegen()
     {
-
         yield return new WaitForSeconds(interval);
+
+        limbSubject.AddHealth(regenPerTick * percentageEffectiveness / 100);
+
+        regenRoutine = StartCoroutine(LifeRegen());
+    }
+
+    public void SetPercentageEffectiveness(float _percentageEffectiveness)
+    {
+        percentageEffectiveness = _percentageEffectiveness;
     }
 }

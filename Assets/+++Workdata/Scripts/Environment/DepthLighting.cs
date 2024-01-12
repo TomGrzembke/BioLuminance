@@ -23,13 +23,13 @@ public class DepthLighting : MonoBehaviour
     float minHeight;
     float alpha = 255;
 
-    private void Awake()
+    void Awake()
     {
         maxHeight = mapSprite.bounds.max.y;
         minHeight = mapSprite.bounds.min.y;
     }
 
-    private void Update()
+    void Update()
     {
         subjectVerticalPosition = subject.transform.position.y;
 

@@ -7,6 +7,8 @@ public class SpeedSubject : MonoBehaviour
 {
     [SerializeField] NavMeshAgent agent;
     [SerializeField] float speed;
+    [SerializeField] SlowCondition slowCondition;
+
     public event Action<float> OnSpeedChanged;
     public float Speed
     {
@@ -47,6 +49,9 @@ public class SpeedSubject : MonoBehaviour
         {
             currentSpeed += SpeedModifierList[i];
         }
+
+        if (slowCondition)
+            currentSpeed *= slowCondition.AlphaEffectiveness;
 
         if (currentSpeed < minSpeed)
             currentSpeed = minSpeed;
