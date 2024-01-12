@@ -29,6 +29,12 @@ public class PauseManager : MonoBehaviour
         Time.timeScale = paused ? 0 : 1;
     }
 
+    public void PauseLogic(bool condition)
+    {
+        paused = condition;
+        Time.timeScale = paused ? 0 : 1;
+    }
+
     #region OnEnable/Disable
     public void OnEnable()
     {

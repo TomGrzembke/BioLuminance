@@ -1,28 +1,23 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using MyBox;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
-using UnityEngine.Serialization;
 
 public class DepthLighting : MonoBehaviour
 {
     public SpriteRenderer mapSprite;
     public GameObject subject;
     public ParticleSystem[] particleSystem;
-    
+
     [Space(5)]
     public float clampedHeight;
 
-    [Header("Lighting")] 
+    [Header("Lighting")]
     public Light2D light2D;
-    
+
     [Space(5)]
     public float lightLevel;
     public float maxLightLevel;
     public float minLightLevel;
-    
+
     float subjectVerticalPosition;
     float maxHeight;
     float minHeight;
@@ -43,7 +38,7 @@ public class DepthLighting : MonoBehaviour
 
         LightInfo();
     }
-    
+
     public void LightInfo()
     {
         if (clampedHeight < 0)
@@ -53,27 +48,25 @@ public class DepthLighting : MonoBehaviour
             if (testHeight < 0)
                 testHeight *= -1f;
             lightLevel = maxLightLevel - testHeight;
-            
+
             foreach (var p in particleSystem)
             {
                 var mainModule = p.main;
                 alpha = 1 - testHeight * 1.6f;
 
                 alpha = Mathf.Clamp(alpha, minLightLevel, 1);
-                
-                Debug.Log(alpha);
-                
-                Color c = new (mainModule.startColor.color.r, mainModule.startColor.color.g,
+
+                Color c = new(mainModule.startColor.color.r, mainModule.startColor.color.g,
                     mainModule.startColor.color.b, alpha);
-                
-                mainModule.startColor = new (c);
+
+                mainModule.startColor = new(c);
             }
         }
-        
+
         lightLevel = Mathf.Clamp(lightLevel, minLightLevel, maxLightLevel);
         light2D.intensity = Mathf.Clamp(light2D.intensity, minLightLevel, maxLightLevel);
-        
-        
+
+
         light2D.intensity = lightLevel;
     }
 }
