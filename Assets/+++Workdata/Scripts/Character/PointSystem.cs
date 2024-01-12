@@ -7,10 +7,10 @@ using UnityEngine;
 public class PointSystem : MonoBehaviour
 {
     public static PointSystem Instance;
+    public float Points => points;
+    [SerializeField] float points;
     [SerializeField] List<PointPool> pointPools;
     [SerializeField] List<StatusManager> allObjects;
-    [SerializeField] float points;
-    public float Points => points;
     public List<Creatures> creaturesList = new();
 
     void Awake()
@@ -93,7 +93,7 @@ public class PointSystem : MonoBehaviour
         {
             if (pointPool.creature == creatureType)
             {
-                //playerController.points += pointPool.initialDNAAmount;
+                points += pointPool.initialDNAAmount;
 
                 float percent = pointPool.initialDNAAmount / pointPool.creaturesInScene;
                 pointPool.initialDNAAmount -= percent;
