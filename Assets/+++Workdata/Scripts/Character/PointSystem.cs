@@ -94,7 +94,7 @@ public class PointSystem : MonoBehaviour
             if (pointPool.creature == creatureType)
             {
                 points += pointPool.initialDNAAmount;
-
+                RewardWindow.Instance.ShowCurrency(points, pointPool.initialDNAAmount);
                 float percent = pointPool.initialDNAAmount / pointPool.creaturesInScene;
                 pointPool.initialDNAAmount -= percent;
                 pointPool.creaturesInScene--;

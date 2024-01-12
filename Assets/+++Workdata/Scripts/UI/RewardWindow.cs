@@ -15,13 +15,19 @@ public class RewardWindow : MonoBehaviour
     [SerializeField] TextMeshProUGUI titelText;
     [SerializeField] TextMeshProUGUI descriptionText;
     [SerializeField] float fadeTime = 2;
+    [SerializeField] float currencyFadeTime = 2;
+    [SerializeField] float currencyActiveAfterCalc = 2;
     [SerializeField] TextMeshProUGUI rewardText;
+    [SerializeField] GameObject currencObject;
+    [SerializeField] CanvasGroup rewardTextCanvasGroup;
+
     #endregion
 
     #region private fields
     CanvasGroup rewardWindowCanvasGroup;
     CanvasGroup essentialUICanvasGroup;
-
+    Coroutine currentRewarWindowCoroutine;
+    Coroutine showCurrencyCoroutine;
     #endregion
 
     void Awake()
@@ -47,16 +53,66 @@ public class RewardWindow : MonoBehaviour
         descriptionText.text = ability.AbilitySO.abilityDescription;
 
         PauseManager.Instance.PauseLogic(true);
-        StopAllCoroutines();
-        StartCoroutine(ShowCoroutine());
+
+        if (currentRewarWindowCoroutine != null)
+            StopCoroutine(currentRewarWindowCoroutine);
+
+        currentRewarWindowCoroutine = StartCoroutine(ShowCoroutine());
     }
 
     [ButtonMethod]
     public void Close()
     {
         PauseManager.Instance.PauseLogic(false);
-        StopAllCoroutines();
-        StartCoroutine(HideCoroutine());
+
+        if (currentRewarWindowCoroutine != null)
+            StopCoroutine(currentRewarWindowCoroutine);
+
+        currentRewarWindowCoroutine = StartCoroutine(HideCoroutine());
+    }
+    public void ShowCurrency(float current, float additional)
+    {
+        if(showCurrencyCoroutine != null)
+            StopCoroutine(showCurrencyCoroutine);
+
+        showCurrencyCoroutine = StartCoroutine(ShowCurrencyCoroutine(current, additional));
+    }
+
+    IEnumerator ShowCurrencyCoroutine(float current, float additional)
+    {
+        currencObject.SetActive(true);
+        rewardTextCanvasGroup.alpha = 0;
+        float time = 0;
+        float beforeCalc = current - additional;
+        rewardText.text = beforeCalc + " + " + additional;
+        while (time < fadeTime)
+        {
+            yield return null;
+            time += Time.unscaledDeltaTime;
+            rewardTextCanvasGroup.alpha = Mathf.Clamp01(time / fadeTime);
+        }
+        rewardTextCanvasGroup.alpha = 1;
+
+        time = 0;
+        while (time < currencyFadeTime)
+        {
+            yield return null;
+            time += Time.unscaledDeltaTime;
+            float percentageProgressed = time / currencyFadeTime;
+            rewardText.text = (beforeCalc + additional * percentageProgressed).RoundToInt() + " + " + (additional - (additional * percentageProgressed).RoundToInt());
+        }
+        rewardText.text = (current.RoundToInt()).ToString();
+
+        yield return new WaitForSeconds(currencyActiveAfterCalc);
+
+        time = 0;
+        while (time < fadeTime)
+        {
+            yield return null;
+            time += Time.unscaledDeltaTime;
+            rewardTextCanvasGroup.alpha = 1 - Mathf.Clamp01(time / fadeTime);
+        }
+        rewardTextCanvasGroup.alpha = 0;
     }
 
     IEnumerator ShowCoroutine()
