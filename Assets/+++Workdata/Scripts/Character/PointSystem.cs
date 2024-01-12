@@ -9,6 +9,8 @@ public class PointSystem : MonoBehaviour
     public static PointSystem Instance;
     [SerializeField] List<PointPool> pointPools;
     [SerializeField] List<StatusManager> allObjects;
+    [SerializeField] float points;
+    public float Points => points;
     public List<Creatures> creaturesList = new();
 
     void Awake()
