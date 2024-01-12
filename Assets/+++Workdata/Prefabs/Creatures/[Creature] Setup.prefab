@@ -92,6 +92,7 @@ MonoBehaviour:
   grabManager: {fileID: 2024252366454839533}
   applyStatusEffects: {fileID: 1818415738067377841}
   creatureRewards: {fileID: 7627820772083735243}
+  pointSubject: {fileID: 5676481398085119860}
 --- !u!114 &1818415738067377841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -800,6 +801,7 @@ GameObject:
   - component: {fileID: 1595835679270034538}
   - component: {fileID: 1241876678968463969}
   - component: {fileID: 7627820772083735243}
+  - component: {fileID: 5676481398085119860}
   m_Layer: 0
   m_Name: '[Creature] Setup'
   m_TagString: Untagged
@@ -859,6 +861,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   passiveReward: {fileID: 2889186154452174338, guid: 98a03bc05f393774ebf17ec060a1f849, type: 3}
   activeReward: {fileID: 2889186154452174338, guid: 98a03bc05f393774ebf17ec060a1f849, type: 3}
+--- !u!114 &5676481398085119860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2791954618058492436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1228b8027c71e9448a205d0592f700ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointSystem: {fileID: 0}
+  statusManager: {fileID: 0}
+  creatures: 0
+  points: 0
 --- !u!1 &3150980292284566887
 GameObject:
   m_ObjectHideFlags: 0

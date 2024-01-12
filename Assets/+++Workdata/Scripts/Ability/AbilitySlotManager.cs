@@ -40,10 +40,13 @@ public class AbilitySlotManager : MonoBehaviour
     {
         for (int i = 0; i < abilitySlots.Length; i++)
         {
-            if (!abilitySlots[i].occupied)
+            if (abilitySlots[i].CurrentAbilityPrefab == newPrefab)
+                break;
+            else if (!abilitySlots[i].occupied)
             {
                 abilitySlots[i].Execute(false);
                 abilitySlots[i].ChangeAbilityPrefab(newPrefab, this);
+                RewardWindow.Instance.GiveReward(newPrefab);
                 break;
             }
         }

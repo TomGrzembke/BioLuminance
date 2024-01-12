@@ -9,7 +9,6 @@ public class GameStateManager : MonoBehaviour
 
     [SerializeField] SceneReference gamePlayScene;
     [SerializeField] GameObject optionsWindow;
-    [SerializeField] PauseManager pauseManager;
     void Awake() => Instance = this;
 
 
@@ -21,7 +20,7 @@ public class GameStateManager : MonoBehaviour
     public static void OptionsWindow(bool status = true)
     {
         Instance.optionsWindow?.SetActive(status);
-        Instance.pauseManager.PauseLogic();
+        PauseManager.Instance.PauseLogic();
     }
 
     public static void GoToMainMenu()

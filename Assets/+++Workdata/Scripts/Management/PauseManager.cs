@@ -3,7 +3,7 @@ using UnityEngine;
 public class PauseManager : MonoBehaviour
 {
     #region serialized fields
-
+    public static PauseManager Instance;
     #endregion
 
     #region private fields
@@ -13,6 +13,7 @@ public class PauseManager : MonoBehaviour
 
     void Awake()
     {
+        Instance = this;
         inputActions = new();
 
         inputActions.Player.Pause.performed += ctx => PauseButton();

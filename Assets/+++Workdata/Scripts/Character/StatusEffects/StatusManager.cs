@@ -24,6 +24,8 @@ public class StatusManager : MonoBehaviour
     [SerializeField] ApplyStatusEffects applyStatusEffects;
     public CreatureRewards CreatureRewards => creatureRewards;
     [SerializeField, ConditionalField(nameof(isPlayer), true)] CreatureRewards creatureRewards;
+    public PointSubject PointSubject => pointSubject;
+    [SerializeField] PointSubject pointSubject;
     #endregion
 
     #region private fields

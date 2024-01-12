@@ -1,6 +1,8 @@
 using MyBox;
 using System.Collections;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RewardWindow : MonoBehaviour
 {
@@ -9,7 +11,11 @@ public class RewardWindow : MonoBehaviour
     #region serialized fields
     [SerializeField] GameObject rewardWindow;
     [SerializeField] GameObject essentialUI;
+    [SerializeField] Image rewardImage;
+    [SerializeField] TextMeshProUGUI titelText;
+    [SerializeField] TextMeshProUGUI descriptionText;
     [SerializeField] float fadeTime = 2;
+    [SerializeField] TextMeshProUGUI rewardText;
     #endregion
 
     #region private fields
@@ -35,6 +41,12 @@ public class RewardWindow : MonoBehaviour
     public void GiveReward(GameObject reward)
     {
         if (!reward) return;
+        Ability ability = reward.GetComponent<Ability>();
+        rewardImage.sprite = ability.AbilitySO.abilitySprite;
+        titelText.text = ability.AbilitySO.abilityTitel;
+        descriptionText.text = ability.AbilitySO.abilityDescription;
+
+        PauseManager.Instance.PauseLogic(true);
         StopAllCoroutines();
         StartCoroutine(ShowCoroutine());
     }
@@ -42,6 +54,7 @@ public class RewardWindow : MonoBehaviour
     [ButtonMethod]
     public void Close()
     {
+        PauseManager.Instance.PauseLogic(false);
         StopAllCoroutines();
         StartCoroutine(HideCoroutine());
     }

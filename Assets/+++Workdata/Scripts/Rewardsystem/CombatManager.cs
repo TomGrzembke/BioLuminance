@@ -56,7 +56,7 @@ public class CombatManager : MonoBehaviour
                 for (int j = 0; j < creatureInteractions.Count; j++)
                 {
                     if (!existsInList)
-                        existsInList =  CheckIfIndexIsTarget(statusManager, j);
+                        existsInList = CheckIfIndexIsTarget(statusManager, j);
                 }
                 if (!existsInList)
                     NewEntry(statusManager);
@@ -101,7 +101,8 @@ public class CombatManager : MonoBehaviour
     {
         creatureInteractions[index].onCooldown = true;
         yield return new WaitForSeconds(interactionCooldown);
-        creatureInteractions[index].onCooldown = false;
+        if (creatureInteractions[index] != null)
+            creatureInteractions[index].onCooldown = false;
     }
 
     IEnumerator FleeChecker(Interaction interaction)

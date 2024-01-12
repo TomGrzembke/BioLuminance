@@ -1,3 +1,4 @@
+using MyBox;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -29,7 +30,7 @@ public class AbilitySlot : MonoBehaviour
         if (currentAbilityPrefab)
             currentAbilityPrefab.TryGetComponent(out currentAbility);
 
-        abilityImage.sprite = currentAbilityPrefab ? currentAbility.AbilitySprite : null;
+        abilityImage.sprite = currentAbilityPrefab ? currentAbility.AbilitySO.abilitySprite : null;
 
         if (!abilityImage.sprite)
         {
@@ -39,6 +40,8 @@ public class AbilitySlot : MonoBehaviour
         {
             occupied = true;
         }
+
+        abilityImage.SetAlpha(occupied ? 255 : 0);
     }
 
     public void ChangeAbilityPrefab(GameObject newAbilityPrefab, AbilitySlotManager _abilitySlotManager)

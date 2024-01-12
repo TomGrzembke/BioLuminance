@@ -3,8 +3,8 @@ using UnityEngine;
 public abstract class Ability : MonoBehaviour
 {
     #region serialized fields
-    [SerializeField] protected Sprite abilitySprite;
-    public Sprite AbilitySprite => abilitySprite;
+    [SerializeField] protected AbilitySO abilitySO;
+    public AbilitySO AbilitySO => abilitySO;
     #endregion
 
     #region private fields
