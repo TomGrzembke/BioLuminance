@@ -1,7 +1,6 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 [CreateAssetMenu]
 public class InformationSO : ScriptableObject
@@ -20,7 +19,7 @@ public class SkillClass
 {
     public Skill skill;
     public float skillPointAmount;
-    
+
     public enum Skill
     {
         None,
