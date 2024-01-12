@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -31,6 +32,11 @@ public class SkillNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         {
             Debug.LogError("Skill Tree: Skill Node InformationField is empty");
         }
+    }
+
+    private void OnValidate()
+    {
+        gameObject.name = informationField.skillName;
     }
 
     void Start()
