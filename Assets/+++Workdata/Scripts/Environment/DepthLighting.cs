@@ -5,7 +5,7 @@ public class DepthLighting : MonoBehaviour
 {
     public SpriteRenderer mapSprite;
     public GameObject subject;
-    public ParticleSystem[] particleSystem;
+    public new ParticleSystem[] particleSystem;
 
     [Space(5)]
     public float clampedHeight;
@@ -59,7 +59,7 @@ public class DepthLighting : MonoBehaviour
                 Color c = new(mainModule.startColor.color.r, mainModule.startColor.color.g,
                     mainModule.startColor.color.b, alpha);
 
-                mainModule.startColor = new(c);
+                mainModule.startColor = c;
             }
         }
 

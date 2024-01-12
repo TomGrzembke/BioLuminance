@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class StunEffectCondition : MonoBehaviour
+public class StunEffectCondition : Condition
 {
     #region serialized fields
     

@@ -1,9 +1,8 @@
 using UnityEngine;
 
-public class SlowCondition : MonoBehaviour
+public class SlowCondition : Condition
 {
     #region serialized fields
-    [SerializeField, Range(0, 100)] float percentageEffectiveness = 100;
     public float AlphaEffectiveness => percentageEffectiveness / 100;
     #endregion
 
@@ -11,9 +10,4 @@ public class SlowCondition : MonoBehaviour
 
     #endregion
 
-    public void SetPercentageEffectiveness(float _percentageEffectiveness)
-    {
-        _percentageEffectiveness = Mathf.Clamp(_percentageEffectiveness, 0, 100);
-        percentageEffectiveness = _percentageEffectiveness;
-    }
 }
