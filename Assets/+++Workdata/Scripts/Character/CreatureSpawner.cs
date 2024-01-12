@@ -74,7 +74,8 @@ public class CreatureSpawner : MonoBehaviour
                     Vector2 spawnPosition = GetRandomSpawnPosition(_collider);
                     GameObject instantiated = Instantiate(weightedArrays._creatureToSpawn, spawnPosition,
                         Quaternion.identity);
-                    instantiated.transform.SetParent(spawnInto);
+                    if(spawnInto != null)
+                        instantiated.transform.SetParent(spawnInto);
                     instantiatedObjects.Add(instantiated);
                     break;
                 }
