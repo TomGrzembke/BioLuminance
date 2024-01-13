@@ -7344,6 +7344,52 @@ MonoBehaviour:
   rewardText: {fileID: 1831295668}
   currencObject: {fileID: 1253783105}
   rewardTextCanvasGroup: {fileID: 1253783108}
+--- !u!1 &1088545181
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1088545183}
+  - component: {fileID: 1088545182}
+  m_Layer: 0
+  m_Name: '[DepthTracker]'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1088545182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1088545181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 803c1f5ce5facc14693194711695738c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapSprite: {fileID: 1651779023}
+  subject: {fileID: 7608655987527139212}
+--- !u!4 &1088545183
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1088545181}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1154455368
 GameObject:
   m_ObjectHideFlags: 0
@@ -19955,6 +20001,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 678745715}
   - {fileID: 297406726}
+  - {fileID: 1088545183}
   - {fileID: 1812430891}
   - {fileID: 523584570}
   - {fileID: 519420032}
