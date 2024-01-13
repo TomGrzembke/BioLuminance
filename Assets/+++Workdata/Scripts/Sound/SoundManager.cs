@@ -35,6 +35,21 @@ public class SoundManager : MonoBehaviour
             globalSFXSource.PlayOneShot(clip);
     }
 
+    #region ButtonMethods
+    public void PlaySoundButtonClick()
+    {
+        PlaySound(SoundType.ButtonClick);
+    }
+    public void PlaySoundButtonHover()
+    {
+        PlaySound(SoundType.ButtonHover);
+    }
+    public void PlaySoundButtonClickBack()
+    {
+        PlaySound(SoundType.ButtonClickBack);
+    }
+    #endregion
+
 }
 
 public enum SoundType

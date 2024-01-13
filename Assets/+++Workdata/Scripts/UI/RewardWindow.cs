@@ -72,7 +72,7 @@ public class RewardWindow : MonoBehaviour
     }
     public void ShowCurrency(float current, float additional)
     {
-        if(showCurrencyCoroutine != null)
+        if (showCurrencyCoroutine != null)
             StopCoroutine(showCurrencyCoroutine);
 
         showCurrencyCoroutine = StartCoroutine(ShowCurrencyCoroutine(current, additional));
@@ -94,12 +94,18 @@ public class RewardWindow : MonoBehaviour
         rewardTextCanvasGroup.alpha = 1;
 
         time = 0;
+            bool soundPlayed = false;
         while (time < currencyFadeTime)
         {
             yield return null;
             time += Time.unscaledDeltaTime;
             float percentageProgressed = time / currencyFadeTime;
             rewardText.text = (beforeCalc + additional * percentageProgressed).RoundToInt() + " + " + (additional - (additional * percentageProgressed).RoundToInt());
+            if (!soundPlayed)
+            {
+                SoundManager.Instance.PlaySound(SoundType.PointCounter);
+                soundPlayed = true;
+            }
         }
         rewardText.text = (current.RoundToInt()).ToString();
 

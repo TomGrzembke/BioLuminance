@@ -18,15 +18,15 @@ public class MainMenu : MonoBehaviour
     #region Sound
     public void PlaySoundButtonClick()
     {
-        SoundManager.Instance.PlaySound(SoundType.ButtonClick);
+        SoundManager.Instance.PlaySoundButtonClick();
     }
     public void PlaySoundButtonHover()
     {
-        SoundManager.Instance.PlaySound(SoundType.ButtonHover);
+        SoundManager.Instance.PlaySoundButtonHover();
     }
     public void PlaySoundButtonClickBack()
     {
-        SoundManager.Instance.PlaySound(SoundType.ButtonClickBack);
+        SoundManager.Instance.PlaySoundButtonClickBack();
     }
     #endregion
 }

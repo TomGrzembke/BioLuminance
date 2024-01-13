@@ -50,7 +50,9 @@ MonoBehaviour:
   _particleSystem: {fileID: 3212991041233700596}
   audioSource: {fileID: 6543879656111422442}
   soundType: 5
-  playType: 0
+  playType: 1
+  frequencyDividedBy: 5
+  randomizePitch: 0
 --- !u!198 &3212991041233700596
 ParticleSystem:
   m_ObjectHideFlags: 0
