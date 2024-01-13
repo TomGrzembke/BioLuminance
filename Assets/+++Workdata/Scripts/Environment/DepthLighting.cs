@@ -45,7 +45,6 @@ public class DepthLighting : MonoBehaviour
             mainModule.startColor = mainModule.startColor.color.ChangeChannel(ColorChannels.A, alpha);
         }
 
-
         lightLevel = Mathf.Clamp(lightLevel, minLightLevel, maxLightLevel);
 
         light2D.intensity = lightLevel;

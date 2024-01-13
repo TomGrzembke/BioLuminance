@@ -19800,6 +19800,10 @@ PrefabInstance:
       propertyPath: m_Positions.Array.data[1].y
       value: 0.5300007
       objectReference: {fileID: 0}
+    - target: {fileID: 6581889422313252317, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
+      propertyPath: m_Volume
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 7334235293886078406, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
       propertyPath: m_BoundingShape2D
       value: 
@@ -19819,6 +19823,14 @@ PrefabInstance:
     - target: {fileID: 7538852381138779805, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
       propertyPath: m_Positions.Array.data[1].y
       value: 1.1020012
+      objectReference: {fileID: 0}
+    - target: {fileID: 8799323198962355510, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
+      propertyPath: randomizePitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8799323198962355510, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
+      propertyPath: frequencyDividedBy
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 9037778739018051456, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
       propertyPath: m_Positions.Array.data[0].x
