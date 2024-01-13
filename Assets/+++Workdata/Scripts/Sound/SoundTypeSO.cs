@@ -5,7 +5,7 @@ using UnityEngine;
 public class SoundTypeSO : ScriptableObject
 {
     public SoundType soundType;
-    public AudioClip[] sounds;
+    public AudioClip[] clips;
 
     void OnValidate()
     {
