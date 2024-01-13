@@ -684,12 +684,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fe5a194d2e588c409c5117578b612fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapSprite: {fileID: 1651779023}
-  subject: {fileID: 1768597595}
+  depthTracker: {fileID: 1088545182}
   particleSystem:
   - {fileID: 1355708253}
   - {fileID: 7608655987527139204}
-  clampedHeight: 0
   light2D: {fileID: 1812430890}
   lightLevel: 0.7
   maxLightLevel: 0.7
@@ -7375,6 +7373,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapSprite: {fileID: 1651779023}
   subject: {fileID: 7608655987527139212}
+  subjectVerticalPos: 0
 --- !u!4 &1088545183
 Transform:
   m_ObjectHideFlags: 0
@@ -13725,11 +13724,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 523584570}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: -360}
---- !u!1 &1768597595 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6732813511311533440, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
-  m_PrefabInstance: {fileID: 7608655987527139202}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1812430889
 GameObject:
   m_ObjectHideFlags: 0
@@ -19863,6 +19857,10 @@ PrefabInstance:
       propertyPath: m_Positions.Array.data[1].y
       value: 1.1020012
       objectReference: {fileID: 0}
+    - target: {fileID: 7580862567823737111, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 9037778739018051456, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
       propertyPath: m_Positions.Array.data[0].x
       value: 6.2599993
@@ -19899,7 +19897,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2829320683562155310, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
   m_PrefabInstance: {fileID: 7608655987527139202}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1768597595}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 156d565f8b5f4894cb019d2c7e839f18, type: 3}
@@ -19910,7 +19908,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2856363000226415612, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
   m_PrefabInstance: {fileID: 7608655987527139202}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1768597595}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f0ed5816d3fe72458602006eb00551c, type: 3}
@@ -20000,8 +19998,8 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 678745715}
-  - {fileID: 297406726}
   - {fileID: 1088545183}
+  - {fileID: 297406726}
   - {fileID: 1812430891}
   - {fileID: 523584570}
   - {fileID: 519420032}

@@ -25,7 +25,7 @@ public class SpeedModifier : MonoBehaviour
         SubscribeModifier();
     }
 
-    private void SubscribeModifier()
+    void SubscribeModifier()
     {
         if (subscribed) return;
         if (speedSubject)

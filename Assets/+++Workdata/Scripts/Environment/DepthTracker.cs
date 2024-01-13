@@ -1,15 +1,19 @@
-using System.ComponentModel;
 using UnityEngine;
 
 public class DepthTracker : MonoBehaviour
 {
+    #region serialized fields
     [SerializeField] SpriteRenderer mapSprite;
     [SerializeField] Transform subject;
 
-    [ShowOnly, SerializeField] float subjectVerticalPosition;
+    public float SubjectVerticalPos => subjectVerticalPos;
+    [ShowOnly, SerializeField] float subjectVerticalPos;
+    #endregion
 
+    #region private fields
     float maxHeight;
     float minHeight;
+    #endregion
 
     void Awake()
     {
@@ -19,6 +23,6 @@ public class DepthTracker : MonoBehaviour
 
     void Update()
     {
-        subjectVerticalPosition = Mathf.Clamp(subject.position.y, minHeight, maxHeight);
+        subjectVerticalPos = Mathf.Clamp(subject.position.y, minHeight, maxHeight);
     }
 }
