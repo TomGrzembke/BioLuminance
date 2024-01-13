@@ -34,14 +34,15 @@ public class DepthLighting : MonoBehaviour
 
         lightLevel = maxLightLevel + height;
 
+        alpha = 1 + height * 1.6f;
+        alpha = Mathf.Clamp(alpha, minLightLevel, 1);
+
         foreach (ParticleSystem p in particleSystem)
         {
             var mainModule = p.main;
 
-            alpha = 1 + height * 1.6f;
-            alpha = Mathf.Clamp(alpha, minLightLevel, 1);
 
-            mainModule.startColor = mainModule.startColor.color.ChangeChannel(ColorChannels.A,alpha);
+            mainModule.startColor = mainModule.startColor.color.ChangeChannel(ColorChannels.A, alpha);
         }
 
 

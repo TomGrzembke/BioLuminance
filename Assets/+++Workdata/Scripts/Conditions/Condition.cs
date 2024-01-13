@@ -12,8 +12,13 @@ public class Condition : MonoBehaviour
     public float Calc_percentageDebuff => -(-1 + Mathf.Clamp01(AlphaDebuf * -(-1 + SkillManager.Instance.GetSkillAmountAlpha(skillType))));
     #endregion
 
-    public void SetPercentageEffectiveness(float _percentageEffectiveness)
+    public void SetPercentageDebuff(float _percentageDebuf)
     {
-        percentageDebuf = _percentageEffectiveness;
+        percentageDebuf = _percentageDebuf;
+    }
+    public void SetPercentageDebuffAlpha(float _percentageAlpha)
+    {
+        _percentageAlpha = Mathf.Clamp01(_percentageAlpha);
+        percentageDebuf = _percentageAlpha * 100;
     }
 }

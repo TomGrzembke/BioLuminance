@@ -8,6 +8,8 @@ public class DepthTracker : MonoBehaviour
 
     public float SubjectVerticalPos => subjectVerticalPos;
     [ShowOnly, SerializeField] float subjectVerticalPos;
+    public float Alpha => alpha;
+    [ShowOnly, SerializeField] float alpha;
     #endregion
 
     #region private fields
@@ -24,5 +26,7 @@ public class DepthTracker : MonoBehaviour
     void Update()
     {
         subjectVerticalPos = Mathf.Clamp(subject.position.y, minHeight, maxHeight);
+        alpha = subjectVerticalPos / (minHeight + maxHeight);
+        alpha = Mathf.Clamp01(alpha);
     }
 }

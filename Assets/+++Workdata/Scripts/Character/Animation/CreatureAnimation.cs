@@ -14,6 +14,7 @@ public class CreatureAnimation : MonoBehaviour
     void Update()
     {
         anim.SetFloat("speed", agent.velocity.magnitude);
+        print(agent.velocity.magnitude);
     }
 
 }

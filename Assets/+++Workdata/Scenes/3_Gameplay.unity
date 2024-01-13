@@ -217,17 +217,6 @@ MonoBehaviour:
   health: {fileID: 118492733}
   afterShockBar: {fileID: 1222370816}
   afterShockSpeed: 5
---- !u!114 &5017551 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2368965205972178162, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
-  m_PrefabInstance: {fileID: 7608655987527139202}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce3c0182d6e776947b8c1ba056f1d5db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &32497062
 GameObject:
   m_ObjectHideFlags: 0
@@ -1019,17 +1008,6 @@ CanvasGroup:
   m_Interactable: 0
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &506063459 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7509488333845631366, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
-  m_PrefabInstance: {fileID: 7608655987527139202}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db6bd64b6c48f484aa92a7ff3c6a8eb7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -7374,6 +7352,7 @@ MonoBehaviour:
   mapSprite: {fileID: 1651779023}
   subject: {fileID: 7608655987527139212}
   subjectVerticalPos: 0
+  alpha: 0
 --- !u!4 &1088545183
 Transform:
   m_ObjectHideFlags: 0
@@ -19649,26 +19628,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 95591704801732508, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
-      propertyPath: slowCondition
-      value: 
-      objectReference: {fileID: 506063459}
-    - target: {fileID: 239935786374924627, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
-      propertyPath: stunEffectCondition
-      value: 
-      objectReference: {fileID: 5017551}
-    - target: {fileID: 395272923045741819, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
-      propertyPath: skillType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 395272923045741819, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
-      propertyPath: percentageDebuf
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 395272923045741819, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
-      propertyPath: percentageEffectiveness
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1080075151492577985, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
       propertyPath: m_Positions.Array.data[0].x
       value: 5.323
@@ -19704,18 +19663,6 @@ PrefabInstance:
     - target: {fileID: 1384776612119220566, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
       propertyPath: m_Positions.Array.data[1].y
       value: 0.5930004
-      objectReference: {fileID: 0}
-    - target: {fileID: 2368965205972178162, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
-      propertyPath: skillType
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2368965205972178162, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
-      propertyPath: percentageDebuf
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2368965205972178162, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
-      propertyPath: percentageEffectiveness
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3424435662422000367, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
       propertyPath: cam
@@ -19753,6 +19700,10 @@ PrefabInstance:
       propertyPath: m_Positions.Array.data[1].y
       value: 0.48999977
       objectReference: {fileID: 0}
+    - target: {fileID: 5164777342055422976, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
+      propertyPath: depthTracker
+      value: 
+      objectReference: {fileID: 1088545182}
     - target: {fileID: 5228883200418077691, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
       propertyPath: m_Positions.Array.data[0].x
       value: 6.004999
@@ -19829,18 +19780,6 @@ PrefabInstance:
       propertyPath: m_BoundingShape2D
       value: 
       objectReference: {fileID: 1434927983}
-    - target: {fileID: 7509488333845631366, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
-      propertyPath: skillType
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7509488333845631366, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
-      propertyPath: percentageDebuf
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7509488333845631366, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
-      propertyPath: percentageEffectiveness
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7538852381138779805, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
       propertyPath: m_Positions.Array.data[0].x
       value: 5.8739996
@@ -19856,10 +19795,6 @@ PrefabInstance:
     - target: {fileID: 7538852381138779805, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
       propertyPath: m_Positions.Array.data[1].y
       value: 1.1020012
-      objectReference: {fileID: 0}
-    - target: {fileID: 7580862567823737111, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9037778739018051456, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
       propertyPath: m_Positions.Array.data[0].x
