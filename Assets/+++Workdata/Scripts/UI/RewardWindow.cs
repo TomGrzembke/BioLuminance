@@ -94,13 +94,17 @@ public class RewardWindow : MonoBehaviour
         rewardTextCanvasGroup.alpha = 1;
 
         time = 0;
-            bool soundPlayed = false;
+        bool soundPlayed = false;
+        float soundLength = SoundManager.Instance.GetSoundLength(SoundType.PointCounter);
+        currencyFadeTime = soundLength != 0 ? soundLength : currencyFadeTime;
+
         while (time < currencyFadeTime)
         {
             yield return null;
             time += Time.unscaledDeltaTime;
             float percentageProgressed = time / currencyFadeTime;
             rewardText.text = (beforeCalc + additional * percentageProgressed).RoundToInt() + " + " + (additional - (additional * percentageProgressed).RoundToInt());
+
             if (!soundPlayed)
             {
                 SoundManager.Instance.PlaySound(SoundType.PointCounter);

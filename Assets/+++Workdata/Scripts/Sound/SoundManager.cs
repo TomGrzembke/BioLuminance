@@ -35,6 +35,22 @@ public class SoundManager : MonoBehaviour
             globalSFXSource.PlayOneShot(clip);
     }
 
+    /// <summary> Gets the index 0 sound length of given type </summary>
+    public float GetSoundLength(SoundType type)
+    {
+        AudioClip clip = null;
+
+        for (int i = 0; i < soundBank.Length; i++)
+        {
+            if (soundBank[i].soundType != type) continue;
+
+            clip = soundBank[i].clips[0];
+            break;
+        }
+
+        return clip.length; 
+    }
+
     #region ButtonMethods
     public void PlaySoundButtonClick()
     {
