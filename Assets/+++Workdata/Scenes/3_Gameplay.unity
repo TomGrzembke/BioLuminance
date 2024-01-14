@@ -7145,6 +7145,7 @@ GameObject:
   m_Component:
   - component: {fileID: 969177488}
   - component: {fileID: 969177487}
+  - component: {fileID: 969177489}
   m_Layer: 0
   m_Name: DepthAmbience
   m_TagString: Untagged
@@ -7281,6 +7282,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!164 &969177489
+AudioReverbFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 969177486}
+  m_Enabled: 1
+  m_DryLevel: -824
+  m_Room: -580
+  m_RoomHF: -4000
+  m_DecayTime: 0.64
+  m_DecayHFRatio: 0.233
+  m_ReflectionsLevel: 228
+  m_ReverbLevel: 1700
+  m_ReverbDelay: 0.011
+  m_Diffusion: 100
+  m_Density: 0
+  m_HFReference: 5000
+  m_RoomLF: -824
+  m_LFReference: 250
+  m_ReflectionsDelay: 0.0366
+  m_ReverbPreset: 27
 --- !u!1 &999094268
 GameObject:
   m_ObjectHideFlags: 0
