@@ -77,7 +77,8 @@ public enum SoundType
     ButtonClickBack,
 
     Bubble,
-
+    SkillAcquired,
+    Stun,
     PointCounter,
 
 }

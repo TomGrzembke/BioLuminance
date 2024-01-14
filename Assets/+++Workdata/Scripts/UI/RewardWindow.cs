@@ -38,10 +38,12 @@ public class RewardWindow : MonoBehaviour
     }
 
     [ButtonMethod]
-    public void GiveReward()
+    public void OpenRewardWindow()
     {
-        StopAllCoroutines();
-        StartCoroutine(ShowCoroutine());
+        if (currentRewarWindowCoroutine != null)
+            StopCoroutine(currentRewarWindowCoroutine);
+
+        currentRewarWindowCoroutine = StartCoroutine(ShowCoroutine());
     }
 
     public void GiveReward(GameObject reward)
@@ -51,13 +53,11 @@ public class RewardWindow : MonoBehaviour
         rewardImage.sprite = ability.AbilitySO.abilitySprite;
         titelText.text = ability.AbilitySO.abilityTitel;
         descriptionText.text = ability.AbilitySO.abilityDescription;
+        SoundManager.Instance.PlaySound(SoundType.SkillAcquired);
 
         PauseManager.Instance.PauseLogic(true);
 
-        if (currentRewarWindowCoroutine != null)
-            StopCoroutine(currentRewarWindowCoroutine);
-
-        currentRewarWindowCoroutine = StartCoroutine(ShowCoroutine());
+        OpenRewardWindow();
     }
 
     [ButtonMethod]

@@ -48,7 +48,8 @@ public class StatusManager : MonoBehaviour
 
     public void AddStun(float additionalStun)
     {
-        stunSubject.AddStun(additionalStun);
+        if (Time.timeScale > 0)
+            stunSubject.AddStun(additionalStun);
     }
 
     public void AddSpeedModifier(SpeedModifier speedModifier)
