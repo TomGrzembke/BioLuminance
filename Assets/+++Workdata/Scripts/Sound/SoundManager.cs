@@ -4,13 +4,13 @@ public class SoundManager : MonoBehaviour
 {
     #region serialized fields
     public static SoundManager Instance;
-    [SerializeField] SoundTypeSO[] soundBank;
+    [SerializeField] SoundBankSO soundBank;
     [SerializeField] AudioSource globalMusicSource;
     [SerializeField] AudioSource globalSFXSource;
     #endregion
 
     #region private fields
-
+   SoundTypeSO[] SoundTypes => soundBank.soundTypes;
     #endregion
     void Awake()
     {
@@ -21,11 +21,11 @@ public class SoundManager : MonoBehaviour
     {
         AudioClip clip = null;
 
-        for (int i = 0; i < soundBank.Length; i++)
+        for (int i = 0; i < SoundTypes.Length; i++)
         {
-            if (soundBank[i].soundType != type) continue;
+            if (SoundTypes[i].soundType != type) continue;
 
-            clip = soundBank[i].clips[Random.Range(0, soundBank[i].clips.Length)];
+            clip = SoundTypes[i].clips[Random.Range(0, SoundTypes[i].clips.Length)];
             break;
         }
 
@@ -40,11 +40,11 @@ public class SoundManager : MonoBehaviour
     {
         AudioClip clip = null;
 
-        for (int i = 0; i < soundBank.Length; i++)
+        for (int i = 0; i < SoundTypes.Length; i++)
         {
-            if (soundBank[i].soundType != type) continue;
+            if (SoundTypes[i].soundType != type) continue;
 
-            clip = soundBank[i].clips[0];
+            clip = SoundTypes[i].clips[0];
             break;
         }
 

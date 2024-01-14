@@ -1161,6 +1161,7 @@ GameObject:
   - component: {fileID: 1652081937928720729}
   - component: {fileID: 3407033606674665108}
   - component: {fileID: 2496421906546923539}
+  - component: {fileID: 2842193367028157280}
   m_Layer: 0
   m_Name: StunSound
   m_TagString: Untagged
@@ -1208,7 +1209,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -1354565560947445322, guid: 6d0e9b8af0e85a049b2c7d3c278ebfa4, type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.8
   m_Pitch: 1
   Loop: 0
@@ -1220,7 +1221,7 @@ AudioSource:
   MinDistance: 1
   MaxDistance: 100
   Pan2D: 0
-  rolloffMode: 1
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -1228,23 +1229,32 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
+      time: 0.01
       value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0
     - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
+      time: 0.28718597
+      value: 0.46660757
+      inSlope: 0.07632901
+      outSlope: 0.07632901
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
-      outWeight: 0.33333334
+      outWeight: 0.140878
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -1.010101
+      outSlope: -1.010101
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -1293,6 +1303,29 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!164 &2842193367028157280
+AudioReverbFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4342592382789345811}
+  m_Enabled: 1
+  m_DryLevel: -824
+  m_Room: -580
+  m_RoomHF: -4000
+  m_DecayTime: 0.64
+  m_DecayHFRatio: 0.233
+  m_ReflectionsLevel: 228
+  m_ReverbLevel: 1700
+  m_ReverbDelay: 0.011
+  m_Diffusion: 100
+  m_Density: 0
+  m_HFReference: 5000
+  m_RoomLF: -824
+  m_LFReference: 250
+  m_ReflectionsDelay: 0.0366
+  m_ReverbPreset: 27
 --- !u!1 &5374430353288867075
 GameObject:
   m_ObjectHideFlags: 0
