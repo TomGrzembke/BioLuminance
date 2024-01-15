@@ -20,6 +20,7 @@ public class SkillNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     SkillManager skillManager;
     Button btn;
     Image img;
+    bool check = false;
 
     void Awake()
     {
@@ -49,6 +50,9 @@ public class SkillNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void PointerClick()
     {
+        if (check == true) return;
+        check = true;
+        
         skillManager.SkillUpdate(informationField);
         
         img.color = new Color32(255, 255, 255, 255);
