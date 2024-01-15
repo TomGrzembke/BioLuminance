@@ -1222,7 +1222,7 @@ GameObject:
   - component: {fileID: 263989353}
   - component: {fileID: 263989355}
   m_Layer: 5
-  m_Name: Image_4
+  m_Name: Pressure Upgrade 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1299,9 +1299,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextSkills:
   - {fileID: 386128390}
+  unacquiredSkillParticles: []
   informationField: {fileID: 11400000, guid: 43fff3ded5354c44581c04a73bfed9fa, type: 2}
   skillNameText: {fileID: 0}
   skillDescriptionText: {fileID: 0}
+  AcquiredSkill: {fileID: 0}
+  UnacquiredSkill: {fileID: 0}
 --- !u!114 &263989356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2068,7 +2071,7 @@ GameObject:
   - component: {fileID: 386128392}
   - component: {fileID: 386128394}
   m_Layer: 5
-  m_Name: Image_5
+  m_Name: Pressure Upgrade 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2145,9 +2148,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextSkills:
   - {fileID: 569974857}
+  unacquiredSkillParticles: []
   informationField: {fileID: 11400000, guid: fe06133d324329d4ea573ffa434b3f91, type: 2}
   skillNameText: {fileID: 0}
   skillDescriptionText: {fileID: 0}
+  AcquiredSkill: {fileID: 0}
+  UnacquiredSkill: {fileID: 0}
 --- !u!114 &386128395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2521,7 +2527,7 @@ GameObject:
   - component: {fileID: 569974859}
   - component: {fileID: 569974861}
   m_Layer: 5
-  m_Name: Image_6
+  m_Name: Pressure Upgrade 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2597,9 +2603,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextSkills: []
+  unacquiredSkillParticles: []
   informationField: {fileID: 11400000, guid: 2d5b48034da27b541bf5a52b0d42d770, type: 2}
   skillNameText: {fileID: 0}
   skillDescriptionText: {fileID: 0}
+  AcquiredSkill: {fileID: 0}
+  UnacquiredSkill: {fileID: 0}
 --- !u!114 &569974862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4123,7 +4132,7 @@ GameObject:
   - component: {fileID: 819157768}
   - component: {fileID: 819157770}
   m_Layer: 5
-  m_Name: Image_1
+  m_Name: Oxygen Upgrade 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4200,9 +4209,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextSkills:
   - {fileID: 956917195}
+  unacquiredSkillParticles: []
   informationField: {fileID: 11400000, guid: 6ff7919be6d79174c9f26622ab17b1bd, type: 2}
   skillNameText: {fileID: 0}
   skillDescriptionText: {fileID: 0}
+  AcquiredSkill: {fileID: 0}
+  UnacquiredSkill: {fileID: 0}
 --- !u!114 &819157771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5122,7 +5134,7 @@ GameObject:
   - component: {fileID: 956917197}
   - component: {fileID: 956917199}
   m_Layer: 5
-  m_Name: Image_2
+  m_Name: Oxygen Upgrade 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5199,9 +5211,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextSkills:
   - {fileID: 1369111769}
+  unacquiredSkillParticles: []
   informationField: {fileID: 11400000, guid: f5dc29e64bff64345b51163e8a3d785b, type: 2}
   skillNameText: {fileID: 0}
   skillDescriptionText: {fileID: 0}
+  AcquiredSkill: {fileID: 0}
+  UnacquiredSkill: {fileID: 0}
 --- !u!114 &956917200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6613,7 +6628,7 @@ GameObject:
   - component: {fileID: 1369111771}
   - component: {fileID: 1369111773}
   m_Layer: 5
-  m_Name: Image_3
+  m_Name: Oxygen Upgrade 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6689,9 +6704,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextSkills: []
+  unacquiredSkillParticles: []
   informationField: {fileID: 11400000, guid: a6c3231150b7f9546b82aa03ba85596f, type: 2}
   skillNameText: {fileID: 0}
   skillDescriptionText: {fileID: 0}
+  AcquiredSkill: {fileID: 0}
+  UnacquiredSkill: {fileID: 0}
 --- !u!114 &1369111774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6894,6 +6912,63 @@ Transform:
   - {fileID: 654012585}
   m_Father: {fileID: 1323742275}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1432687866
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6617093408656634846, guid: 4d23a3b2bcf2702439515950510ae032, type: 3}
+      propertyPath: m_Name
+      value: MiniMap_Radar
+      objectReference: {fileID: 0}
+    - target: {fileID: 7066621828171132023, guid: 4d23a3b2bcf2702439515950510ae032, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 68.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7066621828171132023, guid: 4d23a3b2bcf2702439515950510ae032, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -30.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7066621828171132023, guid: 4d23a3b2bcf2702439515950510ae032, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7066621828171132023, guid: 4d23a3b2bcf2702439515950510ae032, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7066621828171132023, guid: 4d23a3b2bcf2702439515950510ae032, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7066621828171132023, guid: 4d23a3b2bcf2702439515950510ae032, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7066621828171132023, guid: 4d23a3b2bcf2702439515950510ae032, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7066621828171132023, guid: 4d23a3b2bcf2702439515950510ae032, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7066621828171132023, guid: 4d23a3b2bcf2702439515950510ae032, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7066621828171132023, guid: 4d23a3b2bcf2702439515950510ae032, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4d23a3b2bcf2702439515950510ae032, type: 3}
 --- !u!1 &1441051575
 GameObject:
   m_ObjectHideFlags: 0
@@ -7074,7 +7149,7 @@ GameObject:
   - component: {fileID: 1469704152}
   - component: {fileID: 1469704154}
   m_Layer: 5
-  m_Name: Image_8
+  m_Name: Temperatur Upgrade 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7151,9 +7226,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextSkills:
   - {fileID: 1742353106}
+  unacquiredSkillParticles: []
   informationField: {fileID: 11400000, guid: 5877e99aded76a2429d0ae7ebd0940be, type: 2}
   skillNameText: {fileID: 0}
   skillDescriptionText: {fileID: 0}
+  AcquiredSkill: {fileID: 0}
+  UnacquiredSkill: {fileID: 0}
 --- !u!114 &1469704155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7785,7 +7863,7 @@ GameObject:
   - component: {fileID: 1589817966}
   - component: {fileID: 1589817965}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Temperature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7826,9 +7904,12 @@ MonoBehaviour:
   - {fileID: 819157766}
   - {fileID: 263989351}
   - {fileID: 1645710820}
+  unacquiredSkillParticles: []
   informationField: {fileID: 11400000, guid: 3d02175e4a814eb4a8a39031e2671e44, type: 2}
   skillNameText: {fileID: 0}
   skillDescriptionText: {fileID: 0}
+  AcquiredSkill: {fileID: 0}
+  UnacquiredSkill: {fileID: 0}
 --- !u!114 &1589817966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8279,6 +8360,7 @@ MonoBehaviour:
   pressure: 0
   temperature: 0
   oxygen: 0
+  maxPointAmount: 4
 --- !u!4 &1619339231 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7843529437439847729, guid: 7cd2b21e9ffdb514bbdaf5957fb7850f, type: 3}
@@ -8467,7 +8549,7 @@ GameObject:
   - component: {fileID: 1645710822}
   - component: {fileID: 1645710824}
   m_Layer: 5
-  m_Name: Image_7
+  m_Name: Temperatur Upgrade 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8544,9 +8626,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextSkills:
   - {fileID: 1469704150}
+  unacquiredSkillParticles: []
   informationField: {fileID: 11400000, guid: 37073038839a6e2409673f6113cc3c5f, type: 2}
   skillNameText: {fileID: 0}
   skillDescriptionText: {fileID: 0}
+  AcquiredSkill: {fileID: 0}
+  UnacquiredSkill: {fileID: 0}
 --- !u!114 &1645710825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8830,12 +8915,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fe5a194d2e588c409c5117578b612fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapSprite: {fileID: 1813615259}
-  subject: {fileID: 655692373}
+  depthTracker: {fileID: 0}
   particleSystem:
   - {fileID: 1632302147}
   - {fileID: 3928384604652493572}
-  clampedHeight: 0
   light2D: {fileID: 1637955772}
   lightLevel: 0.7
   maxLightLevel: 0.7
@@ -8873,6 +8956,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 831110780}
   speed: 3.5
+  slowCondition: {fileID: 0}
   defaultSpeed: 3.5
   minSpeed: 0.5
 --- !u!114 &1710604406
@@ -9095,7 +9179,7 @@ GameObject:
   - component: {fileID: 1742353108}
   - component: {fileID: 1742353110}
   m_Layer: 5
-  m_Name: Image_9
+  m_Name: Temperatur Upgrade 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9171,9 +9255,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextSkills: []
+  unacquiredSkillParticles: []
   informationField: {fileID: 11400000, guid: 75ad0d658b0b82c4cbd837c32655a501, type: 2}
   skillNameText: {fileID: 0}
   skillDescriptionText: {fileID: 0}
+  AcquiredSkill: {fileID: 0}
+  UnacquiredSkill: {fileID: 0}
 --- !u!114 &1742353111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9278,7 +9365,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
+  m_VoxelSize: 0.033333335
   m_BuildHeightMesh: 0
   m_HideEditorLogs: 0
   m_NavMeshData: {fileID: 23800000, guid: 953f937120dab7344ab9c2e0cf8ea1db, type: 2}
@@ -10797,6 +10884,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 7893000238193072632}
   speed: 3.5
+  slowCondition: {fileID: 0}
   defaultSpeed: 3.5
   minSpeed: 0.5
 --- !u!1 &354991338346776325
@@ -16753,6 +16841,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 8356465528439499236}
   speed: 3.5
+  slowCondition: {fileID: 0}
   defaultSpeed: 3.5
   minSpeed: 0.5
 --- !u!4 &1997537498653782981
@@ -37209,3 +37298,4 @@ SceneRoots:
   - {fileID: 2602968947102708554}
   - {fileID: 7474670751652063209}
   - {fileID: 66033952}
+  - {fileID: 1432687866}
