@@ -18,6 +18,7 @@ public class StingrayStinger : MonoBehaviour
 
     [Header("Time Info")][SerializeField] float timeToAttack;
     [SerializeField] float cooldownForNextAttack;
+    [SerializeField] float attackWindupTime = .7f;
 
     [Header("Layer Info")] public LayerMask creatureLayer;
     [SerializeField] Creatures creatureType;
@@ -69,9 +70,11 @@ public class StingrayStinger : MonoBehaviour
 
     public IEnumerator Attack(StatusManager statusTarget)
     {
+
         float attackTime = 0;
         Vector3 attackPos = statusTarget.GrabManager.GetClosestGrabTrans(transform.position).position;
         StingerTipLookAt(attackPos);
+        yield return new WaitForSeconds(attackWindupTime);
 
         while (attackTime < timeToAttack)
         {
@@ -86,23 +89,24 @@ public class StingrayStinger : MonoBehaviour
 
     void StingerTipLookAt(Vector3 pos)
     {
-        Vector3 vectorToTarget = pos - stingerGFX.transform.position;
+        Vector3 vectorToTarget = pos - stingerGFX.position;
         float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg - (stingFlipper.Flipped ? rotationMinus : 0);
         Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
-        stingerGFX.transform.rotation = q;
+        stingerGFX.rotation = q;
     }
 
     public IEnumerator Cooldown()
     {
         float resetTime = 0;
         Vector3 currentPos = stingerTarget.localPosition;
-        Quaternion currentRot = stingerGFX.transform.localRotation;
+        Quaternion currentRot = stingerGFX.localRotation;
 
         while (resetTime < cooldownForNextAttack)
         {
             resetTime += Time.deltaTime;
-            stingerTarget.localPosition = Vector3.Lerp(currentPos, Vector2.zero, resetTime / cooldownForNextAttack);
-            stingerGFX.transform.localRotation = Quaternion.Slerp(currentRot, Quaternion.identity, resetTime / cooldownForNextAttack);
+            float progress = resetTime / cooldownForNextAttack;
+            stingerTarget.localPosition = Vector3.Lerp(currentPos, Vector2.zero, progress);
+            stingerGFX.localRotation = Quaternion.Slerp(currentRot, Quaternion.identity, progress);
             yield return null;
         }
 
