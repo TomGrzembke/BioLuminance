@@ -785,11 +785,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1812430891}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &379031263 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3188993172422839243, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
-  m_PrefabInstance: {fileID: 1235248145}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &446797203
 GameObject:
   m_ObjectHideFlags: 0
@@ -7842,46 +7837,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 87592674243586264, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
-      propertyPath: additionalFlipObjectsX.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 87592674243586264, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
-      propertyPath: additionalFlipObjectsY.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 87592674243586264, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
-      propertyPath: additionalFlipObjectsX.Array.data[1]
-      value: 
-      objectReference: {fileID: 379031263}
-    - target: {fileID: 87592674243586264, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
-      propertyPath: additionalFlipObjectsY.Array.data[1]
-      value: 
-      objectReference: {fileID: 379031263}
-    - target: {fileID: 267559026054132069, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 267559026054132069, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 1530649368264331106, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
-      propertyPath: m_Positions.Array.data[0].y
-      value: 4.92
-      objectReference: {fileID: 0}
-    - target: {fileID: 1530649368264331106, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
-      propertyPath: m_Positions.Array.data[1].y
-      value: 3.92
-      objectReference: {fileID: 0}
-    - target: {fileID: 3609085674774134768, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5302669610412029854, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
-      propertyPath: bodyParts.Array.size
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5951047566704116028, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
       propertyPath: m_Name
       value: '[Creature] Stingray'
@@ -7926,19 +7881,71 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7603284345225711004, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
-      propertyPath: stingerTip
+    - target: {fileID: 7867434260259355355, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: uniqueState
       value: 
-      objectReference: {fileID: 379031263}
-    - target: {fileID: 7603284345225711004, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
-      propertyPath: stingerRadius
-      value: 5.39
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6969762093777051922, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      insertIndex: 2
+      addedObject: {fileID: 1235248147}
   m_SourcePrefab: {fileID: 100100000, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+--- !u!1 &1235248146 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6969762093777051922, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+  m_PrefabInstance: {fileID: 1235248145}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1235248147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1235248146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a5c016fe334bdc46a6b6663477be492, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TimeInState: 0
+  distanceTravelled: 0
+  FixedTimeInState: 0
+  uniqueState: {fileID: 0}
+  stateAgentSpeed: 3.5
+  stateAgentAcceleration: 5
+  stateAgentStoppingDistance: 1
+  useStateVars: 0
+  dangerous: 0
+  stateEvent: []
+  maxTimeInState: 1.5
+  attackCooldown: 0
+  chaseState: {fileID: 0}
+  roamState: {fileID: 0}
+  attackStanceState: {fileID: 0}
+  attackHitbox: {fileID: 0}
+  contactFilter:
+    useTriggers: 0
+    useLayerMask: 0
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 0
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
+  ownStatusManager: {fileID: 0}
+  applyStatusEffects: {fileID: 0}
+  statusEffects:
+    damagePerInstance: 0
+    stunPerInstance: 0
+    speedModifier: {fileID: 0}
 --- !u!1 &1252550321
 GameObject:
   m_ObjectHideFlags: 0
