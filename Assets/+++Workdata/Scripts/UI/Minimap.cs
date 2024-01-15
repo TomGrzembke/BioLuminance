@@ -1,27 +1,28 @@
-using UnityEngine;
 using MyBox;
+using UnityEngine;
 
 public class Minimap : MonoBehaviour
 {
     [SerializeField] StateManager stateManager;
     [SerializeField] SpriteRenderer mapSpriteRenderer;
     [SerializeField] SpriteRenderer creatureRenderer;
-    
-    [Separator] 
-    
+
+    [Separator]
+
     [SerializeField] Color32 neutralColor = new Color(255, 255, 255, 255);
     [SerializeField] Color32 agressiveColor = new Color(255, 0, 0, 255);
-    
+
     public Vector2 spriteSizeVec;
-    
-    private void Awake()
+
+    void Awake()
     {
         stateManager = GetComponentInChildren<StateManager>();
-        mapSpriteRenderer = GetSpriteRendererInLayer(gameObject, "Map");
-        if(creatureRenderer == null)
+        if (!mapSpriteRenderer)
+            mapSpriteRenderer = GetSpriteRendererInLayer(gameObject, "Map");
+        if (!creatureRenderer)
             creatureRenderer = GetComponent<SpriteRenderer>();
     }
-    
+
     void Start()
     {
         CalculateSpriteSize();
@@ -43,9 +44,9 @@ public class Minimap : MonoBehaviour
     SpriteRenderer GetSpriteRendererInLayer(GameObject parent, string layerName)
     {
         SpriteRenderer spriteRendererInLayer = null;
-        
+
         Transform[] allChildren = parent.GetComponentsInChildren<Transform>(true);
-        
+
         foreach (Transform child in allChildren)
         {
             SpriteRenderer childSpriteRenderer = child.GetComponent<SpriteRenderer>();
@@ -60,6 +61,8 @@ public class Minimap : MonoBehaviour
 
     public void HandleMapIndicators()
     {
+        if (stateManager == null) return;
+
         if (stateManager.currentState.Dangerous)
             mapSpriteRenderer.color = agressiveColor;
         else
