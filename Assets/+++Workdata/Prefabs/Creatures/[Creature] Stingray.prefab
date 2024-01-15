@@ -685,10 +685,8 @@ MonoBehaviour:
     Max: 360
   additionalFlipObjectsX:
   - {fileID: 6029422862115696705}
-  - {fileID: 3188993172422839243}
   additionalFlipObjectsY:
   - {fileID: 255145518308453277}
-  - {fileID: 3188993172422839243}
 --- !u!1 &2800016079403209479
 GameObject:
   m_ObjectHideFlags: 0
@@ -1310,10 +1308,10 @@ MonoBehaviour:
   grabTrans: {fileID: 7449219112510172328}
   fouldOutOnStart: 0
   attachTrans: {fileID: 267559026054132069}
-  pointFollowMode: 1
-  length: 1
-  vertexDistance: 0.00001
-  smoothSpeed: 0.9
+  pointFollowMode: 0
+  length: 2
+  vertexDistance: 0
+  smoothSpeed: 0.46
   trailSpeed: 500
   wiggleMode: 0
   wiggleSpeed: 10
@@ -1430,7 +1428,7 @@ LineRenderer:
       m_ColorSpace: 0
       m_NumColorKeys: 3
       m_NumAlphaKeys: 2
-    numCornerVertices: 0
+    numCornerVertices: 1
     numCapVertices: 5
     alignment: 0
     textureMode: 0
@@ -2462,9 +2460,21 @@ PrefabInstance:
     m_TransformParent: {fileID: 5852454490228580216}
     m_Modifications:
     - target: {fileID: 52550066214761477, guid: 0e0a55ad5dff1b740bbefd510890e154, type: 3}
+      propertyPath: stingerGFX
+      value: 
+      objectReference: {fileID: 3188993172422839243}
+    - target: {fileID: 52550066214761477, guid: 0e0a55ad5dff1b740bbefd510890e154, type: 3}
       propertyPath: stingerTip
       value: 
       objectReference: {fileID: 3188993172422839243}
+    - target: {fileID: 52550066214761477, guid: 0e0a55ad5dff1b740bbefd510890e154, type: 3}
+      propertyPath: stingFlipper
+      value: 
+      objectReference: {fileID: 87592674243586264}
+    - target: {fileID: 52550066214761477, guid: 0e0a55ad5dff1b740bbefd510890e154, type: 3}
+      propertyPath: timeToAttack
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 52550066214761477, guid: 0e0a55ad5dff1b740bbefd510890e154, type: 3}
       propertyPath: flipRange.Max
       value: 360
@@ -2479,15 +2489,23 @@ PrefabInstance:
       objectReference: {fileID: 2722729859185127609}
     - target: {fileID: 52550066214761477, guid: 0e0a55ad5dff1b740bbefd510890e154, type: 3}
       propertyPath: stingerRadius
-      value: 6.5
+      value: 9.16
       objectReference: {fileID: 0}
     - target: {fileID: 52550066214761477, guid: 0e0a55ad5dff1b740bbefd510890e154, type: 3}
       propertyPath: stingerTarget
       value: 
-      objectReference: {fileID: 5671727988266210216}
+      objectReference: {fileID: 7449219112510172328}
+    - target: {fileID: 52550066214761477, guid: 0e0a55ad5dff1b740bbefd510890e154, type: 3}
+      propertyPath: attackWindupTime
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 52550066214761477, guid: 0e0a55ad5dff1b740bbefd510890e154, type: 3}
       propertyPath: cooldownForNextAttack
-      value: 5
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 52550066214761477, guid: 0e0a55ad5dff1b740bbefd510890e154, type: 3}
+      propertyPath: animationCurveDuration
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 229861996149333733, guid: 0e0a55ad5dff1b740bbefd510890e154, type: 3}
       propertyPath: m_Name
@@ -2495,11 +2513,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1035275422216541489, guid: 0e0a55ad5dff1b740bbefd510890e154, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.52
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1035275422216541489, guid: 0e0a55ad5dff1b740bbefd510890e154, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.51
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2848806437112474161, guid: 0e0a55ad5dff1b740bbefd510890e154, type: 3}
       propertyPath: m_Icon
@@ -2515,11 +2533,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5816238095144987892, guid: 0e0a55ad5dff1b740bbefd510890e154, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.43
+      value: 8.15
       objectReference: {fileID: 0}
     - target: {fileID: 5816238095144987892, guid: 0e0a55ad5dff1b740bbefd510890e154, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.22
+      value: -0.69
       objectReference: {fileID: 0}
     - target: {fileID: 5816238095144987892, guid: 0e0a55ad5dff1b740bbefd510890e154, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2592,11 +2610,6 @@ PrefabInstance:
 --- !u!4 &255145518308453277 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7688926238099771908, guid: 0e0a55ad5dff1b740bbefd510890e154, type: 3}
-  m_PrefabInstance: {fileID: 7583772404553415065}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &5671727988266210216 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2848806437112474161, guid: 0e0a55ad5dff1b740bbefd510890e154, type: 3}
   m_PrefabInstance: {fileID: 7583772404553415065}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &7449219112510172328 stripped
@@ -2704,6 +2717,10 @@ PrefabInstance:
       propertyPath: statusEffects.damagePerInstance
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 1937458173023117751, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: currentHealth
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2024252366454839533, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: grabTrans.Array.size
       value: 3
@@ -2779,6 +2796,14 @@ PrefabInstance:
     - target: {fileID: 2791954618058492436, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: m_Name
       value: '[Creature] Stingray'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3566949603382941934, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: currentHealth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3566949603382941934, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: maximumHealth
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5013842050204936565, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].x
@@ -2903,7 +2928,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5416434499698059608, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       insertIndex: 3
       addedObject: {fileID: 3506191160105417827}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1481909024187820602, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      insertIndex: 2
+      addedObject: {fileID: 4094015772150169075}
   m_SourcePrefab: {fileID: 100100000, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
 --- !u!4 &1008979188488418153 stripped
 Transform:
@@ -2955,6 +2983,59 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2555284835385615666, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
   m_PrefabInstance: {fileID: 8370324554416474920}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6969762093777051922 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1481909024187820602, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+  m_PrefabInstance: {fileID: 8370324554416474920}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4094015772150169075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6969762093777051922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a5c016fe334bdc46a6b6663477be492, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TimeInState: 0
+  distanceTravelled: 0
+  FixedTimeInState: 0
+  uniqueState: {fileID: 0}
+  stateAgentSpeed: 3.5
+  stateAgentAcceleration: 5
+  stateAgentStoppingDistance: 1
+  useStateVars: 0
+  dangerous: 0
+  stateEvent: []
+  maxTimeInState: 1.5
+  attackCooldown: 0
+  chaseState: {fileID: 0}
+  roamState: {fileID: 0}
+  attackStanceState: {fileID: 0}
+  attackHitbox: {fileID: 0}
+  contactFilter:
+    useTriggers: 0
+    useLayerMask: 0
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 0
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
+  ownStatusManager: {fileID: 0}
+  applyStatusEffects: {fileID: 0}
+  statusEffects:
+    damagePerInstance: 0
+    stunPerInstance: 0
+    speedModifier: {fileID: 0}
 --- !u!114 &7247853247259251392 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1206069651293198824, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
@@ -2976,7 +3057,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1803656548544049651, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
   m_PrefabInstance: {fileID: 8370324554416474920}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 6969762093777051922}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fa3e069d9ae7fc04caf6fe7d57107024, type: 3}

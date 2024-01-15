@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public class StingrayStinger : MonoBehaviour
 {
@@ -72,14 +73,27 @@ public class StingrayStinger : MonoBehaviour
     {
 
         float attackTime = 0;
-        Vector3 attackPos = statusTarget.GrabManager.GetClosestGrabTrans(transform.position).position;
-        StingerTipLookAt(attackPos);
-        yield return new WaitForSeconds(attackWindupTime);
+        float currentAttackWindupTime = 0;
+        Transform attackTrans = statusTarget.GrabManager.GetClosestGrabTrans(transform.position);
 
+        Vector3 vectorToTarget = attackTrans.position - stingerGFX.position;
+        float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg - (stingFlipper.Flipped ? rotationMinus : 0);
+        Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
+
+        while (currentAttackWindupTime < attackWindupTime)
+        {
+            stingerGFX.rotation = Quaternion.Slerp(stingerGFX.rotation, q, currentAttackWindupTime / attackWindupTime);
+
+            currentAttackWindupTime += Time.deltaTime;
+            yield return null;
+        }
+
+        Quaternion currentRot = stingerGFX.rotation;
         while (attackTime < timeToAttack)
         {
+            stingerGFX.rotation = currentRot;
             attackTime += Time.deltaTime;
-            stingerTarget.position = attackPos;
+            stingerTarget.position = attackTrans.position;
             yield return null;
         }
 
