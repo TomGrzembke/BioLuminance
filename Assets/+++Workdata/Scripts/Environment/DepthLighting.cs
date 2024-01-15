@@ -6,6 +6,7 @@ public class DepthLighting : MonoBehaviour
     #region serialized fields
     [SerializeField] DepthTracker depthTracker;
     public new ParticleSystem[] particleSystem;
+    [SerializeField] ParticleSystem bubbleSystem;
 
 
     [Header("Lighting")]
@@ -19,7 +20,12 @@ public class DepthLighting : MonoBehaviour
     #region private fields
     float SubjectVerticalPos => depthTracker.SubjectVerticalPos;
     float alpha;
+    float savedBubbleAlpha;
     #endregion
+    void Awake()
+    {
+        savedBubbleAlpha = bubbleSystem.emission.rateOverDistance.constant;
+    }
 
     void Update()
     {
@@ -38,8 +44,19 @@ public class DepthLighting : MonoBehaviour
 
         light2D.intensity = lightLevel;
 
+        if (bubbleSystem)
+        {
+            var bubbleEmission = bubbleSystem.emission;
+            bubbleEmission.rateOverDistance = savedBubbleAlpha * alpha;
+        }
+
         foreach (ParticleSystem p in particleSystem)
         {
+            if (p == null)
+            {
+                Debug.Log("Particle system is null");
+                continue;
+            }
             var mainModule = p.main;
 
             mainModule.startColor = mainModule.startColor.color.ChangeChannel(ColorChannels.A, alpha);
