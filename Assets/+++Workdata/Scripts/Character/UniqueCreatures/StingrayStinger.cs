@@ -10,15 +10,13 @@ public class StingrayStinger : MonoBehaviour
     [Header("Stinger Info")]
 
     [SerializeField] GameObject snapStingerTo;
-    [SerializeField] GameObject stinger;
-    [SerializeField] GameObject stingerGFX;
+    [SerializeField] Transform stinger;
+    [SerializeField] Transform stingerTarget;
     [SerializeField] Transform stingerTip;
     [SerializeField] float stingerRadius;
-    [Space(5)] public float stingerDamage;
-    public float placeholderHealth;
 
     [SerializeField] AnimationCurve animationCurve;
-    [SerializeField] private float animationCurveDuration = 1;
+    [SerializeField] float animationCurveDuration = 1;
 
     [Header("Time Info")][SerializeField] float timeToAttack;
     [SerializeField] float cooldownForNextAttack;
@@ -52,8 +50,8 @@ public class StingrayStinger : MonoBehaviour
 
     void Start()
     {
-        stingerOriginalPosition = stinger.transform.localPosition;
-        stingerGFXOriginalPosition = stingerGFX.transform.localPosition;
+        stingerOriginalPosition = stinger.localPosition;
+        stingerGFXOriginalPosition = stingerTarget.localPosition;
         attackTime = timeToAttack;
     }
 
@@ -73,7 +71,7 @@ public class StingrayStinger : MonoBehaviour
     {
         statusTargets.Clear();
 
-        colliders = new List<Collider2D>(Physics2D.OverlapCircleAll(stinger.transform.position, stingerRadius,
+        colliders = new List<Collider2D>(Physics2D.OverlapCircleAll(stinger.position, stingerRadius,
             creatureLayer));
 
         for (int i = 0; i < colliders.Count; i++)
@@ -113,7 +111,7 @@ public class StingrayStinger : MonoBehaviour
 
         if (attackTime <= 0)
         {
-            stingerGFX.transform.position = Vector3.Lerp(stingerGFX.transform.position,
+            stingerTarget.position = Vector3.Lerp(stingerTarget.position,
                 statusTargets[0].transform.position,
                 Mathf.Clamp01(animationCurve.Evaluate(animationCurveDuration * Time.deltaTime)));
             StingerTipLookAt();
@@ -121,13 +119,13 @@ public class StingrayStinger : MonoBehaviour
             ResetStinger();
             StingerTipLookAt();
             yield return new WaitForSeconds(0.2f);
-            stingerGFX.transform.localPosition = stingerGFXOriginalPosition;
+            stingerTarget.localPosition = stingerGFXOriginalPosition;
         }
     }
 
     private void StingerTipLookAt()
     {
-        stingerTip.transform.LookAt(stingerGFX.transform.position);
+        stingerTip.transform.LookAt(stingerTarget.position);
         Quaternion quaternion = stingerTip.transform.rotation;
         quaternion.y = 0;
         stingerTip.transform.rotation = quaternion;
@@ -141,8 +139,8 @@ public class StingrayStinger : MonoBehaviour
 
     public void ResetStinger()
     {
-        stinger.transform.localPosition = stingerOriginalPosition;
-        stingerGFX.transform.localPosition = Vector3.Lerp(stingerGFX.transform.localPosition, stingerGFXOriginalPosition,
+        stinger.localPosition = stingerOriginalPosition;
+        stingerTarget.localPosition = Vector3.Lerp(stingerTarget.localPosition, stingerGFXOriginalPosition,
             Mathf.Clamp01(animationCurve.Evaluate(animationCurveDuration * Time.deltaTime)));
 
         attackTime = timeToAttack;
@@ -152,7 +150,7 @@ public class StingrayStinger : MonoBehaviour
 
     void OnDrawGizmosSelected()
     {
-        Gizmos.DrawWireSphere(stinger.transform.position, stingerRadius);
-        Gizmos.DrawLine(stinger.transform.position, stingerGFX.transform.position);
+        Gizmos.DrawWireSphere(stinger.position, stingerRadius);
+        Gizmos.DrawLine(stinger.position, stingerTarget.transform.position);
     }
 }
