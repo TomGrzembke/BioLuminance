@@ -1,4 +1,3 @@
-using MyBox;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,10 +8,8 @@ public class StingrayStinger : MonoBehaviour
 
     [Header("Stinger Info")]
 
-    [SerializeField] GameObject snapStingerTo;
-    [SerializeField] Transform stinger;
+    [SerializeField] Transform stingerGFX;
     [SerializeField] Transform stingerTarget;
-    [SerializeField] Transform stingerTip;
     [SerializeField] float stingerRadius;
 
     [SerializeField] AnimationCurve animationCurve;
@@ -28,57 +25,29 @@ public class StingrayStinger : MonoBehaviour
     [SerializeField] List<StatusManager> statusTargets;
     List<Collider2D> colliders;
 
-    [MinMaxRange(0, 360)][SerializeField] RangedFloat flipRange = new(0, 180);
-    float angle;
-
     #endregion
 
     #region private fields
 
-    private Vector2 stingerOriginalPosition;
-    private Vector2 stingerGFXOriginalPosition;
-
-    bool flipped;
-    bool inFlipRange;
-    bool isCooldown;
-    [HideInInspector] public bool isAttacking;
-
-    float attackTime;
-
-    Coroutine attackRoutine;
+    Coroutine attackCoroutine;
+    Coroutine cooldownCoroutine;
     #endregion
-
-    void Start()
-    {
-        stingerOriginalPosition = stinger.localPosition;
-        stingerGFXOriginalPosition = stingerTarget.localPosition;
-        attackTime = timeToAttack;
-    }
 
     void Update()
     {
         HandleDetection();
-        AttachStinger();
     }
 
-    public void AttachStinger()
-    {
-        gameObject.transform.position = snapStingerTo.transform.position;
-        gameObject.transform.rotation = snapStingerTo.transform.rotation;
-    }
-
-    public void HandleDetection()
+    void HandleDetection()
     {
         statusTargets.Clear();
 
-        colliders = new List<Collider2D>(Physics2D.OverlapCircleAll(stinger.position, stingerRadius,
-            creatureLayer));
+        colliders = new(Physics2D.OverlapCircleAll(stingerGFX.position, stingerRadius, creatureLayer));
 
         for (int i = 0; i < colliders.Count; i++)
         {
             if (!colliders[i].TryGetComponent(out StatusManager statusTarget))
-                statusTarget =
-                    colliders[i].GetComponentInParent<StatusManager>();
+                statusTarget = colliders[i].GetComponentInParent<StatusManager>();
 
             if (!statusTarget.TargetLayer.HasFlag(creatureType))
                 continue;
@@ -86,71 +55,67 @@ public class StingrayStinger : MonoBehaviour
             if (!statusTargets.Contains(statusTarget))
                 statusTargets.Add(statusTarget);
 
-            AttackTarget();
+            AttackTarget(statusTarget);
         }
     }
 
-    public void AttackTarget()
+    public void AttackTarget(StatusManager statusTarget)
     {
-        if (isCooldown)
-        {
-            StartCoroutine(Cooldown());
-            return;
-        }
-
-        if (statusTargets.Count == 0)
-            return;
-
-        StartCoroutine(Attack());
+        if (cooldownCoroutine == null)
+            attackCoroutine = StartCoroutine(Attack(statusTarget));
     }
 
-    public IEnumerator Attack()
+    public IEnumerator Attack(StatusManager statusTarget)
     {
-        attackTime -= Time.deltaTime;
-        isAttacking = true;
+        float attackTime = 0;
+        Vector3 currentPos = stingerTarget.position;
+        Vector3 attackPos = statusTarget.GrabManager.GetClosestGrabTrans(transform.position).position;
 
-        if (attackTime <= 0)
+        while (attackTime < timeToAttack)
         {
-            stingerTarget.position = Vector3.Lerp(stingerTarget.position,
-                statusTargets[0].transform.position,
-                Mathf.Clamp01(animationCurve.Evaluate(animationCurveDuration * Time.deltaTime)));
-            StingerTipLookAt();
-            yield return new WaitForSeconds(0.2f);
-            ResetStinger();
-            StingerTipLookAt();
-            yield return new WaitForSeconds(0.2f);
-            stingerTarget.localPosition = stingerGFXOriginalPosition;
+            attackTime += Time.deltaTime;
+            stingerTarget.position = Vector3.Lerp(currentPos, attackPos, attackTime / timeToAttack);
+            yield return null;
         }
+
+        cooldownCoroutine = StartCoroutine(Cooldown());
+        attackCoroutine = null;
     }
 
     private void StingerTipLookAt()
     {
-        stingerTip.transform.LookAt(stingerTarget.position);
-        Quaternion quaternion = stingerTip.transform.rotation;
+        stingerGFX.transform.LookAt(stingerTarget.position * 2);
+        Quaternion quaternion = stingerGFX.transform.rotation;
         quaternion.y = 0;
-        stingerTip.transform.rotation = quaternion;
+        stingerGFX.transform.rotation = quaternion;
     }
 
     public IEnumerator Cooldown()
     {
-        yield return new WaitForSeconds(cooldownForNextAttack);
-        isCooldown = false;
+        float resetTime = 0;
+        Vector3 currentPos = stingerTarget.localPosition;
+
+        while (resetTime < cooldownForNextAttack)
+        {
+            resetTime += Time.deltaTime;
+            stingerTarget.localPosition = Vector3.Lerp(currentPos, Vector2.zero, resetTime / cooldownForNextAttack);
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(cooldownForNextAttack - resetTime);
+
+        cooldownCoroutine = null;
     }
 
     public void ResetStinger()
     {
-        stinger.localPosition = stingerOriginalPosition;
-        stingerTarget.localPosition = Vector3.Lerp(stingerTarget.localPosition, stingerGFXOriginalPosition,
-            Mathf.Clamp01(animationCurve.Evaluate(animationCurveDuration * Time.deltaTime)));
-
-        attackTime = timeToAttack;
-        isCooldown = true;
-        isAttacking = false;
+        stingerTarget.localPosition = Vector3.Lerp(stingerTarget.localPosition, Vector2.zero,
+        Mathf.Clamp01(animationCurve.Evaluate(animationCurveDuration * Time.deltaTime)));
     }
 
     void OnDrawGizmosSelected()
     {
-        Gizmos.DrawWireSphere(stinger.position, stingerRadius);
-        Gizmos.DrawLine(stinger.position, stingerTarget.transform.position);
+        Gizmos.DrawWireSphere(stingerGFX.position, stingerRadius);
+        Gizmos.DrawLine(stingerGFX.position, stingerTarget.transform.position);
     }
 }

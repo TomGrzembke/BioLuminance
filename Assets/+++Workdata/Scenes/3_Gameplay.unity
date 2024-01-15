@@ -6980,6 +6980,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 523584570}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: -360}
+--- !u!4 &944430073 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3188993172422839243, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+  m_PrefabInstance: {fileID: 1235248145}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &957916234
 GameObject:
   m_ObjectHideFlags: 0
@@ -7837,6 +7842,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4146009210458920301, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4146009210458920301, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.69
+      objectReference: {fileID: 0}
     - target: {fileID: 5951047566704116028, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
       propertyPath: m_Name
       value: '[Creature] Stingray'
@@ -7880,6 +7893,42 @@ PrefabInstance:
     - target: {fileID: 7065252597165299522, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7449219112510172328, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7449219112510172328, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7603284345225711004, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: stinger
+      value: 
+      objectReference: {fileID: 944430073}
+    - target: {fileID: 7603284345225711004, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: stingerGFX
+      value: 
+      objectReference: {fileID: 944430073}
+    - target: {fileID: 7603284345225711004, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: timeToAttack
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7603284345225711004, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: stingerRadius
+      value: 9.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 7603284345225711004, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: stingerTarget
+      value: 
+      objectReference: {fileID: 1235248149}
+    - target: {fileID: 7603284345225711004, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: cooldownForNextAttack
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7603284345225711004, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: animationCurveDuration
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7867434260259355355, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
       propertyPath: uniqueState
@@ -7946,6 +7995,11 @@ MonoBehaviour:
     damagePerInstance: 0
     stunPerInstance: 0
     speedModifier: {fileID: 0}
+--- !u!4 &1235248149 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7449219112510172328, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+  m_PrefabInstance: {fileID: 1235248145}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1252550321
 GameObject:
   m_ObjectHideFlags: 0

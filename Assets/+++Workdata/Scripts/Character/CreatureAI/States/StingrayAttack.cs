@@ -43,6 +43,8 @@ public class StingrayAttack : State
     {
         HandleDetection();
 
+        HandleMovement();
+
         creatureLogic.SetDistanceFromTarget(Vector3.Distance(creatureLogic.TargetStatusManager.transform.position, creatureLogic.transform.position));
 
         creatureLogic.HandleRotate();
@@ -54,6 +56,12 @@ public class StingrayAttack : State
 
     protected override void ExitInternal()
     {
+    }
+
+    void HandleMovement()
+    {
+        creatureLogic.SetDistanceFromTarget(Vector3.Distance(creatureLogic.TargetStatusManager.transform.position, creatureLogic.transform.position));
+        creatureLogic.agent.SetDestination(creatureLogic.TargetStatusManager.transform.position + (creatureLogic.TargetStatusManager.transform.position - transform.position) * 5);
     }
 
     void HandleDetection()
