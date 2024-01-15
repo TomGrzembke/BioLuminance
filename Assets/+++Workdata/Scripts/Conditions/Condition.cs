@@ -6,6 +6,9 @@ public class Condition : MonoBehaviour
     [SerializeField, Range(0, 100)] protected float percentageDebuf = 0;
     [SerializeField] SkillClass.Skill skillType;
     public float AlphaDebuf => percentageDebuf / 100;
+#pragma warning disable IDE0052
+    [ShowOnly, SerializeField] float alphaDebuf;
+#pragma warning restore IDE0052
     #endregion
 
     #region private fields
@@ -20,5 +23,6 @@ public class Condition : MonoBehaviour
     {
         _percentageAlpha = Mathf.Clamp01(_percentageAlpha);
         percentageDebuf = _percentageAlpha * 100;
+        alphaDebuf = Calc_percentageDebuff;
     }
 }

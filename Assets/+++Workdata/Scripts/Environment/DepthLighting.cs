@@ -32,21 +32,17 @@ public class DepthLighting : MonoBehaviour
 
         float height = SubjectVerticalPos / 800;
 
-        lightLevel = maxLightLevel + height;
+        alpha = Mathf.Clamp(1 + height * 1.6f, minLightLevel, 1);
 
-        alpha = 1 + height * 1.6f;
-        alpha = Mathf.Clamp(alpha, minLightLevel, 1);
+        lightLevel = Mathf.Clamp(maxLightLevel + height, minLightLevel, maxLightLevel);
+
+        light2D.intensity = lightLevel;
 
         foreach (ParticleSystem p in particleSystem)
         {
             var mainModule = p.main;
 
-
             mainModule.startColor = mainModule.startColor.color.ChangeChannel(ColorChannels.A, alpha);
         }
-
-        lightLevel = Mathf.Clamp(lightLevel, minLightLevel, maxLightLevel);
-
-        light2D.intensity = lightLevel;
     }
 }
