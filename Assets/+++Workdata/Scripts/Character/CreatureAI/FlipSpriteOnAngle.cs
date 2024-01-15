@@ -15,6 +15,7 @@ public class FlipSpriteOnAngle : MonoBehaviour
 
     #region private fields
     bool flipped;
+    public bool Flipped => flipped;
     bool inFlipRange;
     #endregion
 

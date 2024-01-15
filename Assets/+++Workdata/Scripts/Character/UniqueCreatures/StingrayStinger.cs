@@ -11,6 +11,7 @@ public class StingrayStinger : MonoBehaviour
     [SerializeField] Transform stingerGFX;
     [SerializeField] Transform stingerTarget;
     [SerializeField] float stingerRadius;
+    [SerializeField] FlipSpriteOnAngle stingFlipper;
 
     [SerializeField] AnimationCurve animationCurve;
     [SerializeField] float animationCurveDuration = 1;
@@ -31,6 +32,7 @@ public class StingrayStinger : MonoBehaviour
 
     Coroutine attackCoroutine;
     Coroutine cooldownCoroutine;
+    [SerializeField] float rotationMinus;
     #endregion
 
     void Update()
@@ -61,20 +63,20 @@ public class StingrayStinger : MonoBehaviour
 
     public void AttackTarget(StatusManager statusTarget)
     {
-        if (cooldownCoroutine == null)
+        if (cooldownCoroutine == null && attackCoroutine == null)
             attackCoroutine = StartCoroutine(Attack(statusTarget));
     }
 
     public IEnumerator Attack(StatusManager statusTarget)
     {
         float attackTime = 0;
-        Vector3 currentPos = stingerTarget.position;
         Vector3 attackPos = statusTarget.GrabManager.GetClosestGrabTrans(transform.position).position;
+        StingerTipLookAt(attackPos);
 
         while (attackTime < timeToAttack)
         {
             attackTime += Time.deltaTime;
-            stingerTarget.position = Vector3.Lerp(currentPos, attackPos, attackTime / timeToAttack);
+            stingerTarget.position = attackPos;
             yield return null;
         }
 
@@ -82,35 +84,31 @@ public class StingrayStinger : MonoBehaviour
         attackCoroutine = null;
     }
 
-    private void StingerTipLookAt()
+    void StingerTipLookAt(Vector3 pos)
     {
-        stingerGFX.transform.LookAt(stingerTarget.position * 2);
-        Quaternion quaternion = stingerGFX.transform.rotation;
-        quaternion.y = 0;
-        stingerGFX.transform.rotation = quaternion;
+        Vector3 vectorToTarget = pos - stingerGFX.transform.position;
+        float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg - (stingFlipper.Flipped ? rotationMinus : 0);
+        Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
+        stingerGFX.transform.rotation = q;
     }
 
     public IEnumerator Cooldown()
     {
         float resetTime = 0;
         Vector3 currentPos = stingerTarget.localPosition;
+        Quaternion currentRot = stingerGFX.transform.localRotation;
 
         while (resetTime < cooldownForNextAttack)
         {
             resetTime += Time.deltaTime;
             stingerTarget.localPosition = Vector3.Lerp(currentPos, Vector2.zero, resetTime / cooldownForNextAttack);
+            stingerGFX.transform.localRotation = Quaternion.Slerp(currentRot, Quaternion.identity, resetTime / cooldownForNextAttack);
             yield return null;
         }
 
         yield return new WaitForSeconds(cooldownForNextAttack - resetTime);
 
         cooldownCoroutine = null;
-    }
-
-    public void ResetStinger()
-    {
-        stingerTarget.localPosition = Vector3.Lerp(stingerTarget.localPosition, Vector2.zero,
-        Mathf.Clamp01(animationCurve.Evaluate(animationCurveDuration * Time.deltaTime)));
     }
 
     void OnDrawGizmosSelected()
