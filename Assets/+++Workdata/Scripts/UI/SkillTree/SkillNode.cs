@@ -1,4 +1,5 @@
 using System;
+using Coffee.UIExtensions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -8,9 +9,13 @@ using UnityEngine.UI;
 public class SkillNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     [SerializeField] GameObject[] nextSkills;
+    [SerializeField] GameObject[] unacquiredSkillParticles;
     [SerializeField] InformationSO informationField;
     [SerializeField] TextMeshProUGUI skillNameText;
     [SerializeField] TextMeshProUGUI skillDescriptionText;
+    [Space(5)] 
+    [SerializeField] GameObject AcquiredSkill;
+    [SerializeField] GameObject UnacquiredSkill;
 
     SkillManager skillManager;
     Button btn;
@@ -25,8 +30,6 @@ public class SkillNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
         skillNameText = GameObject.Find("SkillName").GetComponent<TextMeshProUGUI>();
         skillDescriptionText = GameObject.Find("SkillStats").GetComponent<TextMeshProUGUI>();
-
-        btn.onClick.AddListener(Selected);
 
         if (informationField == null)
         {
@@ -44,9 +47,13 @@ public class SkillNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         skillManager.SetImageInformationField(false);
     }
 
-    public void Selected()
+    public void PointerClick()
     {
+        skillManager.SkillUpdate(informationField);
+        
         img.color = new Color32(255, 255, 255, 255);
+        UnacquiredSkill.SetActive(false);
+        AcquiredSkill.SetActive(true);
 
         foreach (var nextSkill in nextSkills)
         {
@@ -68,11 +75,14 @@ public class SkillNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
                 nextSkillButton.enabled = true;
             }
         }
-    }
 
-    public void PointerClick()
-    {
-        skillManager.SkillUpdate(informationField);
+        if (unacquiredSkillParticles != null)
+        {
+            foreach (var particle in unacquiredSkillParticles)
+            {
+                particle.SetActive(true);
+            }
+        }
     }
 
     public void PointerEnter()
