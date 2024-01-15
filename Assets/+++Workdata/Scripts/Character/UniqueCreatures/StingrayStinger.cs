@@ -12,6 +12,7 @@ public class StingrayStinger : MonoBehaviour
     [SerializeField] GameObject snapStingerTo;
     [SerializeField] GameObject stinger;
     [SerializeField] GameObject stingerGFX;
+    [SerializeField] Transform stingerTip;
     [SerializeField] float stingerRadius;
     [Space(5)] public float stingerDamage;
     public float placeholderHealth;
@@ -37,6 +38,7 @@ public class StingrayStinger : MonoBehaviour
     #region private fields
 
     private Vector2 stingerOriginalPosition;
+    private Vector2 stingerGFXOriginalPosition;
 
     bool flipped;
     bool inFlipRange;
@@ -45,11 +47,13 @@ public class StingrayStinger : MonoBehaviour
 
     float attackTime;
 
+    Coroutine attackRoutine;
     #endregion
 
     void Start()
     {
         stingerOriginalPosition = stinger.transform.localPosition;
+        stingerGFXOriginalPosition = stingerGFX.transform.localPosition;
         attackTime = timeToAttack;
     }
 
@@ -112,11 +116,21 @@ public class StingrayStinger : MonoBehaviour
             stingerGFX.transform.position = Vector3.Lerp(stingerGFX.transform.position,
                 statusTargets[0].transform.position,
                 Mathf.Clamp01(animationCurve.Evaluate(animationCurveDuration * Time.deltaTime)));
+            StingerTipLookAt();
             yield return new WaitForSeconds(0.2f);
             ResetStinger();
+            StingerTipLookAt();
             yield return new WaitForSeconds(0.2f);
-            stingerGFX.transform.localPosition = Vector3.zero;
+            stingerGFX.transform.localPosition = stingerGFXOriginalPosition;
         }
+    }
+
+    private void StingerTipLookAt()
+    {
+        stingerTip.transform.LookAt(stingerGFX.transform.position);
+        Quaternion quaternion = stingerTip.transform.rotation;
+        quaternion.y = 0;
+        stingerTip.transform.rotation = quaternion;
     }
 
     public IEnumerator Cooldown()
@@ -128,7 +142,7 @@ public class StingrayStinger : MonoBehaviour
     public void ResetStinger()
     {
         stinger.transform.localPosition = stingerOriginalPosition;
-        stingerGFX.transform.localPosition = Vector3.Lerp(stingerGFX.transform.localPosition, Vector3.zero,
+        stingerGFX.transform.localPosition = Vector3.Lerp(stingerGFX.transform.localPosition, stingerGFXOriginalPosition,
             Mathf.Clamp01(animationCurve.Evaluate(animationCurveDuration * Time.deltaTime)));
 
         attackTime = timeToAttack;

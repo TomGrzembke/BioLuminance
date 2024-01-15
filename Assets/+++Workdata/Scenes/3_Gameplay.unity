@@ -785,6 +785,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1812430891}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &379031263 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3188993172422839243, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+  m_PrefabInstance: {fileID: 1235248145}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &446797203
 GameObject:
   m_ObjectHideFlags: 0
@@ -1752,6 +1757,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3730892896035186959, guid: 9bc6a04619cb4ed498b212f12c8fb165, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 5504465045674342438, guid: 9bc6a04619cb4ed498b212f12c8fb165, type: 3}
       propertyPath: m_Name
       value: LevelContainer
@@ -7833,6 +7842,46 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 87592674243586264, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: additionalFlipObjectsX.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 87592674243586264, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: additionalFlipObjectsY.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 87592674243586264, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: additionalFlipObjectsX.Array.data[1]
+      value: 
+      objectReference: {fileID: 379031263}
+    - target: {fileID: 87592674243586264, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: additionalFlipObjectsY.Array.data[1]
+      value: 
+      objectReference: {fileID: 379031263}
+    - target: {fileID: 267559026054132069, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 267559026054132069, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1530649368264331106, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: m_Positions.Array.data[0].y
+      value: 4.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 1530649368264331106, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: m_Positions.Array.data[1].y
+      value: 3.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 3609085674774134768, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5302669610412029854, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: bodyParts.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5951047566704116028, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
       propertyPath: m_Name
       value: '[Creature] Stingray'
@@ -7876,6 +7925,14 @@ PrefabInstance:
     - target: {fileID: 7065252597165299522, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7603284345225711004, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: stingerTip
+      value: 
+      objectReference: {fileID: 379031263}
+    - target: {fileID: 7603284345225711004, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: stingerRadius
+      value: 5.39
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
