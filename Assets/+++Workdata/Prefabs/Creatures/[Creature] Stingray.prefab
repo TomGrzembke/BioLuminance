@@ -2887,13 +2887,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5416434499698059608, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       insertIndex: 3
       addedObject: {fileID: 3506191160105417827}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1481909024187820602, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
-      insertIndex: 2
-      addedObject: {fileID: 1057474906235743109}
-    - targetCorrespondingSourceObject: {fileID: 1481909024187820602, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
-      insertIndex: 3
-      addedObject: {fileID: 2572009333441268087}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
 --- !u!4 &1008979188488418153 stripped
 Transform:
@@ -2945,61 +2939,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2555284835385615666, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
   m_PrefabInstance: {fileID: 8370324554416474920}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &6969762093777051922 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1481909024187820602, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
-  m_PrefabInstance: {fileID: 8370324554416474920}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1057474906235743109
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6969762093777051922}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 810e60622f023b44e9a9935213b6ab82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TimeInState: 0
-  distanceTravelled: 0
-  FixedTimeInState: 0
-  uniqueState: {fileID: 0}
-  stateAgentSpeed: 3.5
-  stateAgentAcceleration: 5
-  stateAgentStoppingDistance: 1
-  useStateVars: 0
-  dangerous: 0
-  stateEvent: []
-  attackState: {fileID: 0}
-  roamState: {fileID: 0}
-  stateDuration: 5
---- !u!114 &2572009333441268087
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6969762093777051922}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 810e60622f023b44e9a9935213b6ab82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TimeInState: 0
-  distanceTravelled: 0
-  FixedTimeInState: 0
-  uniqueState: {fileID: 0}
-  stateAgentSpeed: 3.5
-  stateAgentAcceleration: 5
-  stateAgentStoppingDistance: 1
-  useStateVars: 0
-  dangerous: 0
-  stateEvent: []
-  attackState: {fileID: 0}
-  roamState: {fileID: 0}
-  stateDuration: 5
 --- !u!114 &7247853247259251392 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1206069651293198824, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
@@ -3021,7 +2960,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1803656548544049651, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
   m_PrefabInstance: {fileID: 8370324554416474920}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6969762093777051922}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fa3e069d9ae7fc04caf6fe7d57107024, type: 3}
