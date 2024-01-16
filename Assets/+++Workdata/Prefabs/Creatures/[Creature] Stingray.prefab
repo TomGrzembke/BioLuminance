@@ -1119,6 +1119,7 @@ GameObject:
   - component: {fileID: 3188993172422839243}
   - component: {fileID: 8331322611991748410}
   - component: {fileID: 8734292804360289872}
+  - component: {fileID: 8780649858097334593}
   m_Layer: 0
   m_Name: StingGFX
   m_TagString: Untagged
@@ -1194,6 +1195,74 @@ SpriteRenderer:
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!60 &8734292804360289872
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3609085674774134768}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.0015936668, y: 0.75966895}
+    oldSize: {x: 2.35, y: 0.83}
+    newSize: {x: 5.6, y: 0.77}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.029104799, y: -0.13454844}
+      - {x: 0.49578398, y: -0.1656}
+      - {x: 0.021256685, y: -0.570965}
+      - {x: 1.3262548, y: -0.3305252}
+      - {x: 1.5962548, y: -0.2705252}
+      - {x: 1.9662548, y: -0.17052521}
+      - {x: 2.026255, y: -0.1505252}
+      - {x: 2.276255, y: -0.060525205}
+      - {x: 2.345547, y: -0.02880096}
+      - {x: 2.3441622, y: 0.0011990399}
+      - {x: 2.236255, y: 0.019474791}
+      - {x: 2.1362548, y: 0.019474791}
+      - {x: 2.0562549, y: 0.029474791}
+      - {x: 1.7462548, y: 0.039474793}
+      - {x: 1.6162548, y: 0.059474792}
+      - {x: 1.4162549, y: 0.069474794}
+      - {x: 1.3062549, y: 0.07947479}
+      - {x: 1.1462549, y: 0.08947479}
+      - {x: 0.94625485, y: 0.09947479}
+      - {x: 0.75625485, y: 0.09947479}
+      - {x: 0.56625485, y: 0.10947479}
+      - {x: 0.16625488, y: 0.10947479}
+      - {x: -0.016867638, y: 0.12966001}
+  m_UseDelaunayMesh: 0
+--- !u!60 &8780649858097334593
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2566,8 +2635,12 @@ PrefabInstance:
       objectReference: {fileID: 7449219112510172328}
     - target: {fileID: 52550066214761477, guid: 0e0a55ad5dff1b740bbefd510890e154, type: 3}
       propertyPath: attackWindupTime
-      value: 0.5
+      value: 0.7
       objectReference: {fileID: 0}
+    - target: {fileID: 52550066214761477, guid: 0e0a55ad5dff1b740bbefd510890e154, type: 3}
+      propertyPath: ownStatusManager
+      value: 
+      objectReference: {fileID: 8696543891219929982}
     - target: {fileID: 52550066214761477, guid: 0e0a55ad5dff1b740bbefd510890e154, type: 3}
       propertyPath: cooldownForNextAttack
       value: 3
@@ -2577,8 +2650,60 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 52550066214761477, guid: 0e0a55ad5dff1b740bbefd510890e154, type: 3}
+      propertyPath: contactFilter.useTriggers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 52550066214761477, guid: 0e0a55ad5dff1b740bbefd510890e154, type: 3}
+      propertyPath: contactFilter.useLayerMask
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 52550066214761477, guid: 0e0a55ad5dff1b740bbefd510890e154, type: 3}
       propertyPath: percentAlphaWindupAttackLock
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 52550066214761477, guid: 0e0a55ad5dff1b740bbefd510890e154, type: 3}
+      propertyPath: statusEffects.stunPerInstance
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 52550066214761477, guid: 0e0a55ad5dff1b740bbefd510890e154, type: 3}
+      propertyPath: contactFilter.layerMask.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 52550066214761477, guid: 0e0a55ad5dff1b740bbefd510890e154, type: 3}
+      propertyPath: statusEffects.damagePerInstance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 52550066214761477, guid: 0e0a55ad5dff1b740bbefd510890e154, type: 3}
+      propertyPath: animationCurve.m_Curve.Array.data[1].time
+      value: 0.65462375
+      objectReference: {fileID: 0}
+    - target: {fileID: 52550066214761477, guid: 0e0a55ad5dff1b740bbefd510890e154, type: 3}
+      propertyPath: animationCurve.m_Curve.Array.data[1].value
+      value: 0.2811324
+      objectReference: {fileID: 0}
+    - target: {fileID: 52550066214761477, guid: 0e0a55ad5dff1b740bbefd510890e154, type: 3}
+      propertyPath: animationCurve.m_Curve.Array.data[0].inSlope
+      value: 0.42945647
+      objectReference: {fileID: 0}
+    - target: {fileID: 52550066214761477, guid: 0e0a55ad5dff1b740bbefd510890e154, type: 3}
+      propertyPath: animationCurve.m_Curve.Array.data[1].inSlope
+      value: 1.2554303
+      objectReference: {fileID: 0}
+    - target: {fileID: 52550066214761477, guid: 0e0a55ad5dff1b740bbefd510890e154, type: 3}
+      propertyPath: animationCurve.m_Curve.Array.data[2].inSlope
+      value: 2.0814042
+      objectReference: {fileID: 0}
+    - target: {fileID: 52550066214761477, guid: 0e0a55ad5dff1b740bbefd510890e154, type: 3}
+      propertyPath: animationCurve.m_Curve.Array.data[0].outSlope
+      value: 0.42945647
+      objectReference: {fileID: 0}
+    - target: {fileID: 52550066214761477, guid: 0e0a55ad5dff1b740bbefd510890e154, type: 3}
+      propertyPath: animationCurve.m_Curve.Array.data[1].outSlope
+      value: 1.2554303
+      objectReference: {fileID: 0}
+    - target: {fileID: 52550066214761477, guid: 0e0a55ad5dff1b740bbefd510890e154, type: 3}
+      propertyPath: animationCurve.m_Curve.Array.data[2].outSlope
+      value: 2.0814042
       objectReference: {fileID: 0}
     - target: {fileID: 229861996149333733, guid: 0e0a55ad5dff1b740bbefd510890e154, type: 3}
       propertyPath: m_Name
