@@ -139,9 +139,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb7785d2b8c46bc408948610869007fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tentacleEffects:
-    damagePerInstance: 0.01
-    stunPerInstance: 0.005
+  statusEffects:
+    damagePerInstance: 0
+    stunPerInstance: 0
     speedModifier: {fileID: 0}
   ownStatusManager: {fileID: 0}
   pointsDividedBy: 100

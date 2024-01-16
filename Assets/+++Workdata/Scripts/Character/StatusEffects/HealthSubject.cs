@@ -22,19 +22,19 @@ public class HealthSubject : MonoBehaviour
         set => SetCurrentHealth(value);
     }
 
-    void Awake()
-    {
-        CalculateMaxHealth();
-    }
-
     void OnValidate()
+    {
+        
+    }
+    void Awake() => OnValidateCall();
+
+    void OnValidateCall()
     {
         CalculateMaxHealth();
         SetCurrentHealth(maximumHealth);
         if (limbSubjects.Count == 0)
             GatherLimbs();
     }
-
     void CalculateMaxHealth()
     {
         maximumHealth = 0;

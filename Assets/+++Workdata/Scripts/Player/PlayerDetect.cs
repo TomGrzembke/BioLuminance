@@ -24,7 +24,7 @@ public class PlayerDetect : MonoBehaviour
         DetectTargets();
     }
 
-    private void DetectTargets()
+    void DetectTargets()
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(middle.position, detectionRadius, creatureLayer);
         possibleTargets.Clear();

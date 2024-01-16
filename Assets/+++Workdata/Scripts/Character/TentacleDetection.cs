@@ -6,7 +6,7 @@ using UnityEngine;
 public class TentacleDetection : MonoBehaviour
 {
     #region serialized fields
-    [SerializeField] StatusEffects tentacleEffects = new();
+    [SerializeField] StatusEffects statusEffects = new();
     [SerializeField] StatusManager ownStatusManager;
     [SerializeField] int pointsDividedBy = 3;
     [SerializeField] ContactFilter2D contactFilter;
@@ -38,11 +38,12 @@ public class TentacleDetection : MonoBehaviour
         {
             if (!colliders[i].TryGetComponent(out LimbSubject _limbTarget)) continue;
 
-            if (_limbTarget == ownStatusManager) continue;
+            if (_limbTarget == null) continue;
 
             if (_limbTarget.ownStatusManager == ownStatusManager) continue;
 
-            ownStatusManager.ApplyStatusEffects.ApplyEffects(tentacleEffects, _limbTarget, ownStatusManager);
+
+            ownStatusManager.ApplyStatusEffects.ApplyEffects(statusEffects, _limbTarget, ownStatusManager);
         }
     }
 

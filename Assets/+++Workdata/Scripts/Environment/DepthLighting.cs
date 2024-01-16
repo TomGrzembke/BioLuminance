@@ -5,7 +5,7 @@ public class DepthLighting : MonoBehaviour
 {
     #region serialized fields
     [SerializeField] DepthTracker depthTracker;
-    public new ParticleSystem[] particleSystem;
+    public ParticleSystem[] particleSystems;
     [SerializeField] ParticleSystem bubbleSystem;
 
 
@@ -50,7 +50,7 @@ public class DepthLighting : MonoBehaviour
             bubbleEmission.rateOverDistance = savedBubbleAlpha * alpha;
         }
 
-        foreach (ParticleSystem p in particleSystem)
+        foreach (ParticleSystem p in particleSystems)
         {
             if (p == null)
             {

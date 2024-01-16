@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5695632020067386860}
   - component: {fileID: 563368637058944709}
   - component: {fileID: 1963122716833880277}
+  - component: {fileID: 8398446831419096927}
   m_Layer: 7
   m_Name: '[Behavior] Setup'
   m_TagString: Untagged
@@ -136,7 +137,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 15204248062647766}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3.5
@@ -186,6 +187,18 @@ CapsuleCollider2D:
   m_Offset: {x: 0.2071464, y: 0.8285847}
   m_Size: {x: 0.892488, y: 2.6571693}
   m_Direction: 0
+--- !u!114 &8398446831419096927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15204248062647766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9066dc5b6a0365e4798d337abcdd4db2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1161203872786208409
 GameObject:
   m_ObjectHideFlags: 0

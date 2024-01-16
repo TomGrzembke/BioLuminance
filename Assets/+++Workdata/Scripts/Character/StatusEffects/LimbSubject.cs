@@ -20,14 +20,23 @@ public class LimbSubject : MonoBehaviour
         set => SetCurrentHealth(value);
     }
 
+    void Awake()
+    {
+        OnValidateCall();
+    }
+
     void OnValidate()
+    {
+        OnValidateCall();
+    }
+
+     void OnValidateCall()
     {
         SetCurrentHealth(maximumHealth);
         ownStatusManager = transform.parent.GetComponent<StatusManager>();
 
         if (!ownStatusManager)
             ownStatusManager = transform.parent.parent.GetComponent<StatusManager>();
-
     }
 
     public void AddHealth(float additionalHealth)

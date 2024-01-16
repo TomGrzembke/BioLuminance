@@ -118,7 +118,7 @@ public class PlayerMovement : MonoBehaviour
     {
         controlState = newControlState;
 
-        if(disableAgent)
+        if (disableAgent)
             agent.enabled = !disableAgent;
     }
     public void ReenableMovement(bool enableAgent = false)

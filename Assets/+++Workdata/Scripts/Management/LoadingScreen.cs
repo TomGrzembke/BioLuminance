@@ -61,8 +61,14 @@ public class LoadingScreen : MonoBehaviour
 
     }
 
+    void Awake() => OnValidateCall();
 
     void OnValidate()
+    {
+        OnValidateCall();
+    }
+
+    void OnValidateCall()
     {
         if (canvasGroup == null)
             canvasGroup = GetComponent<CanvasGroup>();

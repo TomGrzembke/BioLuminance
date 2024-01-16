@@ -56,15 +56,15 @@ public abstract class CreatureLogic : MonoBehaviour
     {
         agent.updateRotation = false;
         agent.updateUpAxis = false;
+        SearchChildren();
     }
-
 
     void Start()
     {
         ResetAgentVars();
     }
 
-    void OnValidate()
+    void SearchChildren()
     {
         fleeState = GetComponentInChildren<FleeState>();
         deathState = GetComponentInChildren<DeathState>();
@@ -73,8 +73,6 @@ public abstract class CreatureLogic : MonoBehaviour
         chaseState = GetComponentInChildren<ChaseState>();
         stun = GetComponentInChildren<StunSubject>();
         agent = GetComponent<NavMeshAgent>();
-
-        ResetAgentVars();
     }
 
     public void ResetAgentVars()

@@ -679,10 +679,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   depthTracker: {fileID: 1088545182}
-  particleSystem:
-  - {fileID: 1355708253}
-  - {fileID: 7608655987527139204}
-  - {fileID: 183862039}
+  particleSystems: []
   bubbleSystem: {fileID: 183862039}
   light2D: {fileID: 1812430890}
   lightLevel: 0.7
@@ -7941,6 +7938,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: '[Creature] Stingray'
       objectReference: {fileID: 0}
+    - target: {fileID: 5951047566704116028, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7065252597165299522, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 34.2
@@ -7981,8 +7982,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8780649858097334593, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -8458,11 +8458,6 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 0
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.1
---- !u!198 &1355708253 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 3711363616089403829, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
-  m_PrefabInstance: {fileID: 7608655987527139202}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1425512081
 GameObject:
   m_ObjectHideFlags: 0
@@ -20026,58 +20021,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: '[Player] JellyFish'
       objectReference: {fileID: 0}
-    - target: {fileID: 2829320683562155310, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
-      propertyPath: stunSubject
-      value: 
-      objectReference: {fileID: 118492732}
-    - target: {fileID: 3083589615723053617, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
-      propertyPath: CollisionModule.type
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083589615723053617, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
-      propertyPath: CollisionModule.enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083589615723053617, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
-      propertyPath: CollisionModule.collisionMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083589615723053617, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
-      propertyPath: CollisionModule.m_Bounce.scalar
+    - target: {fileID: 2773486199468966401, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3083589615723053617, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
-      propertyPath: CollisionModule.m_Dampen.scalar
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083589615723053617, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
-      propertyPath: CollisionModule.collidesWith.m_Bits
-      value: 256
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083589615723053617, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
-      propertyPath: CollisionModule.m_EnergyLossOnCollision.scalar
-      value: 0.1
+    - target: {fileID: 2773486199468966401, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
+      propertyPath: statusEffects.damagePerInstance
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 3424435662422000367, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
       propertyPath: cam
       value: 
       objectReference: {fileID: 519420031}
-    - target: {fileID: 3711363616089403829, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
-      propertyPath: ShapeModule.m_Scale.x
-      value: -160
-      objectReference: {fileID: 0}
-    - target: {fileID: 3711363616089403829, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
-      propertyPath: ShapeModule.m_Scale.z
-      value: -120
-      objectReference: {fileID: 0}
-    - target: {fileID: 3711363616089403829, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
-      propertyPath: EmissionModule.rateOverTime.scalar
-      value: 320
-      objectReference: {fileID: 0}
-    - target: {fileID: 4148208130672325620, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -4.4
-      objectReference: {fileID: 0}
     - target: {fileID: 5164777342055422976, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
       propertyPath: depthTracker
       value: 
@@ -20122,33 +20077,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5544754942391644178, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
-      propertyPath: ShapeModule.m_Scale.x
-      value: -160
-      objectReference: {fileID: 0}
-    - target: {fileID: 5544754942391644178, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
-      propertyPath: ShapeModule.m_Scale.z
-      value: -120
-      objectReference: {fileID: 0}
-    - target: {fileID: 5544754942391644178, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
-      propertyPath: EmissionModule.rateOverTime.scalar
-      value: 240
-      objectReference: {fileID: 0}
     - target: {fileID: 7334235293886078406, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
       propertyPath: m_BoundingShape2D
       value: 
       objectReference: {fileID: 1434927983}
+    - target: {fileID: 7802905129216562822, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7802905129216562822, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
+      propertyPath: statusEffects.damagePerInstance
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 8771531525160896411, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8771531525160896411, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
+      propertyPath: statusEffects.damagePerInstance
+      value: 0.01
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 2833861697136476741, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
---- !u!198 &7608655987527139204 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 5544754942391644178, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
-  m_PrefabInstance: {fileID: 7608655987527139202}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7608655987527139212 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5595682832789274083, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}

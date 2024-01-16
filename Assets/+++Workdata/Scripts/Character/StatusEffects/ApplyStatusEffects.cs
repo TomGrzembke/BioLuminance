@@ -14,6 +14,8 @@ public class ApplyStatusEffects : MonoBehaviour
 
     public void ApplyEffects(StatusEffects _statusEffects, StatusManager targetStatusManager, LimbSubject limbSubject = null, StatusManager ownStatusManager = null)
     {
+        if (targetStatusManager == ownStatusManager) return;
+
         bool hasDoneSmth = false;
 
         if (_statusEffects.damagePerInstance != 0 && limbSubject)
@@ -24,7 +26,12 @@ public class ApplyStatusEffects : MonoBehaviour
 
         if (_statusEffects.stunPerInstance != 0)
         {
-            targetStatusManager.AddStun(_statusEffects.stunPerInstance * (stunEffectCondition != null ? stunEffectCondition.Calc_percentageDebuff : 1));
+            if (stunEffectCondition != null)
+                if(targetStatusManager != null)
+                    if(_statusEffects.stunPerInstance > 0)
+                targetStatusManager.AddStun(_statusEffects.stunPerInstance * stunEffectCondition.Calc_percentageDebuff);
+            else
+                targetStatusManager.AddStun(_statusEffects.stunPerInstance);
             hasDoneSmth = true;
         }
 
@@ -36,9 +43,9 @@ public class ApplyStatusEffects : MonoBehaviour
 
         if (!hasDoneSmth) return;
 
-        if(player)
+        if (player)
             CombatManager.Instance.CreatureInteraction(targetStatusManager);
-        else if(targetStatusManager.IsPlayer)
+        else if (targetStatusManager.IsPlayer)
             CombatManager.Instance.CreatureInteraction(ownStatusManager);
     }
 
