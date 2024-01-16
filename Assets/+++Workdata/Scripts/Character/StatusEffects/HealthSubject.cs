@@ -24,8 +24,9 @@ public class HealthSubject : MonoBehaviour
 
     void OnValidate()
     {
-        
+        OnValidateCall();
     }
+
     void Awake() => OnValidateCall();
 
     void OnValidateCall()

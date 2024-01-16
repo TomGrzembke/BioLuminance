@@ -38,7 +38,7 @@ public class SkillNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         }
     }
 
-    private void OnValidate()
+     void OnValidate()
     {
         gameObject.name = informationField.skillName;
     }

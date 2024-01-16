@@ -1,7 +1,7 @@
+using MyBox;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using MyBox;
 using Random = UnityEngine.Random;
 
 public class CreatureSpawner : MonoBehaviour
@@ -18,7 +18,7 @@ public class CreatureSpawner : MonoBehaviour
     [SerializeField, ConditionalField(nameof(randomNumberToSpawn))]
     float maxNumberToSpawn;
 
-    [Separator] [SerializeField] Transform spawnInto;
+    [Separator][SerializeField] Transform spawnInto;
     [SerializeField] WeightedArray[] creaturesToSpawn;
     [SerializeField] List<GameObject> instantiatedObjects;
 
@@ -37,7 +37,7 @@ public class CreatureSpawner : MonoBehaviour
         _collider.isTrigger = true;
     }
 
-    private void OnValidate()
+    void OnValidate()
     {
         foreach (WeightedArray weightedArray in creaturesToSpawn)
         {
@@ -74,7 +74,7 @@ public class CreatureSpawner : MonoBehaviour
                     Vector2 spawnPosition = GetRandomSpawnPosition(_collider);
                     GameObject instantiated = Instantiate(weightedArrays._creatureToSpawn, spawnPosition,
                         Quaternion.identity);
-                    if(spawnInto != null)
+                    if (spawnInto != null)
                         instantiated.transform.SetParent(spawnInto);
                     instantiatedObjects.Add(instantiated);
                     break;
@@ -152,7 +152,8 @@ public class WeightedArray
     [Tooltip("The Radius in which the creature is spawned x amount away from a wall")]
     public float _radius = 2f;
 
-    [Tooltip("This defines the probability in which a creature is spawned")] [Range(0, 100)]
+    [Tooltip("This defines the probability in which a creature is spawned")]
+    [Range(0, 100)]
     public float _weight = 100f;
 
     [HideInInspector] public string characterName;
