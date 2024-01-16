@@ -17,7 +17,7 @@ public class ChaseState : State
         if (creatureLogic.DistanceFromTarget <= stateAgentStoppingDistance)
             return attackState;
 
-        if (creatureLogic.DistanceFromTarget >= creatureLogic.DetectionRadius)
+        if (creatureLogic.DistanceFromTarget >= creatureLogic.DetectionRadius + 5)
         {
             creatureLogic.SetTargetStatusManager(null);
             creatureLogic.SetCanSeePlayer(false);

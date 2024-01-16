@@ -12,21 +12,20 @@ public class StingrayStinger : MonoBehaviour
     [SerializeField] Transform stingerTarget;
     [SerializeField] FlipSpriteOnAngle stingFlipper;
     [SerializeField] AnimationCurve animationCurve;
-    [SerializeField] ApplyStatusEffects applyStatusEffects;
     [SerializeField] StatusManager ownStatusManager;
-    [SerializeField] Collider2D stingCollider;
     [SerializeField] StatusEffects statusEffects;
     [SerializeField] ContactFilter2D contactFilter;
     [SerializeField] float stingerRadius;
 
-    [Header("Time Info")][SerializeField] float timeToAttack;
-    [SerializeField] float cooldownForNextAttack;
+    [Header("Time Info")][SerializeField] float timeToAttack = 1;
+    [SerializeField] float cooldownForNextAttack = 2;
     [SerializeField] float attackWindupTime = .7f;
     [SerializeField] float percentAlphaWindupAttackLock = 0.4f;
 
     [Header("Layer Info")]
     [SerializeField] LayerMask creatureLayer;
 
+    ApplyStatusEffects applyStatusEffects;
     List<LimbSubject> limbTargets = new();
     List<Collider2D> colliderTargets;
     List<Collider2D> colliderAttack = new();
@@ -35,11 +34,18 @@ public class StingrayStinger : MonoBehaviour
 
     #region private fields
 
+    Collider2D stingCollider;
     Coroutine attackCoroutine;
     Coroutine cooldownCoroutine;
     Coroutine hitDetectCoroutine;
     [SerializeField] float rotationMinus;
     #endregion
+
+    void Awake()
+    {
+        stingCollider = stingerGFX.GetComponent<Collider2D>();
+        applyStatusEffects = ownStatusManager.ApplyStatusEffects;
+    }
 
     void Update()
     {
@@ -50,7 +56,7 @@ public class StingrayStinger : MonoBehaviour
     {
         limbTargets.Clear();
 
-        colliderTargets = new(Physics2D.OverlapCircleAll(stingerGFX.position, stingerRadius, creatureLayer));
+        colliderTargets = new(Physics2D.OverlapCircleAll(transform.position, stingerRadius, creatureLayer));
 
         limbTargets = GetLimbsInColliders(colliderTargets);
 
@@ -105,9 +111,8 @@ public class StingrayStinger : MonoBehaviour
         }
         Vector3 currentStingPos = stingerTarget.position;
 
-        if (hitDetectCoroutine != null)
-            StopCoroutine(hitDetectCoroutine);
-        hitDetectCoroutine = StartCoroutine(DetectIfHit(limbTarget));
+        StopCoroutineIfAssigned(hitDetectCoroutine);
+        hitDetectCoroutine = StartCoroutine(DetectIfHit());
 
         while (attackTime < timeToAttack)
         {
@@ -121,7 +126,7 @@ public class StingrayStinger : MonoBehaviour
         attackCoroutine = null;
     }
 
-    IEnumerator DetectIfHit(LimbSubject limbTarget)
+    IEnumerator DetectIfHit()
     {
         float detectTime = 0;
         while (attackCoroutine != null && detectTime < timeToAttack)
@@ -129,7 +134,7 @@ public class StingrayStinger : MonoBehaviour
             detectTime += Time.deltaTime;
 
             colliderAttack.Clear();
-             Physics2D.OverlapCollider(stingCollider, contactFilter, colliderAttack);
+            Physics2D.OverlapCollider(stingCollider, contactFilter, colliderAttack);
 
             List<LimbSubject> _limbTargets = GetLimbsInColliders(colliderAttack);
             if (_limbTargets.Count < 0) yield return null;
@@ -177,9 +182,15 @@ public class StingrayStinger : MonoBehaviour
         cooldownCoroutine = null;
     }
 
+    void StopCoroutineIfAssigned(Coroutine coroutine)
+    {
+        if (coroutine != null)
+            StopCoroutine(coroutine);
+    }
+
     void OnDrawGizmosSelected()
     {
-        Gizmos.DrawWireSphere(stingerGFX.position, stingerRadius);
+        Gizmos.DrawWireSphere(transform.position, stingerRadius);
         Gizmos.DrawLine(stingerGFX.position, stingerTarget.transform.position);
     }
 }

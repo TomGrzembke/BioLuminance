@@ -7,7 +7,8 @@ public class PlayerMovement : MonoBehaviour
     public enum ControlState
     {
         playerControl,
-        gameControl
+        gameControl,
+        stun
     }
 
     #region serialized fields
@@ -17,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] ControlState controlState;
     [SerializeField] bool isPerformingMove;
     [SerializeField] float timeUntilMaximumSpeed = 1;
+    [SerializeField] StunSubject stunSubject;
     #endregion
 
     float currentAgentSpeed;
@@ -126,17 +128,26 @@ public class PlayerMovement : MonoBehaviour
         if (enableAgent)
             agent.enabled = enableAgent;
     }
+    void StunLogic(bool condition)
+    {
+        if (condition)
+            controlState = ControlState.stun;
+        else
+            controlState = ControlState.playerControl;
+    }
     #endregion
 
     #region OnEnable/Disable
     public void OnEnable()
     {
         inputActions.Enable();
+        stunSubject.RegisterOnStun(StunLogic);
     }
 
     public void OnDisable()
     {
         inputActions.Disable();
+        stunSubject.OnStun -= StunLogic;
     }
     #endregion
 }
