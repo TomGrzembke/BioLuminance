@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
 public class StingrayStinger : MonoBehaviour
 {
@@ -11,22 +10,23 @@ public class StingrayStinger : MonoBehaviour
 
     [SerializeField] Transform stingerGFX;
     [SerializeField] Transform stingerTarget;
-    [SerializeField] float stingerRadius;
     [SerializeField] FlipSpriteOnAngle stingFlipper;
-
     [SerializeField] AnimationCurve animationCurve;
-    [SerializeField] float animationCurveDuration = 1;
+    [SerializeField] ApplyStatusEffects applyStatusEffects;
+    [SerializeField] float stingerRadius;
 
     [Header("Time Info")][SerializeField] float timeToAttack;
     [SerializeField] float cooldownForNextAttack;
     [SerializeField] float attackWindupTime = .7f;
+    [SerializeField] float percentAlphaWindupAttackLock = 0.4f;
 
-    [Header("Layer Info")] public LayerMask creatureLayer;
+    [Header("Layer Info")]
+    [SerializeField] LayerMask creatureLayer;
     [SerializeField] Creatures creatureType;
     [SerializeField] Creatures targetLayer;
 
-    [SerializeField] List<StatusManager> statusTargets;
-    List<Collider2D> colliders;
+    List<StatusManager> statusTargets = new();
+    List<Collider2D> colliderssafe;
 
     #endregion
 
@@ -46,8 +46,16 @@ public class StingrayStinger : MonoBehaviour
     {
         statusTargets.Clear();
 
-        colliders = new(Physics2D.OverlapCircleAll(stingerGFX.position, stingerRadius, creatureLayer));
+        colliderssafe = new(Physics2D.OverlapCircleAll(stingerGFX.position, stingerRadius, creatureLayer));
 
+        GetStatusInColliders(colliderssafe);
+
+        if (statusTargets.Count > 0)
+            AttackTarget(statusTargets[Random.Range(0, statusTargets.Count)]);
+    }
+
+    void GetStatusInColliders(List<Collider2D> colliders)
+    {
         for (int i = 0; i < colliders.Count; i++)
         {
             if (!colliders[i].TryGetComponent(out StatusManager statusTarget))
@@ -58,8 +66,6 @@ public class StingrayStinger : MonoBehaviour
 
             if (!statusTargets.Contains(statusTarget))
                 statusTargets.Add(statusTarget);
-
-            AttackTarget(statusTarget);
         }
     }
 
@@ -71,29 +77,28 @@ public class StingrayStinger : MonoBehaviour
 
     public IEnumerator Attack(StatusManager statusTarget)
     {
-
         float attackTime = 0;
         float currentAttackWindupTime = 0;
         Transform attackTrans = statusTarget.GrabManager.GetClosestGrabTrans(transform.position);
 
-        Vector3 vectorToTarget = attackTrans.position - stingerGFX.position;
-        float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg - (stingFlipper.Flipped ? rotationMinus : 0);
-        Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
-
+        Vector3 currentTargetPos = attackTrans.position;
         while (currentAttackWindupTime < attackWindupTime)
         {
-            stingerGFX.rotation = Quaternion.Slerp(stingerGFX.rotation, q, currentAttackWindupTime / attackWindupTime);
+            StingerRotationFrame(currentAttackWindupTime, attackTrans.position);
 
             currentAttackWindupTime += Time.deltaTime;
+
+            if (attackWindupTime * percentAlphaWindupAttackLock < currentAttackWindupTime)
+                currentTargetPos = attackTrans.position;
             yield return null;
         }
+        Vector3 currentStingPos = stingerTarget.position;
 
-        Quaternion currentRot = stingerGFX.rotation;
         while (attackTime < timeToAttack)
         {
-            stingerGFX.rotation = currentRot;
+            StingerRotationFrame(attackTime, attackTrans.position);
             attackTime += Time.deltaTime;
-            stingerTarget.position = attackTrans.position;
+            stingerTarget.position = Vector3.Lerp(currentStingPos, currentTargetPos, animationCurve.Evaluate(attackTime / timeToAttack));
             yield return null;
         }
 
@@ -101,12 +106,14 @@ public class StingrayStinger : MonoBehaviour
         attackCoroutine = null;
     }
 
-    void StingerTipLookAt(Vector3 pos)
+    void StingerRotationFrame(float currentTime, Vector3 attackPos)
     {
-        Vector3 vectorToTarget = pos - stingerGFX.position;
+
+        Vector3 vectorToTarget = attackPos - stingerGFX.position;
         float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg - (stingFlipper.Flipped ? rotationMinus : 0);
-        Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
-        stingerGFX.rotation = q;
+        Quaternion newQuaternion = Quaternion.AngleAxis(angle, Vector3.forward);
+
+        stingerGFX.rotation = Quaternion.Slerp(stingerGFX.rotation, newQuaternion, currentTime / attackWindupTime);
     }
 
     public IEnumerator Cooldown()
