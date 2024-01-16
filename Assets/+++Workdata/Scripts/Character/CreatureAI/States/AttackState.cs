@@ -1,3 +1,4 @@
+using MyBox;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,15 +8,15 @@ public class AttackState : State
     [Header(nameof(AttackState))]
 
     [Space(5)]
-    [SerializeField] float maxTimeInState = 1.5f;
-    [SerializeField] ChaseState chaseState;
-    [SerializeField] RoamState roamState;
-    [SerializeField] AttackStanceState attackStanceState;
-    [SerializeField] Collider2D attackHitbox;
-    [SerializeField] ContactFilter2D contactFilter;
-    [SerializeField] StatusManager ownStatusManager;
-    [SerializeField] ApplyStatusEffects applyStatusEffects;
-    [SerializeField] StatusEffects statusEffects;
+    [ConditionalField(nameof(uniqueState), true), SerializeField] float maxTimeInState = 1.5f;
+    [ConditionalField(nameof(uniqueState), true), SerializeField] ChaseState chaseState;
+    [ConditionalField(nameof(uniqueState), true), SerializeField] RoamState roamState;
+    [ConditionalField(nameof(uniqueState), true), SerializeField] AttackStanceState attackStanceState;
+    [ConditionalField(nameof(uniqueState), true), SerializeField] Collider2D attackHitbox;
+    [ConditionalField(nameof(uniqueState), true), SerializeField] ContactFilter2D contactFilter;
+    [ConditionalField(nameof(uniqueState), true), SerializeField] StatusManager ownStatusManager;
+    [ConditionalField(nameof(uniqueState), true), SerializeField] ApplyStatusEffects applyStatusEffects;
+    [ConditionalField(nameof(uniqueState), true), SerializeField] StatusEffects statusEffects;
     #endregion
 
     #region private fields

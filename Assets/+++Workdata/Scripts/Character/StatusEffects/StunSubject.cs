@@ -53,7 +53,7 @@ public class StunSubject : MonoBehaviour
     {
         yield return new WaitForSeconds(stunFallofTime);
 
-        for (int i = (int)currentStun; i > 0; i--)
+        for (int i = (int)Mathf.Ceil(currentStun); i > 0; i--)
         {
             stunState = StunState.stunDescending;
 

@@ -19,7 +19,7 @@ public class TentacleBehavior : MonoBehaviour
 
     #region serialized fields
     [Foldout("TailCustomization", true)]
-    [SerializeField] int grabSpeed = 60;
+    [SerializeField] float grabSpeed = 60;
     [SerializeField] Transform tailEnd;
     [SerializeField] Transform[] bodyParts;
     [SerializeField, ConditionalField(nameof(pointFollowMode), false, PointFollowMode.stack)] bool halfSize;
