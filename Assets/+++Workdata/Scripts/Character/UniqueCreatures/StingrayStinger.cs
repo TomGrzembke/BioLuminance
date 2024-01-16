@@ -13,6 +13,10 @@ public class StingrayStinger : MonoBehaviour
     [SerializeField] FlipSpriteOnAngle stingFlipper;
     [SerializeField] AnimationCurve animationCurve;
     [SerializeField] ApplyStatusEffects applyStatusEffects;
+    [SerializeField] StatusManager ownStatusManager;
+    [SerializeField] Collider2D stingCollider;
+    [SerializeField] StatusEffects statusEffects;
+    [SerializeField] ContactFilter2D contactFilter;
     [SerializeField] float stingerRadius;
 
     [Header("Time Info")][SerializeField] float timeToAttack;
@@ -22,11 +26,10 @@ public class StingrayStinger : MonoBehaviour
 
     [Header("Layer Info")]
     [SerializeField] LayerMask creatureLayer;
-    [SerializeField] Creatures creatureType;
-    [SerializeField] Creatures targetLayer;
 
-    List<StatusManager> statusTargets = new();
-    List<Collider2D> colliderssafe;
+    List<LimbSubject> limbTargets = new();
+    List<Collider2D> colliderTargets;
+    List<Collider2D> colliderAttack = new();
 
     #endregion
 
@@ -34,6 +37,7 @@ public class StingrayStinger : MonoBehaviour
 
     Coroutine attackCoroutine;
     Coroutine cooldownCoroutine;
+    Coroutine hitDetectCoroutine;
     [SerializeField] float rotationMinus;
     #endregion
 
@@ -44,42 +48,49 @@ public class StingrayStinger : MonoBehaviour
 
     void HandleDetection()
     {
-        statusTargets.Clear();
+        limbTargets.Clear();
 
-        colliderssafe = new(Physics2D.OverlapCircleAll(stingerGFX.position, stingerRadius, creatureLayer));
+        colliderTargets = new(Physics2D.OverlapCircleAll(stingerGFX.position, stingerRadius, creatureLayer));
 
-        GetStatusInColliders(colliderssafe);
+        limbTargets = GetLimbsInColliders(colliderTargets);
 
-        if (statusTargets.Count > 0)
-            AttackTarget(statusTargets[Random.Range(0, statusTargets.Count)]);
+        if (limbTargets.Count > 0)
+            AttackTarget(limbTargets[Random.Range(0, limbTargets.Count)]);
     }
 
-    void GetStatusInColliders(List<Collider2D> colliders)
+    List<LimbSubject> GetLimbsInColliders(List<Collider2D> colliders)
     {
+        List<LimbSubject> _limbSubjects = new();
         for (int i = 0; i < colliders.Count; i++)
         {
-            if (!colliders[i].TryGetComponent(out StatusManager statusTarget))
-                statusTarget = colliders[i].GetComponentInParent<StatusManager>();
+            if (!colliders[i].TryGetComponent(out LimbSubject limbTarget))
+                limbTarget = colliders[i].GetComponentInParent<LimbSubject>();
 
-            if (!statusTarget.TargetLayer.HasFlag(creatureType))
-                continue;
+            if (limbTarget == null) continue;
 
-            if (!statusTargets.Contains(statusTarget))
-                statusTargets.Add(statusTarget);
+            if (limbTarget.ownStatusManager == ownStatusManager) continue;
+
+            if (!ownStatusManager.TargetLayer.HasFlag(limbTarget.ownStatusManager.CreatureType)) continue;
+
+            if (!_limbSubjects.Contains(limbTarget))
+                _limbSubjects.Add(limbTarget);
         }
+
+        return _limbSubjects;
     }
 
-    public void AttackTarget(StatusManager statusTarget)
+    public void AttackTarget(LimbSubject limbTarget)
     {
         if (cooldownCoroutine == null && attackCoroutine == null)
-            attackCoroutine = StartCoroutine(Attack(statusTarget));
+            attackCoroutine = StartCoroutine(Attack(limbTarget));
+
     }
 
-    public IEnumerator Attack(StatusManager statusTarget)
+    public IEnumerator Attack(LimbSubject limbTarget)
     {
         float attackTime = 0;
         float currentAttackWindupTime = 0;
-        Transform attackTrans = statusTarget.GrabManager.GetClosestGrabTrans(transform.position);
+        Transform attackTrans = limbTarget.ownStatusManager.GrabManager.GetClosestGrabTrans(transform.position);
 
         Vector3 currentTargetPos = attackTrans.position;
         while (currentAttackWindupTime < attackWindupTime)
@@ -94,6 +105,10 @@ public class StingrayStinger : MonoBehaviour
         }
         Vector3 currentStingPos = stingerTarget.position;
 
+        if (hitDetectCoroutine != null)
+            StopCoroutine(hitDetectCoroutine);
+        hitDetectCoroutine = StartCoroutine(DetectIfHit(limbTarget));
+
         while (attackTime < timeToAttack)
         {
             StingerRotationFrame(attackTime, attackTrans.position);
@@ -104,6 +119,32 @@ public class StingrayStinger : MonoBehaviour
 
         cooldownCoroutine = StartCoroutine(Cooldown());
         attackCoroutine = null;
+    }
+
+    IEnumerator DetectIfHit(LimbSubject limbTarget)
+    {
+        float detectTime = 0;
+        while (attackCoroutine != null && detectTime < timeToAttack)
+        {
+            detectTime += Time.deltaTime;
+
+            colliderAttack.Clear();
+             Physics2D.OverlapCollider(stingCollider, contactFilter, colliderAttack);
+
+            List<LimbSubject> _limbTargets = GetLimbsInColliders(colliderAttack);
+            if (_limbTargets.Count < 0) yield return null;
+
+            for (int i = 0; i < _limbTargets.Count; i++)
+            {
+                applyStatusEffects.ApplyEffects(statusEffects, _limbTargets[i], ownStatusManager);
+            }
+
+            yield return new WaitForSeconds(timeToAttack - detectTime);
+        }
+
+        cooldownCoroutine = StartCoroutine(Cooldown());
+        attackCoroutine = null;
+        hitDetectCoroutine = null;
     }
 
     void StingerRotationFrame(float currentTime, Vector3 attackPos)

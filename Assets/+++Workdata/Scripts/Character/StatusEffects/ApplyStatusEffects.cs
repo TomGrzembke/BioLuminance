@@ -24,7 +24,7 @@ public class ApplyStatusEffects : MonoBehaviour
 
         if (_statusEffects.stunPerInstance != 0)
         {
-            targetStatusManager.AddStun(_statusEffects.stunPerInstance * stunEffectCondition.Calc_percentageDebuff);
+            targetStatusManager.AddStun(_statusEffects.stunPerInstance * (stunEffectCondition != null ? stunEffectCondition.Calc_percentageDebuff : 1));
             hasDoneSmth = true;
         }
 
