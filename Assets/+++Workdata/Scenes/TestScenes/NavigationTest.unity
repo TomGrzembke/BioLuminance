@@ -2057,6 +2057,7 @@ MonoBehaviour:
   stateEvent: []
   attackState: {fileID: 1030532831}
   roamState: {fileID: 842713355}
+  attackDistance: 3
   stateDuration: 5
 --- !u!4 &360307307
 Transform:
@@ -5994,6 +5995,7 @@ MonoBehaviour:
   stateEvent: []
   attackState: {fileID: 841660800}
   roamState: {fileID: 17291131}
+  attackDistance: 3
   stateDuration: 5
 --- !u!4 &1104060566 stripped
 Transform:
@@ -9162,7 +9164,15 @@ MonoBehaviour:
   useStateVars: 1
   dangerous: 0
   stateEvent: []
-  stateManager: {fileID: 1786285007}
+  deathTime: 5
+  animDyingSpeedDivider: 2
+  gfxTrans: {fileID: 0}
+  headTrans: {fileID: 0}
+  particleSystem: {fileID: 0}
+  anim: {fileID: 0}
+  objToDisableFirst: []
+  objToDisableLast: []
+  scriptsToDisable: []
 --- !u!1 &1684050696
 GameObject:
   m_ObjectHideFlags: 0
@@ -10432,6 +10442,7 @@ MonoBehaviour:
     hitAmount: 0
   attackState: {fileID: 1030532831}
   roamState: {fileID: 842713355}
+  attackDistance: 3
 --- !u!4 &1885219476
 Transform:
   m_ObjectHideFlags: 0
@@ -10937,6 +10948,7 @@ MonoBehaviour:
   stateEvent: []
   attackState: {fileID: 841660800}
   roamState: {fileID: 17291131}
+  attackDistance: 3
 --- !u!1 &2048670287
 GameObject:
   m_ObjectHideFlags: 0
@@ -11317,6 +11329,7 @@ MonoBehaviour:
     hitAmount: 0
   attackState: {fileID: 7867434261087131346}
   roamState: {fileID: 7247853248594689737}
+  attackDistance: 3
 --- !u!1 &127634111835087788
 GameObject:
   m_ObjectHideFlags: 0
@@ -11883,6 +11896,7 @@ MonoBehaviour:
   stateEvent: []
   attackState: {fileID: 7867434261087131346}
   roamState: {fileID: 7247853248594689737}
+  attackDistance: 3
   stateDuration: 5
 --- !u!4 &1008979187659448160
 Transform:
@@ -12397,6 +12411,7 @@ MonoBehaviour:
   stateEvent: []
   attackState: {fileID: 8313377990917138126}
   roamState: {fileID: 8855269676521426645}
+  attackDistance: 3
   stateDuration: 5
 --- !u!1 &1481874951911731270
 GameObject:
@@ -17767,6 +17782,7 @@ MonoBehaviour:
     hitAmount: 0
   attackState: {fileID: 8313377990917138126}
   roamState: {fileID: 8855269676521426645}
+  attackDistance: 3
 --- !u!1 &2337206814414696341
 GameObject:
   m_ObjectHideFlags: 0
@@ -29805,7 +29821,15 @@ MonoBehaviour:
   useStateVars: 1
   dangerous: 0
   stateEvent: []
-  stateManager: {fileID: 7028744023346898294}
+  deathTime: 5
+  animDyingSpeedDivider: 2
+  gfxTrans: {fileID: 0}
+  headTrans: {fileID: 0}
+  particleSystem: {fileID: 0}
+  anim: {fileID: 0}
+  objToDisableFirst: []
+  objToDisableLast: []
+  scriptsToDisable: []
 --- !u!82 &5157764130601279636
 AudioSource:
   m_ObjectHideFlags: 0
@@ -44965,7 +44989,15 @@ MonoBehaviour:
   useStateVars: 1
   dangerous: 0
   stateEvent: []
-  stateManager: {fileID: 9221873992816743786}
+  deathTime: 5
+  animDyingSpeedDivider: 2
+  gfxTrans: {fileID: 0}
+  headTrans: {fileID: 0}
+  particleSystem: {fileID: 0}
+  anim: {fileID: 0}
+  objToDisableFirst: []
+  objToDisableLast: []
+  scriptsToDisable: []
 --- !u!4 &6453172228444084241
 Transform:
   m_ObjectHideFlags: 0

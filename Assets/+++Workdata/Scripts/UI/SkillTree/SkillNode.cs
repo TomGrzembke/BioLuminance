@@ -11,6 +11,7 @@ public class SkillNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     [SerializeField] InformationSO informationFieldSO;
     [SerializeField] TextMeshProUGUI skillNameText;
     [SerializeField] TextMeshProUGUI skillDescriptionText;
+    [SerializeField] TextMeshProUGUI skillCostText;
     [Space(5)]
     [SerializeField] GameObject AcquiredSkill;
     //[SerializeField] GameObject UnacquiredSkill;
@@ -28,6 +29,7 @@ public class SkillNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
         skillNameText = GameObject.Find("SkillName").GetComponent<TextMeshProUGUI>();
         skillDescriptionText = GameObject.Find("SkillStats").GetComponent<TextMeshProUGUI>();
+        skillCostText = GameObject.Find("SkillCost").GetComponent<TextMeshProUGUI>();
 
         if (informationFieldSO == null)
         {
@@ -96,6 +98,15 @@ public class SkillNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
         skillNameText.text = informationFieldSO.skillName;
         skillDescriptionText.text = informationFieldSO.skillDescription.Replace(",", "\n");
+        
+        skillCostText.text = informationFieldSO.cost.ToString();
+
+        if (PointSystem.Instance.Points > informationFieldSO.cost)
+        {
+            skillCostText.color = new Color32(255, 255, 255, 255);
+        }
+        else if (PointSystem.Instance.Points < informationFieldSO.cost)
+            skillCostText.color = new Color32(150, 0, 0, 255);
     }
 
     public void PointerExit()
@@ -103,6 +114,8 @@ public class SkillNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         skillManager.SetImageInformationField(false);
         skillNameText.text = null;
         skillDescriptionText.text = null;
+        skillCostText.text = null;
+        skillCostText.color = new Color32(255, 255, 255, 255);
     }
 
     public void OnPointerEnter(PointerEventData eventData)

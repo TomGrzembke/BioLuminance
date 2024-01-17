@@ -5,8 +5,7 @@ public class SkillManager : MonoBehaviour
 {
     public static SkillManager Instance;
     void Awake() => Instance = this;
-
-    [SerializeField] Vector3 offset;
+    
     [SerializeField] GameObject imageInformationField;
     [SerializeField] GameObject skillTree;
 
@@ -20,7 +19,7 @@ public class SkillManager : MonoBehaviour
     [SerializeField] float maxPointAmount = 4;
     void Update()
     {
-        imageInformationField.transform.position = Input.mousePosition + offset;
+        imageInformationField.transform.position = Input.mousePosition;
     }
 
     [ButtonMethod]
