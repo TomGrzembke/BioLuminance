@@ -2434,9 +2434,33 @@ PrefabInstance:
       propertyPath: m_Name
       value: '[Particle] Stun'
       objectReference: {fileID: 0}
+    - target: {fileID: 4113494012005678965, guid: c9fc838b69675ad468c0d1515caac5b9, type: 3}
+      propertyPath: NoiseModule.frequency
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4113494012005678965, guid: c9fc838b69675ad468c0d1515caac5b9, type: 3}
+      propertyPath: NoiseModule.strength.scalar
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4113494012005678965, guid: c9fc838b69675ad468c0d1515caac5b9, type: 3}
+      propertyPath: NoiseModule.scrollSpeed.scalar
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6139458291331051216, guid: c9fc838b69675ad468c0d1515caac5b9, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6510784046801533355, guid: c9fc838b69675ad468c0d1515caac5b9, type: 3}
+      propertyPath: NoiseModule.frequency
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6510784046801533355, guid: c9fc838b69675ad468c0d1515caac5b9, type: 3}
+      propertyPath: NoiseModule.strength.scalar
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6510784046801533355, guid: c9fc838b69675ad468c0d1515caac5b9, type: 3}
+      propertyPath: NoiseModule.scrollSpeed.scalar
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7738688384179776270, guid: c9fc838b69675ad468c0d1515caac5b9, type: 3}
       propertyPath: m_LocalPosition.y
