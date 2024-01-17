@@ -86,6 +86,7 @@ public class RewardWindow : MonoBehaviour
         float beforeCalc = current - additional;
         bool valueNegative = additional < 0;
         string plusOrMinus = valueNegative ? " " : " + ";
+        SoundType soundType = valueNegative == true ? SoundType.PointCounterDown : SoundType.PointCounter;
         rewardText.text = beforeCalc + plusOrMinus + additional;
 
         while (time < fadeTime)
@@ -98,7 +99,7 @@ public class RewardWindow : MonoBehaviour
 
         time = 0;
         bool soundPlayed = false;
-        float soundLength = SoundManager.Instance.GetSoundLength(SoundType.PointCounter);
+        float soundLength = SoundManager.Instance.GetSoundLength(soundType);
         currencyFadeTime = soundLength != 0 ? soundLength : currencyFadeTime;
 
         while (time < currencyFadeTime)
@@ -111,7 +112,7 @@ public class RewardWindow : MonoBehaviour
 
             if (!soundPlayed)
             {
-                SoundManager.Instance.PlaySound(SoundType.PointCounter);
+                SoundManager.Instance.PlaySound(soundType);
                 soundPlayed = true;
             }
         }

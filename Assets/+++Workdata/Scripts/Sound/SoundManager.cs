@@ -48,6 +48,9 @@ public class SoundManager : MonoBehaviour
             break;
         }
 
+        if(clip == null)
+            return 0;
+
         return clip.length; 
     }
 
@@ -80,5 +83,6 @@ public enum SoundType
     SkillAcquired,
     Stun,
     PointCounter,
+    PointCounterDown,
 
 }
