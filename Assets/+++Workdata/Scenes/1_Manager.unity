@@ -4600,7 +4600,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1276222160
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8323,7 +8323,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 240448201718927008, guid: 66e49f4494162d145876d0273e044fc0, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 455977834298447459, guid: 66e49f4494162d145876d0273e044fc0, type: 3}
       propertyPath: InitialModule.startColor.maxColor.a
@@ -8339,7 +8339,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7899498099186320819, guid: 66e49f4494162d145876d0273e044fc0, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8262880008634249018, guid: 66e49f4494162d145876d0273e044fc0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9712,7 +9712,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &8473145290499454275
 GameObject:
   m_ObjectHideFlags: 0
@@ -9731,7 +9731,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &8473145290499454276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9747,6 +9747,9 @@ MonoBehaviour:
   rectTransform: {fileID: 0}
   border: {fileID: 525222600}
   canvas: {fileID: 0}
+  canvasRect: {fileID: 0}
+  height: 0
+  width: 0
 --- !u!198 &8577708671252911449 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 1722974692332980155, guid: aaf545d08c6e4944bb803d16cee5b0f7, type: 3}
