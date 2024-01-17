@@ -10,18 +10,19 @@ public class Godrays : MonoBehaviour
 {
     public float spawnRange;
     public GameObject[] godRayArray;
-
+    
+    public float rotationSpeed = 1f; // Speed variable used to control the animation
+    public float rotationOffset = 50f; // Rotate by 50 units
+    
+    float finalAngle;
+    Vector3 startAngle; // Reference to the object's original angle values
+    
     Vector2 plusX;
     Vector2 minusX;
 
     private void Awake()
     {
-        throw new NotImplementedException();
-    }
-
-    private void OnValidate()
-    {
-        
+        SpawnRays();
     }
     
     [ButtonMethod]
@@ -44,14 +45,6 @@ public class Godrays : MonoBehaviour
 
                 light.intensity = randomIntensity;
             }
-        }
-    }
-
-    private void Update()
-    {
-        foreach (Transform child in transform)
-        {
-            child.Rotate(0,0,1 * (Time.deltaTime * 2));
         }
     }
 
