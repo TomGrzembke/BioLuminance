@@ -14,7 +14,7 @@ public abstract class Ability : MonoBehaviour
     public void EnterAbility(AbilitySlotManager _abilitySlotManager)
     {
         abilitySlotManager = _abilitySlotManager;
-        OnInitialized();
+        OnInitialized(_abilitySlotManager);
     }
 
     public virtual void Execute(AbilitySlotManager _abilitySlotManager, bool deactivate = false)
@@ -25,11 +25,11 @@ public abstract class Ability : MonoBehaviour
         else
             DeExecuteInternal();
     }
-    public void OnInitialized()
+    public void OnInitialized(AbilitySlotManager _abilitySlotManager)
     {
-        OnInitializedInternal();
+        OnInitializedInternal(_abilitySlotManager);
     }
     protected abstract void ExecuteInternal();
     protected abstract void DeExecuteInternal();
-    protected abstract void OnInitializedInternal();
+    protected abstract void OnInitializedInternal(AbilitySlotManager _abilitySlotManager);
 }

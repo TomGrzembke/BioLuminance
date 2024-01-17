@@ -28,7 +28,7 @@ public class TunaPassiveAbility : Ability
         speedModifier.enabled = false;
     }
 
-    protected override void OnInitializedInternal()
+    protected override void OnInitializedInternal(AbilitySlotManager _)
     {
         speedModifier.enabled = true;
         speedModifier.SetSpeedSubject(abilitySlotManager.StatusManager.SpeedSubject);

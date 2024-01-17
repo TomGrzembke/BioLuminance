@@ -904,9 +904,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 468429863}
-  - component: {fileID: 468429864}
   - component: {fileID: 468429866}
   - component: {fileID: 468429865}
+  - component: {fileID: 468429864}
   m_Layer: 5
   m_Name: '[LayoutGroup] Abilities'
   m_TagString: Untagged
@@ -989,6 +989,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerObj: {fileID: 1585866062}
+  playerGFX: {fileID: 772060991}
   statusManager: {fileID: 7608655987527139218}
   abilitySlots:
   - {fileID: 1172146438}
@@ -1621,6 +1622,7 @@ MonoBehaviour:
   currentAbilityPrefab: {fileID: 0}
   slotIndex: 0
   abilityImage: {fileID: 714449654}
+  abilitySlotManager: {fileID: 468429866}
 --- !u!222 &714449656
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1806,6 +1808,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &772060991 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3076316842458055637, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
+  m_PrefabInstance: {fileID: 7608655987527139202}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &772135950
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2107,6 +2114,7 @@ MonoBehaviour:
   currentAbilityPrefab: {fileID: 0}
   slotIndex: 0
   abilityImage: {fileID: 840004809}
+  abilitySlotManager: {fileID: 468429866}
 --- !u!222 &840004811
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7204,6 +7212,7 @@ MonoBehaviour:
   currentAbilityPrefab: {fileID: 0}
   slotIndex: 0
   abilityImage: {fileID: 965386921}
+  abilitySlotManager: {fileID: 468429866}
 --- !u!222 &965386923
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7740,6 +7749,7 @@ MonoBehaviour:
   currentAbilityPrefab: {fileID: 0}
   slotIndex: 0
   abilityImage: {fileID: 1172146436}
+  abilitySlotManager: {fileID: 468429866}
 --- !u!1 &1194214774
 GameObject:
   m_ObjectHideFlags: 0

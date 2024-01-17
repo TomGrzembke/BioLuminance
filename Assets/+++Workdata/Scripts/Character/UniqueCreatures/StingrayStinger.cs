@@ -154,9 +154,9 @@ public class StingrayStinger : MonoBehaviour
 
     void StingerRotationFrame(float currentTime, Vector3 attackPos)
     {
-
         Vector3 vectorToTarget = attackPos - stingerGFX.position;
-        float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg - (stingFlipper.Flipped ? rotationMinus : 0);
+        bool flipped = stingFlipper && stingFlipper.Flipped;
+        float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg - (flipped ? rotationMinus : 0);
         Quaternion newQuaternion = Quaternion.AngleAxis(angle, Vector3.forward);
 
         stingerGFX.rotation = Quaternion.Slerp(stingerGFX.rotation, newQuaternion, currentTime / attackWindupTime);
@@ -192,5 +192,10 @@ public class StingrayStinger : MonoBehaviour
     {
         Gizmos.DrawWireSphere(transform.position, stingerRadius);
         Gizmos.DrawLine(stingerGFX.position, stingerTarget.transform.position);
+    }
+
+    public void SetOwnStatusManager(StatusManager statusManager)
+    {
+        ownStatusManager = statusManager;
     }
 }
