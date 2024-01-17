@@ -44,6 +44,11 @@ public class StingrayStinger : MonoBehaviour
     void Awake()
     {
         stingCollider = stingerGFX.GetComponent<Collider2D>();
+
+    }
+
+    void Start()
+    {
         applyStatusEffects = ownStatusManager.ApplyStatusEffects;
     }
 
