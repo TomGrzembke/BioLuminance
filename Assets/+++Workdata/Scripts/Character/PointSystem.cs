@@ -107,7 +107,8 @@ public class PointSystem : MonoBehaviour
     public void CalculatePoints(int pointsMinus)
     {
         points -= pointsMinus;
-        RewardWindow.Instance.ShowCurrency(points, -pointsMinus);
+        if (RewardWindow.Instance != null)
+            RewardWindow.Instance.ShowCurrency(points, -pointsMinus);
     }
 }
 

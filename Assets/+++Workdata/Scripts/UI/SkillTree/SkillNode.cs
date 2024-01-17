@@ -13,7 +13,7 @@ public class SkillNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     [SerializeField] TextMeshProUGUI skillDescriptionText;
     [Space(5)]
     [SerializeField] GameObject AcquiredSkill;
-    [SerializeField] GameObject UnacquiredSkill;
+    //[SerializeField] GameObject UnacquiredSkill;
     [SerializeField] bool dontChangeNameOnValidate;
 
     SkillManager skillManager;
@@ -57,7 +57,7 @@ public class SkillNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         skillManager.SkillUpdate(informationFieldSO);
 
         img.color = new Color32(255, 255, 255, 255);
-        UnacquiredSkill.SetActive(false);
+        //UnacquiredSkill.SetActive(false);
         AcquiredSkill.SetActive(true);
 
         foreach (var nextSkill in nextSkills)
