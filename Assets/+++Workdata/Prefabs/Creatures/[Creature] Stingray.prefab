@@ -2989,6 +2989,30 @@ PrefabInstance:
       propertyPath: maximumHealth
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 4379387250497385803, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4845016083817838126, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4845016083817838126, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: lengthInSec
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4845016083817838126, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4845016083817838126, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: scalingMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4845016083817838126, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: moveWithTransform
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5013842050204936565, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].x
       value: -0.29607952

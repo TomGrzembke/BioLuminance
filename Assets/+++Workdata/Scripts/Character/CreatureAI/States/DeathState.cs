@@ -7,8 +7,14 @@ public class DeathState : State
 {
     #region serialized fields
     [SerializeField] float deathTime = 5;
+    [SerializeField] float animDyingSpeedDivider = 2;
     [SerializeField] Transform gfxTrans;
     [SerializeField] Transform headTrans;
+
+#pragma warning disable CS0108 
+    [SerializeField] ParticleSystem particleSystem;
+#pragma warning restore CS0108 
+
     [SerializeField] Animator anim;
     [SerializeField] GameObject[] objToDisableFirst;
     [SerializeField] GameObject[] objToDisableLast;
@@ -49,6 +55,7 @@ public class DeathState : State
 
     IEnumerator DeathCoroutine()
     {
+        particleSystem.Play();
 
         for (int i = 0; i < objToDisableFirst.Length; i++)
         {
@@ -75,12 +82,14 @@ public class DeathState : State
 
     IEnumerator SlowDownAnimCoroutine()
     {
+        if (!anim) yield break;
+
         float slowTime = 0;
-        if (anim)
+        float animSpeed = anim.speed;
             while (slowTime < deathTime)
             {
-                slowTime += Time.deltaTime;
-                anim.speed *= -(-1 + slowTime / deathTime);
+                slowTime += Time.deltaTime * animDyingSpeedDivider;
+                anim.speed = Mathf.Clamp(animSpeed * (-(-1 + slowTime / deathTime)), 0, animSpeed);
                 yield return null;
             }
     }
