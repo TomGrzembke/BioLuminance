@@ -38,9 +38,10 @@ public class HealthBar : Bar
         AfterShockLogic(health);
     }
 
-    private void AfterShockLogic(float health)
+     void AfterShockLogic(float health)
     {
         if (afterShockBar == null) return;
+        if (!gameObject.activeSelf) return;
 
         if (afterShockCoroutine == null)
             afterShockCoroutine = StartCoroutine(AfterShockbarCo(health));

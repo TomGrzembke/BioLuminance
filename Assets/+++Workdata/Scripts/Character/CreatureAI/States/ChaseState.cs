@@ -7,6 +7,7 @@ public class ChaseState : State
     
     [SerializeField] protected AttackState attackState;
     [SerializeField] protected RoamState roamState;
+    [SerializeField] protected float attackDistance = 3;
     #endregion
 
     #region private fields
@@ -14,7 +15,7 @@ public class ChaseState : State
 
     public override State SwitchStateInternal()
     {
-        if (creatureLogic.DistanceFromTarget <= stateAgentStoppingDistance)
+        if (creatureLogic.DistanceFromTarget <= attackDistance)
             return attackState;
 
         if (creatureLogic.DistanceFromTarget >= creatureLogic.DetectionRadius + 5)

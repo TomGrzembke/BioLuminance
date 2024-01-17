@@ -81,6 +81,7 @@ public class TentacleBehavior : MonoBehaviour
 
     void VisualizeTentaclesOnValidate()
     {
+        if(attachTrans == null) return;
         lineRend.positionCount = 2;
         Vector3[] startPositions = new Vector3[2];
         startPositions[0] = attachTrans.position;

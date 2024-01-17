@@ -55,6 +55,7 @@ public class StateManager : MonoBehaviour
         if (!currentState) return;
         if (!newState) return;
         if (currentState == newState) return;
+        if (currentState == deathState) return;
 
         currentState.ExitState();
         SetLastState(currentState);
@@ -82,6 +83,8 @@ public class StateManager : MonoBehaviour
 
     void OnStun(bool condition)
     {
+        if(currentState == deathState) return;
+
         if (condition)
         {
             SetState(stunState);
@@ -93,6 +96,8 @@ public class StateManager : MonoBehaviour
 
     void OnHealthChangedAlpha(float alpha)
     {
+        if (currentState == deathState) return;
+
         if (alpha <= 0)
         {
             SetState(deathState);

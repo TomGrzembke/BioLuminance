@@ -7934,21 +7934,45 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5019547733189792710, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
-      propertyPath: currentHealth
-      value: 1
+    - target: {fileID: 112084801442957818, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: attackDistance
+      value: 15
       objectReference: {fileID: 0}
-    - target: {fileID: 5019547733189792710, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
-      propertyPath: maximumHealth
-      value: 1
+    - target: {fileID: 112084801442957818, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: stateEvent.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 112084801442957818, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: stateEvent.Array.data[0].switchState
+      value: 
+      objectReference: {fileID: 7867434261221957322}
+    - target: {fileID: 4094015772150169075, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: roamState
+      value: 
+      objectReference: {fileID: 7247853248192509649}
+    - target: {fileID: 4094015772150169075, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: chaseState
+      value: 
+      objectReference: {fileID: 112084800509717995}
+    - target: {fileID: 4094015772150169075, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: stateAgentSpeed
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 4094015772150169075, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: stateAgentAcceleration
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4094015772150169075, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: stateAgentStoppingDistance
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5951047566704116028, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
       propertyPath: m_Name
       value: '[Creature] Stingray'
       objectReference: {fileID: 0}
-    - target: {fileID: 5951047566704116028, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
-      propertyPath: m_IsActive
-      value: 1
+    - target: {fileID: 6446076114821494030, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: deathTime
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7065252597165299522, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -14794,6 +14818,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -42.54}
+--- !u!114 &112084800509717995 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 112084801442957818, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+  m_PrefabInstance: {fileID: 1235248145}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0712df3ef83006a498b4ddacc686b979, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &569652437506451323
 GameObject:
   m_ObjectHideFlags: 0
@@ -20021,6 +20056,17 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &7247853248192509649 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7247853247259251392, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+  m_PrefabInstance: {fileID: 1235248145}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fe50b0595703854cba355c439e5c301, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7608655987527139202
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20139,6 +20185,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f0ed5816d3fe72458602006eb00551c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7867434261221957322 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7867434260259355355, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+  m_PrefabInstance: {fileID: 1235248145}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa3e069d9ae7fc04caf6fe7d57107024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &7893999504803495638

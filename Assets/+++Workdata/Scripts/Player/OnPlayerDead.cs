@@ -28,7 +28,6 @@ public class OnPlayerDead : MonoBehaviour
     {
         if (dead)
         {
-            //save stuff
             SkillManager.OpenSkillManager();
             tentacleTargetManager.SetTentacles(false);
             gfxTrans.parent = headTrans;

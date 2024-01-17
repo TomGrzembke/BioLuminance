@@ -3,9 +3,9 @@ using UnityEngine;
 public class StingrayAttack : State
 {
     #region serialized fields
-    [Header(nameof(ChaseState))]
 
     [SerializeField] RoamState roamState;
+    [SerializeField] State chaseState;
     #endregion
 
     #region private fields
@@ -13,7 +13,13 @@ public class StingrayAttack : State
 
     public override State SwitchStateInternal()
     {
+        if (creatureLogic.TargetStatusManager == null)
+            return roamState;
 
+        if (creatureLogic.DistanceFromTarget >= creatureLogic.DetectionRadius + 30)
+        {
+            return chaseState;
+        }
         return this;
     }
 
@@ -37,7 +43,7 @@ public class StingrayAttack : State
 
     void HandleMovement()
     {
-        creatureLogic.SetDistanceFromTarget(Vector3.Distance(creatureLogic.TargetStatusManager.transform.position, creatureLogic.transform.position) * 2);
+        creatureLogic.SetDistanceFromTarget(Vector3.Distance(creatureLogic.TargetStatusManager.transform.position, creatureLogic.transform.position));
         if (!creatureLogic.agent.hasPath)
             creatureLogic.agent.SetDestination(creatureLogic.TargetStatusManager.transform.position);
     }
