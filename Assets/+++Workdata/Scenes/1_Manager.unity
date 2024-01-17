@@ -280,9 +280,9 @@ GameObject:
   m_Component:
   - component: {fileID: 26563074}
   - component: {fileID: 26563078}
+  - component: {fileID: 26563075}
   - component: {fileID: 26563077}
   - component: {fileID: 26563076}
-  - component: {fileID: 26563075}
   m_Layer: 5
   m_Name: Temperatur Upgrade 2
   m_TagString: Untagged
@@ -325,11 +325,12 @@ MonoBehaviour:
   - {fileID: 1710199159}
   unacquiredSkillParticles:
   - {fileID: 2142367723}
-  informationField: {fileID: 11400000, guid: 5877e99aded76a2429d0ae7ebd0940be, type: 2}
+  informationFieldSO: {fileID: 11400000, guid: 5877e99aded76a2429d0ae7ebd0940be, type: 2}
   skillNameText: {fileID: 2863929636983708104}
   skillDescriptionText: {fileID: 446977895132517580}
   AcquiredSkill: {fileID: 987324580}
   UnacquiredSkill: {fileID: 1248268468}
+  dontChangeNameOnValidate: 0
 --- !u!114 &26563076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -586,9 +587,9 @@ GameObject:
   m_Component:
   - component: {fileID: 59467954}
   - component: {fileID: 59467958}
+  - component: {fileID: 59467955}
   - component: {fileID: 59467957}
   - component: {fileID: 59467956}
-  - component: {fileID: 59467955}
   m_Layer: 5
   m_Name: Pressure Upgrade 3
   m_TagString: Untagged
@@ -629,11 +630,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextSkills: []
   unacquiredSkillParticles: []
-  informationField: {fileID: 11400000, guid: 2d5b48034da27b541bf5a52b0d42d770, type: 2}
+  informationFieldSO: {fileID: 11400000, guid: 2d5b48034da27b541bf5a52b0d42d770, type: 2}
   skillNameText: {fileID: 2863929636983708104}
   skillDescriptionText: {fileID: 446977895132517580}
   AcquiredSkill: {fileID: 55193442}
   UnacquiredSkill: {fileID: 2045065449}
+  dontChangeNameOnValidate: 0
 --- !u!114 &59467956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -812,9 +814,9 @@ GameObject:
   m_Component:
   - component: {fileID: 186101874}
   - component: {fileID: 186101878}
+  - component: {fileID: 186101875}
   - component: {fileID: 186101877}
   - component: {fileID: 186101876}
-  - component: {fileID: 186101875}
   m_Layer: 5
   m_Name: Pressure Upgrade 1
   m_TagString: Untagged
@@ -857,11 +859,12 @@ MonoBehaviour:
   - {fileID: 1330797082}
   unacquiredSkillParticles:
   - {fileID: 842926471}
-  informationField: {fileID: 11400000, guid: 43fff3ded5354c44581c04a73bfed9fa, type: 2}
+  informationFieldSO: {fileID: 11400000, guid: 43fff3ded5354c44581c04a73bfed9fa, type: 2}
   skillNameText: {fileID: 2863929636983708104}
   skillDescriptionText: {fileID: 446977895132517580}
   AcquiredSkill: {fileID: 939178191}
   UnacquiredSkill: {fileID: 728997331}
+  dontChangeNameOnValidate: 0
 --- !u!114 &186101876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4995,9 +4998,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1330797083}
   - component: {fileID: 1330797087}
+  - component: {fileID: 1330797084}
   - component: {fileID: 1330797086}
   - component: {fileID: 1330797085}
-  - component: {fileID: 1330797084}
   m_Layer: 5
   m_Name: Pressure Upgrade 2
   m_TagString: Untagged
@@ -5040,11 +5043,12 @@ MonoBehaviour:
   - {fileID: 59467953}
   unacquiredSkillParticles:
   - {fileID: 2045065449}
-  informationField: {fileID: 11400000, guid: fe06133d324329d4ea573ffa434b3f91, type: 2}
+  informationFieldSO: {fileID: 11400000, guid: fe06133d324329d4ea573ffa434b3f91, type: 2}
   skillNameText: {fileID: 2863929636983708104}
   skillDescriptionText: {fileID: 446977895132517580}
   AcquiredSkill: {fileID: 1657560409}
   UnacquiredSkill: {fileID: 842926471}
+  dontChangeNameOnValidate: 0
 --- !u!114 &1330797085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5297,9 +5301,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1384021129}
   - component: {fileID: 1384021133}
+  - component: {fileID: 1384021130}
   - component: {fileID: 1384021132}
   - component: {fileID: 1384021131}
-  - component: {fileID: 1384021130}
   m_Layer: 5
   m_Name: Oxygen Upgrade 3
   m_TagString: Untagged
@@ -5340,11 +5344,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextSkills: []
   unacquiredSkillParticles: []
-  informationField: {fileID: 11400000, guid: a6c3231150b7f9546b82aa03ba85596f, type: 2}
+  informationFieldSO: {fileID: 11400000, guid: a6c3231150b7f9546b82aa03ba85596f, type: 2}
   skillNameText: {fileID: 2863929636983708104}
   skillDescriptionText: {fileID: 446977895132517580}
   AcquiredSkill: {fileID: 1222793131}
   UnacquiredSkill: {fileID: 56880436}
+  dontChangeNameOnValidate: 0
 --- !u!114 &1384021131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6394,9 +6399,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1593325715}
   - component: {fileID: 1593325719}
+  - component: {fileID: 1593325716}
   - component: {fileID: 1593325718}
   - component: {fileID: 1593325717}
-  - component: {fileID: 1593325716}
   m_Layer: 5
   m_Name: Oxygen Upgrade 2
   m_TagString: Untagged
@@ -6439,11 +6444,12 @@ MonoBehaviour:
   - {fileID: 1384021128}
   unacquiredSkillParticles:
   - {fileID: 56880436}
-  informationField: {fileID: 11400000, guid: f5dc29e64bff64345b51163e8a3d785b, type: 2}
+  informationFieldSO: {fileID: 11400000, guid: f5dc29e64bff64345b51163e8a3d785b, type: 2}
   skillNameText: {fileID: 2863929636983708104}
   skillDescriptionText: {fileID: 446977895132517580}
   AcquiredSkill: {fileID: 962780159}
   UnacquiredSkill: {fileID: 628394024}
+  dontChangeNameOnValidate: 0
 --- !u!114 &1593325717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6573,9 +6579,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1619649034}
   - component: {fileID: 1619649038}
+  - component: {fileID: 1619649035}
   - component: {fileID: 1619649037}
   - component: {fileID: 1619649036}
-  - component: {fileID: 1619649035}
   m_Layer: 5
   m_Name: Oxygen Upgrade 1
   m_TagString: Untagged
@@ -6618,11 +6624,12 @@ MonoBehaviour:
   - {fileID: 1593325714}
   unacquiredSkillParticles:
   - {fileID: 628394024}
-  informationField: {fileID: 11400000, guid: 6ff7919be6d79174c9f26622ab17b1bd, type: 2}
+  informationFieldSO: {fileID: 11400000, guid: 6ff7919be6d79174c9f26622ab17b1bd, type: 2}
   skillNameText: {fileID: 2863929636983708104}
   skillDescriptionText: {fileID: 446977895132517580}
   AcquiredSkill: {fileID: 576009198}
   UnacquiredSkill: {fileID: 360688023}
+  dontChangeNameOnValidate: 0
 --- !u!114 &1619649036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6715,9 +6722,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1626814521}
   - component: {fileID: 1626814525}
+  - component: {fileID: 1626814522}
   - component: {fileID: 1626814524}
   - component: {fileID: 1626814523}
-  - component: {fileID: 1626814522}
   m_Layer: 5
   m_Name: Temperatur Upgrade 1
   m_TagString: Untagged
@@ -6760,11 +6767,12 @@ MonoBehaviour:
   - {fileID: 26563073}
   unacquiredSkillParticles:
   - {fileID: 1248268468}
-  informationField: {fileID: 11400000, guid: 37073038839a6e2409673f6113cc3c5f, type: 2}
+  informationFieldSO: {fileID: 11400000, guid: 37073038839a6e2409673f6113cc3c5f, type: 2}
   skillNameText: {fileID: 2863929636983708104}
   skillDescriptionText: {fileID: 446977895132517580}
   AcquiredSkill: {fileID: 2126507422}
   UnacquiredSkill: {fileID: 137049595}
+  dontChangeNameOnValidate: 0
 --- !u!114 &1626814523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7555,9 +7563,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1710199160}
   - component: {fileID: 1710199164}
+  - component: {fileID: 1710199161}
   - component: {fileID: 1710199163}
   - component: {fileID: 1710199162}
-  - component: {fileID: 1710199161}
   m_Layer: 5
   m_Name: Temperatur Upgrade 3
   m_TagString: Untagged
@@ -7598,11 +7606,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextSkills: []
   unacquiredSkillParticles: []
-  informationField: {fileID: 11400000, guid: 75ad0d658b0b82c4cbd837c32655a501, type: 2}
+  informationFieldSO: {fileID: 11400000, guid: 75ad0d658b0b82c4cbd837c32655a501, type: 2}
   skillNameText: {fileID: 2863929636983708104}
   skillDescriptionText: {fileID: 446977895132517580}
   AcquiredSkill: {fileID: 856590151}
   UnacquiredSkill: {fileID: 2142367723}
+  dontChangeNameOnValidate: 0
 --- !u!114 &1710199162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9627,11 +9636,12 @@ MonoBehaviour:
   - {fileID: 137049595}
   - {fileID: 360688023}
   - {fileID: 728997331}
-  informationField: {fileID: 11400000, guid: 3d02175e4a814eb4a8a39031e2671e44, type: 2}
+  informationFieldSO: {fileID: 11400000, guid: 3d02175e4a814eb4a8a39031e2671e44, type: 2}
   skillNameText: {fileID: 2863929636983708104}
   skillDescriptionText: {fileID: 446977895132517580}
   AcquiredSkill: {fileID: 1120707440}
   UnacquiredSkill: {fileID: 900932468}
+  dontChangeNameOnValidate: 1
 --- !u!1 &1851505192069262564
 GameObject:
   m_ObjectHideFlags: 0
@@ -10175,11 +10185,11 @@ GameObject:
   m_Component:
   - component: {fileID: 5635881091399731041}
   - component: {fileID: 1937122041930083790}
+  - component: {fileID: 1018030649163478432}
   - component: {fileID: 8895589128587831683}
   - component: {fileID: 3190722254381604298}
-  - component: {fileID: 1018030649163478432}
   m_Layer: 5
-  m_Name: Temperature
+  m_Name: BigSkill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -103,6 +103,12 @@ public class PointSystem : MonoBehaviour
             }
         }
     }
+
+    public void CalculatePoints(int pointsMinus)
+    {
+        points -= pointsMinus;
+        RewardWindow.Instance.ShowCurrency(points, -pointsMinus);
+    }
 }
 
 [Serializable]

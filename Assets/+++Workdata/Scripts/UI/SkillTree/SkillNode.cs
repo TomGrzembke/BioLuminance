@@ -1,5 +1,3 @@
-using System;
-using Coffee.UIExtensions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -10,21 +8,20 @@ public class SkillNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 {
     [SerializeField] GameObject[] nextSkills;
     [SerializeField] GameObject[] unacquiredSkillParticles;
-    [SerializeField] InformationSO informationField;
+    [SerializeField] InformationSO informationFieldSO;
     [SerializeField] TextMeshProUGUI skillNameText;
     [SerializeField] TextMeshProUGUI skillDescriptionText;
-    [Space(5)] 
+    [Space(5)]
     [SerializeField] GameObject AcquiredSkill;
     [SerializeField] GameObject UnacquiredSkill;
+    [SerializeField] bool dontChangeNameOnValidate;
 
     SkillManager skillManager;
-    Button btn;
     Image img;
     bool check = false;
 
     void Awake()
     {
-        btn = GetComponent<Button>();
         img = GetComponent<Image>();
         skillManager = GetComponentInParent<SkillManager>();
         skillManager.SetImageInformationField(true);
@@ -32,15 +29,16 @@ public class SkillNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         skillNameText = GameObject.Find("SkillName").GetComponent<TextMeshProUGUI>();
         skillDescriptionText = GameObject.Find("SkillStats").GetComponent<TextMeshProUGUI>();
 
-        if (informationField == null)
+        if (informationFieldSO == null)
         {
             Debug.LogError("Skill Tree: Skill Node InformationField is empty");
         }
     }
 
-     void OnValidate()
+    void OnValidate()
     {
-        gameObject.name = informationField.skillName;
+        if (!dontChangeNameOnValidate)
+            gameObject.name = informationFieldSO.skillName;
     }
 
     void Start()
@@ -51,10 +49,13 @@ public class SkillNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public void PointerClick()
     {
         if (check == true) return;
+        if (informationFieldSO.cost > PointSystem.Instance.Points) return;
+        PointSystem.Instance.CalculatePoints(informationFieldSO.cost);
+
         check = true;
-        
-        skillManager.SkillUpdate(informationField);
-        
+
+        skillManager.SkillUpdate(informationFieldSO);
+
         img.color = new Color32(255, 255, 255, 255);
         UnacquiredSkill.SetActive(false);
         AcquiredSkill.SetActive(true);
@@ -93,8 +94,8 @@ public class SkillNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         skillManager.SetImageInformationField(true);
 
-        skillNameText.text = informationField.skillName;
-        skillDescriptionText.text = informationField.skillDescription.Replace(",", "\n");
+        skillNameText.text = informationFieldSO.skillName;
+        skillDescriptionText.text = informationFieldSO.skillDescription.Replace(",", "\n");
     }
 
     public void PointerExit()
