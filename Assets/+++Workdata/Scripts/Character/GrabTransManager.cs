@@ -13,7 +13,7 @@ public class GrabTransManager : MonoBehaviour
     #endregion
 
     [ButtonMethod]
-    public void GatherChilds()
+    public void GatherChildren()
     {
         grabTrans.Clear();
         for (int i = 0; i < transform.childCount; i++)
@@ -32,6 +32,27 @@ public class GrabTransManager : MonoBehaviour
             {
                 closestDistance = distance;
                 closestTrans = grabTrans[i];
+            }
+        }
+
+        return closestTrans;
+    }
+
+    public Transform GetACloseGrabTrans(Vector3 pos)
+    {
+        float closestDistance = 100;
+        Transform closestTrans = grabTrans[0];
+
+        for (int i = 0; i < grabTrans.Count; i++)
+        {
+            float distance = Vector3.Distance(grabTrans[i].position, pos);
+            if (distance < closestDistance)
+            {
+                if (70 > Random.Range(0, 101))
+                {
+                    closestDistance = distance;
+                    closestTrans = grabTrans[i];
+                }
             }
         }
 

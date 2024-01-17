@@ -42,7 +42,7 @@ public class TentacleTargetManager : MonoBehaviour
             default:
                 for (int i = 0; i < tentacleCount; i++)
                 {
-                    AddTargetTrans(targetLimbs[UnityEngine.Random.Range(0, targetCount)].OwnStatusManager.GrabManager.GetRandomGrabTrans());
+                    AddTargetTrans(targetLimbs[UnityEngine.Random.Range(0, targetCount)].OwnStatusManager.GrabManager.GetACloseGrabTrans(transform.position));
                 }
                 break;
         }
