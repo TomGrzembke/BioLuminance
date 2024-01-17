@@ -84,7 +84,10 @@ public class RewardWindow : MonoBehaviour
         rewardTextCanvasGroup.alpha = 0;
         float time = 0;
         float beforeCalc = current - additional;
-        rewardText.text = beforeCalc + " + " + additional;
+        bool valueNegative = additional < 0;
+        string plusOrMinus = valueNegative ? " " : " + ";
+        rewardText.text = beforeCalc + plusOrMinus + additional;
+
         while (time < fadeTime)
         {
             yield return null;
@@ -103,8 +106,8 @@ public class RewardWindow : MonoBehaviour
             yield return null;
             time += Time.unscaledDeltaTime;
             float percentageProgressed = time / currencyFadeTime;
-            rewardText.text = (beforeCalc + additional * percentageProgressed).RoundToInt() + 
-                (additional < 0 ? "" : " + ") + (additional - (additional * percentageProgressed).RoundToInt());
+            rewardText.text = (beforeCalc + additional * percentageProgressed).RoundToInt() +
+                plusOrMinus + (additional - (additional * percentageProgressed).RoundToInt());
 
             if (!soundPlayed)
             {
