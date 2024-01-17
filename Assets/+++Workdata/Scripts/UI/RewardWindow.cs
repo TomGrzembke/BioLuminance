@@ -103,7 +103,8 @@ public class RewardWindow : MonoBehaviour
             yield return null;
             time += Time.unscaledDeltaTime;
             float percentageProgressed = time / currencyFadeTime;
-            rewardText.text = (beforeCalc + additional * percentageProgressed).RoundToInt() + " + " + (additional - (additional * percentageProgressed).RoundToInt());
+            rewardText.text = (beforeCalc + additional * percentageProgressed).RoundToInt() + 
+                (additional < 0 ? "" : " + ") + (additional - (additional * percentageProgressed).RoundToInt());
 
             if (!soundPlayed)
             {

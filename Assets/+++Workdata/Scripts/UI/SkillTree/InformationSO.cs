@@ -9,9 +9,8 @@ public class InformationSO : ScriptableObject
     public List<SkillClass> skillList;
     [Tooltip("What this skill does TIP: Comma to start new line")]
     public string skillDescription;
-    [Space(15)]
-    public Color acquired = new Color32(0, 255, 0, 255);
-    public Color notAcquired = new Color32(255, 0, 0, 255);
+    public int cost;
+
 }
 
 [Serializable]

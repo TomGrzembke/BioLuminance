@@ -10,12 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ddd75069e8f18e54aa7882a9179853b7, type: 3}
-  m_Name: Temp3
+  m_Name: Oxygen1
   m_EditorClassIdentifier: 
-  skillName: Temperatur Upgrade 3
+  skillName: Oxygen Upgrade 1
   skillList:
-  - skill: 3
+  - skill: 1
     skillPointAmount: 1
-  skillDescription: +Temperatur Tolerance
-  acquired: {r: 0, g: 1, b: 0, a: 1}
-  notAcquired: {r: 1, g: 0, b: 0, a: 1}
+  skillDescription: +Oxygen Tolerance
+  cost: 100
