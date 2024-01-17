@@ -1775,7 +1775,16 @@ MonoBehaviour:
   useStateVars: 1
   dangerous: 0
   stateEvent: []
-  stateManager: {fileID: 852289035523142219}
+  deathTime: 5
+  gfxTrans: {fileID: 2670992523527165008}
+  headTrans: {fileID: 1595835679270034538}
+  anim: {fileID: 0}
+  objToDisableFirst:
+  - {fileID: 8217652240769637564}
+  - {fileID: 1509975904177257347}
+  objToDisableLast:
+  - {fileID: 15204248062647766}
+  scriptsToDisable: []
 --- !u!1 &7811242459079831674
 GameObject:
   m_ObjectHideFlags: 0

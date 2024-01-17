@@ -2746,6 +2746,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1035275422216541489, guid: 0e0a55ad5dff1b740bbefd510890e154, type: 3}
   m_PrefabInstance: {fileID: 7583772404553415065}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7603284345225711004 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 52550066214761477, guid: 0e0a55ad5dff1b740bbefd510890e154, type: 3}
+  m_PrefabInstance: {fileID: 7583772404553415065}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb2cb287d9fea86478d47b100b10f640, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8370324554416474920
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2926,6 +2937,50 @@ PrefabInstance:
       propertyPath: m_Name
       value: '[Creature] Stingray'
       objectReference: {fileID: 0}
+    - target: {fileID: 3268572947793182246, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 7568013892377942787}
+    - target: {fileID: 3268572947793182246, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: gfxTrans
+      value: 
+      objectReference: {fileID: 5237192906561623951}
+    - target: {fileID: 3268572947793182246, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: headTrans
+      value: 
+      objectReference: {fileID: 7065252597165299522}
+    - target: {fileID: 3268572947793182246, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: useStateVars
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3268572947793182246, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: stateAgentSpeed
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3268572947793182246, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: stateAgentAcceleration
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3268572947793182246, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: stateAgentStoppingDistance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3268572947793182246, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: objToDisableLast.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3268572947793182246, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: scriptsToDisable.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3268572947793182246, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: objToDisableFirst.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3268572947793182246, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: scriptsToDisable.Array.data[0]
+      value: 
+      objectReference: {fileID: 7603284345225711004}
     - target: {fileID: 3566949603382941934, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: currentHealth
       value: 20
@@ -3140,6 +3195,11 @@ MonoBehaviour:
   dangerous: 0
   stateEvent: []
   roamState: {fileID: 0}
+--- !u!4 &7065252597165299522 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1595835679270034538, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+  m_PrefabInstance: {fileID: 8370324554416474920}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &7247853247259251392 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1206069651293198824, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
