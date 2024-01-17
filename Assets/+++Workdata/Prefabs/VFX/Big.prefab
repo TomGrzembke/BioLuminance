@@ -48,10 +48,10 @@ MonoBehaviour:
   m_ComponentVersion: 1
   m_LightType: 3
   m_BlendStyleIndex: 0
-  m_FalloffIntensity: 0.662
-  m_Color: {r: 0.57916516, g: 0.8536361, b: 0.8962264, a: 1}
-  m_Intensity: 1.5
-  m_LightVolumeIntensity: 1
+  m_FalloffIntensity: 0.47
+  m_Color: {r: 0.4, g: 0.5725789, b: 0.8784314, a: 1}
+  m_Intensity: 0.2
+  m_LightVolumeIntensity: 0.45
   m_LightVolumeIntensityEnabled: 1
   m_ApplyToSortingLayers: 00000000
   m_LightCookieSprite: {fileID: 0}
@@ -64,15 +64,15 @@ MonoBehaviour:
   m_UseNormalMap: 0
   m_ShadowIntensityEnabled: 1
   m_ShadowIntensity: 0.75
-  m_ShadowVolumeIntensityEnabled: 0
+  m_ShadowVolumeIntensityEnabled: 1
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
     m_Center: {x: 0, y: -0.00000011920929, z: 0}
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
-  m_PointLightInnerAngle: 1
-  m_PointLightOuterAngle: 6
+  m_PointLightInnerAngle: 2.5
+  m_PointLightOuterAngle: 8
   m_PointLightInnerRadius: 42.92
-  m_PointLightOuterRadius: 375.37
+  m_PointLightOuterRadius: 200
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -97,3 +97,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 1
   rotationOffset: 50
+  finalAngle: 0
+  randomOffset: 0
+  lightDimming: 0
