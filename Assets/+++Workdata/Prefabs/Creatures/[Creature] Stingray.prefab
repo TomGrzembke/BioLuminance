@@ -2424,6 +2424,7 @@ MonoBehaviour:
   stateEvent: []
   attackState: {fileID: 7867434260259355355}
   roamState: {fileID: 7247853247259251392}
+  attackDistance: 3
   stateDuration: 5
 --- !u!1 &8755528979095224049
 GameObject:
@@ -2854,12 +2855,16 @@ PrefabInstance:
       value: -0.22
       objectReference: {fileID: 0}
     - target: {fileID: 1803656548544049651, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: uniqueState
+      value: 
+      objectReference: {fileID: 4094015772150169075}
+    - target: {fileID: 1803656548544049651, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: statusEffects.damagePerInstance
       value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 1937458173023117751, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: currentHealth
-      value: 20
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2024252366454839533, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: grabTrans.Array.size
@@ -2944,7 +2949,7 @@ PrefabInstance:
     - target: {fileID: 3268572947793182246, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: gfxTrans
       value: 
-      objectReference: {fileID: 5237192906561623951}
+      objectReference: {fileID: 5852454490228580216}
     - target: {fileID: 3268572947793182246, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: headTrans
       value: 
@@ -2983,11 +2988,11 @@ PrefabInstance:
       objectReference: {fileID: 7603284345225711004}
     - target: {fileID: 3566949603382941934, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: currentHealth
-      value: 20
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3566949603382941934, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: maximumHealth
-      value: 20
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4379387250497385803, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: m_SortingOrder
@@ -3212,13 +3217,14 @@ MonoBehaviour:
   distanceTravelled: 0
   FixedTimeInState: 0
   uniqueState: {fileID: 0}
-  stateAgentSpeed: 3.5
+  stateAgentSpeed: 40
   stateAgentAcceleration: 5
   stateAgentStoppingDistance: 1
-  useStateVars: 0
-  dangerous: 0
+  useStateVars: 1
+  dangerous: 1
   stateEvent: []
   roamState: {fileID: 0}
+  chaseState: {fileID: 0}
 --- !u!4 &7065252597165299522 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1595835679270034538, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}

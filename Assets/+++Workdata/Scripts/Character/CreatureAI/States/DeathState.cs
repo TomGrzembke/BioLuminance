@@ -70,8 +70,23 @@ public class DeathState : State
             scriptsToDisable[i].enabled = false;
         }
 
-        yield return new WaitForSeconds(deathTime);
 
+
+        yield return new WaitForSeconds(deathTime / 3);
+
+        float dissolveTime = 0;
+        Vector3 currentScale = gfxTrans.localScale;
+        while (dissolveTime < deathTime)
+        {
+            dissolveTime += Time.deltaTime * 3;
+            gfxTrans.localScale = currentScale * -(-1 + (dissolveTime / deathTime));
+            gfxTrans.Rotate(0, 0, -.1f);
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(deathTime / 3);
+
+        gfxTrans.gameObject.SetActive(false);
 
         for (int i = 0; i < objToDisableLast.Length; i++)
         {
@@ -86,11 +101,11 @@ public class DeathState : State
 
         float slowTime = 0;
         float animSpeed = anim.speed;
-            while (slowTime < deathTime)
-            {
-                slowTime += Time.deltaTime * animDyingSpeedDivider;
-                anim.speed = Mathf.Clamp(animSpeed * (-(-1 + slowTime / deathTime)), 0, animSpeed);
-                yield return null;
-            }
+        while (slowTime < deathTime)
+        {
+            slowTime += Time.deltaTime * animDyingSpeedDivider;
+            anim.speed = Mathf.Clamp(animSpeed * (-(-1 + slowTime / deathTime)), 0, animSpeed);
+            yield return null;
+        }
     }
 }

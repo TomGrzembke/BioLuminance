@@ -342,10 +342,11 @@ MonoBehaviour:
   stateAgentAcceleration: 6
   stateAgentStoppingDistance: 2
   useStateVars: 1
-  dangerous: 0
+  dangerous: 1
   stateEvent: []
   attackState: {fileID: 1803656548544049651}
   roamState: {fileID: 1206069651293198824}
+  attackDistance: 3
 --- !u!1 &1481909024187820602
 GameObject:
   m_ObjectHideFlags: 0
