@@ -25,20 +25,21 @@ public class StingrayStinger : MonoBehaviour
     [Header("Layer Info")]
     [SerializeField] LayerMask creatureLayer;
 
-    ApplyStatusEffects applyStatusEffects;
-    List<LimbSubject> limbTargets = new();
-    List<Collider2D> colliderTargets;
-    List<Collider2D> colliderAttack = new();
 
+    [SerializeField] float rotationMinus;
+    [SerializeField] float defaultRotation;
     #endregion
 
     #region private fields
+    List<Collider2D> colliderAttack = new();
+    ApplyStatusEffects applyStatusEffects;
+    List<LimbSubject> limbTargets = new();
+    List<Collider2D> colliderTargets;
 
     Collider2D stingCollider;
     Coroutine attackCoroutine;
     Coroutine cooldownCoroutine;
     Coroutine hitDetectCoroutine;
-    [SerializeField] float rotationMinus;
     #endregion
 
     void Awake()
@@ -172,13 +173,16 @@ public class StingrayStinger : MonoBehaviour
         float resetTime = 0;
         Vector3 currentPos = stingerTarget.localPosition;
         Quaternion currentRot = stingerGFX.localRotation;
+        Quaternion rotationTarget;
 
         while (resetTime < cooldownForNextAttack)
         {
             resetTime += Time.deltaTime;
             float progress = resetTime / cooldownForNextAttack;
+            rotationTarget = defaultRotation == 0 ? Quaternion.identity : Quaternion.Euler(0, 0, defaultRotation);
+
             stingerTarget.localPosition = Vector3.Lerp(currentPos, Vector2.zero, progress);
-            stingerGFX.localRotation = Quaternion.Slerp(currentRot, Quaternion.identity, progress);
+            stingerGFX.localRotation = Quaternion.Slerp(currentRot, rotationTarget, progress);
             yield return null;
         }
 
