@@ -15,6 +15,7 @@ public class ApplyStatusEffects : MonoBehaviour
     public void ApplyEffects(StatusEffects _statusEffects, StatusManager targetStatusManager, LimbSubject limbSubject = null, StatusManager ownStatusManager = null)
     {
         if (targetStatusManager == ownStatusManager) return;
+        if (!targetStatusManager) return;
 
         bool hasDoneSmth = false;
 
@@ -51,7 +52,7 @@ public class ApplyStatusEffects : MonoBehaviour
 
     public void ApplyEffects(StatusEffects _statusEffects, LimbSubject limbSubject, StatusManager ownStatusManager = null)
     {
-        ApplyEffects(_statusEffects, limbSubject.ownStatusManager, limbSubject, ownStatusManager);
+        ApplyEffects(_statusEffects, limbSubject.OwnStatusManager, limbSubject, ownStatusManager);
     }
 
     public void RemoveSpeedModifier(StatusManager targetStatusManager, SpeedModifier speedModifier)

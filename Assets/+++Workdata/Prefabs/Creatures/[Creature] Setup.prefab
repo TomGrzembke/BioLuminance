@@ -61,6 +61,7 @@ MonoBehaviour:
   defaultAgentAcceleration: 5
   defaultAgentStoppingDistance: 1
   detectionRadius: 20
+  rotateFactor: 1
   detectionAngle: 50
   obstacleLayer:
     serializedVersion: 2
@@ -1518,6 +1519,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maximumHealth: 10
   currentHealth: 10
+  ownStatusManager: {fileID: 907766980465430614}
 --- !u!1 &6156355649812583662
 GameObject:
   m_ObjectHideFlags: 0
@@ -1678,7 +1680,6 @@ MonoBehaviour:
   deathState: {fileID: 3268572947793182246}
   fleeState: {fileID: 5561166702717652113}
   fleeHealthPercentage: 0.25
-  limbManager: {fileID: 0}
 --- !u!1 &7043977303729271565
 GameObject:
   m_ObjectHideFlags: 0

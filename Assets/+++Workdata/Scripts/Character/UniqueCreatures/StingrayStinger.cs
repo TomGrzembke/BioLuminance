@@ -74,9 +74,9 @@ public class StingrayStinger : MonoBehaviour
 
             if (limbTarget == null) continue;
 
-            if (limbTarget.ownStatusManager == ownStatusManager) continue;
+            if (limbTarget.OwnStatusManager == ownStatusManager) continue;
 
-            if (!ownStatusManager.TargetLayer.HasFlag(limbTarget.ownStatusManager.CreatureType)) continue;
+            if (!ownStatusManager.TargetLayer.HasFlag(limbTarget.OwnStatusManager.CreatureType)) continue;
 
             if (!_limbSubjects.Contains(limbTarget))
                 _limbSubjects.Add(limbTarget);
@@ -96,7 +96,7 @@ public class StingrayStinger : MonoBehaviour
     {
         float attackTime = 0;
         float currentAttackWindupTime = 0;
-        Transform attackTrans = limbTarget.ownStatusManager.GrabManager.GetClosestGrabTrans(transform.position);
+        Transform attackTrans = limbTarget.OwnStatusManager.GrabManager.GetClosestGrabTrans(transform.position);
 
         Vector3 currentTargetPos = attackTrans.position;
         while (currentAttackWindupTime < attackWindupTime)

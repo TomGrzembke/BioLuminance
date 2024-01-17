@@ -58,7 +58,7 @@ Transform:
   m_GameObject: {fileID: 887564803519265299}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.10458214, w: 0.99451625}
-  m_LocalPosition: {x: 2.4277894, y: 3.678784, z: 0}
+  m_LocalPosition: {x: 1.214, y: -0.22, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -376,7 +376,7 @@ Transform:
   m_GameObject: {fileID: 3208130782299219675}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.10458214, w: 0.99451625}
-  m_LocalPosition: {x: 1.5991912, y: 3.7843997, z: 0}
+  m_LocalPosition: {x: 0.206, y: -0.99, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -851,7 +851,7 @@ Transform:
   m_GameObject: {fileID: 5114764278422589667}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.10458214, w: 0.99451625}
-  m_LocalPosition: {x: 2.6305108, y: 4.5661864, z: 0}
+  m_LocalPosition: {x: 0.476, y: -1.263, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -989,6 +989,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maximumHealth: 100
   currentHealth: 100
+  ownStatusManager: {fileID: 5719113294855879425}
 --- !u!1 &5593354004674811321
 GameObject:
   m_ObjectHideFlags: 0
@@ -1121,6 +1122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maximumHealth: 100
   currentHealth: 100
+  ownStatusManager: {fileID: 5719113294855879425}
 --- !u!1 &6365671945800319361
 GameObject:
   m_ObjectHideFlags: 0
@@ -1177,7 +1179,7 @@ Transform:
   m_GameObject: {fileID: 6403935679174756280}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.10458214, w: 0.99451625}
-  m_LocalPosition: {x: 3.0424533, y: 4.3902645, z: 0}
+  m_LocalPosition: {x: 0.714, y: 0.229, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1588,7 +1590,7 @@ Transform:
   m_GameObject: {fileID: 7888415154878199090}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.8203485, w: 0.571864}
-  m_LocalPosition: {x: -3.1171825, y: 3.0613902, z: 0}
+  m_LocalPosition: {x: 0.72, y: 0.47, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1694,6 +1696,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maximumHealth: 100
   currentHealth: 100
+  ownStatusManager: {fileID: 5719113294855879425}
 --- !u!1 &8668234634143880023
 GameObject:
   m_ObjectHideFlags: 0
@@ -1739,11 +1742,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 563368637058944709, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: m_Height
-      value: 3.41
+      value: 3.36
       objectReference: {fileID: 0}
     - target: {fileID: 563368637058944709, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: m_Radius
-      value: 1.91
+      value: 2.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 563368637058944709, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: m_BaseOffset
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 852289035523142219, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: fleeHealthPercentage
@@ -1809,6 +1816,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1775795466345194663, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 10.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1775795466345194663, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 10.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1775795466345194663, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 10.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1775795466345194663, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1775795466345194663, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 1775795466345194663, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1803656548544049651, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: dangerous
       value: 1
@@ -1818,8 +1849,16 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1803656548544049651, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: contactFilter.useLayerMask
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1803656548544049651, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: stateAgentStoppingDistance
-      value: 3
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1803656548544049651, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: statusEffects.damagePerInstance
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1937458173023117751, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: currentHealth
@@ -2038,6 +2077,10 @@ PrefabInstance:
       value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5670604380686470094, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: rotateFactor
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5670604380686470094, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: detectionAngle
       value: 156
       objectReference: {fileID: 0}
@@ -2067,15 +2110,15 @@ PrefabInstance:
       objectReference: {fileID: -1879712628, guid: 48a9dc895207ee9468fe6b884d54cefd, type: 3}
     - target: {fileID: 5836167974553312313, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: m_Radius
-      value: 0.84763813
+      value: 1.4940945
       objectReference: {fileID: 0}
     - target: {fileID: 5836167974553312313, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: m_Offset.x
-      value: -0.5378962
+      value: -0.3489434
       objectReference: {fileID: 0}
     - target: {fileID: 5836167974553312313, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: m_Offset.y
-      value: 3.6999998
+      value: 2.4299333
       objectReference: {fileID: 0}
     - target: {fileID: 6015395934629178757, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: m_IsActive
@@ -2103,15 +2146,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7360798349380117563, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: m_LocalScale.x
-      value: 3
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 7360798349380117563, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: m_LocalScale.y
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7360798349380117563, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: m_LocalScale.z
-      value: 3
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7360798349380117563, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8011811028265323489, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: flipRange.Max
@@ -2122,8 +2169,16 @@ PrefabInstance:
       value: 189.80669
       objectReference: {fileID: 0}
     - target: {fileID: 8477860675694297810, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: attackDistance
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 8477860675694297810, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: stateAgentSpeed
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8477860675694297810, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: stateAgentStoppingDistance
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

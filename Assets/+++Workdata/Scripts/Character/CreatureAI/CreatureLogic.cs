@@ -29,6 +29,8 @@ public abstract class CreatureLogic : MonoBehaviour
     [SerializeField] float detectionRadius;
     public float DetectionRadius => detectionRadius;
 
+    [SerializeField] float rotateFactor = 1;
+
     public float DetectionAngle => detectionAngle;
     [Range(0, 360)][SerializeField] float detectionAngle = 50f;
     public LayerMask ObstacleLayer => obstacleLayer;
@@ -102,7 +104,7 @@ public abstract class CreatureLogic : MonoBehaviour
         {
             Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, velocity);
 
-            float step = agent.acceleration * Time.deltaTime;
+            float step = agent.acceleration * Time.deltaTime * rotateFactor;
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, step);
         }
     }
