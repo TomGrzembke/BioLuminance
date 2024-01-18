@@ -1133,7 +1133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4682764815061700310}
   - component: {fileID: 2514319573626865703}
-  - component: {fileID: 693909044297382021}
+  - component: {fileID: 7821471368775333338}
   m_Layer: 0
   m_Name: Aftershock
   m_TagString: Untagged
@@ -1168,7 +1168,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4173838740424220791}
   m_CullTransparentMesh: 1
---- !u!114 &693909044297382021
+--- !u!114 &7821471368775333338
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1181,14 +1181,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.85882354, g: 0.5648169, b: 0.34509802, a: 1}
+  m_Color: {r: 1, g: 0.3420409, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: -308285587, guid: 263f4d9d650208f46aa8f5b29e4bd6f6, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1880,14 +1880,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8584906, g: 0.34420612, b: 0.34420612, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: -308285587, guid: 263f4d9d650208f46aa8f5b29e4bd6f6, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2094,7 +2094,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bar: {fileID: 4640261069435401680}
   health: {fileID: 1937458173023117751}
-  afterShockBar: {fileID: 693909044297382021}
+  afterShockBar: {fileID: 0}
   afterShockSpeed: 5
 --- !u!222 &7835674315173478763
 CanvasRenderer:

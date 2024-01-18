@@ -69,7 +69,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 4096
+    maxTextureSize: 8192
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -113,13 +113,13 @@ TextureImporter:
       name: Healthbar_concepts_0
       rect:
         serializedVersion: 2
-        x: 403
-        y: 3568
+        x: 414
+        y: 2749
         width: 3844
         height: 99
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 59, y: 0, z: 56, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -139,8 +139,8 @@ TextureImporter:
         width: 3844
         height: 100
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 67, y: 0, z: 102, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -157,11 +157,11 @@ TextureImporter:
         serializedVersion: 2
         x: 403
         y: 2473
-        width: 1997
+        width: 2003
         height: 99
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 47, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -181,8 +181,8 @@ TextureImporter:
         width: 3844
         height: 100
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 47, y: 0, z: 33, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -197,13 +197,13 @@ TextureImporter:
       name: Healthbar_concepts_4
       rect:
         serializedVersion: 2
-        x: 2400
+        x: 2406
         y: 2472
-        width: 1869
+        width: 1863
         height: 100
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 41, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -223,7 +223,7 @@ TextureImporter:
         width: 916
         height: 402
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -244,8 +244,8 @@ TextureImporter:
         width: 3844
         height: 167
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 48, y: 0, z: 36, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -260,13 +260,13 @@ TextureImporter:
       name: Healthbar_concepts_7
       rect:
         serializedVersion: 2
-        x: 447
-        y: 908
-        width: 13
-        height: 7
+        x: 1062
+        y: 1580
+        width: 3847
+        height: 167
       alignment: 0
       pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 66, y: 0, z: 67, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -286,7 +286,7 @@ TextureImporter:
         width: 916
         height: 402
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -307,14 +307,35 @@ TextureImporter:
         width: 3851
         height: 165
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 56, y: 0, z: 38, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: dc0a07c18c4ff1845be105da43e29ac6
       internalID: -1960614004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Healthbar_concepts_10
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 3569
+        width: 3848
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1afeb62680b693a43b8ed545500bb3a0
+      internalID: 1224952111
       vertices: []
       indices: 
       edges: []
@@ -332,6 +353,7 @@ TextureImporter:
     nameFileIdTable:
       Healthbar_concepts_0: -313375510
       Healthbar_concepts_1: -308285587
+      Healthbar_concepts_10: 1224952111
       Healthbar_concepts_2: 1778549885
       Healthbar_concepts_3: -1841204960
       Healthbar_concepts_4: -1308821489
