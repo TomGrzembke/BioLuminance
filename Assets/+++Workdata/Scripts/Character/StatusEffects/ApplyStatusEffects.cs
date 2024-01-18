@@ -15,6 +15,7 @@ public class ApplyStatusEffects : MonoBehaviour
     public void ApplyEffects(StatusEffects _statusEffects, StatusManager targetStatusManager, LimbSubject limbSubject = null, StatusManager ownStatusManager = null)
     {
         if (targetStatusManager == ownStatusManager) return;
+        if (!targetStatusManager) return;
 
         bool hasDoneSmth = false;
 
@@ -26,12 +27,12 @@ public class ApplyStatusEffects : MonoBehaviour
 
         if (_statusEffects.stunPerInstance != 0)
         {
-            if (stunEffectCondition != null)
-                if(targetStatusManager != null)
-                    if(_statusEffects.stunPerInstance > 0)
-                targetStatusManager.AddStun(_statusEffects.stunPerInstance * stunEffectCondition.Calc_percentageDebuff);
-            else
-                targetStatusManager.AddStun(_statusEffects.stunPerInstance);
+            if (targetStatusManager != null)
+                if (_statusEffects.stunPerInstance > 0)
+                    if (stunEffectCondition != null)
+                        targetStatusManager.AddStun(_statusEffects.stunPerInstance * stunEffectCondition.Calc_percentageDebuff);
+                    else
+                        targetStatusManager.AddStun(_statusEffects.stunPerInstance);
             hasDoneSmth = true;
         }
 
@@ -51,7 +52,7 @@ public class ApplyStatusEffects : MonoBehaviour
 
     public void ApplyEffects(StatusEffects _statusEffects, LimbSubject limbSubject, StatusManager ownStatusManager = null)
     {
-        ApplyEffects(_statusEffects, limbSubject.ownStatusManager, limbSubject, ownStatusManager);
+        ApplyEffects(_statusEffects, limbSubject.OwnStatusManager, limbSubject, ownStatusManager);
     }
 
     public void RemoveSpeedModifier(StatusManager targetStatusManager, SpeedModifier speedModifier)

@@ -3,9 +3,13 @@ using UnityEngine;
 public class AbilitySlotManager : MonoBehaviour
 {
     #region serialized fields
+    public GameObject PlayerObj => playerObj;
     [SerializeField] GameObject playerObj;
-    [SerializeField] StatusManager statusManager;
+    public GameObject PlayerGFX => playerGFX;
+    [SerializeField] GameObject playerGFX;
     public StatusManager StatusManager => statusManager;
+    [SerializeField] StatusManager statusManager;
+
     [SerializeField] AbilitySlot[] abilitySlots;
     #endregion
 

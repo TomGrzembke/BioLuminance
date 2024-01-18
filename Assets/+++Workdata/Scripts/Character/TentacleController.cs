@@ -59,9 +59,9 @@ public class TentacleController : MonoBehaviour
             if (!playerDetect.PossibleTargets.Contains(savedPossibleTarget[i]))
             {
                 savedPossibleTarget.RemoveAt(i);
-                tentacleTargetManager.SetAttackStatusManager(savedPossibleTarget);
                 i--;
             }
+            tentacleTargetManager.SetAttackStatusManager(savedPossibleTarget);
         }
 
         if (savedPossibleTarget.Count == 0)

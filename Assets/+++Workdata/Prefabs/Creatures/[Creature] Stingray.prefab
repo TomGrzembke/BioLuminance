@@ -2147,6 +2147,10 @@ PrefabInstance:
       propertyPath: creatureType
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1206069651293198824, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: dangerous
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1241876678968463969, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: creatureName
       value: Stingray
@@ -2175,6 +2179,10 @@ PrefabInstance:
       propertyPath: objToRename.Array.data[4]
       value: 
       objectReference: {fileID: 5951047566704116028}
+    - target: {fileID: 1583032317030586209, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: dangerous
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1595835679270034538, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: m_LocalPosition.x
       value: 34.2
@@ -2467,9 +2475,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: '[GrabTrans_1] Stingray'
       objectReference: {fileID: 0}
+    - target: {fileID: 7627820772083735243, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: activeReward
+      value: 
+      objectReference: {fileID: 4577258144272773178, guid: 7830da5a52b77c148abc869f36103eb2, type: 3}
+    - target: {fileID: 7627820772083735243, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: passiveReward
+      value: 
+      objectReference: {fileID: 4577258144272773178, guid: 7830da5a52b77c148abc869f36103eb2, type: 3}
     - target: {fileID: 8477860675694297810, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: dangerous
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8477860675694297810, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: attackDistance
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8477860675694297810, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: stateAgentSpeed
@@ -2477,7 +2497,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8477860675694297810, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: stateEvent.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8477860675694297810, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: stateEvent.Array.data[0].time
@@ -2593,9 +2613,9 @@ MonoBehaviour:
   distanceTravelled: 0
   FixedTimeInState: 0
   uniqueState: {fileID: 0}
-  stateAgentSpeed: 40
-  stateAgentAcceleration: 5
-  stateAgentStoppingDistance: 1
+  stateAgentSpeed: 45
+  stateAgentAcceleration: 3
+  stateAgentStoppingDistance: 0
   useStateVars: 1
   dangerous: 1
   stateEvent: []

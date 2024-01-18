@@ -15,7 +15,7 @@ public class StunState : State
 
     protected override void EnterInternal()
     {
-
+        creatureLogic.agent.velocity = new(0, 0, 0);
     }
 
     protected override void ExitInternal()

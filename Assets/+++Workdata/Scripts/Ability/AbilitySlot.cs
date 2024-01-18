@@ -9,13 +9,13 @@ public class AbilitySlot : MonoBehaviour
     [SerializeField] GameObject currentAbilityPrefab;
     [SerializeField] int slotIndex;
     [SerializeField] Image abilityImage;
+    [SerializeField] AbilitySlotManager abilitySlotManager;
     #endregion
 
     #region private fields
     Ability currentAbility;
     public bool occupied { get; private set; }
     public Ability CurrentAbility => currentAbility;
-    AbilitySlotManager abilitySlotManager;
     #endregion
 
     void OnValidate()

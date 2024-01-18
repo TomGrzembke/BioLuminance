@@ -36,13 +36,13 @@ public class TentacleTargetManager : MonoBehaviour
             case 1:
                 for (int i = 0; i < tentacleCount; i++)
                 {
-                    AddTargetTrans(targetLimbs[0].ownStatusManager.GrabManager.GetRandomGrabTrans());
+                    AddTargetTrans(targetLimbs[0].OwnStatusManager.GrabManager.GetRandomGrabTrans());
                 }
                 break;
             default:
                 for (int i = 0; i < tentacleCount; i++)
                 {
-                    AddTargetTrans(targetLimbs[UnityEngine.Random.Range(0, targetCount)].ownStatusManager.GrabManager.GetRandomGrabTrans());
+                    AddTargetTrans(targetLimbs[UnityEngine.Random.Range(0, targetCount)].OwnStatusManager.GrabManager.GetACloseGrabTrans(transform.position));
                 }
                 break;
         }
@@ -114,7 +114,7 @@ public class TentacleTargetManager : MonoBehaviour
         targetStatusManagers.Clear();
         for (int i = 0; i < targetLimbs.Count; i++)
         {
-            StatusManager targetStatusManager = targetLimbs[i].ownStatusManager;
+            StatusManager targetStatusManager = targetLimbs[i].OwnStatusManager;
             if (!targetStatusManagers.Contains(targetStatusManager))
             {
                 targetStatusManagers.Add(targetStatusManager);

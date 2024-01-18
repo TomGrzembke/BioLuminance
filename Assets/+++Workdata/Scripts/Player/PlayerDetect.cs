@@ -35,7 +35,7 @@ public class PlayerDetect : MonoBehaviour
                 limbTarget = colliders[i].GetComponentInChildren<LimbSubject>();
 
             if (!limbTarget) continue;
-            if (limbTarget.ownStatusManager == playerStatusManager) continue;
+            if (limbTarget.OwnStatusManager == playerStatusManager) continue;
 
             if (!possibleTargets.Contains(limbTarget))
                 possibleTargets.Add(limbTarget);

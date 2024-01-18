@@ -7,5 +7,6 @@ public enum Creatures
     Jellyfish = 1,
     Tuna = 2,
     StingRay = 4,
+    Sunfish = 8,
 
 }

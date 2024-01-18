@@ -25,25 +25,31 @@ public class StingrayStinger : MonoBehaviour
     [Header("Layer Info")]
     [SerializeField] LayerMask creatureLayer;
 
-    ApplyStatusEffects applyStatusEffects;
-    List<LimbSubject> limbTargets = new();
-    List<Collider2D> colliderTargets;
-    List<Collider2D> colliderAttack = new();
 
+    [SerializeField] float rotationMinus;
+    [SerializeField] float defaultRotation;
     #endregion
 
     #region private fields
+    List<Collider2D> colliderAttack = new();
+    ApplyStatusEffects applyStatusEffects;
+    List<LimbSubject> limbTargets = new();
+    List<Collider2D> colliderTargets;
 
     Collider2D stingCollider;
     Coroutine attackCoroutine;
     Coroutine cooldownCoroutine;
     Coroutine hitDetectCoroutine;
-    [SerializeField] float rotationMinus;
     #endregion
 
     void Awake()
     {
         stingCollider = stingerGFX.GetComponent<Collider2D>();
+
+    }
+
+    void Start()
+    {
         applyStatusEffects = ownStatusManager.ApplyStatusEffects;
     }
 
@@ -74,9 +80,9 @@ public class StingrayStinger : MonoBehaviour
 
             if (limbTarget == null) continue;
 
-            if (limbTarget.ownStatusManager == ownStatusManager) continue;
+            if (limbTarget.OwnStatusManager == ownStatusManager) continue;
 
-            if (!ownStatusManager.TargetLayer.HasFlag(limbTarget.ownStatusManager.CreatureType)) continue;
+            if (!ownStatusManager.TargetLayer.HasFlag(limbTarget.OwnStatusManager.CreatureType)) continue;
 
             if (!_limbSubjects.Contains(limbTarget))
                 _limbSubjects.Add(limbTarget);
@@ -96,7 +102,7 @@ public class StingrayStinger : MonoBehaviour
     {
         float attackTime = 0;
         float currentAttackWindupTime = 0;
-        Transform attackTrans = limbTarget.ownStatusManager.GrabManager.GetClosestGrabTrans(transform.position);
+        Transform attackTrans = limbTarget.OwnStatusManager.GrabManager.GetClosestGrabTrans(transform.position);
 
         Vector3 currentTargetPos = attackTrans.position;
         while (currentAttackWindupTime < attackWindupTime)
@@ -154,9 +160,9 @@ public class StingrayStinger : MonoBehaviour
 
     void StingerRotationFrame(float currentTime, Vector3 attackPos)
     {
-
         Vector3 vectorToTarget = attackPos - stingerGFX.position;
-        float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg - (stingFlipper.Flipped ? rotationMinus : 0);
+        bool flipped = stingFlipper && stingFlipper.Flipped;
+        float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg - (flipped ? rotationMinus : 0);
         Quaternion newQuaternion = Quaternion.AngleAxis(angle, Vector3.forward);
 
         stingerGFX.rotation = Quaternion.Slerp(stingerGFX.rotation, newQuaternion, currentTime / attackWindupTime);
@@ -167,13 +173,16 @@ public class StingrayStinger : MonoBehaviour
         float resetTime = 0;
         Vector3 currentPos = stingerTarget.localPosition;
         Quaternion currentRot = stingerGFX.localRotation;
+        Quaternion rotationTarget;
 
         while (resetTime < cooldownForNextAttack)
         {
             resetTime += Time.deltaTime;
             float progress = resetTime / cooldownForNextAttack;
+            rotationTarget = defaultRotation == 0 ? Quaternion.identity : Quaternion.Euler(0, 0, defaultRotation);
+
             stingerTarget.localPosition = Vector3.Lerp(currentPos, Vector2.zero, progress);
-            stingerGFX.localRotation = Quaternion.Slerp(currentRot, Quaternion.identity, progress);
+            stingerGFX.localRotation = Quaternion.Slerp(currentRot, rotationTarget, progress);
             yield return null;
         }
 
@@ -192,5 +201,10 @@ public class StingrayStinger : MonoBehaviour
     {
         Gizmos.DrawWireSphere(transform.position, stingerRadius);
         Gizmos.DrawLine(stingerGFX.position, stingerTarget.transform.position);
+    }
+
+    public void SetOwnStatusManager(StatusManager statusManager)
+    {
+        ownStatusManager = statusManager;
     }
 }

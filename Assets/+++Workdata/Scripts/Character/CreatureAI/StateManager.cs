@@ -15,9 +15,6 @@ public class StateManager : MonoBehaviour
     [SerializeField] State deathState;
     [SerializeField] State fleeState;
     [Range(0, 1), SerializeField] float fleeHealthPercentage = .2f;
-
-    [Header("Health")]
-    [SerializeField] LimbManager limbManager;
     #endregion
 
     #region private fields
