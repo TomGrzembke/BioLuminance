@@ -2241,7 +2241,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1937458173023117751, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: currentHealth
-      value: 1
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2024252366454839533, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: grabTrans.Array.size
@@ -2365,11 +2365,11 @@ PrefabInstance:
       objectReference: {fileID: 7603284345225711004}
     - target: {fileID: 3566949603382941934, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: currentHealth
-      value: 1
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3566949603382941934, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: maximumHealth
-      value: 1
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 4379387250497385803, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: m_SortingOrder
@@ -2680,6 +2680,10 @@ PrefabInstance:
       propertyPath: ownStatusManager
       value: 
       objectReference: {fileID: 8696543891219929982}
+    - target: {fileID: 2040213741693429717, guid: 0e0a55ad5dff1b740bbefd510890e154, type: 3}
+      propertyPath: statusEffects.stunPerInstance
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2295247924410535221, guid: 0e0a55ad5dff1b740bbefd510890e154, type: 3}
       propertyPath: m_Name
       value: Stingray Stinger
