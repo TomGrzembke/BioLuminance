@@ -13863,7 +13863,7 @@ GameObject:
   - component: {fileID: 1470187506}
   - component: {fileID: 1470187505}
   m_Layer: 10
-  m_Name: Godrays
+  m_Name: '[Lights] Godrays'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53373,16 +53373,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6195277500373901213, guid: 50c7ff264bedaeb4e93d598f31be093e, type: 3}
       propertyPath: m_Name
-      value: Big
+      value: Godray
       objectReference: {fileID: 0}
-    - target: {fileID: 6937482155986506275, guid: 50c7ff264bedaeb4e93d598f31be093e, type: 3}
-      propertyPath: cam
-      value: 
-      objectReference: {fileID: 187603311}
-    - target: {fileID: 6937482155986506275, guid: 50c7ff264bedaeb4e93d598f31be093e, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 655692373}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
