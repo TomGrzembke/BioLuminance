@@ -1826,9 +1826,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2814292376661910040, guid: 9bc6a04619cb4ed498b212f12c8fb165, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4429841847992830702, guid: 9bc6a04619cb4ed498b212f12c8fb165, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -30.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4977780618686760407, guid: 9bc6a04619cb4ed498b212f12c8fb165, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4977780618686760407, guid: 9bc6a04619cb4ed498b212f12c8fb165, type: 3}
+      propertyPath: m_SortingOrder
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4977780618686760407, guid: 9bc6a04619cb4ed498b212f12c8fb165, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1612334373
+      objectReference: {fileID: 0}
     - target: {fileID: 5504465045674342438, guid: 9bc6a04619cb4ed498b212f12c8fb165, type: 3}
       propertyPath: m_Name
       value: LevelContainer
+      objectReference: {fileID: 0}
+    - target: {fileID: 6538401269976898528, guid: 9bc6a04619cb4ed498b212f12c8fb165, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6621383728013283558, guid: 9bc6a04619cb4ed498b212f12c8fb165, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1868,6 +1892,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6621383728013283558, guid: 9bc6a04619cb4ed498b212f12c8fb165, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6818801583214025053, guid: 9bc6a04619cb4ed498b212f12c8fb165, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7872718071164311019, guid: 9bc6a04619cb4ed498b212f12c8fb165, type: 3}
+      propertyPath: m_SortingOrder
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -14153,7 +14185,7 @@ MonoBehaviour:
   m_Intensity: 0.7
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 00000000dbbae59f
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0

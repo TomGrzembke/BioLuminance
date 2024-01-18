@@ -73,6 +73,8 @@ public class HealthSubject : MonoBehaviour
     public void SetCurrentHealth(float newHealth)
     {
         CalculateMaxHealth();
+
+        if(newHealth == currentHealth) return;
         newHealth = Mathf.Clamp(newHealth, 0f, maximumHealth);
 
         currentHealth = newHealth;
