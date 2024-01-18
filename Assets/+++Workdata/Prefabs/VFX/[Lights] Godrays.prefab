@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1487081557373587915}
-  - component: {fileID: 1074605840781913713}
   m_Layer: 10
   m_Name: '[Lights] Godrays'
   m_TagString: Untagged
@@ -33,40 +32,6 @@ Transform:
   - {fileID: 1680022487066523391}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1074605840781913713
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7361245356443474985}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e936b6c12d310c4ca558d4b0732e86e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnRange: 161.9
-  godRayArray:
-  - {fileID: 8940553451366358503}
-  - {fileID: 8940553451366358503}
-  - {fileID: 8940553451366358503}
-  - {fileID: 8940553451366358503}
-  - {fileID: 8940553451366358503}
-  - {fileID: 8940553451366358503}
-  - {fileID: 8940553451366358503}
-  - {fileID: 8940553451366358503}
-  - {fileID: 8940553451366358503}
-  - {fileID: 8940553451366358503}
-  - {fileID: 8940553451366358503}
-  - {fileID: 8940553451366358503}
-  - {fileID: 8940553451366358503}
-  - {fileID: 8940553451366358503}
-  - {fileID: 8940553451366358503}
-  - {fileID: 8940553451366358503}
-  - {fileID: 8940553451366358503}
-  - {fileID: 8940553451366358503}
-  - {fileID: 8940553451366358503}
-  - {fileID: 8940553451366358503}
 --- !u!1001 &3020004324447355514
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -127,10 +92,5 @@ PrefabInstance:
 --- !u!4 &1680022487066523391 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4519809056051868805, guid: 50c7ff264bedaeb4e93d598f31be093e, type: 3}
-  m_PrefabInstance: {fileID: 3020004324447355514}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &8940553451366358503 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6195277500373901213, guid: 50c7ff264bedaeb4e93d598f31be093e, type: 3}
   m_PrefabInstance: {fileID: 3020004324447355514}
   m_PrefabAsset: {fileID: 0}
