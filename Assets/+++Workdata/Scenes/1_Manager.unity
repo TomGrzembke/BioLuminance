@@ -710,6 +710,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 794405403}
+    - target: {fileID: 2712200282544707191, guid: f4297f4c9c624c2469e51fb6e9ea5d7e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2801522396404312875, guid: f4297f4c9c624c2469e51fb6e9ea5d7e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3163762713618460833, guid: f4297f4c9c624c2469e51fb6e9ea5d7e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -798,6 +806,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5194788034242125880, guid: f4297f4c9c624c2469e51fb6e9ea5d7e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5271641740766184685, guid: f4297f4c9c624c2469e51fb6e9ea5d7e, type: 3}
       propertyPath: m_Name
       value: '[Canvas] Loading/Options/Skillpoint'
@@ -810,6 +822,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 1372340426}
+    - target: {fileID: 5847443365338918321, guid: f4297f4c9c624c2469e51fb6e9ea5d7e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8766749383142649082, guid: f4297f4c9c624c2469e51fb6e9ea5d7e, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
