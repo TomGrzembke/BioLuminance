@@ -1510,7 +1510,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2652163028729770724
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2038,6 +2038,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3513509413338124877, guid: 21698ffa25a89c94f8f94e4eb50a4f72, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3513509413338124877, guid: 21698ffa25a89c94f8f94e4eb50a4f72, type: 3}
       propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
@@ -2193,6 +2197,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SkillpointManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6734655823189615618, guid: 21698ffa25a89c94f8f94e4eb50a4f72, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6738601831508825781, guid: 21698ffa25a89c94f8f94e4eb50a4f72, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 213.99992
@@ -2213,6 +2221,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 3270370387088583975, guid: c3337ed8c85508d45ba50861412ef92d, type: 3}
+    - target: {fileID: 6788305373167868254, guid: 21698ffa25a89c94f8f94e4eb50a4f72, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6788305373167868254, guid: 21698ffa25a89c94f8f94e4eb50a4f72, type: 3}
       propertyPath: m_SortingLayer
       value: 0
