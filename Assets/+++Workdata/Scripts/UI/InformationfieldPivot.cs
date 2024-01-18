@@ -30,8 +30,14 @@ public class InformationfieldPivot : MonoBehaviour
     private void Update()
     {
         if (border.position.x > width / 2 || border.position.y > height / 2)
+        {
+            print("a");
             rectTransform.pivot = new Vector2(1, 1);
+        }
         else if (border.position.x < width / 2 || border.position.y < height / 2)
+        {
+            print("b");
             rectTransform.pivot = new Vector2(0, 0);
+        }
     }
 }
