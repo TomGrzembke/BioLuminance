@@ -10,6 +10,7 @@ public class RoamState : State
     [SerializeField] List<StatusManager> statusTargets = new();
     [SerializeField] StatusManager statusManager;
     [SerializeField] State chaseState;
+    [SerializeField] bool canRotate = true;
     #endregion
 
     #region private fields
@@ -33,7 +34,7 @@ public class RoamState : State
     {
         creatureLogic.HandleDetection();
         HandleRoaming();
-        creatureLogic.HandleRotate();
+        if(canRotate) creatureLogic.HandleRotate();
     }
 
     protected override void FixedUpdateInternal()

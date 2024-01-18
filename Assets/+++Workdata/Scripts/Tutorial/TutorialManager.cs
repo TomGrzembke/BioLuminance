@@ -11,7 +11,7 @@ public class TutorialManager : MonoBehaviour
     
     public GameObject player;
     public List<GameObject> bubbles;
-
+    
     private void Awake()
     {
         Instance = this;
@@ -23,12 +23,13 @@ public class TutorialManager : MonoBehaviour
             bubbles.Add(child.gameObject);
         }
     }
-    
+
     [ButtonMethod]
     public void SnapBubblesToPlayer()
     {
         gameObject.transform.position = player.transform.position;
         ActivateBubbles();
+        StartCoroutine(DistanceCheck());
     }
 
     private void ActivateBubbles()
@@ -36,6 +37,14 @@ public class TutorialManager : MonoBehaviour
         for (int i = 0; i < bubbles.Count; i++)
         {
             bubbles[i].SetActive(true);
+        }
+    }
+    
+    private void DeactivateBubbles()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            bubbles[i].SetActive(false);
         }
     }
 
@@ -48,4 +57,22 @@ public class TutorialManager : MonoBehaviour
             anim.Play("BubbleIdle");
         }
     }
+
+    IEnumerator DistanceCheck()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1f);
+
+            float distance = Vector2.Distance(gameObject.transform.position, player.transform.position);
+        
+            if (distance > 30)
+            {
+                print("check");
+                DeactivateBubbles();
+                yield break;
+            }
+        }
+    }
+
 }
