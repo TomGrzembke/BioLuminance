@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using static UnityEngine.Random;
@@ -27,6 +28,11 @@ public class sway : MonoBehaviour
     }
 
     private void Update()
+    {
+        Sway();
+    }
+
+    private void Sway()
     {
         finalAngle = startAngle.y + Mathf.Sin(Time.time * rotationSpeed) * rotationOffset;
         transform.eulerAngles =
