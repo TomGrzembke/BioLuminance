@@ -859,6 +859,7 @@ MonoBehaviour:
   stunFallofTime: 3
   stunTime: 2
   falloffTick: 0.2
+  fallofAmount: 1
 --- !u!1 &4044439047039857663
 GameObject:
   m_ObjectHideFlags: 0
@@ -1604,6 +1605,7 @@ MonoBehaviour:
   statusTargets: []
   statusManager: {fileID: 907766980465430614}
   chaseState: {fileID: 8477860675694297810}
+  canRotate: 1
 --- !u!1 &8817665708722765162
 GameObject:
   m_ObjectHideFlags: 0

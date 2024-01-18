@@ -20,6 +20,7 @@ public class BossZone : MonoBehaviour
 
     public void Enter()
     {
+        if (!enabled) return;
         if (playerCam && camFadeCor == null)
             oldCamSize = playerCam.m_Lens.OrthographicSize;
 
@@ -34,6 +35,7 @@ public class BossZone : MonoBehaviour
 
     public void Exit()
     {
+        if (!enabled) return;
         if (uiFadeCor != null)
             StopCoroutine(uiFadeCor);
         uiFadeCor = StartCoroutine(UIFade(false));
