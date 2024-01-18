@@ -1596,6 +1596,135 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7475975564253256327}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7934008302783906630
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7857327692413832557}
+  - component: {fileID: 4680369202892676606}
+  - component: {fileID: 5261946888979645834}
+  - component: {fileID: 747122441846955853}
+  m_Layer: 0
+  m_Name: BossZone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7857327692413832557
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7934008302783906630}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: -0.25, y: 0.25, z: 0.25}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2729631515573276524}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4680369202892676606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7934008302783906630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8cfcb5a18a7bd243b8e73472ae61700, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTriggerEnterEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5261946888979645834}
+        m_TargetAssemblyTypeName: BossZone, Assembly-CSharp
+        m_MethodName: Enter
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTriggerExitEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5261946888979645834}
+        m_TargetAssemblyTypeName: BossZone, Assembly-CSharp
+        m_MethodName: Exit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  tagToFilter: Player
+--- !u!114 &5261946888979645834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7934008302783906630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78f41638829213e4b8f6ba89f6aca3d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossBarCG: {fileID: 0}
+  fadeTime: 2
+  playerCam: {fileID: 0}
+  zoomOutTime: 2
+  newCamDistance: 25
+--- !u!58 &747122441846955853
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7934008302783906630}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 66.05
 --- !u!1 &8665399370819902439
 GameObject:
   m_ObjectHideFlags: 0
@@ -1771,6 +1900,10 @@ PrefabInstance:
     - target: {fileID: 1241876678968463969, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: creatureName
       value: Sunfish
+      objectReference: {fileID: 0}
+    - target: {fileID: 1509975904177257347, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1583032317030586209, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: dangerous
@@ -1960,6 +2093,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: '[Sprite] Sunfish'
       objectReference: {fileID: 0}
+    - target: {fileID: 2496421906546923539, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: m_Volume
+      value: 0.89
+      objectReference: {fileID: 0}
     - target: {fileID: 2555284835385615666, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: m_Name
       value: '[GrabTrans_2] Sunfish'
@@ -1991,6 +2128,10 @@ PrefabInstance:
     - target: {fileID: 2791954618058492436, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: m_Name
       value: '[Creature] Sunfish'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3268572947793182246, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: objToDisableFirst.Array.data[1]
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3566949603382941934, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: currentHealth
@@ -2196,9 +2337,14 @@ PrefabInstance:
       propertyPath: stateAgentStoppingDistance
       value: 12
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedComponents:
+    - {fileID: 4245762330351269556, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+    m_RemovedGameObjects:
+    - {fileID: 1509975904177257347, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
     m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 7360798349380117563, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7857327692413832557}
     - targetCorrespondingSourceObject: {fileID: 5650691710349093085, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       insertIndex: 1
       addedObject: {fileID: 4291251719861106616}
@@ -2219,6 +2365,11 @@ PrefabInstance:
 --- !u!4 &985193564683862922 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5650691710349093085, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+  m_PrefabInstance: {fileID: 4883967427779603287}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2729631515573276524 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7360798349380117563, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
   m_PrefabInstance: {fileID: 4883967427779603287}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &5719113294855879425 stripped
