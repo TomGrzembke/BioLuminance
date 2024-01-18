@@ -7,21 +7,23 @@ public class OptionsMenu : MonoBehaviour
 {
     #region serialized fields
     [SerializeField] SceneReference ingameScene;
-    [SerializeField] GameObject mainMenuOptions;
-    [SerializeField] GameObject ingameMenuOptions;
+    [SerializeField] GameObject optionsMenu;
+    [SerializeField] GameObject pauseMenu;
 
     #endregion
-    public Scene[] AllActiveScenes => GetAllScenes();
-    bool ingameBool;
+
     #region private fields
+    Scene[] AllActiveScenes => GetAllScenes();
+    bool ingameBool;
 
     #endregion
+
     public void CheckContext()
     {
         ingameBool = AllActiveScenes.Contains(SceneManager.GetSceneByName(ingameScene.SceneName));
 
-        mainMenuOptions.SetActive(!ingameBool);
-        ingameMenuOptions.SetActive(ingameBool);
+        optionsMenu.SetActive(!ingameBool);
+        pauseMenu.SetActive(ingameBool);
     }
 
     Scene[] GetAllScenes()
