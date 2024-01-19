@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7de84f5b8f328814bb4b59e9877fa487
+guid: 4e31edac8860fac469a9bb3d73cdcea5
 importerOverride:
   nativeImporterType: 2089858483
   scriptedImporterType:
@@ -40,7 +40,7 @@ ScriptedImporter:
     spriteMeshType: 1
     alignment: 0
     spritePivot: {x: 0.5, y: 0.5}
-    spritePixelsToUnits: 100
+    spritePixelsToUnits: 200
     spriteBorder: {x: 0, y: 0, z: 0, w: 0}
     spriteGenerateFallbackPhysicsShape: 0
     generateCubemap: 6
@@ -97,8 +97,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
     spritePosition: {x: 0, y: 0}
-  mosaicSpriteImportData: []
-  rigSpriteImportData:
+  mosaicSpriteImportData:
   - name: Oxygen Bubble
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -106,11 +105,11 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 3671
-      y: 815
+      x: 4
+      y: 4994
       width: 355
       height: 350
-    spriteID: a4db0148144c6744fa8e6920aef3aead
+    spriteID: ca8190e8f099c66439bedcbf5fc115bc
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -118,7 +117,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 3671, y: 815}
+    uvTransform: {x: 4, y: 4994}
     spritePosition: {x: 2088, y: 1418}
   - name: Temperature Bubble
     originalName: 
@@ -127,11 +126,11 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 3671
-      y: 416
+      x: 4
+      y: 4595
       width: 400
       height: 391
-    spriteID: d0d1217dfa083824aaaf51f4bfe3146c
+    spriteID: 31694dd748b254246a13c5e563db4dec
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -139,7 +138,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 3671, y: 416}
+    uvTransform: {x: 4, y: 4595}
     spritePosition: {x: 2244, y: 884}
   - name: Pressure Bubble
     originalName: 
@@ -148,11 +147,11 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 3671
-      y: 4
+      x: 4
+      y: 4183
       width: 414
       height: 404
-    spriteID: 3b7ce0cb164303c4785ca85867d7066f
+    spriteID: 339e8a0f67cf65744bbf07784dc212c8
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -160,51 +159,9 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 3671, y: 4}
+    uvTransform: {x: 4, y: 4183}
     spritePosition: {x: 2766, y: 646}
-  - name: Head
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 3948
-      width: 1249
-      height: 1150
-    spriteID: cf6683a36a829e94fb9f5098db255f1c
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 3948}
-    spritePosition: {x: 2447, y: 1025}
-  - name: SkillTreeTentacles
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 2012
-      width: 3004
-      height: 1928
-    spriteID: b43e0d1a0a016924da2be0df40b75bf0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 2012}
-    spritePosition: {x: 226, y: 203}
-  - name: Tentacle1
+  - name: Blur Merged
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -213,9 +170,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 3659
-      height: 2000
-    spriteID: 0a20329d6422c2347ab553980b972c5e
+      width: 3823
+      height: 2160
+    spriteID: ad852daa01f59254c857cf652871bfdc
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -224,6 +181,133 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
+    spritePosition: {x: 17, y: 103}
+  - name: Jelly
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 2172
+      width: 3659
+      height: 2003
+    spriteID: 36c44234726d4b34298b2ad6077fd48b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 2172}
+    spritePosition: {x: 181, y: 172}
+  rigSpriteImportData:
+  - name: Oxygen Bubble
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4994
+      width: 355
+      height: 350
+    spriteID: 0956e50188990324b8eb658faadecd00
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4994}
+    spritePosition: {x: 2088, y: 1418}
+  - name: Temperature Bubble
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4595
+      width: 400
+      height: 391
+    spriteID: 8cb3ae02aab2e8e4e8c24847b2314046
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4595}
+    spritePosition: {x: 2244, y: 884}
+  - name: Pressure Bubble
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4183
+      width: 414
+      height: 404
+    spriteID: 50ca94a18793b604aa87571163e62044
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4183}
+    spritePosition: {x: 2766, y: 646}
+  - name: Blur Merged
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 3823
+      height: 2160
+    spriteID: 2a3a16806a7eb4a41b2431afc814d071
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+    spritePosition: {x: 17, y: 103}
+  - name: Jelly
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 2172
+      width: 3659
+      height: 2003
+    spriteID: 6ff2fa61b7b5c794f944b300c2e15a3b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 2172}
     spritePosition: {x: 181, y: 172}
   characterData:
     bones: []
@@ -290,7 +374,7 @@ ScriptedImporter:
     allowsAlphaSplitting: 0
     androidETC2FallbackOverride: 0
   mosaicLayers: 1
-  characterMode: 1
+  characterMode: 0
   documentPivot: {x: 0, y: 0}
   documentAlignment: 7
   importHiddenLayers: 0
@@ -305,13 +389,12 @@ ScriptedImporter:
     categories: []
   spritePackingTag: 
   resliceFromLayer: 0
-  mosaicPSDLayers: []
-  rigPSDLayers:
+  mosaicPSDLayers:
   - name: Bubbles
     spriteName: 
     isGroup: 1
     parentIndex: -1
-    spriteID: d651438d027dbc146ac2fc659545d331
+    spriteID: 4c461e2af00befe428a7cc9407919830
     layerID: 0
     mosaicPosition: {x: 0, y: 0}
     flatten: 0
@@ -321,9 +404,9 @@ ScriptedImporter:
     spriteName: Oxygen Bubble
     isGroup: 0
     parentIndex: 0
-    spriteID: a4db0148144c6744fa8e6920aef3aead
+    spriteID: ca8190e8f099c66439bedcbf5fc115bc
     layerID: 83543996
-    mosaicPosition: {x: 3671, y: 815}
+    mosaicPosition: {x: 4, y: 4994}
     flatten: 0
     isImported: 1
     isVisible: 1
@@ -331,9 +414,9 @@ ScriptedImporter:
     spriteName: Temperature Bubble
     isGroup: 0
     parentIndex: 0
-    spriteID: d0d1217dfa083824aaaf51f4bfe3146c
+    spriteID: 31694dd748b254246a13c5e563db4dec
     layerID: -1108780686
-    mosaicPosition: {x: 3671, y: 416}
+    mosaicPosition: {x: 4, y: 4595}
     flatten: 0
     isImported: 1
     isVisible: 1
@@ -341,76 +424,97 @@ ScriptedImporter:
     spriteName: Pressure Bubble
     isGroup: 0
     parentIndex: 0
-    spriteID: 3b7ce0cb164303c4785ca85867d7066f
+    spriteID: 339e8a0f67cf65744bbf07784dc212c8
     layerID: 997884667
-    mosaicPosition: {x: 3671, y: 4}
+    mosaicPosition: {x: 4, y: 4183}
     flatten: 0
     isImported: 1
     isVisible: 1
-  - name: Blur
+  - name: Blur Merged
+    spriteName: Blur Merged
+    isGroup: 0
+    parentIndex: -1
+    spriteID: ad852daa01f59254c857cf652871bfdc
+    layerID: -1600890535
+    mosaicPosition: {x: 4, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Jelly
+    spriteName: Jelly
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 36c44234726d4b34298b2ad6077fd48b
+    layerID: 1610629174
+    mosaicPosition: {x: 4, y: 2172}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  rigPSDLayers:
+  - name: Bubbles
     spriteName: 
     isGroup: 1
     parentIndex: -1
-    spriteID: 08eeaf63f5f86724098f7fa5da489e6d
-    layerID: 304518393
-    mosaicPosition: {x: 0, y: 0}
-    flatten: 0
-    isImported: 0
-    isVisible: 0
-  - name: Layer 7 copy
-    spriteName: 
-    isGroup: 0
-    parentIndex: 4
-    spriteID: 240160e4600da5b4d99202039acd2e15
-    layerID: -1715210695
+    spriteID: 10933537b5cdfd84894628b52ec2af2b
+    layerID: 0
     mosaicPosition: {x: 0, y: 0}
     flatten: 0
     isImported: 0
     isVisible: 1
-  - name: Layer 10
-    spriteName: 
+  - name: Oxygen Bubble
+    spriteName: Oxygen Bubble
     isGroup: 0
-    parentIndex: 4
-    spriteID: b1168cd17701b8a42b1a1bee7547e374
-    layerID: 1910064840
-    mosaicPosition: {x: 0, y: 0}
-    flatten: 0
-    isImported: 0
-    isVisible: 1
-  - name: Head
-    spriteName: Head
-    isGroup: 0
-    parentIndex: -1
-    spriteID: cf6683a36a829e94fb9f5098db255f1c
-    layerID: 28851968
-    mosaicPosition: {x: 4, y: 3948}
+    parentIndex: 0
+    spriteID: 0956e50188990324b8eb658faadecd00
+    layerID: 83543996
+    mosaicPosition: {x: 4, y: 4994}
     flatten: 0
     isImported: 1
     isVisible: 1
-  - name: SkillTreeTentacles
-    spriteName: SkillTreeTentacles
+  - name: Temperature Bubble
+    spriteName: Temperature Bubble
     isGroup: 0
-    parentIndex: -1
-    spriteID: b43e0d1a0a016924da2be0df40b75bf0
-    layerID: -1976228794
-    mosaicPosition: {x: 4, y: 2012}
+    parentIndex: 0
+    spriteID: 8cb3ae02aab2e8e4e8c24847b2314046
+    layerID: -1108780686
+    mosaicPosition: {x: 4, y: 4595}
     flatten: 0
     isImported: 1
     isVisible: 1
-  - name: Tentacle1
-    spriteName: Tentacle1
+  - name: Pressure Bubble
+    spriteName: Pressure Bubble
+    isGroup: 0
+    parentIndex: 0
+    spriteID: 50ca94a18793b604aa87571163e62044
+    layerID: 997884667
+    mosaicPosition: {x: 4, y: 4183}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Blur Merged
+    spriteName: Blur Merged
     isGroup: 0
     parentIndex: -1
-    spriteID: 0a20329d6422c2347ab553980b972c5e
-    layerID: -247511267
+    spriteID: 2a3a16806a7eb4a41b2431afc814d071
+    layerID: -1600890535
     mosaicPosition: {x: 4, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Jelly
+    spriteName: Jelly
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 6ff2fa61b7b5c794f944b300c2e15a3b
+    layerID: 1610629174
+    mosaicPosition: {x: 4, y: 2172}
     flatten: 0
     isImported: 1
     isVisible: 1
   sharedRigPSDLayers: []
   pSDLayerImportSetting: []
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638411785344996749
+  platformSettingsDirtyTick: 638412597079958237
   spriteSizeExpandChanged: 0
   generateGOHierarchy: 0
   textureAssetName: 

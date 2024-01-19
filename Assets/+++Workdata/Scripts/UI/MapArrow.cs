@@ -7,6 +7,7 @@ public class MapArrow : MonoBehaviour
 {
     [SerializeField] GameObject target;
     [SerializeField] GameObject child;
+    [SerializeField] float distance;
 
     private void Update()
     {
@@ -28,11 +29,11 @@ public class MapArrow : MonoBehaviour
 
     public void ArrowToggle()
     {
-        if (Vector2.Distance(gameObject.transform.position, target.transform.position) < 20)
+        if (Vector2.Distance(gameObject.transform.position, target.transform.position) < distance)
         {
             child.SetActive(false);
         }
-        else if (Vector2.Distance(gameObject.transform.position, target.transform.position) > 20)
+        else if (Vector2.Distance(gameObject.transform.position, target.transform.position) > distance)
         {
             child.SetActive(true);
         }
