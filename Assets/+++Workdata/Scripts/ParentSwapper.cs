@@ -1,4 +1,5 @@
 using MyBox;
+using System.Collections;
 using UnityEngine;
 
 public class ParentSwapper : MonoBehaviour
@@ -7,6 +8,7 @@ public class ParentSwapper : MonoBehaviour
     [SerializeField] bool disablePlayer;
     [SerializeField, ConditionalField(nameof(disablePlayer))] PlayerMovement playerMovement;
     [SerializeField] Transform targetTrans;
+    [SerializeField] float timeTill0Rot = 4;
     #endregion
 
     #region private fields
@@ -16,7 +18,8 @@ public class ParentSwapper : MonoBehaviour
 
     public void Unparent()
     {
-        targetTrans.SetParent(null);
+        targetTrans.parent = null;
+        StartCoroutine(RotateTill0());
     }
 
     public void Swap(Transform _obj, Transform tempParent)
@@ -35,5 +38,16 @@ public class ParentSwapper : MonoBehaviour
 
         if (disablePlayer)
             playerMovement.ReenableMovement();
+    }
+
+    IEnumerator RotateTill0()
+    {
+        float rotateTime = 0;
+        while (rotateTime < timeTill0Rot)
+        {
+            rotateTime += Time.deltaTime;
+            targetTrans.rotation = Quaternion.Lerp(targetTrans.rotation, Quaternion.identity, rotateTime / timeTill0Rot);
+            yield return null;
+        }
     }
 }
