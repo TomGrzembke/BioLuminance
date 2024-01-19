@@ -10,6 +10,9 @@ public class BossZone : MonoBehaviour
     [SerializeField] CinemachineVirtualCamera playerCam;
     [SerializeField] float zoomOutTime = 2;
     [SerializeField] float newCamDistance = 25;
+    [SerializeField] int initialRadius = 40;
+    [SerializeField] int exitRadius = 65;
+    [SerializeField] CircleCollider2D col;
     #endregion
 
     #region private fields
@@ -18,9 +21,17 @@ public class BossZone : MonoBehaviour
     Coroutine camFadeCor;
     #endregion
 
+     void Start()
+    {
+        col.radius = initialRadius;
+    }
+
     public void Enter()
     {
         if (!enabled) return;
+
+        col.radius = exitRadius;
+
         if (playerCam && camFadeCor == null)
             oldCamSize = playerCam.m_Lens.OrthographicSize;
 
@@ -36,6 +47,9 @@ public class BossZone : MonoBehaviour
     public void Exit()
     {
         if (!enabled) return;
+
+        col.radius = initialRadius;
+
         if (uiFadeCor != null)
             StopCoroutine(uiFadeCor);
         uiFadeCor = StartCoroutine(UIFade(false));

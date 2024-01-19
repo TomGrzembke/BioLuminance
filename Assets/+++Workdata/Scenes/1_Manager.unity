@@ -878,11 +878,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4492015817254846107, guid: f4297f4c9c624c2469e51fb6e9ea5d7e, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 4492015817254846107, guid: f4297f4c9c624c2469e51fb6e9ea5d7e, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1174850529}
     - target: {fileID: 4492015817254846107, guid: f4297f4c9c624c2469e51fb6e9ea5d7e, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4492015817254846107, guid: f4297f4c9c624c2469e51fb6e9ea5d7e, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: FullScreenToggle
+      objectReference: {fileID: 0}
+    - target: {fileID: 4492015817254846107, guid: f4297f4c9c624c2469e51fb6e9ea5d7e, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameSettings, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4492015817254846107, guid: f4297f4c9c624c2469e51fb6e9ea5d7e, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5194788034242125880, guid: f4297f4c9c624c2469e51fb6e9ea5d7e, type: 3}
       propertyPath: m_Enabled

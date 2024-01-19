@@ -11,43 +11,32 @@ public class GameSettings : MonoBehaviour
     #endregion
 
     #region private
-    const string musicVolumeHash = "musicVolume";
-    const string sfxVolumeHash = "sfxVolume";
-    const string fullscreenHash = "fullscreenID";
     #endregion
 
     void Start()
     {
-        SetMusicVolume(PlayerPrefs.GetFloat(musicVolumeHash));
-        SetSfxVolume(PlayerPrefs.GetFloat(sfxVolumeHash));
+        musicSlider.value = PlayerPrefs.GetFloat("musicVolume");
+        OnMusicSliderChanged();
 
-        bool fullScreen = PlayerPrefs.GetInt(fullscreenHash) == 0;
+        sfxSlider.value = PlayerPrefs.GetFloat("sfxVolume");
+        OnSfxSliderChanged();
 
-        Screen.fullScreen = fullScreen;
-        screenToggle.isOn = fullScreen;
+        bool fullScreen = PlayerPrefs.GetInt("fullscreenID") == 0;
+        FullScreenToggle(fullScreen);
     }
 
     public void OnMusicSliderChanged()
     {
         float volume = musicSlider.value;
-        audioMixer.SetFloat(musicVolumeHash, volume);
-        PlayerPrefs.SetFloat(musicVolumeHash, volume);
-    }
-
-    public void SetMusicVolume(float volume)
-    {
-        musicSlider.value = volume;
+        audioMixer.SetFloat("musicVolume", volume);
+        PlayerPrefs.SetFloat("musicVolume", volume);
     }
 
     public void OnSfxSliderChanged()
     {
         float volume = sfxSlider.value;
-        audioMixer.SetFloat(sfxVolumeHash, volume);
-        PlayerPrefs.SetFloat(sfxVolumeHash, volume);
-    }
-
-    public void SetSfxVolume(float volume)
-    {
+        audioMixer.SetFloat("sfxVolume", volume);
+        PlayerPrefs.SetFloat("sfxVolume", volume);
         sfxSlider.value = volume;
     }
 
@@ -55,7 +44,7 @@ public class GameSettings : MonoBehaviour
     {
         isFullscreen = screenToggle.isOn;
         Screen.fullScreen = isFullscreen;
-        PlayerPrefs.SetInt(fullscreenHash, (isFullscreen ? 0 : 1));
+        PlayerPrefs.SetInt("fullscreenID", (isFullscreen ? 0 : 1));
     }
 
     public void OpenURL(string link)
