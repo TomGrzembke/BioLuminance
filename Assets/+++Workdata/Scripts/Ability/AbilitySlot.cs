@@ -13,24 +13,32 @@ public class AbilitySlot : MonoBehaviour
     #endregion
 
     #region private fields
-    Ability currentAbility;
+    [SerializeField] Ability currentAbility;
     public bool occupied { get; private set; }
     public Ability CurrentAbility => currentAbility;
     #endregion
 
-    void OnValidate()
+
+    void Start()
+    {
+        OnValidateCall();
+    }
+
+    void OnValidateCall()
     {
         if (Application.isPlaying)
             if (currentAbilityPrefab && abilitySlotManager)
                 abilitySlotManager.AddNewAbility(currentAbilityPrefab, slotIndex);
         RefreshPicture();
     }
+
     void RefreshPicture()
     {
+        Ability tempAbility = null;
         if (currentAbilityPrefab)
-            currentAbilityPrefab.TryGetComponent(out currentAbility);
+            currentAbilityPrefab.TryGetComponent(out tempAbility);
 
-        abilityImage.sprite = currentAbilityPrefab ? currentAbility.AbilitySO.abilitySprite : null;
+        abilityImage.sprite = currentAbilityPrefab ? tempAbility.AbilitySO.abilitySprite : null;
 
         if (!abilityImage.sprite)
         {

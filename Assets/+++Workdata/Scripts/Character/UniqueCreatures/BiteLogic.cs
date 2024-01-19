@@ -11,6 +11,8 @@ public class BiteLogic : MonoBehaviour
     [SerializeField] ApplyStatusEffects applyStatusEffects;
     [SerializeField] StatusEffects statusEffects;
     [SerializeField] float timeTillSpeedRemoval = 2;
+    [SerializeField] Animator anim;
+    [SerializeField] AnimationClip animClip;
     #endregion
 
     #region private fields
@@ -19,6 +21,7 @@ public class BiteLogic : MonoBehaviour
 
     void Awake()
     {
+        anim = GetComponent<Animator>();
         contactFilter.layerMask = LayerMask.GetMask("Creature");
         contactFilter.useLayerMask = true;
         contactFilter.useTriggers = true;
@@ -49,5 +52,18 @@ public class BiteLogic : MonoBehaviour
     {
         yield return new WaitForSeconds(timeTillSpeedRemoval);
         applyStatusEffects.RemoveSpeedModifier(_limbTarget.OwnStatusManager, _speedModifier);
+    }
+
+    public void SetOwnStatusManager(StatusManager statusManager)
+    {
+        ownStatusManager = statusManager;
+        applyStatusEffects = statusManager.ApplyStatusEffects;
+    }
+
+    public void Bite()
+    {
+        if(!anim)
+            anim = GetComponent<Animator>();
+        anim.Play(animClip.name, 0, 0f);
     }
 }

@@ -36,7 +36,6 @@ public class AbilitySlotManager : MonoBehaviour
 
     public void AddNewAbility(GameObject newPrefab, int slotIndex)
     {
-        abilitySlots[slotIndex].Execute(false);
         abilitySlots[slotIndex].ChangeAbilityPrefab(newPrefab, this);
     }
 
@@ -48,7 +47,6 @@ public class AbilitySlotManager : MonoBehaviour
                 break;
             else if (!abilitySlots[i].occupied)
             {
-                abilitySlots[i].Execute(false);
                 abilitySlots[i].ChangeAbilityPrefab(newPrefab, this);
                 RewardWindow.Instance.GiveReward(newPrefab);
                 break;
