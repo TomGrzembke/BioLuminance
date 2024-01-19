@@ -1185,11 +1185,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4519809056051868805, guid: 50c7ff264bedaeb4e93d598f31be093e, type: 3}
   m_PrefabInstance: {fileID: 285282072}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &287314580 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 6128166154784939006, guid: 54a990656dc88ac49817a565378537ec, type: 3}
-  m_PrefabInstance: {fileID: 2053367974}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &297406722
 GameObject:
   m_ObjectHideFlags: 0
@@ -3301,6 +3296,17 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 9146674041968321471, guid: 9bc6a04619cb4ed498b212f12c8fb165, type: 3}
   m_PrefabInstance: {fileID: 772135950}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &639304648 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 112084801442957818, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+  m_PrefabInstance: {fileID: 1235248145}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0712df3ef83006a498b4ddacc686b979, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!95 &644788617 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 1393258190758952805, guid: 9bc6a04619cb4ed498b212f12c8fb165, type: 3}
@@ -12899,18 +12905,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 112084801442957818, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
-      propertyPath: attackState
-      value: 
-      objectReference: {fileID: 1700664592}
+    - target: {fileID: 4094015772150169075, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: stateEvent.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4094015772150169075, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
       propertyPath: stateAgentAcceleration
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4094015772150169075, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
-      propertyPath: stateAgentStoppingDistance
-      value: 0.5
+      propertyPath: stateEvent.Array.data[0].reason
+      value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4094015772150169075, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: stateEvent.Array.data[0].distance
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4094015772150169075, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
+      propertyPath: stateEvent.Array.data[0].switchState
+      value: 
+      objectReference: {fileID: 639304648}
     - target: {fileID: 5951047566704116028, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
       propertyPath: m_Name
       value: '[Creature] Stingray'
@@ -12954,10 +12968,6 @@ PrefabInstance:
     - target: {fileID: 7065252597165299522, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7983305598072597151, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
-      propertyPath: currentHealth
-      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14826,17 +14836,6 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 6494366426934746988, guid: 9bc6a04619cb4ed498b212f12c8fb165, type: 3}
   m_PrefabInstance: {fileID: 772135950}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1700664592 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4094015772150169075, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
-  m_PrefabInstance: {fileID: 1235248145}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a5c016fe334bdc46a6b6663477be492, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!95 &1708203823 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 7858956810521549736, guid: 9bc6a04619cb4ed498b212f12c8fb165, type: 3}
@@ -21901,54 +21900,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1385258921058596718, guid: 54a990656dc88ac49817a565378537ec, type: 3}
-      propertyPath: m_Radius
-      value: 4.7443542
-      objectReference: {fileID: 0}
-    - target: {fileID: 1385258921058596718, guid: 54a990656dc88ac49817a565378537ec, type: 3}
-      propertyPath: m_Offset.x
-      value: -0.25386047
-      objectReference: {fileID: 0}
-    - target: {fileID: 1385258921058596718, guid: 54a990656dc88ac49817a565378537ec, type: 3}
-      propertyPath: m_Offset.y
-      value: 6.760874
-      objectReference: {fileID: 0}
-    - target: {fileID: 2664668586894446845, guid: 54a990656dc88ac49817a565378537ec, type: 3}
-      propertyPath: useStateVars
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2664668586894446845, guid: 54a990656dc88ac49817a565378537ec, type: 3}
-      propertyPath: chaseDistance
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 2664668586894446845, guid: 54a990656dc88ac49817a565378537ec, type: 3}
-      propertyPath: stateAgentSpeed
-      value: 6.95
-      objectReference: {fileID: 0}
-    - target: {fileID: 2664668586894446845, guid: 54a990656dc88ac49817a565378537ec, type: 3}
-      propertyPath: stateAgentAcceleration
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2664668586894446845, guid: 54a990656dc88ac49817a565378537ec, type: 3}
-      propertyPath: stateAgentStoppingDistance
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3034336445868552604, guid: 54a990656dc88ac49817a565378537ec, type: 3}
-      propertyPath: activeReward
-      value: 
-      objectReference: {fileID: 5281730513812298939, guid: a27463645445cbb42801815466c01631, type: 3}
-    - target: {fileID: 3034336445868552604, guid: 54a990656dc88ac49817a565378537ec, type: 3}
-      propertyPath: passiveReward
-      value: 
-      objectReference: {fileID: 5281730513812298939, guid: a27463645445cbb42801815466c01631, type: 3}
-    - target: {fileID: 3918201091700992389, guid: 54a990656dc88ac49817a565378537ec, type: 3}
-      propertyPath: attackDistance
-      value: 26
-      objectReference: {fileID: 0}
-    - target: {fileID: 4890963684917128375, guid: 54a990656dc88ac49817a565378537ec, type: 3}
-      propertyPath: amount
-      value: -2
-      objectReference: {fileID: 0}
     - target: {fileID: 5261946888979645834, guid: 54a990656dc88ac49817a565378537ec, type: 3}
       propertyPath: bossBarCG
       value: 
@@ -21997,14 +21948,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7089411441036353701, guid: 54a990656dc88ac49817a565378537ec, type: 3}
-      propertyPath: anim
-      value: 
-      objectReference: {fileID: 287314580}
-    - target: {fileID: 7089411441036353701, guid: 54a990656dc88ac49817a565378537ec, type: 3}
-      propertyPath: animClip
-      value: 
-      objectReference: {fileID: 7400000, guid: 5740e84126c406a4981647415a96319d, type: 2}
     - target: {fileID: 7311688076512911683, guid: 54a990656dc88ac49817a565378537ec, type: 3}
       propertyPath: m_Name
       value: '[Creature] Sunfish'
@@ -22307,10 +22250,6 @@ PrefabInstance:
     - target: {fileID: 7065252597165299522, guid: e5616ed57e42d9f49ab933a6be6a4a46, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7983305598072597151, guid: e5616ed57e42d9f49ab933a6be6a4a46, type: 3}
-      propertyPath: currentHealth
-      value: 16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

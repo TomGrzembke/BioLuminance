@@ -2488,6 +2488,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8477860675694297810, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: attackState
+      value: 
+      objectReference: {fileID: 4094015772150169075}
+    - target: {fileID: 8477860675694297810, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: attackDistance
       value: 15
       objectReference: {fileID: 0}
@@ -2615,13 +2619,14 @@ MonoBehaviour:
   uniqueState: {fileID: 0}
   creatureLogic: {fileID: 0}
   stateAgentSpeed: 45
-  stateAgentAcceleration: 3
-  stateAgentStoppingDistance: 0
+  stateAgentAcceleration: 0
+  stateAgentStoppingDistance: 0.5
   useStateVars: 1
   dangerous: 1
   stateEvent: []
   roamState: {fileID: 7247853247259251392}
   chaseState: {fileID: 112084801442957818}
+  interestRange: 30
 --- !u!4 &7065252597165299522 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1595835679270034538, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}

@@ -1652,12 +1652,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7934008302783906630}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: -0.25, y: 0.25, z: 0.25}
+  m_LocalScale: {x: -0.24999994, y: 0.24999994, z: 0.25}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2729631515573276524}
+  m_Father: {fileID: 7410132174402109191}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4680369202892676606
 MonoBehaviour:
@@ -2221,6 +2221,14 @@ PrefabInstance:
       value: Bite_sunfish_0
       objectReference: {fileID: 0}
     - target: {fileID: 5559727441433837247, guid: a956e8f8c3369884ba102ee44bb3effa, type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 6128166154784939006}
+    - target: {fileID: 5559727441433837247, guid: a956e8f8c3369884ba102ee44bb3effa, type: 3}
+      propertyPath: animClip
+      value: 
+      objectReference: {fileID: 7400000, guid: 5740e84126c406a4981647415a96319d, type: 2}
+    - target: {fileID: 5559727441433837247, guid: a956e8f8c3369884ba102ee44bb3effa, type: 3}
       propertyPath: ownStatusManager
       value: 
       objectReference: {fileID: 5719113294855879425}
@@ -2228,6 +2236,10 @@ PrefabInstance:
       propertyPath: applyStatusEffects
       value: 
       objectReference: {fileID: 6555861193747985894}
+    - target: {fileID: 7830221589252305581, guid: a956e8f8c3369884ba102ee44bb3effa, type: 3}
+      propertyPath: amount
+      value: -2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2825,15 +2837,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5836167974553312313, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: m_Radius
-      value: 3.4129257
+      value: 4.7443542
       objectReference: {fileID: 0}
     - target: {fileID: 5836167974553312313, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: m_Offset.x
-      value: -0.34894347
+      value: -0.25386047
       objectReference: {fileID: 0}
     - target: {fileID: 5836167974553312313, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: m_Offset.y
-      value: 3.5182257
+      value: 6.760874
       objectReference: {fileID: 0}
     - target: {fileID: 6015395934629178757, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: m_IsActive
@@ -2875,6 +2887,14 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7627820772083735243, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: activeReward
+      value: 
+      objectReference: {fileID: 5281730513812298939, guid: a27463645445cbb42801815466c01631, type: 3}
+    - target: {fileID: 7627820772083735243, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: passiveReward
+      value: 
+      objectReference: {fileID: 5281730513812298939, guid: a27463645445cbb42801815466c01631, type: 3}
     - target: {fileID: 8011811028265323489, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: flipRange.Max
       value: 360
@@ -2889,7 +2909,7 @@ PrefabInstance:
       objectReference: {fileID: 2664668586894446845}
     - target: {fileID: 8477860675694297810, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: attackDistance
-      value: 20
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 8477860675694297810, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: stateAgentSpeed
@@ -2904,12 +2924,12 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 1509975904177257347, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 7360798349380117563, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7857327692413832557}
     - targetCorrespondingSourceObject: {fileID: 5650691710349093085, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       insertIndex: 1
       addedObject: {fileID: 4291251719861106616}
+    - targetCorrespondingSourceObject: {fileID: 2670992523527165008, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7857327692413832557}
     - targetCorrespondingSourceObject: {fileID: 2102578092350304579, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7475975564253256327}
@@ -2954,11 +2974,6 @@ CircleCollider2D:
 --- !u!4 &1611032153523969451 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6169051100858480380, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
-  m_PrefabInstance: {fileID: 4883967427779603287}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &2729631515573276524 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7360798349380117563, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
   m_PrefabInstance: {fileID: 4883967427779603287}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &3918201091700992389 stripped
@@ -3021,10 +3036,10 @@ MonoBehaviour:
   FixedTimeInState: 0
   uniqueState: {fileID: 0}
   creatureLogic: {fileID: 969785594156081305}
-  stateAgentSpeed: 5
-  stateAgentAcceleration: 5
-  stateAgentStoppingDistance: 6
-  useStateVars: 0
+  stateAgentSpeed: 6.95
+  stateAgentAcceleration: 0
+  stateAgentStoppingDistance: 2
+  useStateVars: 1
   dangerous: 1
   stateEvent: []
   chaseState: {fileID: 3918201091700992389}
@@ -3048,7 +3063,7 @@ MonoBehaviour:
   attackHitbox: {fileID: 7447543468391087149}
   animClip: {fileID: 7400000, guid: 5740e84126c406a4981647415a96319d, type: 2}
   cooldown: 4
-  chaseDistance: 30
+  chaseDistance: 13
   animator: {fileID: 6128166154784939006}
 --- !u!114 &6555861193747985894 stripped
 MonoBehaviour:
@@ -3118,6 +3133,11 @@ MonoBehaviour:
 --- !u!4 &6839434965926500884 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2102578092350304579, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+  m_PrefabInstance: {fileID: 4883967427779603287}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7410132174402109191 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2670992523527165008, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
   m_PrefabInstance: {fileID: 4883967427779603287}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8988134211705838424
