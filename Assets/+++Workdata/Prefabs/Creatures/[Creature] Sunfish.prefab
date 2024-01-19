@@ -1719,9 +1719,9 @@ MonoBehaviour:
   playerCam: {fileID: 0}
   zoomOutTime: 2
   newCamDistance: 25
-  initialRadius: 0
-  exitRadius: 0
-  col: {fileID: 0}
+  initialRadius: 20
+  exitRadius: 65
+  col: {fileID: 747122441846955853}
 --- !u!58 &747122441846955853
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1756,7 +1756,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 66.05
+  m_Radius: 20
 --- !u!1 &8665399370819902439
 GameObject:
   m_ObjectHideFlags: 0
