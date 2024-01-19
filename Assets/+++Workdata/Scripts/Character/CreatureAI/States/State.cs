@@ -39,7 +39,14 @@ public abstract class State : MonoBehaviour
 
     #endregion
 
-    void Awake() => creatureLogic = GetComponentInParent<CreatureLogic>();
+    void Awake()
+    {
+        creatureLogic = GetComponentInParent<CreatureLogic>();
+
+        if (creatureLogic == null)
+            transform.parent.GetComponentInParent<CreatureLogic>();
+    }
+
 
     #region StateEvent
     public enum SwitchReason

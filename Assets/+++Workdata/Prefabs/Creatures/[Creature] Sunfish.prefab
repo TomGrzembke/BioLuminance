@@ -3417,7 +3417,6 @@ MonoBehaviour:
   maxTimeInState: 10
   chaseState: {fileID: 3918201091700992389}
   roamState: {fileID: 6015550758233338559}
-  attackHitbox: {fileID: 7447543468391087149}
   reachHitbox: {fileID: 1385258921058596718}
   contactFilter:
     useTriggers: 1
@@ -3434,26 +3433,11 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   ownStatusManager: {fileID: 5719113294855879425}
-  applyStatusEffects: {fileID: 6555861193747985894}
-  statusEffects:
-    damagePerInstance: 1
-    stunPerInstance: 0
-    speedModifier: {fileID: 0}
+  attackHitbox: {fileID: 7447543468391087149}
   animClip: {fileID: 7400000, guid: 5740e84126c406a4981647415a96319d, type: 2}
   cooldown: 3
   chaseDistance: 0
   animator: {fileID: 6128166154784939006}
---- !u!114 &6555861193747985894 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1818415738067377841, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
-  m_PrefabInstance: {fileID: 4883967427779603287}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7eb6391a461eb664fa4605891d8b8027, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6785970309496204811 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2156039451338327388, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}

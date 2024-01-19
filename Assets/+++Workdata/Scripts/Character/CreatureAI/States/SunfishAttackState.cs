@@ -12,12 +12,10 @@ public class SunfishAttackState : State
     [ConditionalField(nameof(uniqueState), true), SerializeField] float maxTimeInState = 1.5f;
     [ConditionalField(nameof(uniqueState), true), SerializeField] ChaseState chaseState;
     [ConditionalField(nameof(uniqueState), true), SerializeField] RoamState roamState;
-    [ConditionalField(nameof(uniqueState), true), SerializeField] Collider2D attackHitbox;
     [ConditionalField(nameof(uniqueState), true), SerializeField] Collider2D reachHitbox;
     [ConditionalField(nameof(uniqueState), true), SerializeField] ContactFilter2D contactFilter;
     [ConditionalField(nameof(uniqueState), true), SerializeField] StatusManager ownStatusManager;
-    [ConditionalField(nameof(uniqueState), true), SerializeField] ApplyStatusEffects applyStatusEffects;
-    [ConditionalField(nameof(uniqueState), true), SerializeField] StatusEffects statusEffects;
+    [SerializeField] Collider2D attackHitbox;
     [SerializeField] AnimationClip animClip;
     [SerializeField] float cooldown = 3;
     [SerializeField] float chaseDistance = 40;
@@ -28,6 +26,13 @@ public class SunfishAttackState : State
     List<Collider2D> colliders = new();
     Coroutine cooldownCor;
     #endregion
+
+    void Awake()
+    {
+        contactFilter.layerMask = LayerMask.GetMask("Creature");
+        contactFilter.useLayerMask = true;
+        contactFilter.useTriggers = true;
+    }
 
     public override State SwitchStateInternal()
     {
@@ -60,18 +65,6 @@ public class SunfishAttackState : State
 
     void HandleDetection()
     {
-        colliders.Clear();
-        if (Physics2D.OverlapCollider(attackHitbox, contactFilter, colliders) > 0)
-            for (int i = 0; i < colliders.Count; i++)
-            {
-                if (!colliders[i].TryGetComponent(out LimbSubject _limbTarget)) continue;
-
-                if (_limbTarget == ownStatusManager) continue;
-
-                applyStatusEffects.ApplyEffects(statusEffects, _limbTarget, ownStatusManager);
-            }
-
-
         if (Physics2D.OverlapCollider(reachHitbox, contactFilter, colliders) < 0) return;
 
         if (cooldownCor != null) return;
