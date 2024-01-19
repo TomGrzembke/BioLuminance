@@ -22223,6 +22223,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2157834732100702691, guid: e5616ed57e42d9f49ab933a6be6a4a46, type: 3}
+      propertyPath: activeReward
+      value: 
+      objectReference: {fileID: 8574770232140604388, guid: 053b0effef475454a83687d9e5fa5197, type: 3}
     - target: {fileID: 5951047566704116028, guid: e5616ed57e42d9f49ab933a6be6a4a46, type: 3}
       propertyPath: m_Name
       value: '[Creature] Tuna'
@@ -27895,6 +27899,14 @@ PrefabInstance:
       propertyPath: m_Lens.OrthographicSize
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 2856363000226415612, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 7608655987527139224}
+    - target: {fileID: 2856363000226415612, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
+      propertyPath: isPlayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3424435662422000367, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
       propertyPath: cam
       value: 
@@ -28103,6 +28115,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f0ed5816d3fe72458602006eb00551c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!195 &7608655987527139224 stripped
+NavMeshAgent:
+  m_CorrespondingSourceObject: {fileID: 7845883195136958720, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
+  m_PrefabInstance: {fileID: 7608655987527139202}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &7788854566386930885
 MonoBehaviour:
   m_ObjectHideFlags: 0
