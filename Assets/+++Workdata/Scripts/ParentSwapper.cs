@@ -16,7 +16,7 @@ public class ParentSwapper : MonoBehaviour
 
     public void Unparent()
     {
-        targetTrans.parent = null;
+        targetTrans.SetParent(null);
     }
 
     public void Swap(Transform _obj, Transform tempParent)
