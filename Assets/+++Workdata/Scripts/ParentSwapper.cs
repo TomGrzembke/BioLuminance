@@ -43,10 +43,11 @@ public class ParentSwapper : MonoBehaviour
     IEnumerator RotateTill0()
     {
         float rotateTime = 0;
+        Quaternion startRotation = targetTrans.rotation;
         while (rotateTime < timeTill0Rot)
         {
             rotateTime += Time.deltaTime;
-            targetTrans.rotation = Quaternion.Lerp(targetTrans.rotation, Quaternion.identity, rotateTime / timeTill0Rot);
+            targetTrans.rotation = Quaternion.Lerp(startRotation, Quaternion.identity, rotateTime / timeTill0Rot);
             yield return null;
         }
     }

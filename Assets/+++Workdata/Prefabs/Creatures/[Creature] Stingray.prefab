@@ -2141,7 +2141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 907766980465430614, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: targetLayer
-      value: 3
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 907766980465430614, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: creatureType
@@ -2435,6 +2435,10 @@ PrefabInstance:
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[4].y
       value: -1.3336296
       objectReference: {fileID: 0}
+    - target: {fileID: 5670604380686470094, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: defaultAgentSpeed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5676481398085119860, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: points
       value: 100
@@ -2619,11 +2623,18 @@ MonoBehaviour:
   uniqueState: {fileID: 0}
   creatureLogic: {fileID: 0}
   stateAgentSpeed: 45
-  stateAgentAcceleration: 0
+  stateAgentAcceleration: 5
   stateAgentStoppingDistance: 0.5
   useStateVars: 1
   dangerous: 1
-  stateEvent: []
+  stateEvent:
+  - switchState: {fileID: 112084801442957818}
+    reason: 2
+    time: 0
+    distance: 100
+    damageType: 0
+    damage: 0
+    hitAmount: 0
   roamState: {fileID: 7247853247259251392}
   chaseState: {fileID: 112084801442957818}
   interestRange: 30

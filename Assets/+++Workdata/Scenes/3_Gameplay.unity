@@ -3296,17 +3296,6 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 9146674041968321471, guid: 9bc6a04619cb4ed498b212f12c8fb165, type: 3}
   m_PrefabInstance: {fileID: 772135950}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &639304648 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 112084801442957818, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
-  m_PrefabInstance: {fileID: 1235248145}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0712df3ef83006a498b4ddacc686b979, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!95 &644788617 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 1393258190758952805, guid: 9bc6a04619cb4ed498b212f12c8fb165, type: 3}
@@ -12574,7 +12563,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1006763394127755542, guid: 005de59c3d29fde43a6eb64b6488780e, type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5751135225764454851, guid: 005de59c3d29fde43a6eb64b6488780e, type: 3}
       propertyPath: m_LocalScale.x
@@ -12924,26 +12913,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4094015772150169075, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
-      propertyPath: stateEvent.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4094015772150169075, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
-      propertyPath: stateAgentAcceleration
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4094015772150169075, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
-      propertyPath: stateEvent.Array.data[0].reason
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4094015772150169075, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
-      propertyPath: stateEvent.Array.data[0].distance
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 4094015772150169075, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
-      propertyPath: stateEvent.Array.data[0].switchState
-      value: 
-      objectReference: {fileID: 639304648}
     - target: {fileID: 5951047566704116028, guid: 1b5f492c16207b44ab411e2f4d336d5e, type: 3}
       propertyPath: m_Name
       value: '[Creature] Stingray'
@@ -13255,7 +13224,7 @@ MonoBehaviour:
   disablePlayer: 0
   playerMovement: {fileID: 0}
   targetTrans: {fileID: 1585866063}
-  timeTill0Rot: 6
+  timeTill0Rot: 4
 --- !u!50 &1257317947
 Rigidbody2D:
   serializedVersion: 4
@@ -21947,14 +21916,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3918201091700992389, guid: 54a990656dc88ac49817a565378537ec, type: 3}
-      propertyPath: stateAgentSpeed
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 3918201091700992389, guid: 54a990656dc88ac49817a565378537ec, type: 3}
-      propertyPath: stateAgentAcceleration
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 5261946888979645834, guid: 54a990656dc88ac49817a565378537ec, type: 3}
       propertyPath: bossBarCG
       value: 
@@ -22268,11 +22229,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7065252597165299522, guid: e5616ed57e42d9f49ab933a6be6a4a46, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 68
+      value: 39.79
       objectReference: {fileID: 0}
     - target: {fileID: 7065252597165299522, guid: e5616ed57e42d9f49ab933a6be6a4a46, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.1
+      value: -10.93
       objectReference: {fileID: 0}
     - target: {fileID: 7065252597165299522, guid: e5616ed57e42d9f49ab933a6be6a4a46, type: 3}
       propertyPath: m_LocalPosition.z

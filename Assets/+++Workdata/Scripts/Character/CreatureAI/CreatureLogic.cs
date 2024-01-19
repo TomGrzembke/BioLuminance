@@ -124,6 +124,10 @@ public abstract class CreatureLogic : MonoBehaviour
         {
             if (!colliders[i].TryGetComponent(out StatusManager statusTarget))
                 statusTarget = colliders[i].GetComponentInChildren<StatusManager>();
+            if (!statusTarget) 
+                statusTarget = colliders[i].GetComponentInParent<StatusManager>();
+            if (!statusTarget)
+                statusTarget = colliders[i].transform.parent.GetComponentInParent<StatusManager>();
 
             if (!statusTarget || statusTarget == statusManager)
                 continue;
@@ -151,7 +155,7 @@ public abstract class CreatureLogic : MonoBehaviour
             }
             else
             {
-                SetCanSeePlayer(false);
+                SetCanSeePlayer(targetStatusManager);
                 SetTargetStatusManager(null);
             }
         }
