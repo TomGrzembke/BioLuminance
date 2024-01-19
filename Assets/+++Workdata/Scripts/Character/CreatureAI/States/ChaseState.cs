@@ -5,7 +5,7 @@ public class ChaseState : State
     #region serialized fields
     [Header(nameof(ChaseState))]
     
-    [SerializeField] protected AttackState attackState;
+    [SerializeField] protected State attackState;
     [SerializeField] protected RoamState roamState;
     [SerializeField] protected float attackDistance = 3;
     #endregion

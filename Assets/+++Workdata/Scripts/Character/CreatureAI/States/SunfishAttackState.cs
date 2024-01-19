@@ -74,6 +74,8 @@ public class SunfishAttackState : State
 
         if (Physics2D.OverlapCollider(reachHitbox, contactFilter, colliders) < 0) return;
 
+        if (cooldownCor != null) return;
+
         cooldownCor = StartCoroutine(Cooldown());
 
         bool bite = false;
@@ -89,7 +91,7 @@ public class SunfishAttackState : State
         }
 
         if (bite)
-            animator.Play(animClip.name, 0);
+            animator.Play(animClip.name, 0,0f);
     }
 
     IEnumerator Cooldown()
