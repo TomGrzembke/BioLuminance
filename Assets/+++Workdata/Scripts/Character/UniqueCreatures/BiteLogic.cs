@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ public class BiteLogic : MonoBehaviour
     [SerializeField] StatusManager ownStatusManager;
     [SerializeField] ApplyStatusEffects applyStatusEffects;
     [SerializeField] StatusEffects statusEffects;
+    [SerializeField] float timeTillSpeedRemoval = 2;
     #endregion
 
     #region private fields
@@ -37,6 +39,15 @@ public class BiteLogic : MonoBehaviour
                 if (_limbTarget == ownStatusManager) continue;
 
                 applyStatusEffects.ApplyEffects(statusEffects, _limbTarget, ownStatusManager);
+
+                if (statusEffects.speedModifier)
+                    StartCoroutine(RemoveSpeedModifierCor(_limbTarget, statusEffects.speedModifier));
             }
+    }
+
+    IEnumerator RemoveSpeedModifierCor(LimbSubject _limbTarget, SpeedModifier _speedModifier)
+    {
+        yield return new WaitForSeconds(timeTillSpeedRemoval);
+        applyStatusEffects.RemoveSpeedModifier(_limbTarget.OwnStatusManager, _speedModifier);
     }
 }

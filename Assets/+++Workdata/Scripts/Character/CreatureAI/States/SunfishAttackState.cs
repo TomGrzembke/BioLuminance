@@ -1,4 +1,3 @@
-using MyBox;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,12 +8,11 @@ public class SunfishAttackState : State
     [Header(nameof(AttackState))]
 
     [Space(5)]
-    [ConditionalField(nameof(uniqueState), true), SerializeField] float maxTimeInState = 1.5f;
-    [ConditionalField(nameof(uniqueState), true), SerializeField] ChaseState chaseState;
-    [ConditionalField(nameof(uniqueState), true), SerializeField] RoamState roamState;
-    [ConditionalField(nameof(uniqueState), true), SerializeField] Collider2D reachHitbox;
-    [ConditionalField(nameof(uniqueState), true), SerializeField] ContactFilter2D contactFilter;
-    [ConditionalField(nameof(uniqueState), true), SerializeField] StatusManager ownStatusManager;
+    [SerializeField] ChaseState chaseState;
+    [SerializeField] RoamState roamState;
+    [SerializeField] Collider2D reachHitbox;
+    [SerializeField] ContactFilter2D contactFilter;
+    [SerializeField] StatusManager ownStatusManager;
     [SerializeField] Collider2D attackHitbox;
     [SerializeField] AnimationClip animClip;
     [SerializeField] float cooldown = 3;
@@ -42,10 +40,6 @@ public class SunfishAttackState : State
         return this;
     }
 
-    protected override void EnterInternal()
-    {
-    }
-
     protected override void UpdateInternal()
     {
         HandleDetection();
@@ -63,6 +57,10 @@ public class SunfishAttackState : State
     {
     }
 
+    protected override void EnterInternal()
+    {
+
+    }
     void HandleDetection()
     {
         if (Physics2D.OverlapCollider(reachHitbox, contactFilter, colliders) < 0) return;
@@ -84,7 +82,7 @@ public class SunfishAttackState : State
         }
 
         if (bite)
-            animator.Play(animClip.name, 0,0f);
+            animator.Play(animClip.name, 0, 0f);
     }
 
     IEnumerator Cooldown()
@@ -98,4 +96,5 @@ public class SunfishAttackState : State
 
         cooldownCor = null;
     }
+
 }

@@ -330,6 +330,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2290285252555588076}
   - component: {fileID: 5172626702056665705}
+  - component: {fileID: 7089411441036353701}
   - component: {fileID: 6128166154784939006}
   - component: {fileID: 1268977383077658407}
   - component: {fileID: 7447543468391087149}
@@ -408,6 +409,39 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7089411441036353701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2043356609416475471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05f38d024cc7f824ebf349459c6f640d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackHitbox: {fileID: 7447543468391087149}
+  contactFilter:
+    useTriggers: 0
+    useLayerMask: 0
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 0
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
+  ownStatusManager: {fileID: 5719113294855879425}
+  applyStatusEffects: {fileID: 6555861193747985894}
+  statusEffects:
+    damagePerInstance: 1
+    stunPerInstance: 0
+    speedModifier: {fileID: 0}
 --- !u!95 &6128166154784939006
 Animator:
   serializedVersion: 5
@@ -3329,6 +3363,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 2664668586894446845}
   m_SourcePrefab: {fileID: 100100000, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+--- !u!114 &969785594156081305 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5670604380686470094, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+  m_PrefabInstance: {fileID: 4883967427779603287}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfad8942c39eb5c49abb27e9d4443844, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &985193564683862922 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5650691710349093085, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
@@ -3408,13 +3453,13 @@ MonoBehaviour:
   distanceTravelled: 0
   FixedTimeInState: 0
   uniqueState: {fileID: 0}
+  creatureLogic: {fileID: 969785594156081305}
   stateAgentSpeed: 5
   stateAgentAcceleration: 5
   stateAgentStoppingDistance: 6
-  useStateVars: 1
+  useStateVars: 0
   dangerous: 1
   stateEvent: []
-  maxTimeInState: 10
   chaseState: {fileID: 3918201091700992389}
   roamState: {fileID: 6015550758233338559}
   reachHitbox: {fileID: 1385258921058596718}
@@ -3435,9 +3480,20 @@ MonoBehaviour:
   ownStatusManager: {fileID: 5719113294855879425}
   attackHitbox: {fileID: 7447543468391087149}
   animClip: {fileID: 7400000, guid: 5740e84126c406a4981647415a96319d, type: 2}
-  cooldown: 3
-  chaseDistance: 0
+  cooldown: 4
+  chaseDistance: 30
   animator: {fileID: 6128166154784939006}
+--- !u!114 &6555861193747985894 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1818415738067377841, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+  m_PrefabInstance: {fileID: 4883967427779603287}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7eb6391a461eb664fa4605891d8b8027, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6785970309496204811 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2156039451338327388, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
