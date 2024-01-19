@@ -11,7 +11,7 @@ public class MapArrow : MonoBehaviour
 
     private void Update()
     {
-        target = GameObject.Find("[Creature] Sunfish");
+       target = GameObject.Find("[Creature] Sunfish");
         
         if (target == null)
             child.SetActive(false);
@@ -32,10 +32,6 @@ public class MapArrow : MonoBehaviour
         if (Vector2.Distance(gameObject.transform.position, target.transform.position) < distance)
         {
             child.SetActive(false);
-        }
-        else if (Vector2.Distance(gameObject.transform.position, target.transform.position) > distance)
-        {
-            child.SetActive(true);
         }
     }
 }
