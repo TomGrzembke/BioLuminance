@@ -3283,6 +3283,10 @@ PrefabInstance:
       value: 189.80669
       objectReference: {fileID: 0}
     - target: {fileID: 8477860675694297810, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: attackState
+      value: 
+      objectReference: {fileID: 2664668586894446845}
+    - target: {fileID: 8477860675694297810, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: attackDistance
       value: 20
       objectReference: {fileID: 0}
@@ -3432,7 +3436,7 @@ MonoBehaviour:
   ownStatusManager: {fileID: 5719113294855879425}
   applyStatusEffects: {fileID: 6555861193747985894}
   statusEffects:
-    damagePerInstance: 10
+    damagePerInstance: 1
     stunPerInstance: 0
     speedModifier: {fileID: 0}
   animClip: {fileID: 7400000, guid: 5740e84126c406a4981647415a96319d, type: 2}
