@@ -14,7 +14,7 @@ public class HealthSubject : MonoBehaviour
     [SerializeField] List<LimbSubject> limbSubjects = new();
 
     float maximumHealth = 10;
-    [SerializeField] float currentHealth = 10;
+    public float currentHealth = 10;
 
     public float CurrentHealth
     {
