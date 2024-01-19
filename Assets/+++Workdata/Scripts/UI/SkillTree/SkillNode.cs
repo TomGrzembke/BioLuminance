@@ -67,7 +67,7 @@ public class SkillNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             Image nextSkillImage = nextSkill.GetComponent<Image>();
             if (nextSkillImage != null)
             {
-                nextSkillImage.color = new Color32(255, 255, 255, 40);
+                nextSkillImage.color = new Color32(100, 100, 100, 255);
             }
 
             SkillNode nextSkillNode = nextSkill.GetComponent<SkillNode>();
