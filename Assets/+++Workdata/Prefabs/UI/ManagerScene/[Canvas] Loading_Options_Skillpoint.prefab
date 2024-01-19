@@ -1598,6 +1598,30 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -170
       objectReference: {fileID: 0}
+    - target: {fileID: 2843067028628425319, guid: 63fe6c2d1475cf34b8903b503136b1b9, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2843067028628425319, guid: 63fe6c2d1475cf34b8903b503136b1b9, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2843067028628425319, guid: 63fe6c2d1475cf34b8903b503136b1b9, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2843067028628425319, guid: 63fe6c2d1475cf34b8903b503136b1b9, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: FullScreenToggle
+      objectReference: {fileID: 0}
+    - target: {fileID: 2843067028628425319, guid: 63fe6c2d1475cf34b8903b503136b1b9, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameSettings, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2843067028628425319, guid: 63fe6c2d1475cf34b8903b503136b1b9, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 2920038752246160058, guid: 63fe6c2d1475cf34b8903b503136b1b9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
@@ -1641,6 +1665,18 @@ PrefabInstance:
     - target: {fileID: 4301822011386815501, guid: 63fe6c2d1475cf34b8903b503136b1b9, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4575558148658976057, guid: 63fe6c2d1475cf34b8903b503136b1b9, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameSettings, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4795307494007053666, guid: 63fe6c2d1475cf34b8903b503136b1b9, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnSfxSliderChanged
+      objectReference: {fileID: 0}
+    - target: {fileID: 4795307494007053666, guid: 63fe6c2d1475cf34b8903b503136b1b9, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameSettings, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4914745972296549493, guid: 63fe6c2d1475cf34b8903b503136b1b9, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1930,6 +1966,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -619
       objectReference: {fileID: 0}
+    - target: {fileID: 3022949723621072836, guid: 21698ffa25a89c94f8f94e4eb50a4f72, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3089475920777951514, guid: 21698ffa25a89c94f8f94e4eb50a4f72, type: 3}
       propertyPath: m_SortingLayer
       value: 0
@@ -1964,7 +2004,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3513509413338124877, guid: 21698ffa25a89c94f8f94e4eb50a4f72, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3513509413338124877, guid: 21698ffa25a89c94f8f94e4eb50a4f72, type: 3}
       propertyPath: m_SortingLayer
@@ -2102,6 +2142,10 @@ PrefabInstance:
       propertyPath: skillDescriptionText
       value: 
       objectReference: {fileID: 1737857407196909811}
+    - target: {fileID: 6095194413567761334, guid: 21698ffa25a89c94f8f94e4eb50a4f72, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1516
+      objectReference: {fileID: 0}
     - target: {fileID: 6177788081188662843, guid: 21698ffa25a89c94f8f94e4eb50a4f72, type: 3}
       propertyPath: skillNameText
       value: 
@@ -2156,7 +2200,7 @@ PrefabInstance:
       objectReference: {fileID: 3270370387088583975, guid: c3337ed8c85508d45ba50861412ef92d, type: 3}
     - target: {fileID: 6788305373167868254, guid: 21698ffa25a89c94f8f94e4eb50a4f72, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6788305373167868254, guid: 21698ffa25a89c94f8f94e4eb50a4f72, type: 3}
       propertyPath: m_SortingLayer
