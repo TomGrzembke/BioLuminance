@@ -6,12 +6,18 @@ public class ParentSwapper : MonoBehaviour
     #region serialized fields
     [SerializeField] bool disablePlayer;
     [SerializeField, ConditionalField(nameof(disablePlayer))] PlayerMovement playerMovement;
+    [SerializeField] Transform targetTrans;
     #endregion
 
     #region private fields
     Transform originalParent;
     Transform obj;
     #endregion
+
+    public void Unparent()
+    {
+        targetTrans.parent = null;
+    }
 
     public void Swap(Transform _obj, Transform tempParent)
     {
