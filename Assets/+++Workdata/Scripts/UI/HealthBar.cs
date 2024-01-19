@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class HealthBar : Bar
 {
     #region serialized fields
-    [SerializeField] HealthSubject health;
+    [ConditionalField(nameof(healthLimb), true), SerializeField] HealthSubject health;
+    [ConditionalField(nameof(health), true), SerializeField] LimbSubject healthLimb;
     [SerializeField] Image afterShockBar;
     [ConditionalField(nameof(afterShockBar)), Tooltip("Multiplier of the delta time lerp modifier")]
     [SerializeField] float afterShockSpeed = 3;
@@ -23,12 +24,18 @@ public class HealthBar : Bar
 
     void OnEnable()
     {
-        health.RegisterOnHealthChangedAlpha(OnHealthChanged, true);
+        if (health != null)
+            health.RegisterOnHealthChangedAlpha(OnHealthChanged, true);
+        else if(healthLimb != null)
+            healthLimb.RegisterOnHealthChangedAlpha(OnHealthChanged, true);
     }
 
     void OnDisable()
     {
-        health.OnHealthChangedAlpha -= OnHealthChanged;
+        if (health != null)
+            health.OnHealthChangedAlpha -= OnHealthChanged;
+        else if(healthLimb != null)
+            healthLimb.OnHealthChangedAlpha -= OnHealthChanged;
     }
 
     void OnHealthChanged(float health)
@@ -38,7 +45,7 @@ public class HealthBar : Bar
         AfterShockLogic(health);
     }
 
-     void AfterShockLogic(float health)
+    void AfterShockLogic(float health)
     {
         if (afterShockBar == null) return;
         if (!gameObject.activeSelf) return;

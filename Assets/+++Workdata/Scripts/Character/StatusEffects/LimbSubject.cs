@@ -81,4 +81,10 @@ public class LimbSubject : MonoBehaviour
         if (getInstantCallback)
             callback(currentHealth / maximumHealth);
     }
+    public void RegisterOnLimbDied(Action<bool> callback, bool getInstantCallback = false)
+    {
+        OnLimbDied += callback;
+        if (getInstantCallback)
+            callback(currentHealth <= 0);
+    }
 }
