@@ -21,8 +21,7 @@ public class GameSettings : MonoBehaviour
         sfxSlider.value = PlayerPrefs.GetFloat("sfxVolume");
         OnSfxSliderChanged();
 
-        bool fullScreen = PlayerPrefs.GetInt("fullscreenID") == 0;
-        FullScreenToggle(fullScreen);
+        GetScreenToggle();
     }
 
     public void OnMusicSliderChanged()
@@ -40,9 +39,16 @@ public class GameSettings : MonoBehaviour
         sfxSlider.value = volume;
     }
 
-    public void FullScreenToggle(bool isFullscreen)
+    void GetScreenToggle()
     {
-        isFullscreen = screenToggle.isOn;
+        bool isFullScreen = PlayerPrefs.GetInt("fullscreenID") == 0; ;
+        screenToggle.isOn = isFullScreen;
+        Screen.fullScreen = isFullScreen;
+    }
+
+    public void FullScreenToggle()
+    {
+        bool isFullscreen = screenToggle.isOn;
         Screen.fullScreen = isFullscreen;
         PlayerPrefs.SetInt("fullscreenID", (isFullscreen ? 0 : 1));
     }
