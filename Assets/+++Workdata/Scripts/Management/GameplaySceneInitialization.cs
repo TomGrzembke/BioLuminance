@@ -14,5 +14,6 @@ public class GameplaySceneInitialization : MonoBehaviour
     {
         PointSystem.Instance.GetCreatures();
         PauseManager.Instance.PauseLogic(false);
+        MusicManager.Instance.PlaySong(MusicManager.Songs.Ingame);
     }
 }

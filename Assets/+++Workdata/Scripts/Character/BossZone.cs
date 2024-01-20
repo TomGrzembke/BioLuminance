@@ -30,6 +30,8 @@ public class BossZone : MonoBehaviour
     {
         if (!enabled) return;
 
+        MusicManager.Instance.PlaySong(MusicManager.Songs.Sunfish);
+
         col.radius = exitRadius;
 
         if (playerCam && camFadeCor == null)
@@ -47,6 +49,8 @@ public class BossZone : MonoBehaviour
     public void Exit()
     {
         if (!enabled) return;
+
+        MusicManager.Instance.PlayLastPlayed();
 
         col.radius = initialRadius;
 
