@@ -1,9 +1,18 @@
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class SkillManager : MonoBehaviour
 {
     public static SkillManager Instance;
-    void Awake() => Instance = this;
+
+    void Awake()
+    {
+        Instance = this;
+
+        Instance.temperature =  PlayerPrefs.GetInt("TemperatureAmount");
+        Instance.oxygen = PlayerPrefs.GetInt("OxygenAmount");
+        Instance.pressure = PlayerPrefs.GetInt("PressureAmount");
+    }
 
     [SerializeField] GameObject imageInformationField;
     [SerializeField] GameObject skillTree;
@@ -83,6 +92,10 @@ public class SkillManager : MonoBehaviour
                 Instance.temperature += skillClass.skillPointAmount;
             }
         }
+
+        PlayerPrefs.SetInt("TemperatureAmount", Instance.temperature);
+        PlayerPrefs.SetInt("OxygenAmount", Instance.oxygen);
+        PlayerPrefs.SetInt("PressureAmount", Instance.pressure);
     }
 
     public int GetSkillAmount(SkillClass.Skill skillType)
