@@ -2495,6 +2495,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1602545514973695957, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1602545514973695957, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1602545514973695957, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1775795466345194663, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: m_LocalScale.x
       value: 10.2
@@ -2683,6 +2695,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: '[Creature] Sunfish'
       objectReference: {fileID: 0}
+    - target: {fileID: 2912569449313733131, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2912569449313733131, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2912569449313733131, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3268572947793182246, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: anim
       value: 
@@ -2702,6 +2726,22 @@ PrefabInstance:
     - target: {fileID: 3566949603382941934, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: maximumHealth
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4478539317960641634, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: stunTime
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4478539317960641634, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: maximumStun
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4478539317960641634, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: fallofAmount
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4478539317960641634, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: stunFallofTime
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4845016083817838126, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: InitialModule.startLifetime.scalar
