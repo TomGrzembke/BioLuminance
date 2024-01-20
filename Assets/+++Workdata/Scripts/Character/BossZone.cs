@@ -21,7 +21,7 @@ public class BossZone : MonoBehaviour
     Coroutine camFadeCor;
     #endregion
 
-     void Start()
+    void Start()
     {
         col.radius = initialRadius;
     }

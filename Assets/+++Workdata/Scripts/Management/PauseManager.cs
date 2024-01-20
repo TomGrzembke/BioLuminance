@@ -21,7 +21,7 @@ public class PauseManager : MonoBehaviour
 
     void PauseButton()
     {
-        GameStateManager.OptionsWindow(!paused);
+        GameStateManager.OptionsWindow();
     }
 
     public void PauseLogic()

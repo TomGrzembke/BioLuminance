@@ -14,7 +14,6 @@ public class SkillNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     [SerializeField] TextMeshProUGUI skillCostText;
     [Space(5)]
     [SerializeField] GameObject AcquiredSkill;
-    //[SerializeField] GameObject UnacquiredSkill;
     [SerializeField] bool dontChangeNameOnValidate;
 
     SkillManager skillManager;
@@ -59,7 +58,44 @@ public class SkillNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         skillManager.SkillUpdate(informationFieldSO);
 
         img.color = new Color32(255, 255, 255, 255);
-        //UnacquiredSkill.SetActive(false);
+        AcquiredSkill.SetActive(true);
+
+        foreach (var nextSkill in nextSkills)
+        {
+            Image nextSkillImage = nextSkill.GetComponent<Image>();
+            if (nextSkillImage != null)
+            {
+                nextSkillImage.color = new Color32(100, 100, 100, 255);
+            }
+
+            SkillNode nextSkillNode = nextSkill.GetComponent<SkillNode>();
+            if (nextSkillNode != null)
+            {
+                nextSkillNode.enabled = true;
+            }
+
+            Button nextSkillButton = nextSkillNode.GetComponent<Button>();
+            if (nextSkillButton != null)
+            {
+                nextSkillButton.enabled = true;
+            }
+        }
+
+        if (unacquiredSkillParticles != null)
+        {
+            foreach (var particle in unacquiredSkillParticles)
+            {
+                particle.SetActive(true);
+            }
+        }
+    }
+
+    public void Initialize()
+    {
+        check = true;
+
+        img = GetComponent<Image>();
+        img.color = new Color32(255, 255, 255, 255);
         AcquiredSkill.SetActive(true);
 
         foreach (var nextSkill in nextSkills)

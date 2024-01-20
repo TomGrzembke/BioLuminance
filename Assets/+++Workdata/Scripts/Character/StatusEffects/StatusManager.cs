@@ -1,5 +1,6 @@
 using MyBox;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class StatusManager : MonoBehaviour
 {
@@ -26,6 +27,9 @@ public class StatusManager : MonoBehaviour
     [SerializeField, ConditionalField(nameof(isPlayer), true)] CreatureRewards creatureRewards;
     public PointSubject PointSubject => pointSubject;
     [SerializeField] PointSubject pointSubject;
+
+    [SerializeField, ConditionalField(nameof(isPlayer))] NavMeshAgent agent;
+    public NavMeshAgent Agent => agent;
     #endregion
 
     #region private fields

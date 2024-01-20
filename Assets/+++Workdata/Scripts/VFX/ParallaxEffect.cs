@@ -12,13 +12,7 @@ public class ParallaxEffect : MonoBehaviour
 
     #region private fields
     float startingPos;
-    SpriteRenderer sr;
     #endregion
-
-    void Awake()
-    {
-        sr = GetComponent<SpriteRenderer>();
-    }
 
     void Start()
     {

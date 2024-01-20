@@ -95,6 +95,7 @@ MonoBehaviour:
   applyStatusEffects: {fileID: 1818415738067377841}
   creatureRewards: {fileID: 7627820772083735243}
   pointSubject: {fileID: 5676481398085119860}
+  agent: {fileID: 0}
 --- !u!114 &1818415738067377841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,6 +280,7 @@ MonoBehaviour:
   distanceTravelled: 0
   FixedTimeInState: 0
   uniqueState: {fileID: 0}
+  creatureLogic: {fileID: 0}
   stateAgentSpeed: 5
   stateAgentAcceleration: 9
   stateAgentStoppingDistance: 0
@@ -339,6 +341,7 @@ MonoBehaviour:
   distanceTravelled: 0
   FixedTimeInState: 0
   uniqueState: {fileID: 0}
+  creatureLogic: {fileID: 0}
   stateAgentSpeed: 4.5
   stateAgentAcceleration: 6
   stateAgentStoppingDistance: 2
@@ -397,6 +400,7 @@ MonoBehaviour:
   distanceTravelled: 0
   FixedTimeInState: 0
   uniqueState: {fileID: 0}
+  creatureLogic: {fileID: 0}
   stateAgentSpeed: 3.5
   stateAgentAcceleration: 5
   stateAgentStoppingDistance: 2
@@ -763,6 +767,7 @@ MonoBehaviour:
   distanceTravelled: 0
   FixedTimeInState: 0
   uniqueState: {fileID: 0}
+  creatureLogic: {fileID: 0}
   stateAgentSpeed: 14
   stateAgentAcceleration: 5
   stateAgentStoppingDistance: 0
@@ -908,6 +913,7 @@ MonoBehaviour:
   distanceTravelled: 0
   FixedTimeInState: 0
   uniqueState: {fileID: 0}
+  creatureLogic: {fileID: 0}
   stateAgentSpeed: 0
   stateAgentAcceleration: 0
   stateAgentStoppingDistance: 0
@@ -1444,6 +1450,7 @@ MonoBehaviour:
   distanceTravelled: 0
   FixedTimeInState: 0
   uniqueState: {fileID: 0}
+  creatureLogic: {fileID: 0}
   stateAgentSpeed: 0
   stateAgentAcceleration: 0
   stateAgentStoppingDistance: 0
@@ -1594,6 +1601,7 @@ MonoBehaviour:
   distanceTravelled: 0
   FixedTimeInState: 0
   uniqueState: {fileID: 0}
+  creatureLogic: {fileID: 0}
   stateAgentSpeed: 3.5
   stateAgentAcceleration: 3
   stateAgentStoppingDistance: 1

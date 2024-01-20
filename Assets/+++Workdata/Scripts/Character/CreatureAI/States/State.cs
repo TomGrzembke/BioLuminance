@@ -22,7 +22,7 @@ public abstract class State : MonoBehaviour
     [Header(nameof(State))]
     [SerializeField] protected State uniqueState;
 
-    protected CreatureLogic creatureLogic;
+    [SerializeField] protected CreatureLogic creatureLogic;
     public float StateAgentSpeed => stateAgentSpeed;
     [ConditionalField(nameof(uniqueState), true), SerializeField] protected float stateAgentSpeed = 3.5f;
 
@@ -40,6 +40,8 @@ public abstract class State : MonoBehaviour
     #endregion
 
     void Awake() => creatureLogic = GetComponentInParent<CreatureLogic>();
+
+
 
     #region StateEvent
     public enum SwitchReason

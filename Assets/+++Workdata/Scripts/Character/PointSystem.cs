@@ -16,6 +16,7 @@ public class PointSystem : MonoBehaviour
     void Awake()
     {
         Instance = this;
+        points = PlayerPrefs.GetFloat("SkillPoints");
     }
 
     void Update()
@@ -89,6 +90,8 @@ public class PointSystem : MonoBehaviour
 
     public void CalculatePoints(Creatures creatureType)
     {
+        float beforCalcPoints = points;
+
         foreach (var pointPool in pointPools)
         {
             if (pointPool.creature == creatureType)
@@ -102,6 +105,9 @@ public class PointSystem : MonoBehaviour
                 pointPool.initialDNAAmount = Mathf.Round(pointPool.initialDNAAmount);
             }
         }
+
+        if (points != beforCalcPoints)
+            PlayerPrefs.SetFloat("SkillPoints", points);
     }
 
     public void CalculatePoints(int pointsMinus)

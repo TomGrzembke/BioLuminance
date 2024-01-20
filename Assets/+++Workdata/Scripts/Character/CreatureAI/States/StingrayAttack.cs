@@ -6,6 +6,7 @@ public class StingrayAttack : State
 
     [SerializeField] RoamState roamState;
     [SerializeField] State chaseState;
+    [SerializeField] float interestRange = 30;
     #endregion
 
     #region private fields
@@ -16,7 +17,7 @@ public class StingrayAttack : State
         if (creatureLogic.TargetStatusManager == null)
             return roamState;
 
-        if (creatureLogic.DistanceFromTarget >= creatureLogic.DetectionRadius + 30)
+        if (creatureLogic.DistanceFromTarget >= interestRange)
         {
             return chaseState;
         }

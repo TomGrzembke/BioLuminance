@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class SpeedSubject : MonoBehaviour
 {
     [SerializeField] NavMeshAgent agent;
+    public NavMeshAgent Agent => agent;
     [SerializeField] float speed;
     [SerializeField] SlowCondition slowCondition;
 

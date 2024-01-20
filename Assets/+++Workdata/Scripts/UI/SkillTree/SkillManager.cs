@@ -1,11 +1,19 @@
-using MyBox;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class SkillManager : MonoBehaviour
 {
     public static SkillManager Instance;
-    void Awake() => Instance = this;
-    
+
+    void Awake()
+    {
+        Instance = this;
+
+        Instance.temperature =  PlayerPrefs.GetInt("TemperatureAmount");
+        Instance.oxygen = PlayerPrefs.GetInt("OxygenAmount");
+        Instance.pressure = PlayerPrefs.GetInt("PressureAmount");
+    }
+
     [SerializeField] GameObject imageInformationField;
     [SerializeField] GameObject skillTree;
 
@@ -17,24 +25,36 @@ public class SkillManager : MonoBehaviour
     [SerializeField] int oxygen;
 
     [SerializeField] float maxPointAmount = 4;
+
+    [SerializeField] GameObject restartButton;
+
+    [SerializeField] GameObject continueButton;
+
     void Update()
     {
         imageInformationField.transform.position = Input.mousePosition;
     }
 
-    [ButtonMethod]
-    public static void OpenSkillManager()
+    public static void OpenSkillManager(bool died)
     {
+        if (!died)
+            PauseManager.Instance.PauseLogic(true);
+
         Instance.skillTree.SetActive(true);
+
+        Instance.restartButton?.SetActive(died);
+        Instance.continueButton?.SetActive(!died);
+
 
         if (Instance.skillTree != null && !Instance.skillTree.activeSelf)
             Instance.SetImageInformationField(false);
     }
 
-    [ButtonMethod]
     public static void CloseSkillManager()
     {
         Instance.skillTree.SetActive(false);
+
+        PauseManager.Instance.PauseLogic(false);
 
         if (Instance.skillTree != null && !Instance.skillTree.activeSelf)
             Instance.SetImageInformationField(false);
@@ -72,6 +92,10 @@ public class SkillManager : MonoBehaviour
                 Instance.temperature += skillClass.skillPointAmount;
             }
         }
+
+        PlayerPrefs.SetInt("TemperatureAmount", Instance.temperature);
+        PlayerPrefs.SetInt("OxygenAmount", Instance.oxygen);
+        PlayerPrefs.SetInt("PressureAmount", Instance.pressure);
     }
 
     public int GetSkillAmount(SkillClass.Skill skillType)
