@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 
@@ -13,7 +14,7 @@ public class SkillNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     [SerializeField] TextMeshProUGUI skillDescriptionText;
     [SerializeField] TextMeshProUGUI skillCostText;
     [Space(5)]
-    [SerializeField] GameObject AcquiredSkill;
+    [SerializeField] GameObject acquiredSkill;
     [SerializeField] bool dontChangeNameOnValidate;
 
     SkillManager skillManager;
@@ -46,6 +47,11 @@ public class SkillNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     void Start()
     {
         skillManager.SetImageInformationField(false);
+
+        if (acquiredSkill.activeSelf)
+        {
+            img.color = new Color32(255, 255, 255, 255);
+        }
     }
 
     public void PointerClick()
@@ -59,7 +65,7 @@ public class SkillNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         skillManager.SkillUpdate(informationFieldSO);
 
         img.color = new Color32(255, 255, 255, 255);
-        AcquiredSkill.SetActive(true);
+        acquiredSkill.SetActive(true);
 
         foreach (var nextSkill in nextSkills)
         {
@@ -97,7 +103,7 @@ public class SkillNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
         img = GetComponent<Image>();
         img.color = new Color32(255, 255, 255, 255);
-        AcquiredSkill.SetActive(true);
+        acquiredSkill.SetActive(true);
 
         foreach (var nextSkill in nextSkills)
         {
