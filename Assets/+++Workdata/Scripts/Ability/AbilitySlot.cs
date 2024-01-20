@@ -69,7 +69,7 @@ public class AbilitySlot : MonoBehaviour
     public void EnterAbility()
     {
         if (currentAbility)
-            currentAbility.EnterAbility(abilitySlotManager);
+            currentAbility.EnterAbility(abilitySlotManager, abilityImage);
     }
     public void Execute(bool deactivate = false)
     {

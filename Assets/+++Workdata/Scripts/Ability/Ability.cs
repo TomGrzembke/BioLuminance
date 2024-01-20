@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public abstract class Ability : MonoBehaviour
 {
@@ -11,11 +12,13 @@ public abstract class Ability : MonoBehaviour
 
     #region private fields
     protected AbilitySlotManager abilitySlotManager;
+    Image abilityImage;
     Coroutine coolDownCor;
     #endregion
-    public void EnterAbility(AbilitySlotManager _abilitySlotManager)
+    public void EnterAbility(AbilitySlotManager _abilitySlotManager, Image _abilityImage)
     {
         abilitySlotManager = _abilitySlotManager;
+        abilityImage = _abilityImage;
         OnInitialized(_abilitySlotManager);
     }
 
@@ -46,6 +49,7 @@ public abstract class Ability : MonoBehaviour
         while (wentByTime < cooldown)
         {
             wentByTime += Time.deltaTime;
+            abilityImage.fillAmount = wentByTime / cooldown;
             yield return null;
         }
 
