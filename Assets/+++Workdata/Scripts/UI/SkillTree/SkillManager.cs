@@ -23,8 +23,11 @@ public class SkillManager : MonoBehaviour
     }
 
     [ButtonMethod]
-    public static void OpenSkillManager()
+    public static void OpenSkillManager(bool died)
     {
+        if(!died)
+            PauseManager.Instance.PauseLogic();
+
         Instance.skillTree.SetActive(true);
 
         if (Instance.skillTree != null && !Instance.skillTree.activeSelf)

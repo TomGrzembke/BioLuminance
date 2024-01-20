@@ -28,7 +28,7 @@ public class OnPlayerDead : MonoBehaviour
     {
         if (dead)
         {
-            SkillManager.OpenSkillManager();
+            SkillManager.OpenSkillManager(dead);
             tentacleTargetManager.SetTentacles(false);
             gfxTrans.parent = headTrans;
             jellyFishGO.SetActive(false);
