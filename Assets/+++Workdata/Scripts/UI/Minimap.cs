@@ -39,6 +39,7 @@ public class Minimap : MonoBehaviour
         spriteSizeVec = (creatureRenderer.bounds.extents);
         spriteSizeVec = new(Mathf.Round(spriteSizeVec.x * 1.5f), Mathf.Round(spriteSizeVec.y * 1.5f));
         spriteSizeVec.x = spriteSizeVec.y;
+        if (mapSpriteRenderer == null) return;
         mapSpriteRenderer.transform.localScale = spriteSizeVec;
     }
 
@@ -63,7 +64,8 @@ public class Minimap : MonoBehaviour
     public void HandleMapIndicators()
     {
         if (stateManager == null) return;
-
+        if (mapSpriteRenderer == null) return;
+        
         if (stateManager.currentState.Dangerous)
             mapSpriteRenderer.color = agressiveColor;
         else

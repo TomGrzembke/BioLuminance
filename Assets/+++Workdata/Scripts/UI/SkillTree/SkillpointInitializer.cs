@@ -15,6 +15,12 @@ public class SkillpointInitializer : MonoBehaviour
 
     void Start()
     {
+        for (int i = 0; i < skillManager.Pressure; i++)
+        {
+            pressureNodes[i].enabled = true;
+            pressureNodes[i].Initialize();
+        }
+        
         for (int i = 0; i < skillManager.Temperature; i++)
         {
             temperatureNodes[i].enabled = true;
@@ -25,12 +31,6 @@ public class SkillpointInitializer : MonoBehaviour
         {
             oxygenNodes[i].enabled = true;
             oxygenNodes[i].Initialize();
-        }
-
-        for (int i = 0; i < skillManager.Pressure; i++)
-        {
-            pressureNodes[i].enabled = true;
-            pressureNodes[i].Initialize();
         }
     }
 }

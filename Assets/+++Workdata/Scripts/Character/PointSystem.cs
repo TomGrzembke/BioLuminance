@@ -110,6 +110,11 @@ public class PointSystem : MonoBehaviour
             PlayerPrefs.SetFloat("SkillPoints", points);
     }
 
+    private void OnApplicationQuit()
+    { 
+        PlayerPrefs.SetFloat("SkillPoints", points);
+    }
+
     public void CalculatePoints(int pointsMinus)
     {
         points -= pointsMinus;
