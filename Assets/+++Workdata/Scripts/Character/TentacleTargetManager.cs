@@ -9,6 +9,8 @@ public class TentacleTargetManager : MonoBehaviour
     [SerializeField] List<TentacleBehavior> tentacles;
     [SerializeField] List<LimbSubject> targetLimbs;
     [SerializeField] List<Transform> targetTrans;
+    [SerializeField] Material tentacleMaterial;
+    [SerializeField] Color attackColor;
     public List<StatusManager> TargetStatusManagers => targetStatusManagers;
     [SerializeField] List<StatusManager> targetStatusManagers;
     public event Action<List<StatusManager>> OnTargetStatusManagersChanged;
@@ -34,12 +36,16 @@ public class TentacleTargetManager : MonoBehaviour
                 ResetTentacles();
                 break;
             case 1:
+                if (tentacleMaterial)
+                    tentacleMaterial.color = attackColor;
                 for (int i = 0; i < tentacleCount; i++)
                 {
                     AddTargetTrans(targetLimbs[0].OwnStatusManager.GrabManager.GetRandomGrabTrans());
                 }
                 break;
             default:
+                if (tentacleMaterial)
+                    tentacleMaterial.color = attackColor;
                 for (int i = 0; i < tentacleCount; i++)
                 {
                     AddTargetTrans(targetLimbs[UnityEngine.Random.Range(0, targetCount)].OwnStatusManager.GrabManager.GetACloseGrabTrans(transform.position));
@@ -59,6 +65,8 @@ public class TentacleTargetManager : MonoBehaviour
 
     public void ResetTentacles(Transform newTarget = null)
     {
+        if (tentacleMaterial)
+            tentacleMaterial.color = Color.white;
         for (int i = 0; i < tentacles.Count; i++)
         {
             tentacles[i].SetGrabTarget(newTarget);
