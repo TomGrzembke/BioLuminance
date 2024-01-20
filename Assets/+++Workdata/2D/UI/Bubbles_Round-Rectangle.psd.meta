@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 14deb7609661ca942b9b79c047d37241
+guid: 713c2ec8a8819044bbb0501474674757
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -110,127 +110,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bubble_ANIM_0
+      name: Bubbles_Round-Rectangle_0
       rect:
         serializedVersion: 2
-        x: 495
-        y: 338
-        width: 408
-        height: 413
-      alignment: 9
-      pivot: {x: 0.22678824, y: 0.7596133}
+        x: 632
+        y: 363
+        width: 656
+        height: 354
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 434cebe1d2fca3c4e8cdcdad0d9215d1
-      internalID: 130060783
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bubble_ANIM_1
-      rect:
-        serializedVersion: 2
-        x: 389
-        y: 7
-        width: 372
-        height: 339
-      alignment: 9
-      pivot: {x: 0.19961868, y: 0.4676506}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d174d785e2b9acf49b4a85ed5818c072
-      internalID: 1230929711
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bubble_ANIM_2
-      rect:
-        serializedVersion: 2
-        x: 953
-        y: 357
-        width: 408
-        height: 412
-      alignment: 9
-      pivot: {x: 0.25335035, y: 0.7125016}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 635e6b9eab908bc4583146f556dc7c53
-      internalID: -294608104
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bubble_ANIM_3
-      rect:
-        serializedVersion: 2
-        x: 1396
-        y: 380
-        width: 397
-        height: 403
-      alignment: 9
-      pivot: {x: 0.33233103, y: 0.6742772}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 113512b0991bcfe4e862f5ee05a4e413
-      internalID: 988944482
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bubble_ANIM_4
-      rect:
-        serializedVersion: 2
-        x: 28
-        y: 379
-        width: 375
-        height: 359
-      alignment: 9
-      pivot: {x: 0.24960765, y: 0.7576105}
-      border: {x: 168, y: 0, z: 156, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d17fcfb0f78a5104d90b0ef1c974c8d2
-      internalID: 653487403
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bubble_ANIM_5
-      rect:
-        serializedVersion: 2
-        x: 15
-        y: 5
-        width: 373
-        height: 355
-      alignment: 9
-      pivot: {x: 0.4214725, y: 0.41389447}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 38affbc11ef60a848a8d9a8dc2e921b0
-      internalID: -1064494014
+      spriteID: d83b81d4804bdc34ca710fda56efe765
+      internalID: 297858280
       vertices: []
       indices: 
       edges: []
@@ -246,14 +141,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Bubble_ANIM_0: 130060783
-      Bubble_ANIM_1: 1230929711
-      Bubble_ANIM_2: -294608104
-      Bubble_ANIM_3: 988944482
-      Bubble_ANIM_4: 653487403
-      Bubble_ANIM_5: -1064494014
+      Bubbles_Round-Rectangle_0: 297858280
   mipmapLimitGroupName: 
-  pSDRemoveMatte: 1
+  pSDRemoveMatte: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

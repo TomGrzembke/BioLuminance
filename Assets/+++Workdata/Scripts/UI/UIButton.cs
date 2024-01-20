@@ -18,6 +18,7 @@ public class UIButton : MonoBehaviour
     {
         name = buttonNameSyntax + " " + buttonName;
         textComponent = GetComponentInChildren<TextMeshProUGUI>();
+        if (textComponent == null) return;
         textComponent.text = buttonName;
         textComponent.name = textNameSyntax + " " + buttonName;
     }

@@ -17,9 +17,14 @@ public class GameStateManager : MonoBehaviour
         Instance.StartCoroutine(Instance.LoadScenesCoroutine((int)Scenes.MainMenu, Instance.GetSceneID(Instance.gamePlayScene)));
     }
 
-    public static void OptionsWindow(bool status = true)
+    public static void OptionsWindow()
     {
         Instance.optionsWindow?.SetActive(!Instance.optionsWindow.activeInHierarchy);
+        PauseManager.Instance.PauseLogic();
+    }
+    public static void CloseOptionsWindow()
+    {
+        Instance.optionsWindow?.SetActive(false);
         PauseManager.Instance.PauseLogic();
     }
 
