@@ -24,6 +24,7 @@ public class TentacleController : MonoBehaviour
         inputActions = new();
 
         inputActions.Player.Attack.performed += ctx => Attack();
+        inputActions.Player.AutoAttack.performed += ctx => AttackNear();
     }
 
     void Attack()
@@ -42,6 +43,30 @@ public class TentacleController : MonoBehaviour
                     savedPossibleTarget.Add(cursorDetect.PossibleTargets[i]);
             }
             tentacleTargetManager.SetAttackStatusManager(cursorDetect.PossibleTargets);
+
+            if (checkIfStillInRangeCO != null)
+                StopCoroutine(checkIfStillInRangeCO);
+            checkIfStillInRangeCO = StartCoroutine(CheckIfStillInRange());
+        }
+
+    }
+
+    void AttackNear()
+    {
+        if (!playerDetect.HasTargets)
+        {
+            targetCursor = !targetCursor;
+            tentacleTargetManager.SetOneTarget(targetCursor ? playerDetect.transform : null);
+        }
+        else
+        {
+            targetCursor = true;
+            for (int i = 0; i < playerDetect.PossibleTargets.Count; i++)
+            {
+                if (!savedPossibleTarget.Contains(playerDetect.PossibleTargets[i]))
+                    savedPossibleTarget.Add(playerDetect.PossibleTargets[i]);
+            }
+            tentacleTargetManager.SetAttackStatusManager(playerDetect.PossibleTargets);
 
             if (checkIfStillInRangeCO != null)
                 StopCoroutine(checkIfStillInRangeCO);

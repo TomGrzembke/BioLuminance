@@ -116,6 +116,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""AutoAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""470641d4-21e1-4192-b767-0bbadc47f663"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -330,6 +339,17 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""14dbb786-faae-4c4a-9bb3-bd0a33452930"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability0"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""285a8628-7274-4b78-bb98-1445ecac8252"",
                     ""path"": ""<Keyboard>/2"",
                     ""interactions"": """",
@@ -343,6 +363,17 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""d530f38b-28ae-4dd9-bd57-00400d935f4e"",
                     ""path"": ""<XInputController>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0a187c17-2cef-432d-80ef-0ea8e85d710b"",
+                    ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -374,6 +405,17 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""5f03af22-4081-4e0c-ba3e-b8e6b280d9f4"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""f2439819-81ec-4557-8d86-99def89361a8"",
                     ""path"": ""<Keyboard>/4"",
                     ""interactions"": """",
@@ -391,6 +433,39 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Ability3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""94139685-ddcf-41e6-85af-8d4fa1eae026"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a7adb8e4-621b-472c-9e21-0ce40d7190a9"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AutoAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c0870b05-f6e6-4c5f-958c-f7b4ee21c2dc"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AutoAttack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -439,6 +514,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_Ability1 = m_Player.FindAction("Ability1", throwIfNotFound: true);
         m_Player_Ability2 = m_Player.FindAction("Ability2", throwIfNotFound: true);
         m_Player_Ability3 = m_Player.FindAction("Ability3", throwIfNotFound: true);
+        m_Player_AutoAttack = m_Player.FindAction("AutoAttack", throwIfNotFound: true);
         // UserInterface
         m_UserInterface = asset.FindActionMap("UserInterface", throwIfNotFound: true);
         m_UserInterface_SkillTree = m_UserInterface.FindAction("SkillTree", throwIfNotFound: true);
@@ -513,6 +589,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Ability1;
     private readonly InputAction m_Player_Ability2;
     private readonly InputAction m_Player_Ability3;
+    private readonly InputAction m_Player_AutoAttack;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -527,6 +604,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @Ability1 => m_Wrapper.m_Player_Ability1;
         public InputAction @Ability2 => m_Wrapper.m_Player_Ability2;
         public InputAction @Ability3 => m_Wrapper.m_Player_Ability3;
+        public InputAction @AutoAttack => m_Wrapper.m_Player_AutoAttack;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -566,6 +644,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Ability3.started += instance.OnAbility3;
             @Ability3.performed += instance.OnAbility3;
             @Ability3.canceled += instance.OnAbility3;
+            @AutoAttack.started += instance.OnAutoAttack;
+            @AutoAttack.performed += instance.OnAutoAttack;
+            @AutoAttack.canceled += instance.OnAutoAttack;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -600,6 +681,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Ability3.started -= instance.OnAbility3;
             @Ability3.performed -= instance.OnAbility3;
             @Ability3.canceled -= instance.OnAbility3;
+            @AutoAttack.started -= instance.OnAutoAttack;
+            @AutoAttack.performed -= instance.OnAutoAttack;
+            @AutoAttack.canceled -= instance.OnAutoAttack;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -675,6 +759,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnAbility1(InputAction.CallbackContext context);
         void OnAbility2(InputAction.CallbackContext context);
         void OnAbility3(InputAction.CallbackContext context);
+        void OnAutoAttack(InputAction.CallbackContext context);
     }
     public interface IUserInterfaceActions
     {
