@@ -4252,6 +4252,7 @@ GameObject:
   - component: {fileID: 800443163}
   - component: {fileID: 800443165}
   - component: {fileID: 800443166}
+  - component: {fileID: 800443167}
   m_Layer: 5
   m_Name: BG
   m_TagString: Untagged
@@ -4392,6 +4393,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &800443167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 800443161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7093d49492fa2847a4dce94018bfd59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &802012386 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8541991554515935659, guid: 4e69f7373c4a0094d98fcf5240fa723d, type: 3}
