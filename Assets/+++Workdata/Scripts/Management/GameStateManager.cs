@@ -19,7 +19,7 @@ public class GameStateManager : MonoBehaviour
 
     public static void OptionsWindow(bool status = true)
     {
-        Instance.optionsWindow?.SetActive(status);
+        Instance.optionsWindow?.SetActive(!Instance.optionsWindow.activeInHierarchy);
         PauseManager.Instance.PauseLogic();
     }
 

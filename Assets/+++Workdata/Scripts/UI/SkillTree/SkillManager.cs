@@ -1,11 +1,10 @@
-using MyBox;
 using UnityEngine;
 
 public class SkillManager : MonoBehaviour
 {
     public static SkillManager Instance;
     void Awake() => Instance = this;
-    
+
     [SerializeField] GameObject imageInformationField;
     [SerializeField] GameObject skillTree;
 
@@ -17,27 +16,36 @@ public class SkillManager : MonoBehaviour
     [SerializeField] int oxygen;
 
     [SerializeField] float maxPointAmount = 4;
+
+    [SerializeField] GameObject restartButton;
+
+    [SerializeField] GameObject continueButton;
+
     void Update()
     {
         imageInformationField.transform.position = Input.mousePosition;
     }
 
-    [ButtonMethod]
     public static void OpenSkillManager(bool died)
     {
-        if(!died)
-            PauseManager.Instance.PauseLogic();
+        if (!died)
+            PauseManager.Instance.PauseLogic(true);
 
         Instance.skillTree.SetActive(true);
+
+        Instance.restartButton?.SetActive(died);
+        Instance.continueButton?.SetActive(!died);
+
 
         if (Instance.skillTree != null && !Instance.skillTree.activeSelf)
             Instance.SetImageInformationField(false);
     }
 
-    [ButtonMethod]
     public static void CloseSkillManager()
     {
         Instance.skillTree.SetActive(false);
+
+        PauseManager.Instance.PauseLogic(false);
 
         if (Instance.skillTree != null && !Instance.skillTree.activeSelf)
             Instance.SetImageInformationField(false);
