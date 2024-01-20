@@ -24,6 +24,7 @@ public class SkillNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         img = GetComponent<Image>();
         skillManager = GetComponentInParent<SkillManager>();
+        
         skillManager.SetImageInformationField(true);
 
         skillNameText = GameObject.Find("SkillName").GetComponent<TextMeshProUGUI>();
