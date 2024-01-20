@@ -79,6 +79,7 @@ MonoBehaviour:
   distanceTravelled: 0
   FixedTimeInState: 0
   uniqueState: {fileID: 0}
+  creatureLogic: {fileID: 0}
   stateAgentSpeed: 1
   stateAgentAcceleration: 3
   stateAgentStoppingDistance: 1
@@ -408,6 +409,7 @@ MonoBehaviour:
   distanceTravelled: 0
   FixedTimeInState: 0
   uniqueState: {fileID: 0}
+  creatureLogic: {fileID: 0}
   stateAgentSpeed: 0
   stateAgentAcceleration: 0
   stateAgentStoppingDistance: 0
@@ -856,6 +858,7 @@ MonoBehaviour:
   distanceTravelled: 0
   FixedTimeInState: 0
   uniqueState: {fileID: 0}
+  creatureLogic: {fileID: 0}
   stateAgentSpeed: 0
   stateAgentAcceleration: 0
   stateAgentStoppingDistance: 0
@@ -957,6 +960,7 @@ MonoBehaviour:
   applyStatusEffects: {fileID: 318277107806698486}
   creatureRewards: {fileID: 8732824176249094255}
   pointSubject: {fileID: 5050360986848591310}
+  agent: {fileID: 0}
 --- !u!114 &318277107806698486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1317,6 +1321,7 @@ MonoBehaviour:
   stunFallofTime: 3
   stunTime: 2
   falloffTick: 0.2
+  fallofAmount: 1
 --- !u!1 &4772490510698978187
 GameObject:
   m_ObjectHideFlags: 0
