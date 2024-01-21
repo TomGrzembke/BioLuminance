@@ -20,7 +20,8 @@ public class RewardWindow : MonoBehaviour
     [SerializeField] TextMeshProUGUI rewardText;
     [SerializeField] GameObject currencObject;
     [SerializeField] CanvasGroup rewardTextCanvasGroup;
-
+    [SerializeField] GameObject thxForPlayingScreen;
+    [SerializeField] GameObject lastReward;
     #endregion
 
     #region private fields
@@ -28,6 +29,7 @@ public class RewardWindow : MonoBehaviour
     CanvasGroup essentialUICanvasGroup;
     Coroutine currentRewarWindowCoroutine;
     Coroutine showCurrencyCoroutine;
+    GameObject currentReward;
     #endregion
 
     void Awake()
@@ -49,6 +51,7 @@ public class RewardWindow : MonoBehaviour
     public void GiveReward(GameObject reward)
     {
         if (!reward) return;
+        currentReward = reward;
         Ability ability = reward.GetComponent<Ability>();
         rewardImage.sprite = ability.AbilitySO.abilitySprite;
         titelText.text = ability.AbilitySO.abilityTitel;
@@ -69,6 +72,17 @@ public class RewardWindow : MonoBehaviour
             StopCoroutine(currentRewarWindowCoroutine);
 
         currentRewarWindowCoroutine = StartCoroutine(HideCoroutine());
+
+        if (lastReward == currentReward)
+        {
+            thxForPlayingScreen.SetActive(true);
+            PauseManager.Instance.PauseLogic(true);
+        }
+    }
+    public void CloseEndScreen()
+    {
+        PauseManager.Instance.PauseLogic(false);
+        thxForPlayingScreen.SetActive(false);
     }
     public void ShowCurrency(float current, float additional)
     {
