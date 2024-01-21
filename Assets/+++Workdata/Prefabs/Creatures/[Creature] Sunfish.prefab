@@ -2338,6 +2338,30 @@ PrefabInstance:
       propertyPath: objToDisableFirst.Array.data[1]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3268572947793182246, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: eventAtLast.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3268572947793182246, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: eventAtLast.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3268572947793182246, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: eventAtLast.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3268572947793182246, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: eventAtLast.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OpenEndScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 3268572947793182246, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: eventAtLast.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: RewardWindow, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3268572947793182246, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: eventAtLast.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3566949603382941934, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: currentHealth
       value: 100

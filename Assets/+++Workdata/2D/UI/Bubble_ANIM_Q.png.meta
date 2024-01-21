@@ -119,13 +119,146 @@ TextureImporter:
         height: 303
       alignment: 9
       pivot: {x: 0.056952354, y: 0.7895347}
-      border: {x: 126, y: 36, z: 48, w: 33}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: 1e188d7d1faefb74bbf601cba65b42af
       internalID: 447238913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bubble_ANIM_Q_1
+      rect:
+        serializedVersion: 2
+        x: 1020
+        y: 671
+        width: 900
+        height: 405
+      alignment: 9
+      pivot: {x: 0.1876176, y: 0.70883036}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -58, y: -202.5}
+        - {x: -433, y: -197.5}
+        - {x: -450, y: 202.5}
+        - {x: 157, y: 202.5}
+        - {x: 157, y: 2.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b14bf5325de71de4480c1ed2a1099524
+      internalID: -402029869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bubble_ANIM_Q_2
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 344
+        width: 999
+        height: 382
+      alignment: 9
+      pivot: {x: 0.05047627, y: 0.7952937}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 176.5, y: -169}
+        - {x: -494.5, y: -156}
+        - {x: -499.5, y: 191}
+        - {x: 430.5, y: 191}
+        - {x: 465.5, y: 24}
+        - {x: 357.5, y: -94}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bd7403243e6444428cdf8f45ab0baa0
+      internalID: 277550833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bubble_ANIM_Q_3
+      rect:
+        serializedVersion: 2
+        x: 1072
+        y: 307
+        width: 812
+        height: 371
+      alignment: 9
+      pivot: {x: 0.21496417, y: 0.60975504}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -83, y: -145.5}
+        - {x: -406, y: -137.5}
+        - {x: -406, y: 185.5}
+        - {x: 152, y: 185.5}
+        - {x: 113, y: -164.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfb283d27ec632c4e926f834cf1a048d
+      internalID: 1473598418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bubble_ANIM_Q_4
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 12
+        width: 796
+        height: 358
+      alignment: 9
+      pivot: {x: 0.078291446, y: 0.8106572}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -398, y: -179}
+        - {x: -398, y: 179}
+        - {x: 251, y: 179}
+        - {x: 274, y: 155}
+        - {x: 300, y: 144}
+        - {x: 398, y: 179}
+        - {x: 398, y: -179}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbc0f8b35e4e8664abba70639ab1552b
+      internalID: -496779075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bubble_ANIM_Q_5
+      rect:
+        serializedVersion: 2
+        x: 1020
+        y: 22
+        width: 900
+        height: 320
+      alignment: 9
+      pivot: {x: 0.15564752, y: 0.8137916}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -368, y: -95}
+        - {x: -412, y: 160}
+        - {x: -93, y: 160}
+        - {x: 115, y: 160}
+        - {x: -95, y: -40}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a477ee45a54886249bac02acca42598c
+      internalID: 1670952737
       vertices: []
       indices: 
       edges: []
@@ -143,6 +276,10 @@ TextureImporter:
     nameFileIdTable:
       Bubble_ANIM_Q_0: 447238913
       Bubble_ANIM_Q_1: -402029869
+      Bubble_ANIM_Q_2: 277550833
+      Bubble_ANIM_Q_3: 1473598418
+      Bubble_ANIM_Q_4: -496779075
+      Bubble_ANIM_Q_5: 1670952737
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
