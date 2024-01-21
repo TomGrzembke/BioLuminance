@@ -4520,6 +4520,50 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: -7
       objectReference: {fileID: 0}
+    - target: {fileID: 4977780618686760407, guid: 9bc6a04619cb4ed498b212f12c8fb165, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+    - target: {fileID: 5474820852923806088, guid: 9bc6a04619cb4ed498b212f12c8fb165, type: 3}
+      propertyPath: m_Color.b
+      value: 0.9056604
+      objectReference: {fileID: 0}
+    - target: {fileID: 5474820852923806088, guid: 9bc6a04619cb4ed498b212f12c8fb165, type: 3}
+      propertyPath: m_Color.g
+      value: 0.88432515
+      objectReference: {fileID: 0}
+    - target: {fileID: 5474820852923806088, guid: 9bc6a04619cb4ed498b212f12c8fb165, type: 3}
+      propertyPath: m_Color.r
+      value: 0.56817377
+      objectReference: {fileID: 0}
+    - target: {fileID: 5474820852923806088, guid: 9bc6a04619cb4ed498b212f12c8fb165, type: 3}
+      propertyPath: m_Intensity
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5474820852923806088, guid: 9bc6a04619cb4ed498b212f12c8fb165, type: 3}
+      propertyPath: m_FalloffIntensity
+      value: 0.837
+      objectReference: {fileID: 0}
+    - target: {fileID: 5474820852923806088, guid: 9bc6a04619cb4ed498b212f12c8fb165, type: 3}
+      propertyPath: m_ShapeLightFalloffSize
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5474820852923806088, guid: 9bc6a04619cb4ed498b212f12c8fb165, type: 3}
+      propertyPath: m_LocalBounds.m_Center.x
+      value: 0.005399704
+      objectReference: {fileID: 0}
+    - target: {fileID: 5474820852923806088, guid: 9bc6a04619cb4ed498b212f12c8fb165, type: 3}
+      propertyPath: m_LocalBounds.m_Center.y
+      value: 0.0069499016
+      objectReference: {fileID: 0}
+    - target: {fileID: 5474820852923806088, guid: 9bc6a04619cb4ed498b212f12c8fb165, type: 3}
+      propertyPath: m_LocalBounds.m_Extent.x
+      value: 11.1903
+      objectReference: {fileID: 0}
+    - target: {fileID: 5474820852923806088, guid: 9bc6a04619cb4ed498b212f12c8fb165, type: 3}
+      propertyPath: m_LocalBounds.m_Extent.y
+      value: 10.8321495
+      objectReference: {fileID: 0}
     - target: {fileID: 5504465045674342438, guid: 9bc6a04619cb4ed498b212f12c8fb165, type: 3}
       propertyPath: m_Name
       value: LevelContainer
