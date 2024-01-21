@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DeathState : State
 {
@@ -18,6 +19,7 @@ public class DeathState : State
     [SerializeField] Animator anim;
     [SerializeField] GameObject[] objToDisableFirst;
     [SerializeField] GameObject[] objToDisableLast;
+    [SerializeField] UnityEvent eventAtLast;
     [SerializeField] MonoBehaviour[] scriptsToDisable;
 
     #endregion
@@ -87,6 +89,8 @@ public class DeathState : State
         yield return new WaitForSeconds(deathTime / 3);
 
         gfxTrans.gameObject.SetActive(false);
+
+        eventAtLast?.Invoke();
 
         for (int i = 0; i < objToDisableLast.Length; i++)
         {
