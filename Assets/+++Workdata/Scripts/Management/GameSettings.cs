@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
@@ -8,18 +9,19 @@ public class GameSettings : MonoBehaviour
     [SerializeField] AudioMixer audioMixer;
     [SerializeField] Slider musicSlider, sfxSlider;
     [SerializeField] Toggle screenToggle;
+    [SerializeField] float onSFXChangedCooldown = 0.1f;
     #endregion
 
     #region private
+    Coroutine sfxChangedCoroutine;
+    bool sfxEmitSound;
     #endregion
 
     void Start()
     {
         musicSlider.value = PlayerPrefs.GetFloat("musicVolume");
-        OnMusicSliderChanged();
 
         sfxSlider.value = PlayerPrefs.GetFloat("sfxVolume");
-        OnSfxSliderChanged();
 
         GetScreenToggle();
     }
@@ -45,13 +47,16 @@ public class GameSettings : MonoBehaviour
         audioMixer.SetFloat("sfxVolume", volume);
         PlayerPrefs.SetFloat("sfxVolume", volume);
         sfxSlider.value = volume;
+
+        if (sfxChangedCoroutine == null && sfxEmitSound)
+            sfxChangedCoroutine = StartCoroutine(PlayOnSFXChangedCor());
+        sfxEmitSound = true;
     }
 
     void GetScreenToggle()
     {
-        bool isFullScreen = PlayerPrefs.GetInt("fullscreenID") == 0; ;
-        screenToggle.isOn = isFullScreen;
-        Screen.fullScreen = isFullScreen;
+        screenToggle.isOn = PlayerPrefs.GetInt("fullscreenID") == 0;
+        Screen.fullScreen = screenToggle.isOn;
     }
 
     public void FullScreenToggle()
@@ -64,5 +69,12 @@ public class GameSettings : MonoBehaviour
     public void OpenURL(string link)
     {
         Application.OpenURL(link);
+    }
+
+    IEnumerator PlayOnSFXChangedCor()
+    {
+        SoundManager.Instance.PlaySound(SoundType.OnSfxChanged);
+        yield return new WaitForSecondsRealtime(onSFXChangedCooldown);
+        sfxChangedCoroutine = null;
     }
 }

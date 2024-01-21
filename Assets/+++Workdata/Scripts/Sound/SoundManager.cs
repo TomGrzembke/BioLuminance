@@ -84,5 +84,5 @@ public enum SoundType
     Stun,
     PointCounter,
     PointCounterDown,
-
+    OnSfxChanged
 }

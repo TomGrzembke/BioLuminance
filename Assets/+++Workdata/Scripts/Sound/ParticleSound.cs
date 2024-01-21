@@ -9,16 +9,22 @@ public class ParticleSound : MonoBehaviour
     [SerializeField] PlayType playType;
     [SerializeField] int frequencyDividedBy = 5;
     [SerializeField] bool randomizePitch;
+    [SerializeField] float bubbleAmountMultiplier = 1;
     #endregion
 
     #region private fields
     int frequencyCounter;
+    float BubbleMultiplier => -(-1 + (_particleSystem.particleCount * 2.5f + 1) / 100f);
     #endregion
 
     void Update()
     {
         frequencyCounter++;
-        if (frequencyCounter < frequencyDividedBy) return;
+        if (playType == PlayType.IsEmmiting)
+            if (frequencyCounter < frequencyDividedBy) return;
+
+        if (playType == PlayType.ParticleCount)
+            if (frequencyCounter < frequencyDividedBy + (bubbleAmountMultiplier * BubbleMultiplier)) return;
 
         if (randomizePitch)
             audioSource.pitch = Random.Range(0.7f, 2);

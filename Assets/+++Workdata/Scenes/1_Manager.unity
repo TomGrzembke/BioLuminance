@@ -460,6 +460,7 @@ MonoBehaviour:
   musicSlider: {fileID: 791507521}
   sfxSlider: {fileID: 607778307}
   screenToggle: {fileID: 635965240}
+  onSFXChangedCooldown: 0.1
 --- !u!1 &1372340424
 GameObject:
   m_ObjectHideFlags: 0
@@ -471,7 +472,7 @@ GameObject:
   - component: {fileID: 1372340425}
   - component: {fileID: 1372340426}
   m_Layer: 0
-  m_Name: '[SoundManager]'
+  m_Name: SoundManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -654,7 +655,7 @@ GameObject:
   - component: {fileID: 1640087795}
   - component: {fileID: 1640087797}
   m_Layer: 0
-  m_Name: '[PointManager]'
+  m_Name: PointManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1027,9 +1028,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1372340426}
     - target: {fileID: 6606244308236626334, guid: f4297f4c9c624c2469e51fb6e9ea5d7e, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6606244308236626334, guid: f4297f4c9c624c2469e51fb6e9ea5d7e, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1174850529}
+    - target: {fileID: 6606244308236626334, guid: f4297f4c9c624c2469e51fb6e9ea5d7e, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6763888235933772301, guid: f4297f4c9c624c2469e51fb6e9ea5d7e, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
