@@ -5,25 +5,37 @@ using UnityEngine;
 
 public class ClickBubble : MonoBehaviour
 {
-    public HealthSubject healthSubject;
-    public GameObject parent;
+    [SerializeField] GameObject tutorial;
+    [SerializeField] HealthSubject healthSubject;
+    [SerializeField] GameObject parent;
     private Animator animator;
 
 
     private void Awake()
     {
+        tutorial.SetActive(PlayerPrefs.GetInt("TutorialFinished") == 0);
         animator = GetComponent<Animator>();
         StartCoroutine(CheckDead());
     }
 
-    private void Update()
+    private void OnDeath(bool died)
     {
-        if (healthSubject.currentHealth == 0)
+        if (died)
         {
             animator.Play("BubblePop");
+            PlayerPrefs.SetInt("TutorialFinished", 1);
         }
     }
 
+    private void OnEnable()
+    {
+        healthSubject.RegisterOnCreatureDied(OnDeath);
+    }
+
+    private void OnDisable()
+    {
+        healthSubject.OnCreatureDied -= OnDeath;
+    }
 
     IEnumerator CheckDead()
     {
