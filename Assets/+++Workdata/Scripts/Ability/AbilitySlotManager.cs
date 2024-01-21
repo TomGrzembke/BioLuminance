@@ -7,6 +7,8 @@ public class AbilitySlotManager : MonoBehaviour
     [SerializeField] GameObject playerObj;
     public GameObject PlayerGFX => playerGFX;
     [SerializeField] GameObject playerGFX;
+    public Transform MousePos => mousePos;
+    [SerializeField] Transform mousePos;
     public StatusManager StatusManager => statusManager;
     [SerializeField] StatusManager statusManager;
 

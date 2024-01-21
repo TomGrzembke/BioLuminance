@@ -95,6 +95,12 @@ public class StingrayStinger : MonoBehaviour
     {
         if (cooldownCoroutine == null && attackCoroutine == null)
             attackCoroutine = StartCoroutine(Attack(limbTarget));
+    }
+
+    public void AttackTarget(Transform targetTrans)
+    {
+        if (cooldownCoroutine == null && attackCoroutine == null)
+            attackCoroutine = StartCoroutine(Attack(targetTrans));
 
     }
 
@@ -123,6 +129,40 @@ public class StingrayStinger : MonoBehaviour
         while (attackTime < timeToAttack)
         {
             StingerRotationFrame(attackTime, attackTrans.position);
+            attackTime += Time.deltaTime;
+            stingerTarget.position = Vector3.Lerp(currentStingPos, currentTargetPos, animationCurve.Evaluate(attackTime / timeToAttack));
+            yield return null;
+        }
+
+        cooldownCoroutine = StartCoroutine(Cooldown());
+        attackCoroutine = null;
+    }
+
+    public IEnumerator Attack(Transform target)
+    {
+        float attackTime = 0;
+        float currentAttackWindupTime = 0;
+
+
+        Vector3 currentTargetPos = target.position;
+        while (currentAttackWindupTime < attackWindupTime)
+        {
+            StingerRotationFrame(currentAttackWindupTime, target.position);
+
+            currentAttackWindupTime += Time.deltaTime;
+
+            if (attackWindupTime * percentAlphaWindupAttackLock < currentAttackWindupTime)
+                currentTargetPos = target.position;
+            yield return null;
+        }
+        Vector3 currentStingPos = stingerTarget.position;
+
+        StopCoroutineIfAssigned(hitDetectCoroutine);
+        hitDetectCoroutine = StartCoroutine(DetectIfHit());
+
+        while (attackTime < timeToAttack)
+        {
+            StingerRotationFrame(attackTime, target.position);
             attackTime += Time.deltaTime;
             stingerTarget.position = Vector3.Lerp(currentStingPos, currentTargetPos, animationCurve.Evaluate(attackTime / timeToAttack));
             yield return null;
