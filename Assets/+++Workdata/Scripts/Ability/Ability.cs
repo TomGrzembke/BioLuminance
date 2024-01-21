@@ -8,6 +8,7 @@ public abstract class Ability : MonoBehaviour
     [SerializeField] protected float cooldown;
     [SerializeField] protected AbilitySO abilitySO;
     public AbilitySO AbilitySO => abilitySO;
+    public bool IsActive => cooldown > 0;
     #endregion
 
     #region private fields

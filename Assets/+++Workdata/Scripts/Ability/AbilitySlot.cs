@@ -10,10 +10,11 @@ public class AbilitySlot : MonoBehaviour
     [SerializeField] int slotIndex;
     [SerializeField] Image abilityImage;
     [SerializeField] AbilitySlotManager abilitySlotManager;
+    [SerializeField] GameObject numberObject;
+    [SerializeField] Ability currentAbility;
     #endregion
 
     #region private fields
-    [SerializeField] Ability currentAbility;
     public bool occupied { get; private set; }
     public Ability CurrentAbility => currentAbility;
     #endregion
@@ -50,6 +51,7 @@ public class AbilitySlot : MonoBehaviour
         }
 
         abilityImage.SetAlpha(occupied ? 255 : 0);
+        numberObject.SetActive(tempAbility.IsActive);
     }
 
     public void ChangeAbilityPrefab(GameObject newAbilityPrefab, AbilitySlotManager _abilitySlotManager)
