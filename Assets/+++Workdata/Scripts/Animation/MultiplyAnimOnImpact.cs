@@ -1,7 +1,8 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class DoubleAnimOnImpact : MonoBehaviour
+public class MultiplyAnimOnImpact : MonoBehaviour
 {
     #region serialized fields
     [SerializeField] Animator anim;
@@ -12,15 +13,26 @@ public class DoubleAnimOnImpact : MonoBehaviour
 
     #region private fields
     Coroutine speedRoutine;
+    ContactFilter2D contactFilter;
+    Collider2D col;
+    List<Collider2D> colliders;
     #endregion
 
-    void OnTriggerEnter2D(Collider2D collision)
+    void Awake()
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Creature"))
-        {
-            if (speedRoutine == null)
-                speedRoutine = StartCoroutine(DoubleSpeedCor());
-        }
+        col = GetComponent<Collider2D>();
+        contactFilter.useTriggers = false;
+        contactFilter.useLayerMask = true;
+        contactFilter.layerMask = LayerMask.NameToLayer("Creature");
+        colliders = new();
+    }
+
+    void Update()
+    {
+        if (Physics2D.OverlapCollider(col, contactFilter, colliders) <= 0) return;
+
+        if (speedRoutine == null)
+            speedRoutine = StartCoroutine(DoubleSpeedCor());
     }
 
     IEnumerator DoubleSpeedCor()
