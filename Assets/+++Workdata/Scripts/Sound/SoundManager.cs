@@ -10,7 +10,7 @@ public class SoundManager : MonoBehaviour
     #endregion
 
     #region private fields
-   SoundTypeSO[] SoundTypes => soundBank.soundTypes;
+    SoundTypeSO[] SoundTypes => soundBank.soundTypes;
     #endregion
     void Awake()
     {
@@ -30,7 +30,10 @@ public class SoundManager : MonoBehaviour
         }
 
         if (localSource && clip != null)
-            localSource.PlayOneShot(clip);
+        {
+            if (localSource.gameObject.activeInHierarchy)
+                localSource.PlayOneShot(clip);
+        }
         else
             globalSFXSource.PlayOneShot(clip);
     }
@@ -48,10 +51,10 @@ public class SoundManager : MonoBehaviour
             break;
         }
 
-        if(clip == null)
+        if (clip == null)
             return 0;
 
-        return clip.length; 
+        return clip.length;
     }
 
     #region ButtonMethods
