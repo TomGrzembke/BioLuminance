@@ -2076,11 +2076,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1595835679270034538, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 544.7497
+      value: 601.7
       objectReference: {fileID: 0}
     - target: {fileID: 1595835679270034538, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -34.04929
+      value: -210.3
       objectReference: {fileID: 0}
     - target: {fileID: 1595835679270034538, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2460,7 +2460,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5670604380686470094, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: detectionAngle
-      value: 156
+      value: 223
       objectReference: {fileID: 0}
     - target: {fileID: 5670604380686470094, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: detectionRadius
@@ -2568,7 +2568,7 @@ PrefabInstance:
       objectReference: {fileID: 2664668586894446845}
     - target: {fileID: 8477860675694297810, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: attackDistance
-      value: 26
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 8477860675694297810, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: stateAgentSpeed
@@ -2699,8 +2699,8 @@ MonoBehaviour:
   FixedTimeInState: 0
   uniqueState: {fileID: 0}
   creatureLogic: {fileID: 969785594156081305}
-  stateAgentSpeed: 6.95
-  stateAgentAcceleration: 0
+  stateAgentSpeed: 12
+  stateAgentAcceleration: 4
   stateAgentStoppingDistance: 2
   useStateVars: 1
   dangerous: 1
@@ -2725,7 +2725,7 @@ MonoBehaviour:
   ownStatusManager: {fileID: 5719113294855879425}
   attackHitbox: {fileID: 7447543468391087149}
   animClip: {fileID: 7400000, guid: 5740e84126c406a4981647415a96319d, type: 2}
-  cooldown: 4
+  cooldown: 3
   chaseDistance: 13
   animator: {fileID: 6128166154784939006}
 --- !u!114 &6555861193747985894 stripped
@@ -2811,6 +2811,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2612261920840054000}
     m_Modifications:
+    - target: {fileID: 1414996533863589037, guid: 2f6a0d30e5958f04bb93443b203ea3f3, type: 3}
+      propertyPath: EmissionModule.rateOverDistance.scalar
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3780189847831538675, guid: 2f6a0d30e5958f04bb93443b203ea3f3, type: 3}
       propertyPath: m_Name
       value: '[Particle] Sunfish_Blood'
@@ -2890,6 +2894,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6584639651035496970}
     m_Modifications:
+    - target: {fileID: 1414996533863589037, guid: 2f6a0d30e5958f04bb93443b203ea3f3, type: 3}
+      propertyPath: EmissionModule.rateOverDistance.scalar
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3780189847831538675, guid: 2f6a0d30e5958f04bb93443b203ea3f3, type: 3}
       propertyPath: m_Name
       value: '[Particle] Sunfish_Blood'
@@ -2969,6 +2977,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1278225653496112414}
     m_Modifications:
+    - target: {fileID: 1414996533863589037, guid: 2f6a0d30e5958f04bb93443b203ea3f3, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1414996533863589037, guid: 2f6a0d30e5958f04bb93443b203ea3f3, type: 3}
+      propertyPath: EmissionModule.rateOverDistance.scalar
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3780189847831538675, guid: 2f6a0d30e5958f04bb93443b203ea3f3, type: 3}
       propertyPath: m_Name
       value: '[Particle] Sunfish_Blood'
@@ -3048,6 +3064,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4676427205126313330}
     m_Modifications:
+    - target: {fileID: 1414996533863589037, guid: 2f6a0d30e5958f04bb93443b203ea3f3, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1414996533863589037, guid: 2f6a0d30e5958f04bb93443b203ea3f3, type: 3}
+      propertyPath: EmissionModule.rateOverDistance.scalar
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3780189847831538675, guid: 2f6a0d30e5958f04bb93443b203ea3f3, type: 3}
       propertyPath: m_Name
       value: '[Particle] Sunfish_Blood'
