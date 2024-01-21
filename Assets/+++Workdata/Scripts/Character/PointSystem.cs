@@ -19,6 +19,11 @@ public class PointSystem : MonoBehaviour
         points = PlayerPrefs.GetFloat("SkillPoints");
     }
 
+    private void Start()
+    {
+        GetCreatures();
+    }
+
     void Update()
     {
         foreach (var pointPool in pointPools)

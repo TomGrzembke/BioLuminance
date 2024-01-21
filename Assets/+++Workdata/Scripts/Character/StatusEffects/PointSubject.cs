@@ -1,3 +1,4 @@
+using System.Collections;
 using MyBox;
 using UnityEngine;
 
@@ -7,8 +8,9 @@ public class PointSubject : MonoBehaviour
     [SerializeField] Creatures creatures;
     public float points;
 
-    void Start()
+    IEnumerator Start()
     {
+        yield return null;
         creatures = statusManager.CreatureType;
         Points();
     }

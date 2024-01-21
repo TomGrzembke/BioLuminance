@@ -2,11 +2,12 @@ using MyBox;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class CreatureSpawner : MonoBehaviour
 {
-    public bool spawnOnStart;
+    [FormerlySerializedAs("spawnOnStart")] public bool spawnOnAwake;
     [SerializeField] private bool randomNumberToSpawn;
 
     [SerializeField, ConditionalField(nameof(randomNumberToSpawn), true)]
@@ -28,7 +29,7 @@ public class CreatureSpawner : MonoBehaviour
     {
         _collider = GetComponent<Collider2D>();
 
-        if (spawnOnStart)
+        if (spawnOnAwake)
             SpawnRandomCreatures();
     }
 
