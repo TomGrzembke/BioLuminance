@@ -27,6 +27,10 @@ public class GameSettings : MonoBehaviour
     public void OnMusicSliderChanged()
     {
         float volume = musicSlider.value;
+
+        if (volume == musicSlider.minValue)
+            volume = -60;
+
         audioMixer.SetFloat("musicVolume", volume);
         PlayerPrefs.SetFloat("musicVolume", volume);
     }
@@ -34,6 +38,10 @@ public class GameSettings : MonoBehaviour
     public void OnSfxSliderChanged()
     {
         float volume = sfxSlider.value;
+
+        if (volume == sfxSlider.minValue)
+            volume = -60;
+
         audioMixer.SetFloat("sfxVolume", volume);
         PlayerPrefs.SetFloat("sfxVolume", volume);
         sfxSlider.value = volume;
