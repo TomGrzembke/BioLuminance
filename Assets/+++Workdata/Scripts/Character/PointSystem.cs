@@ -115,8 +115,8 @@ public class PointSystem : MonoBehaviour
             PlayerPrefs.SetFloat("SkillPoints", points);
     }
 
-    private void OnApplicationQuit()
-    { 
+    void OnApplicationQuit()
+    {
         PlayerPrefs.SetFloat("SkillPoints", points);
     }
 
@@ -125,6 +125,11 @@ public class PointSystem : MonoBehaviour
         points -= pointsMinus;
         if (RewardWindow.Instance != null)
             RewardWindow.Instance.ShowCurrency(points, -pointsMinus);
+    }
+
+    public void ResetPoints()
+    {
+        points = PlayerPrefs.GetFloat("SkillPoints");
     }
 }
 

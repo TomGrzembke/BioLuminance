@@ -1,7 +1,6 @@
 using MyBox;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GameStateManager : MonoBehaviour
 {
@@ -9,7 +8,11 @@ public class GameStateManager : MonoBehaviour
 
     [SerializeField] SceneReference gamePlayScene;
     [SerializeField] GameObject optionsWindow;
-    void Awake() => Instance = this;
+    void Awake()
+    {
+        Instance = this;
+        DontDestroyOnLoad(Instance.gameObject);
+    }
 
 
     public static void StartGame()
@@ -38,6 +41,11 @@ public class GameStateManager : MonoBehaviour
         Instance.StartCoroutine(Instance.ReloadGameSceneCoroutine());
     }
 
+    public static void ReloadForPlayerprefs()
+    {
+        Instance.StartCoroutine(Instance.ReloadForPlayerprefsCoroutine());
+    }
+
     /// <summary> Depends on the naming (0_Scene), since its gets the first char and ints it</summary>
     int GetSceneID(SceneReference sceneRef)
     {
@@ -57,9 +65,19 @@ public class GameStateManager : MonoBehaviour
     {
         LoadingScreen.Show(this);
         SkillManager.CloseSkillManager();
-        yield return new WaitForSeconds(.7f);
+        yield return new WaitForSeconds(.3f);
         yield return SceneLoader.Instance.UnloadSceneViaIndex(GetSceneID(Instance.gamePlayScene));
         yield return SceneLoader.Instance.LoadSceneViaIndex(GetSceneID(Instance.gamePlayScene));
+        LoadingScreen.Hide(this);
+    }
+
+    IEnumerator ReloadForPlayerprefsCoroutine()
+    {
+        LoadingScreen.Show(this);
+        yield return SceneLoader.Instance.UnloadSceneViaIndex((int)Scenes.MainMenu);
+        yield return SceneLoader.Instance.LoadSceneViaIndex((int)Scenes.MainMenu);
+        yield return SceneLoader.Instance.UnloadSceneViaIndex((int)Scenes.Manager);
+        yield return SceneLoader.Instance.LoadSceneViaIndex((int)Scenes.Manager);
         LoadingScreen.Hide(this);
     }
 }

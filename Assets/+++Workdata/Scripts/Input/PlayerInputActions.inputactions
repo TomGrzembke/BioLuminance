@@ -103,6 +103,33 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "DebugSlash",
+                    "type": "Button",
+                    "id": "9967b2e0-1459-475c-a15a-76f80ae5ba9b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "DebugAsterisk",
+                    "type": "Button",
+                    "id": "628ad258-ad68-4432-bcf9-49982017a493",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Debug7",
+                    "type": "Button",
+                    "id": "5ce84427-0842-4250-b059-365d205dfc60",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -444,6 +471,39 @@
                     "processors": "",
                     "groups": "",
                     "action": "AutoAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d6ac94da-b785-47f3-b850-0de9ea38d3ab",
+                    "path": "<Keyboard>/numpadDivide",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DebugSlash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "352b856d-d3f2-4b44-86d9-0fe95559fed4",
+                    "path": "<Keyboard>/numpadMultiply",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DebugAsterisk",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fb9e8af0-0ed7-4007-b6b2-ba8d8d295d5e",
+                    "path": "<Keyboard>/numpad7",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Debug7",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
