@@ -1,5 +1,6 @@
 using MyBox;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class CreatureScaleSizeChanger : MonoBehaviour
