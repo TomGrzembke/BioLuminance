@@ -75,6 +75,7 @@ public class GameStateManager : MonoBehaviour
     {
         LoadingScreen.Show(this);
         yield return SceneLoader.Instance.UnloadSceneViaIndex((int)Scenes.MainMenu);
+        yield return SceneLoader.Instance.UnloadSceneViaIndex(GetSceneID(Instance.gamePlayScene));
         yield return SceneLoader.Instance.LoadSceneViaIndex((int)Scenes.MainMenu);
         yield return SceneLoader.Instance.UnloadSceneViaIndex((int)Scenes.Manager);
         yield return SceneLoader.Instance.LoadSceneViaIndex((int)Scenes.Manager);
