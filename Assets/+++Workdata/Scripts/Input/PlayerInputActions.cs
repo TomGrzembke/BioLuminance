@@ -125,6 +125,33 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DebugSlash"",
+                    ""type"": ""Button"",
+                    ""id"": ""9967b2e0-1459-475c-a15a-76f80ae5ba9b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DebugAsterisk"",
+                    ""type"": ""Button"",
+                    ""id"": ""628ad258-ad68-4432-bcf9-49982017a493"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Debug7"",
+                    ""type"": ""Button"",
+                    ""id"": ""5ce84427-0842-4250-b059-365d205dfc60"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -468,6 +495,39 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""AutoAttack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d6ac94da-b785-47f3-b850-0de9ea38d3ab"",
+                    ""path"": ""<Keyboard>/numpadDivide"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DebugSlash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""352b856d-d3f2-4b44-86d9-0fe95559fed4"",
+                    ""path"": ""<Keyboard>/numpadMultiply"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DebugAsterisk"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fb9e8af0-0ed7-4007-b6b2-ba8d8d295d5e"",
+                    ""path"": ""<Keyboard>/numpad7"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Debug7"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -515,6 +575,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_Ability2 = m_Player.FindAction("Ability2", throwIfNotFound: true);
         m_Player_Ability3 = m_Player.FindAction("Ability3", throwIfNotFound: true);
         m_Player_AutoAttack = m_Player.FindAction("AutoAttack", throwIfNotFound: true);
+        m_Player_DebugSlash = m_Player.FindAction("DebugSlash", throwIfNotFound: true);
+        m_Player_DebugAsterisk = m_Player.FindAction("DebugAsterisk", throwIfNotFound: true);
+        m_Player_Debug7 = m_Player.FindAction("Debug7", throwIfNotFound: true);
         // UserInterface
         m_UserInterface = asset.FindActionMap("UserInterface", throwIfNotFound: true);
         m_UserInterface_SkillTree = m_UserInterface.FindAction("SkillTree", throwIfNotFound: true);
@@ -590,6 +653,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Ability2;
     private readonly InputAction m_Player_Ability3;
     private readonly InputAction m_Player_AutoAttack;
+    private readonly InputAction m_Player_DebugSlash;
+    private readonly InputAction m_Player_DebugAsterisk;
+    private readonly InputAction m_Player_Debug7;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -605,6 +671,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @Ability2 => m_Wrapper.m_Player_Ability2;
         public InputAction @Ability3 => m_Wrapper.m_Player_Ability3;
         public InputAction @AutoAttack => m_Wrapper.m_Player_AutoAttack;
+        public InputAction @DebugSlash => m_Wrapper.m_Player_DebugSlash;
+        public InputAction @DebugAsterisk => m_Wrapper.m_Player_DebugAsterisk;
+        public InputAction @Debug7 => m_Wrapper.m_Player_Debug7;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -647,6 +716,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @AutoAttack.started += instance.OnAutoAttack;
             @AutoAttack.performed += instance.OnAutoAttack;
             @AutoAttack.canceled += instance.OnAutoAttack;
+            @DebugSlash.started += instance.OnDebugSlash;
+            @DebugSlash.performed += instance.OnDebugSlash;
+            @DebugSlash.canceled += instance.OnDebugSlash;
+            @DebugAsterisk.started += instance.OnDebugAsterisk;
+            @DebugAsterisk.performed += instance.OnDebugAsterisk;
+            @DebugAsterisk.canceled += instance.OnDebugAsterisk;
+            @Debug7.started += instance.OnDebug7;
+            @Debug7.performed += instance.OnDebug7;
+            @Debug7.canceled += instance.OnDebug7;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -684,6 +762,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @AutoAttack.started -= instance.OnAutoAttack;
             @AutoAttack.performed -= instance.OnAutoAttack;
             @AutoAttack.canceled -= instance.OnAutoAttack;
+            @DebugSlash.started -= instance.OnDebugSlash;
+            @DebugSlash.performed -= instance.OnDebugSlash;
+            @DebugSlash.canceled -= instance.OnDebugSlash;
+            @DebugAsterisk.started -= instance.OnDebugAsterisk;
+            @DebugAsterisk.performed -= instance.OnDebugAsterisk;
+            @DebugAsterisk.canceled -= instance.OnDebugAsterisk;
+            @Debug7.started -= instance.OnDebug7;
+            @Debug7.performed -= instance.OnDebug7;
+            @Debug7.canceled -= instance.OnDebug7;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -760,6 +847,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnAbility2(InputAction.CallbackContext context);
         void OnAbility3(InputAction.CallbackContext context);
         void OnAutoAttack(InputAction.CallbackContext context);
+        void OnDebugSlash(InputAction.CallbackContext context);
+        void OnDebugAsterisk(InputAction.CallbackContext context);
+        void OnDebug7(InputAction.CallbackContext context);
     }
     public interface IUserInterfaceActions
     {

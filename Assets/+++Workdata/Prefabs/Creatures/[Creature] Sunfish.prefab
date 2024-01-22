@@ -1914,6 +1914,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5275482690131732127}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8931318621716888621
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 94777438290259991}
+  m_Layer: 7
+  m_Name: PlayerTPPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &94777438290259991
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8931318621716888621}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.67, y: 8.41, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2729631515573276524}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &3407738937805397530
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2611,6 +2642,9 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 1509975904177257347, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
     m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 7360798349380117563, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 94777438290259991}
     - targetCorrespondingSourceObject: {fileID: 5650691710349093085, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       insertIndex: 1
       addedObject: {fileID: 4291251719861106616}
@@ -2661,6 +2695,11 @@ CircleCollider2D:
 --- !u!4 &1611032153523969451 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6169051100858480380, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+  m_PrefabInstance: {fileID: 4883967427779603287}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2729631515573276524 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7360798349380117563, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
   m_PrefabInstance: {fileID: 4883967427779603287}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &3918201091700992389 stripped
