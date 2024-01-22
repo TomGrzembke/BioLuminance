@@ -918,6 +918,7 @@ GameObject:
   - component: {fileID: 8790544157747073991}
   - component: {fileID: 1218726761327708696}
   - component: {fileID: 5479771690090497404}
+  - component: {fileID: 5771456101911664779}
   m_Layer: 0
   m_Name: '[MainMenu] Tuna'
   m_TagString: Untagged
@@ -991,6 +992,25 @@ MonoBehaviour:
   statusManager: {fileID: 9023335093441437409}
   creatures: 2
   points: 20
+--- !u!114 &5771456101911664779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4218631903841186954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b402273de889a446a7daf905dabee52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  possibleSprites:
+  - {fileID: -1857365870, guid: bda769ad76b07724ca1b47d55011d11a, type: 3}
+  - {fileID: -1857365870, guid: 361ed0dd7f1fb1744a2c4a92ae49b22a, type: 3}
+  - {fileID: -1857365870, guid: a3af0dabf30a13249a8b303a9570ec80, type: 3}
+  - {fileID: -1857365870, guid: 2a3aaa0001707c54599be8ef147629b4, type: 3}
+  - {fileID: -1857365870, guid: 662cb026c5fe9ee439a5e438c844b02d, type: 3}
+  sr: {fileID: 2668515262196898593}
 --- !u!1 &5076223947114881549
 GameObject:
   m_ObjectHideFlags: 0
@@ -6438,6 +6458,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50388b54fcdc85243842e08f48d15874, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minMaxFloat:
+    Min: 0.7
+    Max: 1.5
 --- !u!1 &6436723902509960680
 GameObject:
   m_ObjectHideFlags: 0
