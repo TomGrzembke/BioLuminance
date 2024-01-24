@@ -4,7 +4,7 @@ public class ChaseState : State
 {
     #region serialized fields
     [Header(nameof(ChaseState))]
-    
+
     [SerializeField] protected State attackState;
     [SerializeField] protected RoamState roamState;
     [SerializeField] protected float attackDistance = 3;
@@ -17,6 +17,13 @@ public class ChaseState : State
     {
         if (creatureLogic.DistanceFromTarget <= attackDistance)
             return attackState;
+
+        if (creatureLogic.TargetStatusManager.gameObject == null)
+        {
+            creatureLogic.SetTargetStatusManager(null);
+            creatureLogic.SetCanSeePlayer(false);
+            return roamState;
+        }
 
         if (creatureLogic.DistanceFromTarget >= creatureLogic.DetectionRadius + 5)
         {
@@ -48,6 +55,9 @@ public class ChaseState : State
 
     void HandleMovement()
     {
+        if (!creatureLogic.gameObject) return;
+        if (!creatureLogic.TargetStatusManager) return;
+
         creatureLogic.SetDistanceFromTarget(Vector3.Distance(creatureLogic.TargetStatusManager.transform.position, creatureLogic.transform.position));
         creatureLogic.agent.SetDestination(creatureLogic.TargetStatusManager.transform.position);
     }

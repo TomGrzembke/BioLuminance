@@ -56,7 +56,7 @@ public class RoamState : State
     {
         creatureLogic.agent.SetDestination(roamPosition);
 
-        if (Vector3.Distance(transform.position, roamPosition) < stateAgentStoppingDistance)
+        if (Vector3.Distance(transform.position, roamPosition) < stateAgentStoppingDistance + 2)
             roamPosition = GetRandomRoamingPosition();
 
     }

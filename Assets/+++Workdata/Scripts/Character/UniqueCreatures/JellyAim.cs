@@ -15,15 +15,28 @@ public class JellyAim : MonoBehaviour
     Coroutine checkIfStillInRangeCO;
     #endregion
 
+    void Update()
+    {
+        AttackNear();
+    }
+
     public void AttackNear()
     {
         if (!jellyDetect.HasTargets) return;
 
+        bool newTargets = false;
+
         for (int i = 0; i < jellyDetect.PossibleTargets.Count; i++)
         {
             if (!savedPossibleTarget.Contains(jellyDetect.PossibleTargets[i]))
+            {
                 savedPossibleTarget.Add(jellyDetect.PossibleTargets[i]);
+                newTargets = true;
+            }
         }
+
+        if (!newTargets) return;
+
         tentacleTargetManager.SetAttackStatusManager(jellyDetect.PossibleTargets);
 
         if (checkIfStillInRangeCO != null)

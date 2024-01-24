@@ -97,6 +97,8 @@ public class DeathState : State
             if (objToDisableLast[i])
                 objToDisableLast[i].SetActive(false);
         }
+
+        Destroy(headTrans.gameObject);
     }
 
     IEnumerator SlowDownAnimCoroutine()

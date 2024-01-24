@@ -167,4 +167,10 @@ public class TentacleTargetManager : MonoBehaviour
         if (getInstantCallback)
             callback(targetStatusManagers);
     }
+
+    void OnApplicationQuit()
+    {
+        if (tentacleMaterial)
+            tentacleMaterial.color = Color.white;
+    }
 }
