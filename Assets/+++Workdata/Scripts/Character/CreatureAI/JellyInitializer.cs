@@ -3,14 +3,10 @@ using UnityEngine;
 public class JellyInitializer : MonoBehaviour
 {
     #region serialized fields
-    [SerializeField] Sprite[] possibleBackSprites;
-    [SerializeField] Sprite[] possibleBellySprites;
-    [SerializeField] Sprite[] possibleStingSprites;
+    [SerializeField] Sprite[] possibleSprites;
     [SerializeField] Gradient[] possibleGradients;
-    [SerializeField] SpriteRenderer backsr;
-    [SerializeField] SpriteRenderer bellysr;
-    [SerializeField] SpriteRenderer stingsr;
-    [SerializeField] LineRenderer lineRenderer;
+    [SerializeField] LineRenderer[] tentecaleRenderer;
+    [SerializeField] SpriteRenderer headsr;
     #endregion
 
     #region private fields
@@ -19,11 +15,12 @@ public class JellyInitializer : MonoBehaviour
 
     void Awake()
     {
-        int randomNumber = Random.Range(0, possibleBackSprites.Length);
-        bellysr.sprite = possibleBellySprites[randomNumber];
-        stingsr.sprite = possibleStingSprites[randomNumber];
-        backsr.sprite = possibleBackSprites[randomNumber];
-        lineRenderer.colorGradient = possibleGradients[randomNumber];
-    }
+        int randomNumber = Random.Range(0, possibleSprites.Length);
+        headsr.sprite = possibleSprites[randomNumber];
 
+        for (int i = 0; i < tentecaleRenderer.Length; i++)
+        {
+            tentecaleRenderer[i].colorGradient = possibleGradients[randomNumber];
+        }
+    }
 }

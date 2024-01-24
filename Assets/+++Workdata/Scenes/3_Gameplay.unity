@@ -13624,63 +13624,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4519809056051868805, guid: 50c7ff264bedaeb4e93d598f31be093e, type: 3}
   m_PrefabInstance: {fileID: 1555384769}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1560641150
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5951047566704116028, guid: 223f1850fce52dd419a25a4f89197727, type: 3}
-      propertyPath: m_Name
-      value: '[Creature] Jelly2'
-      objectReference: {fileID: 0}
-    - target: {fileID: 7065252597165299522, guid: 223f1850fce52dd419a25a4f89197727, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.8813257
-      objectReference: {fileID: 0}
-    - target: {fileID: 7065252597165299522, guid: 223f1850fce52dd419a25a4f89197727, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -10.026653
-      objectReference: {fileID: 0}
-    - target: {fileID: 7065252597165299522, guid: 223f1850fce52dd419a25a4f89197727, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7065252597165299522, guid: 223f1850fce52dd419a25a4f89197727, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7065252597165299522, guid: 223f1850fce52dd419a25a4f89197727, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7065252597165299522, guid: 223f1850fce52dd419a25a4f89197727, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7065252597165299522, guid: 223f1850fce52dd419a25a4f89197727, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7065252597165299522, guid: 223f1850fce52dd419a25a4f89197727, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7065252597165299522, guid: 223f1850fce52dd419a25a4f89197727, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7065252597165299522, guid: 223f1850fce52dd419a25a4f89197727, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 223f1850fce52dd419a25a4f89197727, type: 3}
 --- !u!1 &1569822677
 GameObject:
   m_ObjectHideFlags: 0
@@ -27543,4 +27486,3 @@ SceneRoots:
   - {fileID: 1798998718}
   - {fileID: 423708274}
   - {fileID: 2002194398}
-  - {fileID: 1560641150}
