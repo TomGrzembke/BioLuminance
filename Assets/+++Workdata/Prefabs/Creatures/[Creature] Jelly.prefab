@@ -599,11 +599,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 504172377077325402, guid: f2eb33e0513e87146b1b814b0e22e90d, type: 3}
       propertyPath: statusEffects.stunPerInstance
-      value: 0.01
+      value: 0.015
       objectReference: {fileID: 0}
     - target: {fileID: 504172377077325402, guid: f2eb33e0513e87146b1b814b0e22e90d, type: 3}
       propertyPath: statusEffects.damagePerInstance
-      value: 0.01
+      value: 0.001
       objectReference: {fileID: 0}
     - target: {fileID: 1718951351359858524, guid: f2eb33e0513e87146b1b814b0e22e90d, type: 3}
       propertyPath: m_SortingOrder
@@ -1549,11 +1549,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4501656369056531228, guid: 735914cd85ffeaa4b84d6f61db18a10d, type: 3}
       propertyPath: statusEffects.stunPerInstance
-      value: 0.01
+      value: 0.015
       objectReference: {fileID: 0}
     - target: {fileID: 4501656369056531228, guid: 735914cd85ffeaa4b84d6f61db18a10d, type: 3}
       propertyPath: statusEffects.damagePerInstance
-      value: 0.01
+      value: 0.001
       objectReference: {fileID: 0}
     - target: {fileID: 4659651366336858847, guid: 735914cd85ffeaa4b84d6f61db18a10d, type: 3}
       propertyPath: length
@@ -1629,11 +1629,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7043281202294130310, guid: 735914cd85ffeaa4b84d6f61db18a10d, type: 3}
       propertyPath: statusEffects.stunPerInstance
-      value: 0.01
+      value: 0.015
       objectReference: {fileID: 0}
     - target: {fileID: 7043281202294130310, guid: 735914cd85ffeaa4b84d6f61db18a10d, type: 3}
       propertyPath: statusEffects.damagePerInstance
-      value: 0.01
+      value: 0.001
       objectReference: {fileID: 0}
     - target: {fileID: 7307332820929162909, guid: 735914cd85ffeaa4b84d6f61db18a10d, type: 3}
       propertyPath: m_SortingOrder
@@ -2413,11 +2413,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8380358065986230171, guid: 735914cd85ffeaa4b84d6f61db18a10d, type: 3}
       propertyPath: statusEffects.stunPerInstance
-      value: 0.01
+      value: 0.015
       objectReference: {fileID: 0}
     - target: {fileID: 8380358065986230171, guid: 735914cd85ffeaa4b84d6f61db18a10d, type: 3}
       propertyPath: statusEffects.damagePerInstance
-      value: 0.01
+      value: 0.001
       objectReference: {fileID: 0}
     - target: {fileID: 8729899266721411924, guid: 735914cd85ffeaa4b84d6f61db18a10d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2910,7 +2910,11 @@ PrefabInstance:
     - target: {fileID: 7627820772083735243, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: activeReward
       value: 
-      objectReference: {fileID: 8574770232140604388, guid: 053b0effef475454a83687d9e5fa5197, type: 3}
+      objectReference: {fileID: 0}
+    - target: {fileID: 7627820772083735243, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
+      propertyPath: passiveReward
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7968696186739195705, guid: eb7541116b1d6cf488277a92d5aaf939, type: 3}
       propertyPath: defaultSpeed
       value: 2
