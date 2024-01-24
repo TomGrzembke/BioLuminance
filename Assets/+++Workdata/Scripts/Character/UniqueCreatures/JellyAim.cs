@@ -8,6 +8,7 @@ public class JellyAim : MonoBehaviour
     [SerializeField] float detachCheckTime = 3;
     [SerializeField] TentacleTargetManager tentacleTargetManager;
     [SerializeField] PlayerDetect jellyDetect;
+    [SerializeField] Creatures creaturesToIgnore;
     #endregion
 
     #region private fields
@@ -30,6 +31,7 @@ public class JellyAim : MonoBehaviour
         {
             if (!savedPossibleTarget.Contains(jellyDetect.PossibleTargets[i]))
             {
+                if (jellyDetect.PossibleTargets[i].OwnStatusManager.CreatureType.HasFlag(creaturesToIgnore)) return;
                 savedPossibleTarget.Add(jellyDetect.PossibleTargets[i]);
                 newTargets = true;
             }

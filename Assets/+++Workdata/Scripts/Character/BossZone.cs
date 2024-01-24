@@ -28,7 +28,7 @@ public class BossZone : MonoBehaviour
 
     public void Enter()
     {
-        if (!enabled) return;
+        if (!gameObject.activeInHierarchy) return;
 
         MusicManager.Instance.PlaySong(MusicManager.Songs.Sunfish);
 
@@ -48,7 +48,7 @@ public class BossZone : MonoBehaviour
 
     public void Exit()
     {
-        if (!enabled) return;
+        if (!gameObject.activeInHierarchy) return;
 
         MusicManager.Instance.PlayLastPlayed();
 

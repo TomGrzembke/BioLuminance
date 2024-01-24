@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ClickBubble : MonoBehaviour
@@ -8,17 +6,18 @@ public class ClickBubble : MonoBehaviour
     [SerializeField] GameObject tutorial;
     [SerializeField] HealthSubject healthSubject;
     [SerializeField] GameObject parent;
-    private Animator animator;
+    Animator animator;
 
 
-    private void Awake()
+    void Awake()
     {
         tutorial.SetActive(PlayerPrefs.GetInt("TutorialFinished") == 0);
         animator = GetComponent<Animator>();
-        StartCoroutine(CheckDead());
+        if (gameObject.activeInHierarchy)
+            StartCoroutine(CheckDead());
     }
 
-    private void OnDeath(bool died)
+    void OnDeath(bool died)
     {
         if (died)
         {
@@ -27,12 +26,12 @@ public class ClickBubble : MonoBehaviour
         }
     }
 
-    private void OnEnable()
+    void OnEnable()
     {
         healthSubject.RegisterOnCreatureDied(OnDeath);
     }
 
-    private void OnDisable()
+    void OnDisable()
     {
         healthSubject.OnCreatureDied -= OnDeath;
     }
@@ -42,13 +41,10 @@ public class ClickBubble : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(0.1f);
-            
-            print("ded");
 
             if (healthSubject.currentHealth != 0) continue;
-            animator.Play("BubblePop");
             StartCoroutine(IsDead());
-                
+
             yield break;
         }
     }
@@ -56,7 +52,6 @@ public class ClickBubble : MonoBehaviour
     IEnumerator IsDead()
     {
         yield return new WaitForSeconds(0.2f);
-        print("wat");
         parent.SetActive(false);
     }
 }

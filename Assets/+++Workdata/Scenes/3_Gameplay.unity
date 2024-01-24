@@ -10094,19 +10094,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7285466801939302245, guid: 75162ae4234a8ac4e9ac0b299f7ec4d7, type: 3}
       propertyPath: m_Size.x
-      value: 541.6371
+      value: 544.01355
       objectReference: {fileID: 0}
     - target: {fileID: 7285466801939302245, guid: 75162ae4234a8ac4e9ac0b299f7ec4d7, type: 3}
       propertyPath: m_Size.y
-      value: 155.25594
+      value: 85.54418
       objectReference: {fileID: 0}
     - target: {fileID: 7285466801939302245, guid: 75162ae4234a8ac4e9ac0b299f7ec4d7, type: 3}
       propertyPath: m_Offset.x
-      value: 238.41937
+      value: 237.23114
       objectReference: {fileID: 0}
     - target: {fileID: 7285466801939302245, guid: 75162ae4234a8ac4e9ac0b299f7ec4d7, type: 3}
       propertyPath: m_Offset.y
-      value: -37.522514
+      value: -7.419712
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -13328,6 +13328,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1448333275}
   m_CullTransparentMesh: 1
+--- !u!114 &1452645167 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6015550758233338559, guid: 54a990656dc88ac49817a565378537ec, type: 3}
+  m_PrefabInstance: {fileID: 2053367974}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fe50b0595703854cba355c439e5c301, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1471333351
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21614,6 +21625,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2664668586894446845, guid: 54a990656dc88ac49817a565378537ec, type: 3}
+      propertyPath: stateEvent.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2664668586894446845, guid: 54a990656dc88ac49817a565378537ec, type: 3}
+      propertyPath: stateEvent.Array.data[0].time
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2664668586894446845, guid: 54a990656dc88ac49817a565378537ec, type: 3}
+      propertyPath: stateEvent.Array.data[0].reason
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2664668586894446845, guid: 54a990656dc88ac49817a565378537ec, type: 3}
+      propertyPath: stateEvent.Array.data[0].switchState
+      value: 
+      objectReference: {fileID: 1452645167}
     - target: {fileID: 5261946888979645834, guid: 54a990656dc88ac49817a565378537ec, type: 3}
       propertyPath: bossBarCG
       value: 

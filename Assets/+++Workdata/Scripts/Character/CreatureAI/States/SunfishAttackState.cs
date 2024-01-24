@@ -44,6 +44,7 @@ public class SunfishAttackState : State
     {
         HandleDetection();
 
+        if(creatureLogic.TargetStatusManager)
         creatureLogic.SetDistanceFromTarget(Vector3.Distance(creatureLogic.TargetStatusManager.transform.position, creatureLogic.transform.position));
 
         creatureLogic.HandleRotate();

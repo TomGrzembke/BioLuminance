@@ -26,7 +26,7 @@ public class HealthBar : Bar
     {
         if (health != null)
             health.RegisterOnHealthChangedAlpha(OnHealthChanged, true);
-        else if(healthLimb != null)
+        else if (healthLimb != null)
             healthLimb.RegisterOnHealthChangedAlpha(OnHealthChanged, true);
     }
 
@@ -34,7 +34,7 @@ public class HealthBar : Bar
     {
         if (health != null)
             health.OnHealthChangedAlpha -= OnHealthChanged;
-        else if(healthLimb != null)
+        else if (healthLimb != null)
             healthLimb.OnHealthChangedAlpha -= OnHealthChanged;
     }
 
@@ -48,13 +48,14 @@ public class HealthBar : Bar
     void AfterShockLogic(float health)
     {
         if (afterShockBar == null) return;
-        if (!gameObject.activeSelf) return;
+        if (!gameObject.activeInHierarchy) return;
 
         if (afterShockCoroutine == null)
             afterShockCoroutine = StartCoroutine(AfterShockbarCo(health));
         else
         {
             StopCoroutine(afterShockCoroutine);
+
             afterShockCoroutine = StartCoroutine(AfterShockbarCo(health));
         }
     }

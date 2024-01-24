@@ -8,7 +8,6 @@ public class MultiplyAnimOnImpact : MonoBehaviour
     [SerializeField] Animator anim;
     [SerializeField] float multiplier = 2;
     [SerializeField] float duration = 2;
-    [SerializeField] float cooldown = 3;
     #endregion
 
     #region private fields

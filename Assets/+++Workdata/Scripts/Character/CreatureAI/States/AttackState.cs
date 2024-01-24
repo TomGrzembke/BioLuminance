@@ -40,7 +40,8 @@ public class AttackState : State
     {
         HandleDetection();
 
-        creatureLogic.SetDistanceFromTarget(Vector3.Distance(creatureLogic.TargetStatusManager.transform.position, creatureLogic.transform.position));
+        if (creatureLogic.TargetStatusManager)
+            creatureLogic.SetDistanceFromTarget(Vector3.Distance(creatureLogic.TargetStatusManager.transform.position, creatureLogic.transform.position));
 
         creatureLogic.HandleRotate();
     }
