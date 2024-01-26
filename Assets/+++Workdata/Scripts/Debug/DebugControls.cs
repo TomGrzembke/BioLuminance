@@ -11,6 +11,7 @@ public class DebugControls : MonoBehaviour
     [SerializeField] GameObject[] toggleUIAsterisk;
     [SerializeField] Transform playerTrans;
     [SerializeField] Transform bossTargetTrans;
+    [SerializeField] GameObject[] abilitiesToAdd;
     #endregion
 
     #region private fields
@@ -20,7 +21,7 @@ public class DebugControls : MonoBehaviour
     void Awake()
     {
         inputActions = new();
-        inputActions.Player.Debug7.performed += ctx => CallEvent(num7);
+        inputActions.Player.Debug7.performed += ctx => CallNum7(num7);
         inputActions.Player.DebugAsterisk.performed += ctx => CallAsteriskEvent();
         inputActions.Player.DebugSlash.performed += ctx => CallSlashEvent();
     }
@@ -34,8 +35,13 @@ public class DebugControls : MonoBehaviour
         inputActions.Disable();
     }
 
-    public void CallEvent(UnityEvent givenEvent)
+    public void CallNum7(UnityEvent givenEvent)
     {
+        for (int i = 0; i < abilitiesToAdd.Length; i++)
+        {
+            AbilitySlotManager.Instance.AddNewAbility(abilitiesToAdd[i]);
+        }
+
         givenEvent?.Invoke();
     }
     public void CallAsteriskEvent()
