@@ -7,13 +7,12 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PixelArtMat
-  m_Shader: {fileID: -6465566751694194690, guid: ec7211c6a12c20d45adb3be43fd7ea7a, type: 3}
+  m_Name: Pixelate
+  m_Shader: {fileID: -6465566751694194690, guid: 17227dd68bbf21a43b7647947230e3b2, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
-  m_InvalidKeywords:
-  - ETC1_EXTERNAL_ALPHA
+  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -24,24 +23,12 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _AlphaTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 42db96faa21bdf2428cdb174fd0368ef, type: 3}
+        m_Texture: {fileID: 8400000, guid: 2c6df7129213b40469f95ad3c0e59b43, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _MainTexture:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MaskTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _NormalMap:
-        m_Texture: {fileID: 0}
+    - _Texture:
+        m_Texture: {fileID: 8400000, guid: 2c6df7129213b40469f95ad3c0e59b43, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -58,17 +45,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _EnableExternalAlpha: 0
-    - _OutlineThickness: 0.473
-    - _PixelSample: 160
-    - _Pixelate: 1024
+    - _OutlineThickness: 1
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Flip: {r: 1, g: 1, b: 1, a: 1}
-    - _OutlineColor: {r: 0.7216981, g: 1, b: 0.9188643, a: 0}
-    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
+    - _OutlineColor: {r: 1, g: 1, b: 1, a: 1}
+    - _PixelCount: {r: 576, g: 216, b: 0, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &2646175778741110273
+--- !u!114 &1023563809089684273
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
