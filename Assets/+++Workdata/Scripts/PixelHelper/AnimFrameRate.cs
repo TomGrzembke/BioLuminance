@@ -5,21 +5,32 @@ public class AnimFrameRate : MonoBehaviour
 {
     [SerializeField] Animator anim;
     [SerializeField] int animFPS = 12;
-    [SerializeField] float frameAlpha = 0.072f;
-    float FrameAlpha => animFPS * 0.6f / 100;
+    float frameAlpha = 0.072f;
+    float savedAnimSpeed;
+
+    [SerializeField] float _frameAlpha;
+    [SerializeField] float fpsPercent;
+
     void Start()
     {
+        savedAnimSpeed = anim.speed;
         StartCoroutine(FrameCycle());
     }
 
     IEnumerator FrameCycle()
     {
-        for (int i = 0; i < animFPS - 1; i++)
+        _frameAlpha = animFPS * 0.6f / 100;
+        fpsPercent = Mathf.Clamp(Mathf.RoundToInt(animFPS * 1.667f), 0, 100);
+        float fpsAlpha = (fpsPercent / 100);
+
+
+        for (int i = 0; i < 60 - animFPS - 1; i++)
         {
             yield return null;
         }
 
-        anim.Play(anim.GetCurrentAnimatorClipInfo(0)[0].clip.name, 0, anim.GetCurrentAnimatorStateInfo(0).normalizedTime + FrameAlpha);
+        anim.speed = savedAnimSpeed;
+        anim.Play(anim.GetCurrentAnimatorClipInfo(0)[0].clip.name, 0, anim.GetCurrentAnimatorStateInfo(0).normalizedTime + fpsAlpha);
 
         yield return null;
 

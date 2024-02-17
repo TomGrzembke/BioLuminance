@@ -11187,6 +11187,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 8363828084341084501, guid: 9bc6a04619cb4ed498b212f12c8fb165, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.000063913685
+      objectReference: {fileID: 0}
+    - target: {fileID: 8363828084341084501, guid: 9bc6a04619cb4ed498b212f12c8fb165, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.7999969
+      objectReference: {fileID: 0}
     - target: {fileID: 8365620527886004038, guid: 9bc6a04619cb4ed498b212f12c8fb165, type: 3}
       propertyPath: m_Layer
       value: 11
@@ -21752,8 +21760,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 1646275547}
-  animFPS: 12
-  frameAlpha: 0.072
+  animFPS: 60
+  _frameAlpha: 0
+  fpsPercent: 0
 --- !u!212 &1651779023 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 4039932347140189617, guid: 9bc6a04619cb4ed498b212f12c8fb165, type: 3}
