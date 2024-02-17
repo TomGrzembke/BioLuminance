@@ -4,8 +4,7 @@ using UnityEngine;
 public class AnimFrameRate : MonoBehaviour
 {
     [SerializeField] Animator anim;
-    [SerializeField] int animeFPS = 12;
-    [SerializeField] int divider = 12;
+    [SerializeField] int animFPS = 12;
     void Start()
     {
         StartCoroutine(FrameCycle());
@@ -15,10 +14,11 @@ public class AnimFrameRate : MonoBehaviour
     {
         anim.speed = 0;
 
-        for (int i = 0; i < divider - 1; i++)
+        for (int i = 0; i < animFPS - 1; i++)
         {
             yield return null;
         }
+        print("a");
         anim.speed = 1;
 
         yield return null;
