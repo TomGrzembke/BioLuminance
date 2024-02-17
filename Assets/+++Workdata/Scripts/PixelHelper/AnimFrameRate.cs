@@ -22,9 +22,11 @@ public class AnimFrameRate : MonoBehaviour
         _frameAlpha = animFPS * 0.6f / 100;
         fpsPercent = Mathf.Clamp(Mathf.RoundToInt(animFPS * 1.667f), 0, 100);
         float fpsAlpha = (fpsPercent / 100);
+        float frameDifference = 60 - animFPS;
+        float animClipLength = anim.GetCurrentAnimatorClipInfo(0)[0].clip.length;
 
 
-        for (int i = 0; i < 60 - animFPS - 1; i++)
+        for (int i = 0; i < frameDifference; i++)
         {
             yield return null;
         }
@@ -33,8 +35,13 @@ public class AnimFrameRate : MonoBehaviour
         anim.Play(anim.GetCurrentAnimatorClipInfo(0)[0].clip.name, 0, anim.GetCurrentAnimatorStateInfo(0).normalizedTime + fpsAlpha);
 
         yield return null;
-
         anim.speed = 0;
+
+        for (int i = 0; i < animFPS - 1; i++)
+        {
+            yield return null;
+        }
+
 
         StartCoroutine(FrameCycle());
     }
