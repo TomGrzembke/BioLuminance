@@ -7,6 +7,8 @@ public class AnimFrameRate : MonoBehaviour
     [SerializeField] int animFPS = 12;
     float frameAlpha = 0.072f;
     float savedAnimSpeed;
+    float lastRenderTime = 0;
+    [SerializeField] int frameRate = 12;
 
     [SerializeField] float _frameAlpha;
     [SerializeField] float fpsPercent;
@@ -17,6 +19,15 @@ public class AnimFrameRate : MonoBehaviour
         StartCoroutine(FrameCycle());
     }
 
+    void Update()
+    {
+        if (Time.time - lastRenderTime > 1f / frameRate)
+        {
+            lastRenderTime = Time.time;
+            
+        }
+    }
+
     IEnumerator FrameCycle()
     {
         _frameAlpha = animFPS * 0.6f / 100;
@@ -24,6 +35,7 @@ public class AnimFrameRate : MonoBehaviour
         float fpsAlpha = (fpsPercent / 100);
         float frameDifference = 60 - animFPS;
         float animClipLength = anim.GetCurrentAnimatorClipInfo(0)[0].clip.length;
+        float _frameAlpha1 = animClipLength / anim.GetCurrentAnimatorStateInfo(0).normalizedTime;
 
 
         for (int i = 0; i < frameDifference; i++)
@@ -32,7 +44,7 @@ public class AnimFrameRate : MonoBehaviour
         }
 
         anim.speed = savedAnimSpeed;
-        anim.Play(anim.GetCurrentAnimatorClipInfo(0)[0].clip.name, 0, anim.GetCurrentAnimatorStateInfo(0).normalizedTime + fpsAlpha);
+        anim.Play(anim.GetCurrentAnimatorClipInfo(0)[0].clip.name, 0, anim.GetCurrentAnimatorStateInfo(0).normalizedTime + _frameAlpha);
 
         yield return null;
         anim.speed = 0;
@@ -44,11 +56,5 @@ public class AnimFrameRate : MonoBehaviour
 
 
         StartCoroutine(FrameCycle());
-    }
-    void Update()
-    {
-        //print(anim.GetCurrentAnimatorStateInfo(0).normalizedTime);
-        //if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 2)
-        //    anim.speed = 0;
     }
 }
