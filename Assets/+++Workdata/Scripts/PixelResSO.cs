@@ -7,9 +7,9 @@ public class PixelResSO : ScriptableObject
     [Range(16, 1920)]
     public float pixelRes = 128;
     public Vector2 screenRes = new(1920, 1080);
-    public Vector2 scaling;
     public Material pixelartMat;
     RangedFloat screenRatio;
+    Vector2 scaling;
 
     void Awake()
     {
