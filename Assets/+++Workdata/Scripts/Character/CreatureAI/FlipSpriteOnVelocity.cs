@@ -2,7 +2,7 @@ using MyBox;
 using UnityEngine;
 
 /// <summary> Flips the object with context</summary>
-public class FlipSpriteOnAngle : MonoBehaviour
+public class FlipSpriteOnVelocity : MonoBehaviour
 {
     #region serialized fields
     [SerializeField] Transform rotationParent;

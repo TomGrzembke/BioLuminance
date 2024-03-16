@@ -10,7 +10,7 @@ public class StingrayStinger : MonoBehaviour
 
     [SerializeField] Transform stingerGFX;
     [SerializeField] Transform stingerTarget;
-    [SerializeField] FlipSpriteOnAngle stingFlipper;
+    [SerializeField] FlipSpriteOnVelocity stingFlipper;
     [SerializeField] AnimationCurve animationCurve;
     [SerializeField] StatusManager ownStatusManager;
     [SerializeField] StatusEffects statusEffects;
