@@ -7,13 +7,13 @@ public class AnimationEventHandler : MonoBehaviour
     [SerializeField] AnimationUnityEvent[] onEvents;
 
     /// <param name="eventID"> The ID of the corresponding onEvent array ID</param>
-    public void OnAnimEventID(int eventID)
+    void OnAnimEventID(int eventID)
     {
         onEvents[eventID].animEvent?.Invoke();
     }
 
     /// <param name="eventID"> The ID of the corresponding onEvent array ID</param>
-    public void OnAnimEvent(AnimationEvent _animEvent)
+    void OnAnimEvent(AnimationEvent _animEvent)
     {
         int animeventID = DetermineAnimEventID(_animEvent);
 
@@ -32,7 +32,7 @@ public class AnimationEventHandler : MonoBehaviour
     }
 
     /// <summary> Be careful with statemachine blending and instantiating! Might need a spawn limit per frame bunch</summary>
-    public void InstantiateObj(Object obj)
+    void InstantiateObj(Object obj)
     {
         Instantiate(obj, transform.localPosition, Quaternion.identity);
     }
